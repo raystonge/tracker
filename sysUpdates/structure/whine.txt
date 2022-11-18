@@ -1,0 +1,3 @@
+"whineId","int(11)"
+"name","varchar(45)"
+"minutes","int(11)"

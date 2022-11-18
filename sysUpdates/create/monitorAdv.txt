@@ -1,0 +1,11 @@
+CREATE TABLE `monitorAdv` (
+  `monitorAdvId` int(11) NOT NULL AUTO_INCREMENT,
+  `assetId` int(11) DEFAULT NULL,
+  `monitorTypeId` int(11) DEFAULT NULL,
+  `whineId` int(11) DEFAULT NULL,
+  `active` int(11) DEFAULT NULL,
+  `state` int(11) DEFAULT NULL,
+  `stateChangeDateTime` datetime DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`monitorAdvId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1

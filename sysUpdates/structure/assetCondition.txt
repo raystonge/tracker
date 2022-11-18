@@ -1,0 +1,3 @@
+"assetConditionId","int(10) unsigned"
+"name","varchar(45)"
+"showAll","int(11)"

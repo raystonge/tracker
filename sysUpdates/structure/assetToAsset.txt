@@ -1,0 +1,4 @@
+"assetToAssetId","int(11)"
+"assetId1","int(11)"
+"assetId2","int(11)"
+"serialNumber","varchar(45)"

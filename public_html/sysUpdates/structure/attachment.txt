@@ -1,0 +1,7 @@
+"attachmentId","int(11)"
+"name","varchar(255)"
+"originalName","varchar(255)"
+"assetId","int(11)"
+"ticketId","int(11)"
+"mimeTypeId","int(11)"
+"ext","varchar(25)"

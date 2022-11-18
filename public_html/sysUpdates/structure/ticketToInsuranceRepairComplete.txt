@@ -1,0 +1,3 @@
+"ticketToInsuranceRepairCompleteId","int(11)"
+"ticketId","int(11)"
+"insuranceRepairCompleteId","int(11)"

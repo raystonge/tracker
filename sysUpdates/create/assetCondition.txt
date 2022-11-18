@@ -1,0 +1,6 @@
+CREATE TABLE `assetCondition` (
+  `assetConditionId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `showAll` int(11) NOT NULL,
+  PRIMARY KEY (`assetConditionId`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1

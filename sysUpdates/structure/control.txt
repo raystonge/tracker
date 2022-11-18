@@ -1,0 +1,8 @@
+"controlId","int(11)"
+"sectionValue","varchar(50)"
+"keyValue","varchar(50)"
+"valueInt","int(11)"
+"valueChar","text"
+"datatype","varchar(25)"
+"description","varchar(255)"
+"developer","int(10) unsigned"

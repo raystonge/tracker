@@ -1,0 +1,6 @@
+CREATE TABLE `assetToContract` (
+  `assetToContractId` int(11) NOT NULL AUTO_INCREMENT,
+  `assetId` int(11) DEFAULT NULL,
+  `contractId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`assetToContractId`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1

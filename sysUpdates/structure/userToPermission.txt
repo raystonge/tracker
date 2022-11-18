@@ -1,0 +1,3 @@
+"userToPermissionId","int(11)"
+"userId","int(11)"
+"permissionId","int(11)"

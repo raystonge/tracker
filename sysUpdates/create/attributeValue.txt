@@ -1,0 +1,6 @@
+CREATE TABLE `attributeValue` (
+  `attributeValueId` int(11) NOT NULL AUTO_INCREMENT,
+  `attributeId` int(11) DEFAULT NULL,
+  `attributeValue` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`attributeValueId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1

@@ -1,0 +1,3 @@
+"assetToContractId","int(11)"
+"assetId","int(11)"
+"contractId","int(11)"

@@ -1,0 +1,4 @@
+"userToGroupId","int(11)"
+"userGroupId","int(11)"
+"userId","int(11)"
+"organizationId","int(11)"

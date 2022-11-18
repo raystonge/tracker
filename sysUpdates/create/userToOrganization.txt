@@ -1,0 +1,8 @@
+CREATE TABLE `userToOrganization` (
+  `userToOrganizationId` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) DEFAULT NULL,
+  `organizationId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`userToOrganizationId`),
+  KEY `userId` (`userId`),
+  KEY `organizationId` (`organizationId`)
+) ENGINE=MyISAM AUTO_INCREMENT=643 DEFAULT CHARSET=latin1

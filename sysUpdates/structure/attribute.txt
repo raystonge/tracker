@@ -1,0 +1,6 @@
+"attributeId","int(11)"
+"assetTypeId","int(11)"
+"attribute","varchar(45)"
+"dataType","varchar(45)"
+"attributeType","varchar(45)"
+"attributeOrder","int(11)"

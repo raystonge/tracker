@@ -1,0 +1,6 @@
+"userGroupId","int(11)"
+"name","varchar(45)"
+"admin","int(11)"
+"developer","int(11)"
+"assignee","int(11)"
+"organizationId","int(11)"

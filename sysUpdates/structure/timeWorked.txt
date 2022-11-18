@@ -1,0 +1,6 @@
+"timeWorkedId","int(11)"
+"amountWorked","float"
+"dateWorked","varchar(45)"
+"commentId","varchar(45)"
+"ticketId","int(11)"
+"userId","int(11)"

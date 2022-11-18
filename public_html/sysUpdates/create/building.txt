@@ -1,0 +1,6 @@
+CREATE TABLE `building` (
+  `buildingId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `domain` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`buildingId`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1

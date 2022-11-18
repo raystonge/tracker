@@ -1,0 +1,3 @@
+"validConditionId","int(11)"
+"currentAssetConditionId","int(11)"
+"assetConditionId","int(11)"

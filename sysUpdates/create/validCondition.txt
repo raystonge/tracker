@@ -1,0 +1,6 @@
+CREATE TABLE `validCondition` (
+  `validConditionId` int(11) NOT NULL AUTO_INCREMENT,
+  `currentAssetConditionId` int(11) DEFAULT NULL,
+  `assetConditionId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`validConditionId`)
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1

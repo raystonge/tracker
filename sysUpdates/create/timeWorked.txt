@@ -1,0 +1,9 @@
+CREATE TABLE `timeWorked` (
+  `timeWorkedId` int(11) NOT NULL AUTO_INCREMENT,
+  `amountWorked` float DEFAULT NULL,
+  `dateWorked` varchar(45) DEFAULT NULL,
+  `commentId` varchar(45) DEFAULT NULL,
+  `ticketId` int(11) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`timeWorkedId`)
+) ENGINE=InnoDB AUTO_INCREMENT=336 DEFAULT CHARSET=latin1

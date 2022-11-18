@@ -1,0 +1,7 @@
+"organizationId","int(11)"
+"name","varchar(45)"
+"assetPrefix","varchar(10)"
+"defaultAssigneeId","int(11)"
+"billable","int(11)"
+"showAllUsers","int(11)"
+"active","int(11)"

@@ -1,0 +1,3 @@
+"monitorTypeId","int(11)"
+"name","varchar(45)"
+"monitorType","varchar(25)"

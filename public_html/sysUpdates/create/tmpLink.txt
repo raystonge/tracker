@@ -1,0 +1,8 @@
+CREATE TABLE `tmpLink` (
+  `tmpLinkId` int(11) NOT NULL AUTO_INCREMENT,
+  `rndString` varchar(255) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `ts` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`tmpLinkId`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1

@@ -1,0 +1,7 @@
+"monitorId","int(11)"
+"assetId","int(11)"
+"ipAddress","varchar(25)"
+"state","int(11)"
+"fqdn","varchar(255)"
+"stateChangeDateTime","datetime"
+"active","int(11)"

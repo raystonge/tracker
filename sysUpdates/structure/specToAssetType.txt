@@ -1,0 +1,4 @@
+"specToAssetTypeId","int(11)"
+"specId","int(11)"
+"assetTypeId","int(11)"
+"displayOrder","int(11)"

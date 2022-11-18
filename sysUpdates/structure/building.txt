@@ -1,0 +1,5 @@
+"buildingId","int(11)"
+"name","varchar(45)"
+"domain","varchar(25)"
+"queueId","int(11)"
+"organizationId","int(11)"

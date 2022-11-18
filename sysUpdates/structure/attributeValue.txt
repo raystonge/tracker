@@ -1,0 +1,3 @@
+"attributeValueId","int(11)"
+"attributeId","int(11)"
+"attributeValue","varchar(255)"

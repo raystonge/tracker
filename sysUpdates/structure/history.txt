@@ -1,0 +1,8 @@
+"historyId","int(10) unsigned"
+"userId","int(10) unsigned"
+"contractId","int(10) unsigned"
+"actionDate","datetime"
+"action","text"
+"ticketId","int(11)"
+"assetId","int(11)"
+"poNumberId","int(11)"

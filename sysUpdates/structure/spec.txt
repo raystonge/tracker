@@ -1,0 +1,3 @@
+"specId","int(11)"
+"name","varchar(45)"
+"dataType","varchar(45)"

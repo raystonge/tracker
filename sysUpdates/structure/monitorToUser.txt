@@ -1,0 +1,3 @@
+"monitorToUserId","int(11)"
+"monitorId","int(11)"
+"userId","int(11)"

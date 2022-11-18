@@ -1,0 +1,18 @@
+CREATE TABLE `monitor` (
+  `monitorId` int(11) NOT NULL AUTO_INCREMENT,
+  `assetId` int(11) NOT NULL,
+  `ipAddress` varchar(25) NOT NULL,
+  `state` int(11) NOT NULL DEFAULT '0',
+  `fqdn` varchar(255) NOT NULL,
+  `stateChangeDateTime` datetime DEFAULT NULL,
+  `active` int(11) DEFAULT NULL,
+  `monitorURL` varchar(255) DEFAULT NULL,
+  `pingAddress` varchar(255) DEFAULT NULL,
+  `smsNotice` varchar(45) DEFAULT NULL,
+  `monitorCnt` int(11) DEFAULT NULL,
+  `monitorAlertCount` int(11) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `whine` int(11) DEFAULT NULL,
+  `monitorType` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`monitorId`)
+) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=latin1

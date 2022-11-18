@@ -1,0 +1,11 @@
+CREATE TABLE `module` (
+  `moduleId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `query` varchar(255) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `admin` int(11) DEFAULT NULL,
+  `moduleType` varchar(45) DEFAULT NULL,
+  `assignee` int(11) DEFAULT NULL,
+  PRIMARY KEY (`moduleId`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1

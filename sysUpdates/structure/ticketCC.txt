@@ -1,0 +1,3 @@
+"ticketCCId","int(10) unsigned"
+"ticketId","int(10) unsigned"
+"userId","int(10) unsigned"

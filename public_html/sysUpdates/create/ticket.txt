@@ -1,0 +1,22 @@
+CREATE TABLE `ticket` (
+  `ticketId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `creatorId` int(10) unsigned NOT NULL,
+  `ownerId` int(10) unsigned NOT NULL,
+  `statusId` int(10) unsigned NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `insuranceRepairId` int(10) unsigned NOT NULL,
+  `description` text NOT NULL,
+  `createDate` datetime NOT NULL,
+  `dueDate` date NOT NULL,
+  `priorityId` int(10) unsigned NOT NULL,
+  `timeEstimate` int(10) unsigned NOT NULL,
+  `timeWorked` int(10) unsigned NOT NULL,
+  `queueId` int(10) unsigned NOT NULL,
+  `repairCost` varchar(45) NOT NULL,
+  `poNumber` varchar(45) NOT NULL,
+  `requestorId` int(11) DEFAULT NULL,
+  `insuranceRepairCompleteId` int(11) DEFAULT NULL,
+  `insurancePaymentId` int(11) DEFAULT NULL,
+  `lastUpdated` datetime DEFAULT NULL,
+  PRIMARY KEY (`ticketId`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1

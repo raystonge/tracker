@@ -1,0 +1,15 @@
+CREATE TABLE `assetDepreciation` (
+  `assetDepreciationId` int(11) NOT NULL AUTO_INCREMENT,
+  `assetId` int(11) DEFAULT NULL,
+  `year1` float DEFAULT NULL,
+  `year2` float DEFAULT NULL,
+  `year3` float DEFAULT NULL,
+  `year4` float DEFAULT NULL,
+  `year5` float DEFAULT NULL,
+  `year6` float DEFAULT NULL,
+  `year7` float DEFAULT NULL,
+  `year8` float DEFAULT NULL,
+  `year9` float DEFAULT NULL,
+  `year10` float DEFAULT NULL,
+  PRIMARY KEY (`assetDepreciationId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1

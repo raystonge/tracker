@@ -1,0 +1,14 @@
+CREATE TABLE `users` (
+  `userId` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `fullName` varchar(45) DEFAULT NULL,
+  `active` int(11) DEFAULT NULL,
+  `lastLogin` datetime DEFAULT NULL,
+  `initials` varchar(45) DEFAULT NULL,
+  `resetPassword` int(11) DEFAULT '0',
+  `emailMessage` text,
+  `snsTopic` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`userId`),
+  KEY `INITIALS` (`initials`)
+) ENGINE=MyISAM AUTO_INCREMENT=4760 DEFAULT CHARSET=latin1

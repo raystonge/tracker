@@ -1,0 +1,5 @@
+"historyId","int(10) unsigned"
+"userId","int(10) unsigned"
+"adOrderId","int(10) unsigned"
+"actionDate","datetime"
+"action","text"

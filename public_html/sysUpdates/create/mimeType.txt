@@ -1,0 +1,9 @@
+CREATE TABLE `mimeType` (
+  `mimeTypeId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(25) NOT NULL,
+  `mimeType` varchar(45) NOT NULL,
+  `handler` varchar(25) NOT NULL,
+  PRIMARY KEY (`mimeTypeId`),
+  KEY `name` (`name`),
+  KEY `mimeType` (`mimeType`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1

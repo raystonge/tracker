@@ -1,0 +1,5 @@
+"assetTypeId","int(11)"
+"name","varchar(45)"
+"monitor","int(11)"
+"hasMacAddress","int(11)"
+"requireMacAddress","int(11)"

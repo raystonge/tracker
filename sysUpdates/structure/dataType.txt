@@ -1,0 +1,3 @@
+"dataTypeId","int(11)"
+"name","varchar(45)"
+"mask","varchar(45)"

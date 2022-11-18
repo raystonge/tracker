@@ -1,0 +1,10 @@
+CREATE TABLE `organization` (
+  `organizationId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `assetPrefix` varchar(10) DEFAULT NULL,
+  `defaultAssigneeId` int(11) DEFAULT NULL,
+  `billable` int(11) DEFAULT NULL,
+  `showAllUsers` int(11) DEFAULT NULL,
+  `active` int(11) DEFAULT NULL,
+  PRIMARY KEY (`organizationId`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1

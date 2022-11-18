@@ -1,0 +1,7 @@
+"userId","int(11)"
+"email","varchar(255)"
+"password","varchar(45)"
+"fullName","varchar(45)"
+"active","int(11)"
+"lastLogin","datetime"
+"initials","varchar(45)"

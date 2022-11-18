@@ -1,0 +1,8 @@
+"commentId","int(11)"
+"userId","int(11)"
+"posted","datetime"
+"ticketId","int(11)"
+"comment","text"
+"assetId","int(11)"
+"postId","int(11)"
+"replyToId","int(11)"

@@ -1,0 +1,8 @@
+CREATE TABLE `moduleQuery` (
+  `moduleQueryId` int(11) NOT NULL AUTO_INCREMENT,
+  `moduleId` int(11) DEFAULT NULL,
+  `fieldToTest` varchar(45) DEFAULT NULL,
+  `fieldTest` varchar(45) DEFAULT NULL,
+  `testValue` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`moduleQueryId`)
+) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=latin1

@@ -1,0 +1,6 @@
+CREATE TABLE `spec` (
+  `specId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `dataType` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`specId`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1

@@ -1,0 +1,10 @@
+CREATE TABLE `attachment` (
+  `attachmentId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `originalName` varchar(255) DEFAULT NULL,
+  `assetId` int(11) DEFAULT NULL,
+  `ticketId` int(11) DEFAULT NULL,
+  `mimeTypeId` int(11) DEFAULT NULL,
+  `ext` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`attachmentId`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1

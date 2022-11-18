@@ -1,0 +1,9 @@
+CREATE TABLE `attribute` (
+  `attributeId` int(11) NOT NULL AUTO_INCREMENT,
+  `assetTypeId` int(11) DEFAULT NULL,
+  `attribute` varchar(45) DEFAULT NULL,
+  `dataType` varchar(45) DEFAULT NULL,
+  `attributeType` varchar(45) DEFAULT NULL,
+  `attributeOrder` int(11) DEFAULT NULL,
+  PRIMARY KEY (`attributeId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1

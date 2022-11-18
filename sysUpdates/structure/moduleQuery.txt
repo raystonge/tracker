@@ -1,0 +1,5 @@
+"moduleQueryId","int(11)"
+"moduleId","int(11)"
+"fieldToTest","varchar(45)"
+"fieldTest","varchar(45)"
+"testValue","varchar(45)"

@@ -1,0 +1,11 @@
+CREATE TABLE `fileInfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `server` varchar(45) DEFAULT NULL,
+  `fileName` text,
+  `fileSize` int(11) DEFAULT NULL,
+  `fileDate` varchar(45) DEFAULT NULL,
+  `isPresent` int(11) DEFAULT NULL,
+  `hasChanged` int(11) DEFAULT NULL,
+  `ignore` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1

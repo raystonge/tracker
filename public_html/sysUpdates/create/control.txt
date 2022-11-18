@@ -1,0 +1,13 @@
+CREATE TABLE `control` (
+  `controlId` int(11) NOT NULL AUTO_INCREMENT,
+  `sectionValue` varchar(50) NOT NULL,
+  `keyValue` varchar(50) NOT NULL,
+  `valueInt` int(11) NOT NULL,
+  `valueChar` text NOT NULL,
+  `datatype` varchar(25) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `developer` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`controlId`) USING BTREE,
+  KEY `section` (`sectionValue`),
+  KEY `section_key` (`sectionValue`,`keyValue`)
+) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=latin1

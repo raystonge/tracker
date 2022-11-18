@@ -1,0 +1,23 @@
+CREATE TABLE `contract` (
+  `contractId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `address1` varchar(45) NOT NULL,
+  `address2` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL,
+  `state` varchar(2) NOT NULL,
+  `zipCode` varchar(10) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `fax` varchar(15) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `contactName` varchar(45) NOT NULL,
+  `contactEmail` varchar(255) NOT NULL,
+  `contactPhone` varchar(45) NOT NULL,
+  `supportEmail` varchar(255) NOT NULL,
+  `supportPhone` varchar(15) NOT NULL,
+  `contractNumber` varchar(45) NOT NULL,
+  `supportName` varchar(45) NOT NULL,
+  `expireDate` date DEFAULT NULL,
+  `poNumberId` int(11) DEFAULT '0',
+  `organizationId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`contractId`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1

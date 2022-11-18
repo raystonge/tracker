@@ -1,0 +1,4 @@
+"monitorAttrId","int(11)"
+"monitorId","int(11)"
+"attrName","varchar(45)"
+"dataTypeId","int(11)"

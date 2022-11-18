@@ -1,0 +1,6 @@
+CREATE TABLE `userToGroup` (
+  `userToGroupId` int(11) NOT NULL AUTO_INCREMENT,
+  `userGroupId` int(11) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`userToGroupId`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1

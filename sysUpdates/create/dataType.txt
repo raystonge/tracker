@@ -1,0 +1,6 @@
+CREATE TABLE `dataType` (
+  `dataTypeId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `mask` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`dataTypeId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1

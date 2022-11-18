@@ -1,0 +1,3 @@
+"validStatusId","int(11)"
+"currentStatusId","int(11)"
+"statusId","varchar(45)"

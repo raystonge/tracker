@@ -1,0 +1,123 @@
+65,"Adapter",1,0
+81,"Adapter",1,0
+83,"Adapter",1,0
+102,"adapter",1,0
+135,"Adapter",0,0
+41,"AV Equipment",1,0
+29,"AWS Instance",1,0
+118,"Cell Phone",1,0
+74,"Cellphone",1,0
+77,"cellphone",1,0
+119,"Cellphone",0,0
+75,"cellphone charger",1,0
+78,"cellphone charger",1,0
+71,"Charger",1,0
+1,"Computer",0,0
+27,"Computer",0,1
+38,"Computer",0,1
+50,"Computer",0,0
+52,"Computer",0,1
+82,"Computer",0,0
+89,"Computer",0,0
+115,"Computer",0,0
+6,"Copier",1,1
+114,"Copier",0,1
+97,"Ethernet Switch",1,0
+100,"extended warranty",1,0
+47,"External Drive",1,0
+48,"External Drive",1,0
+54,"External Drive",1,0
+109,"External DVD Drive",1,0
+68,"External Site",1,0
+12,"Firewall",1,1
+42,"Firewall",1,1
+117,"GoPro",1,0
+61,"Hard Drive",1,0
+116,"Hard Drive",0,0
+96,"Headset",1,0
+67,"Hosting Service",1,0
+106,"Ink & Toner",1,0
+107,"Ink & Toner",1,0
+60,"Keyboard",1,0
+130,"Keyboard Tray",0,0
+30,"KVM Switch",1,0
+120,"Label Maker",0,0
+4,"Laptop",0,1
+37,"Laptop",0,1
+55,"Laptop",1,1
+62,"Laptop",1,0
+70,"Laptop",0,1
+87,"Laptop",0,0
+105,"Laptop",0,1
+111,"Laptop",0,1
+56,"Laptop Charger",1,0
+64,"Laptop Charger",1,0
+121,"Laptop Fan",0,0
+7,"LCD Monitor",1,0
+134,"Light",0,0
+125,"Loud Speaker",0,0
+3,"Managed Switch",1,1
+39,"Managed Switch",1,1
+45,"Memory",1,0
+49,"Memory",1,0
+91,"Memory",1,0
+93,"Memory",1,0
+57,"MicroComputer",1,0
+128,"Microphone",0,0
+79,"Misc. Accessory",1,0
+131,"Mixer",0,1
+15,"Monitor",0,0
+46,"Monitor",1,0
+51,"Monitor",0,0
+53,"Monitor",0,0
+58,"Monitor",0,0
+73,"Monitor",0,1
+80,"Monitor",0,0
+88,"Monitor",0,0
+90,"Monitor",0,0
+36,"NAS",1,1
+5,"Printer",1,0
+40,"Printer",1,1
+63,"Printer",0,1
+69,"Printer",0,1
+72,"Printer",0,1
+98,"Printer",1,1
+16,"Projector",1,0
+129,"Receiver",0,0
+13,"Scanner",1,0
+66,"Scanner",0,0
+133,"Scanner",0,0
+21,"Server",1,1
+33,"Server",1,1
+35,"Server",1,1
+22,"Software",0,0
+92,"Speakers",1,0
+95,"Speakers",1,0
+132,"Speakers",0,0
+108,"Temp & Humidity Sensor",1,0
+123,"TriCaster",0,0
+124,"Tripod",0,0
+59,"TV",1,0
+11,"Unmanaged Switch",0,0
+26,"UPS",0,0
+34,"UPS",1,0
+99,"UPS",1,0
+86,"USB Hub",1,0
+110,"USB Hub",1,0
+126,"Video Camera",0,0
+31,"Virtual Box",1,0
+32,"Virtual Machine",1,0
+25,"Virtual Server",1,1
+84,"VirtualBox",1,1
+2,"WAP",1,1
+103,"WAP",1,0
+104,"Warrantee",1,0
+101,"Web Cam",1,0
+28,"Web Head",1,0
+43,"Web Server",1,0
+85,"WebCamera",1,0
+44,"WiFi Adapter",1,1
+127,"Wired Mouse/Keyboard",0,0
+113,"Wireless Keyboard/Mouse",1,0
+94,"Wireless Keyboard/Mouse Combo",1,0
+112,"Wireless Mouse",1,0

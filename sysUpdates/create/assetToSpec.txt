@@ -1,0 +1,7 @@
+CREATE TABLE `assetToSpec` (
+  `assetToSpecId` int(11) NOT NULL AUTO_INCREMENT,
+  `assetId` int(11) DEFAULT NULL,
+  `specId` int(11) DEFAULT NULL,
+  `specValue` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`assetToSpecId`)
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=latin1

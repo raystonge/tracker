@@ -1,0 +1,7 @@
+CREATE TABLE `defaultUser` (
+  `defaultUserId` int(11) NOT NULL AUTO_INCREMENT,
+  `userType` varchar(45) DEFAULT NULL,
+  `userId` varchar(45) DEFAULT NULL,
+  `queueId` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`defaultUserId`)
+) ENGINE=MyISAM AUTO_INCREMENT=201 DEFAULT CHARSET=latin1

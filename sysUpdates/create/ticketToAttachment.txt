@@ -1,0 +1,6 @@
+CREATE TABLE `ticketToAttachment` (
+  `ticketToAttachment` int(11) NOT NULL AUTO_INCREMENT,
+  `ticketId` int(11) DEFAULT NULL,
+  `attachmentId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ticketToAttachment`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1

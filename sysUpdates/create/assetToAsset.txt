@@ -1,0 +1,7 @@
+CREATE TABLE `assetToAsset` (
+  `assetToAssetId` int(11) NOT NULL AUTO_INCREMENT,
+  `assetId1` int(11) DEFAULT NULL,
+  `assetId2` int(11) DEFAULT NULL,
+  `serialNumber` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`assetToAssetId`)
+) ENGINE=MyISAM AUTO_INCREMENT=97 DEFAULT CHARSET=latin1

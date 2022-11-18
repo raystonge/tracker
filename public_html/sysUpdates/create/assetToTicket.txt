@@ -1,0 +1,8 @@
+CREATE TABLE `assetToTicket` (
+  `assetToTicketId` int(11) NOT NULL AUTO_INCREMENT,
+  `assetId` int(11) DEFAULT NULL,
+  `ticketId` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`assetToTicketId`),
+  KEY `assetId` (`assetId`),
+  KEY `ticketId` (`ticketId`)
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1

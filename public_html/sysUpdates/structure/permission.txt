@@ -1,0 +1,3 @@
+"permissionId","int(11)"
+"name","varchar(45)"
+"developer","int(10) unsigned"

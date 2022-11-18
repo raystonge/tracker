@@ -1,0 +1,8 @@
+"id","int(11)"
+"server","varchar(45)"
+"fileName","text"
+"fileSize","int(11)"
+"fileDate","varchar(45)"
+"isPresent","int(11)"
+"hasChanged","int(11)"
+"ignore","int(11)"

@@ -1,0 +1,23 @@
+CREATE TABLE `assetType` (
+  `assetTypeId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `monitor` int(11) DEFAULT '0',
+  `hasMacAddress` int(11) DEFAULT '0',
+  `requireMacAddress` int(11) DEFAULT '0',
+  `hasContract` varchar(45) DEFAULT NULL,
+  `selectable` int(11) DEFAULT '1',
+  `canHaveSoftware` int(11) DEFAULT '0',
+  `organizationId` varchar(45) DEFAULT NULL,
+  `monitorType` varchar(45) DEFAULT NULL,
+  `hasAccessory` int(11) DEFAULT NULL,
+  `isAccessory` int(11) DEFAULT NULL,
+  `hasUserPassword` int(11) DEFAULT NULL,
+  `hasConstantMonitorDown` int(11) DEFAULT NULL,
+  `hasUserCredentials` int(11) DEFAULT NULL,
+  `hasSpecs` int(11) DEFAULT NULL,
+  `enforceCost` int(11) DEFAULT NULL,
+  `personalProperty` int(11) DEFAULT NULL,
+  `depreciationSchedule` int(11) DEFAULT NULL,
+  `noSerialNumber` int(11) DEFAULT NULL,
+  PRIMARY KEY (`assetTypeId`)
+) ENGINE=MyISAM AUTO_INCREMENT=136 DEFAULT CHARSET=latin1

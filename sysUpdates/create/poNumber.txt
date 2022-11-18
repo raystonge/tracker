@@ -1,0 +1,19 @@
+CREATE TABLE `poNumber` (
+  `poNumberId` int(11) NOT NULL AUTO_INCREMENT,
+  `poNumber` varchar(45) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `poDate` date DEFAULT NULL,
+  `poType` varchar(45) DEFAULT NULL,
+  `organizationId` varchar(45) DEFAULT NULL,
+  `cost` varchar(45) DEFAULT NULL,
+  `reconciled` int(11) DEFAULT NULL,
+  `reconciledUserId` int(11) DEFAULT NULL,
+  `reconciledDateTime` datetime DEFAULT NULL,
+  `receivedDate` datetime DEFAULT NULL,
+  `receivedUserId` int(11) DEFAULT NULL,
+  `vendorOrderID` varchar(45) DEFAULT NULL,
+  `vendor` varchar(45) DEFAULT NULL,
+  `received` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`poNumberId`),
+  KEY `organizationId` (`organizationId`)
+) ENGINE=MyISAM AUTO_INCREMENT=120 DEFAULT CHARSET=latin1

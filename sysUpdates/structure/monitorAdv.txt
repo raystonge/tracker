@@ -1,0 +1,8 @@
+"monitorAdvId","int(11)"
+"assetId","int(11)"
+"monitorTypeId","int(11)"
+"whineId","int(11)"
+"active","int(11)"
+"state","int(11)"
+"stateChangeDateTime","datetime"
+"name","varchar(45)"

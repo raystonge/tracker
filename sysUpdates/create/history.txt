@@ -1,0 +1,12 @@
+CREATE TABLE `history` (
+  `historyId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL DEFAULT '0',
+  `contractId` int(10) unsigned NOT NULL DEFAULT '0',
+  `actionDate` datetime NOT NULL,
+  `action` text NOT NULL,
+  `ticketId` int(11) DEFAULT '0',
+  `assetId` int(11) DEFAULT '0',
+  `poNumberId` int(11) DEFAULT '0',
+  PRIMARY KEY (`historyId`),
+  KEY `adOrderId` (`contractId`)
+) ENGINE=MyISAM AUTO_INCREMENT=228703 DEFAULT CHARSET=latin1

@@ -1,0 +1,6 @@
+CREATE TABLE `priority` (
+  `priorityId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(25) DEFAULT NULL,
+  `sortOn` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`priorityId`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1
