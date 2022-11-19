@@ -15,8 +15,21 @@ $commentText = "";
 $tickets = GetTextFromSession("ticketJumbo");
 $ticket->PrepJumboEditor();
 ?>
-<script type="text/javascript" 	src="<?php echo $hostPath;?>/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" 	src="<?php echo $hostPath;?>/ckeditor/adapters/jquery.js"></script>
+<script src="https://cdn.tiny.cloud/1/udklcg4ghf32p6fo376bvfap162ddwbu1oq6jhb0tgs9qoi0/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script type="text/javascript">
+tinymce.init({
+//  selector: '#myeditablediv',
+//  inline: true
+	selector: 'textarea',
+	height: 250,
+	statusbar: false,
+	toolbar: 'undo redo  bold italic alignleft aligncenter alignright bullist numlist outdent indent code',
+	plugins: 'code',
+	menubar: false
+});
+</script>
+
 <script type="text/javascript" >
 $(document).ready(function ()
 {
@@ -457,34 +470,3 @@ $(document).ready(function ()
 	}
 	?>
 	</table>
-<script type="text/javascript">
-$(document).ready(function()
-{
-	var config = {
-		skin:'v2',
-		height: 500,
-		toolbar:  [
-['Source','DocProps'],
-['Cut','Copy','Paste','PasteText','PasteFromWord','-',
-'Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],['SpellChecker','Scayt'],
-
-'/',
-['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
-['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','HorizontalRule'],
-['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],['Link','Unlink','Maximize','ShowBlocks'] // No comma for the last row.
-]
-	};
-
- // alert("config editor");
-	$("#description").ckeditor(config);
-});
-</script>
-<script type="text/javascript">
-//<![CDATA[
-CKEDITOR.replace( 'description',
-{
-//extraPlugins : 'uicolor',
-height: '200px',
-} );
-//]]>
-</script>

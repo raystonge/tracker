@@ -16,14 +16,10 @@ $formKey = getFormKey();
 <script type="text/javascript">
 adminFilePath="";
 </script>
-<!--
-<script type="text/javascript" 	src="<?php echo $hostPath;?>/ckeditor/config.js"></script>
--->
-<script type="text/javascript" 	src="<?php echo $hostPath;?>/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" 	src="<?php echo $hostPath;?>/ckeditor/adapters/jquery.js"></script>
-<!--
-<script type="text/javascript"  src="<?php echo $hostPath;?>/js/jquery.ui.autocomplete.js"></script>
--->
+
+<script src="https://cdn.tiny.cloud/1/udklcg4ghf32p6fo376bvfap162ddwbu1oq6jhb0tgs9qoi0/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+
 <script type="text/javascript"  src="<?php echo $hostPath;?>/js/calendarDateInput.js"></script>
 <script type="text/javascript" >
 
@@ -57,16 +53,16 @@ function enableExpireDate()
 }
 
 
-$(document).ready(function () 
+$(document).ready(function ()
 {
-	
+
 	 $('#make').autocomplete({minLength:1,
       source: function (request, response) {
         var make = $("#make").val(),
             assetTypeId=22;
         $.ajax({
             url: '/ajax/lookups/make.php?make=' + make + '&assetTypeId='+assetTypeId,
-            
+
             success: function(data) {
                 response(parseLineSeperated(data));
                 //response(data);
@@ -76,7 +72,7 @@ $(document).ready(function ()
             }
         });
     }
-	 
+
 });
 	 $('#buildingLocation').autocomplete({source:'/ajax/lookups/buildingLocation.php', minLength:1});
 	 $('#vendor').autocomplete({source:'/ajax/lookups/vendor.php', minLength:1});
@@ -87,7 +83,7 @@ $(document).ready(function ()
             model = $("#model").val();
         $.ajax({
             url: '/ajax/lookups/model.php?make=' + make + '&model='+model,
-            
+
             success: function(data) {
                 response(parseLineSeperated(data));
                 //response(data);
@@ -97,7 +93,7 @@ $(document).ready(function ()
             }
         });
     }
-	 
+
 });
 
 	 $('#modelNumber').autocomplete({minLength:1,
@@ -107,7 +103,7 @@ $(document).ready(function ()
             modelNumber = $("#modelNumber").val();
         $.ajax({
             url: '/ajax/lookups/modelNumber.php?make=' + make + '&model='+model + '&modelNumber=' + modelNumber,
-            
+
             success: function(data) {
                 response(parseLineSeperated(data));
                 //response(data);
@@ -128,7 +124,7 @@ $(document).ready(function ()
 
 </script>
     <?php
-    if (FormErrors()) 
+    if (FormErrors())
     {
        	$asset->serialNumber = GetTextFromSession('assetSerialNumber');
        	$asset->assetTag = GetTextFromSession('assetAssetTag');
@@ -186,7 +182,7 @@ $(document).ready(function ()
 			  		echo "Software Company: ".$asset->make;
 			  	}
 			  	CreateHiddenField("make",$asset->make);
-			  } 			  
+			  }
 			  ?>
 			  </td>
 			  <td>
@@ -204,8 +200,8 @@ $(document).ready(function ()
 			  		echo "Software: ".$asset->model;
 			  	}
 			  	CreateHiddenField("model",$asset->model);
-			  }	
-			  ?>		   
+			  }
+			  ?>
 			  </td>
 			</tr>
 			<tr>
@@ -224,8 +220,8 @@ $(document).ready(function ()
 			  		echo "Version: ".$asset->modelNumber;
 			  	}
 			  	CreateHiddenField("modelNumber",$asset->modelNumber);
-			  } 
-			  ?>			  
+			  }
+			  ?>
 			  </td>
 			  <td>&nbsp;
 			  </td>
@@ -264,17 +260,17 @@ $(document).ready(function ()
 		    		echo "Number of Licenses: ".$asset->numOfLicenses;
 		    	}
 		    	CreateHiddenField("numOfLicenses",$asset->numOfLicenses);
-		    }	
-		    ?>	     
+		    }
+		    ?>
 		    </td>
-		  </tr>			
+		  </tr>
 			<tr>
 				<td>
 				<?php
 				if ($permission->hasPermission("Asset: Edit: Software Building"))
 				{
 					?>
-				
+
 				Building:<select name="buildingId">
             <option value="0">Select a Building</option>
             <?php
@@ -320,8 +316,8 @@ $(document).ready(function ()
 					{
 						echo "Building Location: ".$asset->buildingLocation;
 					}
-				} 	
-				?>			
+				}
+				?>
 				</td>
 			</tr>
 			<tr>
@@ -330,7 +326,7 @@ $(document).ready(function ()
 			  if ($permission->hasPermission("Asset: Edit: Software PO Number"))
 			  {
 			  	?>
-			    PO Number:  
+			    PO Number:
 					<select id="poNumberId" name="poNumberId">
 					  <option value="0">Select PO</option>
 					<?php
@@ -367,7 +363,7 @@ $(document).ready(function ()
 			  <?php
 			  if ($permission->hasPermission("Asset: Edit: Software Expire Date"))
 			  {
-			  	?>			  
+			  	?>
 			   Expire Date: <?php CreateDateField("expireDate",$asset->expireDate);
 			  $on = 0;
 			  if (strlen($asset->expireDate))
@@ -394,7 +390,7 @@ $(document).ready(function ()
 			  <?php
 			  if ($permission->hasPermission("Asset: Edit: Software Vendor"))
 			  {
-			  	?>			  
+			  	?>
 			  Vendor: <?php CreateTextField("vendor",$asset->vendor,getFieldSize("asset","vendor"),"Vendor Asset was purchased");?>
 			  <?php
 			  }
@@ -438,18 +434,18 @@ $(document).ready(function ()
 		}
 		?>
 <br>
-               <?php 
+               <?php
                PrintFormKey();
                CreateHiddenField("submitTest",1);
                CreateHiddenField("assetId",$asset->assetId);
                CreateSubmit("Submit","Submit");
                ?>
 	</form>
-	
-	
+
+
 	<?php
 	$comment = new Comment();
-	
+
 	$ok = $comment->GetByAssetId($asset->assetId);
 	if (!$permission->hasPermission("Asset: View: Software Comments"))
 	{
@@ -482,42 +478,11 @@ $(document).ready(function ()
 	}
 	?>
 	</table>
-<script type="text/javascript">
-$(document).ready(function()
-{
 
-	var config = {
-		skin:'v2',
-		height: 500,
-		toolbar:  [
-['Source','DocProps'],
-['Cut','Copy','Paste','PasteText','PasteFromWord','-',
-'Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],['SpellChecker','Scayt'],
-
-'/',
-['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
-['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','HorizontalRule'],
-['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],['Link','Unlink','Maximize','ShowBlocks'] // No comma for the last row.
-]
-	};
-
- // alert('config editor');
-	$('#description').ckeditor(config);
-});
-</script>
-<script type="text/javascript">
-//<![CDATA[
-CKEDITOR.replace( 'description',
-{
-//extraPlugins : 'uicolor',
-height: '200px',
-} );
-//]]>
-</script>
 <?php
 if (!strlen($asset->expireDate))
 {
-	?>   
+	?>
 <script type="text/javascript">
 disableExpireDate();
 </script>
@@ -525,7 +490,7 @@ disableExpireDate();
 }
 else
 {
-	?>   
+	?>
 <script type="text/javascript">
 enableExpireDate();
 </script>

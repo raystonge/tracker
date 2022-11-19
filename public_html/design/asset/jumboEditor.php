@@ -26,12 +26,6 @@ $asset->PrepJumboEditor();
 <script type="text/javascript">
 adminFilePath="";
 </script>
-<!--
-<script type="text/javascript" 	src="<?php echo $hostPath;?>/ckeditor/config.js"></script>
--->
-<script type="text/javascript" 	src="<?php echo $hostPath;?>/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" 	src="<?php echo $hostPath;?>/ckeditor/adapters/jquery.js"></script>
-
 
 <script type="text/javascript"  src="<?php echo $hostPath;?>/js/calendarDateInput.js"></script>
 <script language="javascript">
@@ -76,7 +70,7 @@ function disableWarrantyDate()
   warrantyDate_Year_ID.disabled = true;
 }
 
-$(document).ready(function () 
+$(document).ready(function ()
 {
 	 $('#make').autocomplete({source:'/ajax/lookups/make.php', minLength:1});
 	 $('#buildingLocation').autocomplete({source:'/ajax/lookups/buildingLocation.php', minLength:1});
@@ -113,7 +107,7 @@ $(document).ready(function ()
                 alert(str);
             }
         });
-    }	 
+    }
 });
 
    function parseLineSeperated(data)
@@ -124,7 +118,7 @@ $(document).ready(function ()
 });
 </script>
 <?php
-    if (FormErrors()) 
+    if (FormErrors())
     {
         	DebugText("Using Session Data");
         	$asset->buildingId = $_SESSION['assetJumboBuildingId'];
@@ -184,14 +178,14 @@ $(document).ready(function ()
 				</td>
 			</tr>
 			<tr>
-			  <td>Make: <?php CreateTextField("make",$asset->make,getFieldSize("asset","make"),"Make for assets",$editFieldClass);?> 			  
+			  <td>Make: <?php CreateTextField("make",$asset->make,getFieldSize("asset","make"),"Make for assets",$editFieldClass);?>
 			  </td>
 			  <td>
 			  Model: <?php CreateTextField("model",$asset->model,getFieldSize("asset","model"),"Model for assets",$editFieldClass);?>
 			  </td>
 			</tr>
 			<tr>
-			  <td>Model Number: <?php CreateTextField("modelNumber",$asset->modelNumber,getFieldSize("asset","modelNumber"),"Model Number for assets",$editFieldClass);?> 
+			  <td>Model Number: <?php CreateTextField("modelNumber",$asset->modelNumber,getFieldSize("asset","modelNumber"),"Model Number for assets",$editFieldClass);?>
 			  </td>
 			  <td>
 			  Condition:
@@ -247,7 +241,7 @@ $(document).ready(function ()
             </select>
 				</td>
 				<td>
-				Building Location: <?php CreateTextField("buildingLocation",$asset->buildingLocation,getFieldSize("asset","buildingLocation"),"Location in the building for assets",$editFieldClass);?> 
+				Building Location: <?php CreateTextField("buildingLocation",$asset->buildingLocation,getFieldSize("asset","buildingLocation"),"Location in the building for assets",$editFieldClass);?>
 				</td>
 			</tr>
 
@@ -265,10 +259,10 @@ $(document).ready(function ()
                            	<?php
                            	$ok = $po->Next();
                            }
-                           ?>			             
-                         </select> 
+                           ?>
+                         </select>
 			  </td>
-			  <td>			  Vendor: <?php CreateTextField("vendor",$asset->vendor,getFieldSize("asset","vendor"),"Vendor which assets were purchased from",$editFieldClass);?> 
+			  <td>			  Vendor: <?php CreateTextField("vendor",$asset->vendor,getFieldSize("asset","vendor"),"Vendor which assets were purchased from",$editFieldClass);?>
 
 			  </td>
 			</tr>
@@ -276,13 +270,13 @@ $(document).ready(function ()
 			  <td>
 			  			   Warranty Date:
 			   <script>DateInput('warrantyDate', true, 'YYYY/MM/DD','<?php echo $asset->warrantyDate;?>')</script>
-						<input type="checkbox" name="useWarrantyDate" 
+						<input type="checkbox" name="useWarrantyDate"
 						onclick="toggleWarrantyDate()" /> Change Warranty Date
 			  </td>
 			  <td >
 			   Aquire Date:
 			   <script>DateInput('aquireDate', true, 'YYYY/MM/DD','<?php echo $asset->aquireDate;?>')</script>
-						<input type="checkbox" name="useAquireDate" 
+						<input type="checkbox" name="useAquireDate"
 						onclick="toggleAquireDate()" /> Change Aquire Date
 			  </td>
 			</tr>
@@ -299,7 +293,7 @@ $(document).ready(function ()
             	if ($contractId == $contract->contractId)
             	{
             		$selected = "selected='selected'";
-            	}           
+            	}
             	?>
             	<option value="<?php echo $contract->contractId;?>" <?php echo $selected;?>><?php echo $contract->name." - ".$contract->expireDate;?></option>
             	<?php
@@ -313,7 +307,7 @@ $(document).ready(function ()
 			</tr>
 
 		</table>
-		
+
 
 			    <textarea id="description" name="description" rows="5"  wrap="off"></textarea>
 <br>
@@ -326,39 +320,21 @@ CreateSubmit();
 				</td>
 
 	</form>
-	
-	
+
+
+<script src="https://cdn.tiny.cloud/1/udklcg4ghf32p6fo376bvfap162ddwbu1oq6jhb0tgs9qoi0/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
 <script type="text/javascript">
-$(document).ready(function()
-{
-	var config = {
-		skin:'v2',
-		height: 500,
-		toolbar:  [
-['Source','DocProps'],
-['Cut','Copy','Paste','PasteText','PasteFromWord','-',
-'Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],['SpellChecker','Scayt'],
-
-'/',
-['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
-['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','HorizontalRule'],
-['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],['Link','Unlink','Maximize','ShowBlocks'] // No comma for the last row.
-]
-	};
-
- // alert('config editor');
-	$('#description').ckeditor(config);
+tinymce.init({
+//  selector: '#myeditablediv',
+//  inline: true
+	selector: 'textarea',
+	height: 250,
+	statusbar: false,
+	toolbar: 'undo redo  bold italic alignleft aligncenter alignright bullist numlist outdent indent code',
+	plugins: 'code',
+	menubar: false
 });
-
-</script>
-<script type="text/javascript">
-//<![CDATA[
-CKEDITOR.replace( 'description',
-{
-//extraPlugins : 'uicolor',
-height: '200px',
-} );
-//]]>
 </script>
 <script type="text/javascript">
 disableAquireDate();
