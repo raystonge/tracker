@@ -63,7 +63,17 @@ $stopDate = GetTextField("stopDate");
 
     }
     ?>
-  </td><td><a href="<?php echo $ticketLink;?>" title="<?php DisplayText(strip_tags($comment->comment),255);?>"><?php DisplayText($ticket->subject,45);?></a></td><td><?php echo $requestor->fullName;?></td><td><?php echo $ticket->dateCompleted;?></td><td><?php echo sprintf("%01.2f", $ticket->timeWorked);?></td>
+    <?php
+     $timeWorked = $ticket->timeWorked;
+     if ($ticket->duplicateId)
+     {
+       $duplicateTicket = new Ticket($ticket->duplicateId);
+       $timeWorked = $timeWorked + $duplicateTicket->timeWorked;
+     }
+     ?>
+  </td>
+    <td><a href="<?php echo $ticketLink;?>" title="<?php DisplayText(strip_tags($comment->comment),255);?>"><?php DisplayText($ticket->subject,45);?></a></td><td><?php echo $requestor->fullName;?></td><td><?php echo $ticket->dateCompleted;?></td>
+    <td><?php echo sprintf("%01.2f", $timeWorked);?></td>
   </tr>
       <?php
       $ok = $ticket->Next();

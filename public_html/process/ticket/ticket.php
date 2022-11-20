@@ -43,6 +43,7 @@ if (isset($_POST['submitTest']))
 	$timeWorked = GetTextField("timeWorked",0);
 	$userDueDate = GetTextField("useDueDate",0);
 	$dueDate = GetTextField("dueDate");
+	$duplicateId = GetTextField("duplicateId",0);
 	$ccs = "";
 	if (isset($_POST['cc']))
 	{
@@ -294,6 +295,19 @@ if (isset($_POST['submitTest']))
 		  {
 		   	array_push($historyArray,$historyVal);
 		  }
+		}
+		if ($duplicateId)
+		{
+			$ticket->duplicateId = $duplicateId;
+			$historyVal = CreateHistory($action,"Duplicate","",$duplicateId);
+		  if (strlen($historyVal))
+		  {
+		   	array_push($historyArray,$historyVal);
+		  }
+			$ticket->statusId = 4;
+			$duplicateTicket = new Ticket($duplicateId);
+			$duplicateTicket->duplicateId = $ticket->ticketId;
+			$duplicateTicket->Persist();
 		}
 		if ($ticket->subject !=  $subject)
 		{
