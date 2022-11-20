@@ -305,6 +305,7 @@ if (isset($_POST['submitTest']))
 		   	array_push($historyArray,$historyVal);
 		  }
 			$ticket->statusId = 4;
+			$ticket->billable = 0;
 			$duplicateTicket = new Ticket($duplicateId);
 			$duplicateTicket->duplicateId = $ticket->ticketId;
 			$duplicateTicket->Persist();
