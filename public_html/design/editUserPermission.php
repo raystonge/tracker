@@ -2,7 +2,7 @@
 /*
  * Created on Oct 13, 2012
  *
- * adsys - Version 1.0
+ * Tracker - Version 1.0
  *
  *    Copyright 2012 RaywareSoftware - Raymond St. Onge
  *
