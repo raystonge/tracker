@@ -18,4 +18,4 @@ CREATE TABLE `comment` (
   KEY `postId` (`postId`,`posted`),
   KEY `replyToIdPosted` (`replyToId`,`posted`),
   FULLTEXT KEY `comment` (`comment`)
-) ENGINE=MyISAM AUTO_INCREMENT=1406 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=1407 DEFAULT CHARSET=latin1

@@ -26,5 +26,6 @@ CREATE TABLE `ticket` (
   `assetPOId` int(11) DEFAULT NULL,
   `dateCompleted` date DEFAULT NULL,
   `billable` int(11) DEFAULT NULL,
+  `duplicateId` int(11) DEFAULT NULL,
   PRIMARY KEY (`ticketId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=430 DEFAULT CHARSET=latin1

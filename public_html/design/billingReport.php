@@ -1,8 +1,9 @@
-<?php
+``<?php
 include_once "tracker/permission.php";
 include_once "tracker/organization.php";
 include_once "tracker/ticket.php";
 include_once "tracker/comment.php";
+include_once "tracker/duplicateTicket.php";
 
 
 PageAccess("Report: Billing");
@@ -29,52 +30,63 @@ $stopDate = GetTextField("stopDate");
   $totalTime = 0;
   while ($ok)
   {
-    $comment = new Comment();
-    $param = "ticketId=".$ticket->ticketId;
-    $ok = $comment->Get($param);
+    $duplicateTicket = new DuplicateTicket();
+    $param = AddEscapedParam("","duplicateOfId",$ticket->ticketId);
+    $isDuplicate = $duplicateTicket->Get($param);
+    if (!$isDuplicate)
+    {
+      $comment = new Comment();
+      $param = "ticketId=".$ticket->ticketId;
+      $okComment = $comment->Get($param);
 
-    $totalTime = $totalTime+$ticket->timeWorked;
-    $requestor = new User($ticket->requestorId);
+      $totalTime = $totalTime+$ticket->timeWorked;
+      $requestor = new User($ticket->requestorId);
       ?>
-        <tr class="mritem">
-    <td>
-    <?php
-    $ticketLink = "";
-    if ($permission->hasPermission("Ticket: Edit"))
-    {
-      $ticketLink = "/ticketEdit/".$ticket->ticketId."/";
-      ?>
-      <a href="/ticketEdit/<?php echo $ticket->ticketId;?>/"><?php echo $ticket->ticketId;?></a>
+      <tr class="mritem">
+        <td>
       <?php
-    }
-    else
-    {
-      if ($permission->hasPermission("Ticket: View"))
+      $ticketLink = "";
+      if ($permission->hasPermission("Ticket: Edit"))
       {
-        $ticketLink = "/viewTicket/".$ticket->ticketId."/";
-        ?>
-        <a href="/viewTicket/<?php echo $ticket->ticketId;?>/"><?php echo $ticket->ticketId;?></a>
-        <?php
+        $ticketLink = "/ticketEdit/".$ticket->ticketId."/";
+      ?>
+        <a href="/ticketEdit/<?php echo $ticket->ticketId;?>/"><?php echo $ticket->ticketId;?></a>
+      <?php
       }
       else
       {
-        echo $ticket->ticketId;
+        if ($permission->hasPermission("Ticket: View"))
+        {
+          $ticketLink = "/viewTicket/".$ticket->ticketId."/";
+        ?>
+          <a href="/viewTicket/<?php echo $ticket->ticketId;?>/"><?php echo $ticket->ticketId;?></a>
+        <?php
+        }
+        else
+        {
+          echo $ticket->ticketId;
+        }
       }
-
-    }
-    ?>
+      ?>
+      <?php
+       $timeWorked = $ticket->timeWorked;
+       $param = AddEscapedParam("","ticketId",$ticket->ticketId);
+       $duplicateTicket = new DuplicateTicket();
+       $hasDuplicates = $duplicateTicket->Get($param);
+       while ($hasDuplicates)
+       {
+         $dupTicket = new Ticket($duplicateTicket->duplicateOfId);
+         $timeWorked = $timeWorked + $dupTicket->timeWorked;
+         $totalTime = $totalTime+$dupTicket->timeWorked;
+         $hasDuplicates = $duplicateTicket->Next();
+       }
+      ?>
+      </td>
+      <td><a href="<?php echo $ticketLink;?>" title="<?php DisplayText(strip_tags($comment->comment),255);?>"><?php DisplayText($ticket->subject,45);?></a></td><td><?php echo $requestor->fullName;?></td><td><?php echo $ticket->dateCompleted;?></td>
+      <td><?php echo sprintf("%01.2f", $timeWorked);?></td>
+    </tr>
     <?php
-     $timeWorked = $ticket->timeWorked;
-     if ($ticket->duplicateId)
-     {
-       $duplicateTicket = new Ticket($ticket->duplicateId);
-       $timeWorked = $timeWorked + $duplicateTicket->timeWorked;
-     }
-     ?>
-  </td>
-    <td><a href="<?php echo $ticketLink;?>" title="<?php DisplayText(strip_tags($comment->comment),255);?>"><?php DisplayText($ticket->subject,45);?></a></td><td><?php echo $requestor->fullName;?></td><td><?php echo $ticket->dateCompleted;?></td>
-    <td><?php echo sprintf("%01.2f", $timeWorked);?></td>
-  </tr>
+    } ?>
       <?php
       $ok = $ticket->Next();
   }

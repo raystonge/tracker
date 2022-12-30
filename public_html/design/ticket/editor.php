@@ -13,6 +13,8 @@ include_once "tracker/priority.php";
 include_once "tracker/organization.php";
 include_once "tracker/set.php";
 include_once "tracker/timeWorked.php";
+include_once "tracker/duplicateTicket.php";
+
 $depends = new Set(",");
 $ticketDependencies = new TicketDependencies();
 $param = "blockId=".$ticket->ticketId;
@@ -241,7 +243,9 @@ function enableDueDate()
     {
     	DisplayFormSuccess();
     }
-
+    $duplicateTicket = new DuplicateTicket();
+		$param = AddEscapedParam("","ticketId",$ticket->ticketId);
+		$isDuplicate = $duplicateTicket->Get($param);
     ?>
 
 	<form method="post" autocomplete="<?php echo $autoComplete;?>" enctype="multipart/form-data" action="/process/ticket/ticket.php">
@@ -533,15 +537,32 @@ function enableDueDate()
 					<tr>
 					  <td valign="top">
 						<?php
-						CreateCheckBox("hasDuplicateId",1,"Duplicate",$ticket->duplicateId);
+						if (!$isDuplicate)
+						{
+							CreateCheckBox("hasDuplicateId",1,"Duplicate",$ticket->duplicateId);
+						}
+						else {
+							echo "Duplicate :";
+						}
 						?>
 						</td>
 						<td>
+							<?php
+							if (!$isDuplicate)
+							{
+								?>
 							<div id="duplicate" class="<?php echo $duplicateStyle;?>">
 								<?php
-								CreateTextField("duplicateId",$ticket->duplicateId);
+								CreateTextField("duplicateId","");
 								?>
 							</div>
+							<?php
+						   }
+							 else {
+							 	?>
+								<a href="/editTicket/<?php echo $duplicateTicket->duplicateOfId;?>/"><?php echo $duplicateTicket->duplicateOfId;?></a>
+								<?php
+							 } ?>
 					  </td>
 					</tr>
 				<?php
@@ -600,10 +621,7 @@ function enableDueDate()
 			)
 			</div>
 			<?php
-
 		}
-
-
 		?></td>
 
 		</tr>
@@ -767,4 +785,3 @@ function enableDueDate()
 
 	}
 	?>
-	

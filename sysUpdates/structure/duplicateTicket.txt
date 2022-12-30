@@ -1,0 +1,3 @@
+"duplicateTicketId","int(11)"
+"duplicateOfId","int(11)"
+"ticketId","int(11)"

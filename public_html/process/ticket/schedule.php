@@ -86,8 +86,8 @@ if ($statusId == 4)
 
   while ($ok)
   {
-		echo $ticketDependencies->blocksId."<br>";
-		$dependentTicket = new Ticket($ticketDependencies->blocksId);
+		echo $ticketDependencies->blockId."<br>";
+		$dependentTicket = new Ticket($ticketDependencies->blockId);
 	  DebugText("dependent Status:".$dependentTicket->statusId);
 	  if ($dependentTicket->statusId != 4)
 		{

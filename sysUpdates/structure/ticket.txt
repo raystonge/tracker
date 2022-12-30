@@ -25,3 +25,4 @@
 "assetPOId","int(11)"
 "dateCompleted","date"
 "billable","int(11)"
+"duplicateId","int(11)"

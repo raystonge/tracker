@@ -21,6 +21,7 @@ include_once "tracker/queue.php";
 include_once "tracker/priority.php";
 include_once "tracker/mailSupport.php";
 include_once "tracker/organization.php";
+include_once "tracker/duplicateTicket.php";
 
 
 ProperAccessValidate();
@@ -296,9 +297,10 @@ if (isset($_POST['submitTest']))
 		   	array_push($historyArray,$historyVal);
 		  }
 		}
+		DebugText("duplicateId test:".$duplicateId);
 		if ($duplicateId)
 		{
-			$ticket->duplicateId = $duplicateId;
+			$action = "Add";
 			$historyVal = CreateHistory($action,"Duplicate","",$duplicateId);
 		  if (strlen($historyVal))
 		  {
@@ -306,8 +308,10 @@ if (isset($_POST['submitTest']))
 		  }
 			$ticket->statusId = 4;
 			$ticket->billable = 0;
-			$duplicateTicket = new Ticket($duplicateId);
-			$duplicateTicket->duplicateId = $ticket->ticketId;
+			$ticket->dateCompleted = $today;
+			$duplicateTicket = new DuplicateTicket();
+			$duplicateTicket->duplicateOfId = $duplicateId;
+			$duplicateTicket->ticketId = $ticket->ticketId;
 			$duplicateTicket->Persist();
 		}
 		if ($ticket->subject !=  $subject)

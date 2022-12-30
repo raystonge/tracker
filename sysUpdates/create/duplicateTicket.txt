@@ -1,0 +1,8 @@
+CREATE TABLE `duplicateTicket` (
+  `duplicateTicketId` int(11) NOT NULL AUTO_INCREMENT,
+  `duplicateOfId` int(11) DEFAULT NULL,
+  `ticketId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`duplicateTicketId`),
+  KEY `duplicateOfId` (`duplicateOfId`),
+  KEY `ticketId` (`ticketId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1
