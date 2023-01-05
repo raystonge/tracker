@@ -577,7 +577,7 @@ function disableWarrantyDate()
           <td>
             Asset Cost:
             <?php
-            if (!$asset->assetId)
+            if (!$asset->assetId || $permission->hasPermission("Asset: Edit: Edit Price"))
             {
               CreateTextField("cost",$asset->purchasePrice,getFieldSize("asset","purchasePrice"),"Cost of the Asset");
             }
@@ -585,7 +585,6 @@ function disableWarrantyDate()
               echo $asset->purchasePrice;
               CreateHiddenField("cost",$asset->purchasePrice);
             }
-
              ?>
           </td>
           <td>

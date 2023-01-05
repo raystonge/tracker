@@ -39,7 +39,7 @@ $_SESSION['assetNumOfLicenses'] = "";
 $_SESSION['assetExpireDate'] = "";
 $_SESSION['assetWarrantyDate'] = "";
 $_SESSION['assetOrganizationId'] = 0;
-ProperAccessValidate();
+//ProperAccessValidate();
 if (isset($_POST['submitTest']))
 {
 	$asset = new Asset();
@@ -340,9 +340,9 @@ if (isset($_POST['submitTest']))
 
 		if ($asset->purchasePrice != $cost)
 		{
-			$oldCost = new poNumber($asset->purchasePrice);
+			$oldCost = $asset->purchasePrice;
 			$asset->purchasePrice = $cost;
-			$historyVal = CreateHistory($action,"Cost ", $old,$cost);
+			$historyVal = CreateHistory($action,"Cost ", $oldCost,$cost);
 			DebugText("history:".$historyVal);
 			if (strlen($historyVal))
 			{

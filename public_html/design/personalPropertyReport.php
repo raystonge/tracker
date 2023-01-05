@@ -29,7 +29,7 @@ $asset->SetOrderBy("buildingId");
 <div class="adminArea">
 <h2><a href="/personalProperty/" class="breadCrumb">Personal Property Report</a><?php PrintNBSP(); PrintNBSP(); echo $organization->name;?></h2>
 <p><?php echo $organization->name;?></p>
-<p><a href="/personalPropertyReportExport/<?php echo $organizationId;?>/" target="_blank">Export</a>
+<p><a href="/process/asset/personalPropertyReportExport.php?organizationId=<?php echo $organizationId;?>" target="_blank">Export</a>
 <table width="100%">
   <tr>
     <th>Asset Tag</th><th>Serial Number</th><th>Asset Type</th><th>Make</th><th>Model</th><th>Purchase Price</th><th>Building</th><th>Employee</th><th>Vendor</th><th>Aquired Date</th><th>Status</th>
