@@ -40,7 +40,8 @@ if($control->Get($param))
 }
 
 $page = 1;
-$param = "active = 1";
+//$param = "active = 1";
+$param = "";
 if (isset($_POST['page']))
 {
 	$page = $_POST['page'];
