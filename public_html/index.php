@@ -278,7 +278,7 @@ else
 
 
 }
-$footerName = $siteName." - ".$appVersion;
+$footerName = $siteName." - ".getAppVersion()." Build ".getAppBuld();
 ?>
 <script language="javascript">
 $(document).ready(function () {

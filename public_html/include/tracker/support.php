@@ -898,4 +898,71 @@ function OpenBlockTicket($ticketId)
 		}
 	}
 }
+function getAppVersion()
+{
+  DebugText("getAppVerison");
+  global $siteRootPath;
+  $version = GetTextFromSession("appVersion");
+  if (!strlen($version))
+  {
+    DebugText($siteRootPath."/tmp/version.txt");
+    $version = file_get_contents($siteRootPath."/tmp/version.txt");
+  }
+  $_SESSION['appVersion'] = $version;
+  DebugText("version:".$version);
+  return ($version);
+}
+
+function getAppBuld()
+{
+  global $sitePath;
+  global $siteRootPath;
+  DebugText("getAppBuld");
+
+  $build = GetTextFromSession("appBuild","");
+
+  if (strlen($build))
+  {
+    DebugText("found build:".$build);
+    return $build;
+  }
+
+  $control = new Control();
+  $param = "sectionValue='SysConfigs' and keyValue='SysVersion'";
+  $control->Get($param);
+  $currentVersion = $control->valueInt;
+  $fileList = array();
+  $arrayIndex = 0;
+  $dir = $siteRootPath."/sysUpdates";
+  DebugText("currentVersion:".$currentVersion);
+  if ($dh = opendir($dir))
+  {
+    while (($file = readdir($dh)) !== false)
+    {
+      if (!is_dir($file))
+      {
+        $file = str_replace(".txt","",$file);
+        if (is_numeric($file))
+          {
+            $fileList[$arrayIndex++] = $file;
+          }
+        }
+    }
+    closedir($dh);
+    if (sizeof($fileList))
+    {
+      $build = 0;
+      for ($i = 0; $i < sizeof($fileList);$i++)
+      {
+        if ($fileList[$i] > $build)
+        {
+          $build = $fileList[$i];
+        }
+      }
+      DebugText("build:".$build);
+      $_SESSION['appBuild'] = $build;
+    }
+  }
+  return $build;
+}
 ?>

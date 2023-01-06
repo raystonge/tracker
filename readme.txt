@@ -21,6 +21,8 @@ information about the assets
 * Add a permission so the cost of an asset can be edited after it has been entered
 * Fixed errors in code when cost changed. This code was not running because editing the cost was not allowed
 * Created export for personal property
+* Add function to display version
+* starting to populate System Notes
 
 = 1.1.1
 * Fixed issue when searching for inactive users
