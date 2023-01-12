@@ -22,26 +22,9 @@ function TicketNotice($to,$cc,$subject,$message,$link,$historyArray,$requestor="
 	DebugText("sendersEmail:".$sendersEmail);
 	DebugText("to:".$to);
 	DebugText("cc:".$cc);
-/*
-	$headers = 'From: systems@villagesoup.com' . "\r\n" ;
-	$headers = $headers.'"CC: '.$cc.'"'.
-    'Reply-To: systems@villagesoup.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-	DebugText("headers:".$headers);
-	$headers[] = 'MIME-Version: 1.0';
-*/
 
-//	$headers[] = 'Content-type: text/html; charset=iso-8859-1';
-
-	// Additional headers
-//	$headers[] = 'To:'.$to;
 	$headers[] = 'From: '.$sendersEmail;
-	//$headers[] = 'Cc: '.$cc;
-//	print_r($headers);
-//	$headers[] = 'Bcc: birthdaycheck@example.com';
-//	return;
-	//if (mail($to,$subject,$message,$headers))
-    $addresses = new Set(",");
+  $addresses = new Set(",");
 	$addresses->data = $cc;
 	$addresses->Add($to);
 	if (strlen($requestor))
