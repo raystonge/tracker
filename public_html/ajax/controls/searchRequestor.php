@@ -34,6 +34,7 @@ $queueId = GetTextField("queue",0);
 							$param = AddEscapedParam($param,"u.userId",$currentUser->userId);
 						}
 						*/
+						$searchRequestorId = GetTextFromSession("searchTicketRequestorId",0,0);
 			      $ok = $user->GetRequestors($param);
 			      while($ok)
 			      {

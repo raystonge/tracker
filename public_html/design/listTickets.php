@@ -33,13 +33,13 @@ else
 	-->
 	<?php
   }
-  $searchOrganizationId = GetTextField("searchOrganizationId",0);
-	$searchQueueId = GetTextField("searchQueueId",0);
-	$searchPriorityId = GetTextField("searchPriorityId",0);
-	$searchOwnerId = GetTextField("searchOwnerId",$currentUser->userId);
-	$searchRequestorId = GetTextField("searchRequestorId",0);
-	$searchStatusId = GetTextField("searchStatusId",-1);
-	$searchTicketID = GetTextField("searchTicketId");
+  $searchOrganizationId = GetTextFromSession("searchTicketOrganizationId",0,0);
+
+	$searchPriorityId = GetTextFromSession("searchTicketPriorityId",0,0);
+	$searchOwnerId = GetTextFromSession("searchTicketOwnerId",$currentUser->userId,0);
+
+	$searchStatusId = GetTextFromSession("searchTicketStatusId",-1,0);
+	$searchTicketID = GetTextFromSession("searchTicketTicketId","",0);
 
 
 $page = 1;
@@ -88,6 +88,7 @@ if (!is_numeric($page))
 		          $organization= new Organization();
 		          $ok = $organization->Get($param);
 							DebugText("organization numRows:".$organization->numRows);
+							DebugText("searchOrganizationId:".$searchOrganizationId);
 		          while ($ok)
 		          {
 		          	$selected = "";

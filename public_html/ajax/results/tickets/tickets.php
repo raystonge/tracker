@@ -13,11 +13,11 @@ $permission = new Permission();
 $_SESSION['searchNumPerPage'] = $maxTicketsPerPage;
 
   $searchTicketId = GetTextField("searchTicketId",0);
-  $searchOrganizationId = GetTextField("organizationId",0);
-  $searchQueueId = GetTextField("queue",0);
+  $searchOrganizationId = GetTextField("organizationId",GetTextFromSession("searchTicketOrganizationId",0,0));
+  $searchQueueId = GetTextField("queue",GetTextFromSession("searchTicketQueueId",0,0));
   $searchPriorityId = GetTextField("searchPriorityId",0);
   $searchOwnerId = GetTextField("assignee",0);
-  $searchRequestorId = GetTextField("searchRequestorId",0);
+  $searchRequestorId = GetTextField("searchRequestorId",GetTextFromSession("searchTicketRequestorId",0,0));
   $searchStatusId = GetTextField("searchStatusId",0);
   $searchBeforeDate = GetTextField("beforeDate");
   $searchAfterDate = GetTextField("afterDate");
@@ -27,6 +27,7 @@ $_SESSION['searchNumPerPage'] = $maxTicketsPerPage;
   $param = "";
   if ($searchOrganizationId)
   {
+    $_SESSION['searchTicketOrganizationId'] = $searchOrganizationId;
   	$param = AddEscapedParam($param,"organizationId",$searchOrganizationId);
   }
   else
@@ -36,19 +37,24 @@ $_SESSION['searchNumPerPage'] = $maxTicketsPerPage;
   }
   if ($searchQueueId)
   {
+    DebugText("searchQueueId:".$searchQueueId);
+    $_SESSION['searchTicketQueueId'] = $searchQueueId;
   	$param = AddEscapedParam($param,"queueId",$searchQueueId);
   }
 
   if ($searchPriorityId)
   {
+    $_SESSION['searchTicketPriorityId'] = $searchPriorityId;
   	$param = AddEscapedParam($param,"priorityId",$searchPriorityId);
   }
   if ($searchRequestorId)
   {
+    $_SESSION['searchTicketRequestorId'] = $searchRequestorId;
   	$param = AddEscapedParam($param,"requestorId",$searchRequestorId);
   }
   if ($searchOwnerId)
   {
+    $_SESSION['searchTicketOwnerId'] = $searchOwnerId;
   	$param = AddEscapedParam($param,"ownerId",$searchOwnerId);
   }
   if ($searchStatusId)
@@ -59,6 +65,7 @@ $_SESSION['searchNumPerPage'] = $maxTicketsPerPage;
   	}
   	else
   	{
+      $_SESSION['searchTicketStatusId'] = $searchStatusId;
   		$param = AddEscapedParam($param,"statusId",$searchStatusId);
   	}
     if ($searchStatusId == 4)
@@ -69,6 +76,7 @@ $_SESSION['searchNumPerPage'] = $maxTicketsPerPage;
   }
   if ($searchTicketId)
   {
+    $_SESSION['searchTicketTicketId'] = $searchTicketId;
     $param = AddEscapedParam("","ticketId",$searchTicketId);
   }
 $pages = 1;
@@ -79,7 +87,7 @@ if ($ticket->perPage)
 {
 	$pages = ceil($numRows/$ticket->perPage);
 }
-$_SESSION['searchNumPerPage'] = $ticket->perPage;
+$_SESSION['searchTicketNumPerPage'] = $ticket->perPage;
 $page = 1;
 DebugText("Compute page we are on");
 $page = GetURI(1,1);

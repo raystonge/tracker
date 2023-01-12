@@ -43,11 +43,12 @@ if (!$organizationId)
             $queue = new Queue();
             $queue->SetOrderBy("organizationId");
             $ok = $queue->Get($param);
-            DebugText("ticket queue:".$ticket->queueId);
+						$searchQueueId = GetTextFromSession("searchTicketQueueId",0,0);
+            DebugText("ticket queue:".$searchQueueId);
             while ($ok)
             {
             	$selected = "";
-            	if ($ticket->queueId == $queue->queueId )
+            	if ($searchQueueId == $queue->queueId )
             	{
             		$selected = "selected='selected'";
             	}            	?>

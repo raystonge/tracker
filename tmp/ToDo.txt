@@ -1,5 +1,11 @@
 System Notes
 
+== 2020-01-12
+ = Version 1.3.1
+    * Fixed ticket search so it actually remembers search results
+ = Version 1.3.0
+    * Changed the whine cron from Perl to PHP
+
 == 2020-01-06
   = Version 1.2.0
     * Add a permission so the cost of an asset can be edited after it has been entered
