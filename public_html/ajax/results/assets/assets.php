@@ -17,8 +17,7 @@ include_once "tracker/set.php";
 $param = "";
 $asset = new Asset();
 $_SESSION['searchAssetTag'] = "";
-$_SESSION['searchAssetType'] = "";
-$_SESSION['searchBuildingId'] = 0;
+//$_SESSION['searchBuildingId'] = 0;
 $_SESSION['searchConditionId'] = 0;
 $_SESSION['searchMacAddress'] = "";
 $_SESSION['searchSerialNumber'] = "";
@@ -26,7 +25,7 @@ $_SESSION['searchName'] = "";
 $_SESSION['searchNumPerPage'] = $maxAssetsPerPage;
 $_SESSION['searchEmployeeName'] = "";
 $_SESSION['searchpoNumberId'] = 0;
-$_SESSION['searchOrganizationId'] =0;
+$_SESSION['searchAssetOrganizationId'] =0;
 $_SESSION['searchMake'] = "";
 $searchAssetTag = GetTextField("searchAssetTag");
 $searchAssetType = GetTextField("searchAssetTypeId",0);
@@ -114,7 +113,7 @@ if (strlen($searchMake))
 }
 if ($searchOrganizationId)
 {
-	$_SESSION['searchOrganizationID'] = $searchOrganizationId;
+	$_SESSION['searchAssetOrganizationId'] = $searchOrganizationId;
 	$param = AddEscapedParam($param, "organizationId", $searchOrganizationId);
 }
 else

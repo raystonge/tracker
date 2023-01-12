@@ -62,16 +62,16 @@ if (!is_numeric($page))
 	-->
 	<?php
     }
-    $searchAssetTypeId = GetTextFromSession("searchAssetType",0);
+    $searchAssetTypeId = GetTextFromSession("searchAssetType",0,0);
     $searchConditionId = GetTextFromSession("searchConditionId",0);
     $searchSerialNumber = GetTextFromSession("searchSerialNumber");
     $searchMacAddress = GetTextFromSession("searchMacAddress");
     $searchAssetTag = GetTextFromSession("searchAssetTag");
-    $searchBuildingId = GetTextFromSession("searchBuildingId",0);
+    $searchBuildingId = GetTextFromSession("searchBuildingId",0,0);
     $searchName = GetTextFromSession("searchName");
     $searchEmployeeName = GetTextFromSession("searchEmployeeName");
     $searchpoNumberId = GetTextFromSession("searchpoNumberId");
-    $searchOrganizationId = GetTextFromSession("searchOrganizationId",0);
+    $searchOrganizationId = GetTextFromSession("searchAssetOrganizationId",0);
     $searchMake = GetTextFromSession("searchMake");
 
     $searchAssetTypeId = GetTextField("searchAssetType",$searchAssetTypeId);
@@ -137,30 +137,7 @@ if (!is_numeric($page))
 				</td>
 				<td>
 				<div id="assetTypeResults"></div>
-				<!--
-
-				  <select name="searchAssetType" id="searchAssetType">
-				    <option value="0">All</option>
-				    <?php
-				    $assetType = new AssetType();
-		            $param = "organizationId in (".GetMyOrganizations().")";
-				    $ok = $assetType->Get($param);
-				    while ($ok)
-				    {
-				    	$selected = "";
-				    	if ($assetType->assetTypeId==$searchAssetTypeId)
-				    	{
-				    		$selected = "selected='selected'";
-				    	}
-				    	?>
-				    	<option value="<?php echo $assetType->assetTypeId;?>" <?php echo $selected;?>><?php echo $assetType->name;?></option>
-				    	<?php
-				    	$ok = $assetType->Next();
-
-				    }
-				    ?>
-				  </select>
-				  -->
+	
 				</td>
 				<td>
 				Condition:

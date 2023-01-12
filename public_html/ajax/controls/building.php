@@ -10,8 +10,8 @@
 include_once "globals.php";
 include_once "tracker/building.php";
 include_once "tracker/organization.php";
-$organizationId = GetTextField("organization",GetTextField("searchOrganizationId",0));
-$searchBuildingId = GetTextField("searchBuildingId",GetTextField("searchBuildingId",0));
+$organizationId = GetTextField("organizationId",GetTextFromSession("searchAssetOrganizationId",0,0));
+$searchBuildingId = GetTextField("searchBuildingId",GetTextFromSession("searchBuildingId",0,0));
 $param = "";
 if ($organizationId)
 {

@@ -10,7 +10,8 @@
 include_once "globals.php";
 include_once "tracker/assetType.php";
 include_once "tracker/organization.php";
-$organizationId = GetTextField("organization",GetTextField("searchOrganizationId",0));
+$organizationId = GetTextField("organization",GetTextFromSession("searchAssetOrganizationId",0,0));
+$searchAssetTypeId = GetTextFromSession("searchAssetType",0,0);
 $param = "";
 if ($organizationId)
 {
@@ -37,7 +38,7 @@ if ($organizationId)
 							if (!$organizationId)
 							{
 								$organization = new Organization($assetType->organizationId);
-								$name = $organization->name." - ".$assetType->name; 
+								$name = $organization->name." - ".$assetType->name;
 							}
 			      	?>
 			      	<option value="<?php echo $assetType->assetTypeId;?>" <?php echo $selected;?>><?php echo $name;?></option>
@@ -46,3 +47,4 @@ if ($organizationId)
 			      }
 			      ?>
 			    </select>
+<?php // DebugOutput();?>
