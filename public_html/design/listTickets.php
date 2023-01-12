@@ -34,10 +34,8 @@ else
 	<?php
   }
   $searchOrganizationId = GetTextFromSession("searchTicketOrganizationId",0,0);
-
 	$searchPriorityId = GetTextFromSession("searchTicketPriorityId",0,0);
 	$searchOwnerId = GetTextFromSession("searchTicketOwnerId",$currentUser->userId,0);
-
 	$searchStatusId = GetTextFromSession("searchTicketStatusId",-1,0);
 	$searchTicketID = GetTextFromSession("searchTicketTicketId","",0);
 
