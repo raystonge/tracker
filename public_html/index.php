@@ -48,64 +48,28 @@ include "pageStart.php";
 	<link rel="stylesheet" id="style-css" href="/css/style.css?version=<?php echo $jsVersion;?>" type="text/css" media="all">
 	<link rel="stylesheet" id="elements_style-css" href="/css/elements.css?version=<?php echo $jsVersion;?>" type="text/css" media="all">
 	<link rel="stylesheet" id="jquery-ui-css" href="/css/jquery-ui-1.8.4.custom.css?version=<?php echo $jsVersion;?>" type="text/css" media="all">
-<!--	<script type="text/javascript" src="/js/jquery_004.js"></script> -->
-    <!-- <script src="/js/jquery-1.9.1.js" language="javascript"><script>
-     <script src="/js/jquery-ui.js" language="javascript"></script>-->
-     <!-- <script src="/js/jquery-ui-1.10.3.custom.min.js" language="javascript"></script> -->
-     <!--
-    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    -->
+
     <script src="/js/jquery-1.9.1.js"></script>
-    <script src="/js/jquery-ui-1.10.3.custom.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!--<script src="/js/jquery-ui-1.10.3.custom.js"></script> -->
 
      <script src="/js/jqueryCommon.js" language="javascript"></script>
-     <!--
-     <script src="/js/jquery.ui.core.js" language="javascript"></script>
-     <script src="/js/jquery.ui.widget.js" language="javascript"></script>
-     <script src="/js/jquery.ui.position.js" language="javascript"></script>
-     <script src="/js/jquery.ui.autocomplete.js" language="javascript"></script>
-     -->
-     <!--
-     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
--->
-    <!--
-    <script type="text/javascript" src="/js/jquery-1.8.3.js"></script>
-    -->
 <script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/ajax.js"></script>
 <script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/validate_form.js"></script>
 <!--
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
--->
 <script src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery-1.8.3.js"></script>
 <script src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery-ui.js"></script>
-<!--
-<script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery-1.9.0.js"></script>
-<script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery-ui-1.10.0.custom.min.js"></script>
 -->
-<!--
-<script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery.ui.core.js"></script>
-<script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery.ui.widget.js"></script>
-<script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery.ui.button.js"></script>
-<script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery.ui.position.js"></script>
-<script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery.ui.autocomplete.js"></script>
-<script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jQuery-ui.combobox.js"></script>
-<script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery-ui.lookuptext.js"></script>
 
-<script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery.validate.js"></script>
--->
 <script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery.form.js"></script>
 <script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery-ui.lookuptext.js"></script>
 <script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery.inputmask.js"></script>
-<!--
-<script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery.inputmask.extentions.js"></script>
--->
+
 <script language="javascript" src="http://<?php echo $_SERVER['SERVER_NAME'];?>/js/jquery-common.js?version=<?php echo $jsVersion;?>"></script>
 <script language="javascript" src="<?php echo $hostPath;?>/js/calendarDateInput.js"></script>
-
-<!--	<script type="text/javascript" src="/js/elements.js"></script>-->
 	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml">
 	<link href="/css/blitzer/jquery-ui-1.8.4.custom.css" rel="stylesheet" type="text/css" />
@@ -115,13 +79,7 @@ include "pageStart.php";
 		width:auto;}
 	</style>	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
 	<style type="text/css" media="print">#wpadminbar { display:none; }</style>
-	<!--
-	<style type="text/css" media="screen">
 
-	html { margin-top: 28px !important; }
-	* html body { margin-top: 28px !important; }
-	</style>
-	-->
 
   	<style type="text/css" media="all">
 	  body {
