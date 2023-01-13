@@ -27,47 +27,30 @@ $asset->PrepJumboEditor();
 adminFilePath="";
 </script>
 
-<script type="text/javascript"  src="<?php echo $hostPath;?>/js/calendarDateInput.js"></script>
 <script language="javascript">
 function toggleAquireDate()
 {
-  var aquireDate_Month_ID = document.getElementById('aquireDate_Month_ID');
-  var aquireDate_ID = document.getElementById('aquireDate_Day_ID');
-  var aquireDate_Year_ID = document.getElementById('aquireDate_Year_ID');
-  aquireDate_Month_ID.disabled = !aquireDate_Month_ID.disabled;
-  aquireDate_Day_ID.disabled = !aquireDate_Day_ID.disabled;
-  aquireDate_Year_ID.disabled = !aquireDate_Year_ID.disabled;
+	var warrantyDate = document.getElementById('warrantyDate');
+	aquireDate.disabled = !aquireDate.disabled;
 
 }
 function toggleWarrantyDate()
 {
-  var warrantyDate_Month_ID = document.getElementById('warrantyDate_Month_ID');
-  var warrantyDate_ID = document.getElementById('warrantyDate_Day_ID');
-  var warrantyDate_Year_ID = document.getElementById('warrantyDate_Year_ID');
-  warrantyDate_Month_ID.disabled = !warrantyDate_Month_ID.disabled;
-  warrantyDate_Day_ID.disabled = !warrantyDate_Day_ID.disabled;
-  warrantyDate_Year_ID.disabled = !warrantyDate_Year_ID.disabled;
+  var warrantyDate = document.getElementById('warrantyDate');
+	warrantyDate.disabled = !warrantyDate.disabled;
 
 }
 
 function disableAquireDate()
 {
-  var aquireDate_Month_ID = document.getElementById('aquireDate_Month_ID');
-  var aquireDate_Day_ID = document.getElementById('aquireDate_Day_ID');
-  var aquireDate_Year_ID = document.getElementById('aquireDate_Year_ID');
-  aquireDate_Month_ID.disabled = true;
-  aquireDate_Day_ID.disabled = true;
-  aquireDate_Year_ID.disabled = true;
+  var aquireDate = document.getElementById('aquireDate');
+ 	aquireDate.disabled = true;
 }
 
 function disableWarrantyDate()
 {
-  var warrantyDate_Month_ID = document.getElementById('warrantyDate_Month_ID');
-  var warrantyDate_Day_ID = document.getElementById('warrantyDate_Day_ID');
-  var warrantyDate_Year_ID = document.getElementById('warrantyDate_Year_ID');
-  warrantyDate_Month_ID.disabled = true;
-  warrantyDate_Day_ID.disabled = true;
-  warrantyDate_Year_ID.disabled = true;
+	var warrantyDate = document.getElementById('warrantyDate');
+	warrantyDate.disabled = true;
 }
 
 $(document).ready(function ()
@@ -269,13 +252,13 @@ $(document).ready(function ()
 			<tr>
 			  <td>
 			  			   Warranty Date:
-			   <script>DateInput('warrantyDate', true, 'YYYY/MM/DD','<?php echo $asset->warrantyDate;?>')</script>
+			   <?php CreateDatePicker("warrantyDate",$asset->warrantyDate);?>
 						<input type="checkbox" name="useWarrantyDate"
 						onclick="toggleWarrantyDate()" /> Change Warranty Date
 			  </td>
 			  <td >
 			   Aquire Date:
-			   <script>DateInput('aquireDate', true, 'YYYY/MM/DD','<?php echo $asset->aquireDate;?>')</script>
+         <?php CreateDatePicker("aquireDate",$asset->aquireDate);?>
 						<input type="checkbox" name="useAquireDate"
 						onclick="toggleAquireDate()" /> Change Aquire Date
 			  </td>

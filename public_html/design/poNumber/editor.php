@@ -24,8 +24,6 @@ adminFilePath="";
 	  menubar: false
   });
   </script>
-<script type="text/javascript"  src="<?php echo $hostPath;?>/js/calendarDateInput.js"></script>
-
 <?php
 include_once "tracker/organization.php";
 include_once "tracker/comment.php";
@@ -220,9 +218,8 @@ DebugText("po date:".$poNumber->poDate);
 	         Date :
 	       </td>
 	       <td>
-	         <script>DateInput('poDate', true, 'YYYY/MM/DD','<?php echo $poNumber->poDate;?>')</script>
            <?php
-        //   CreateHiddenField("poDate",$poNumber->poDate);
+           CreateDatePicker("poDate",$poNumber->poDate);
             ?>
 	       </td>
 	     </tr>

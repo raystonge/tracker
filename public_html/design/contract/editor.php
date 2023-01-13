@@ -41,7 +41,6 @@ adminFilePath="";
 	  menubar: false
   });
   </script>
-<script type="text/javascript"  src="<?php echo $hostPath;?>/js/calendarDateInput.js"></script>
 
 <script type="text/javascript" >
 $(document).ready(function ()
@@ -462,7 +461,7 @@ $(document).ready(function ()
               Expire Date: <?php
               if ($permission->hasPermission("Contract: Edit: Expire Date"))
               {
-              	CreateDateField("expireDate",$contract->expireDate);
+              	CreateDatePicker("expireDate",$contract->expireDate);								
               }
               else
               {

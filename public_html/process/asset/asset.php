@@ -92,10 +92,10 @@ if (isset($_POST['submitTest']))
 	$buildingLocation = GetTextField('buildingLocation');
 	$poNumberId = GetTextField('poNumberId');
 	$vendor = GetTextField('vendor');
-	$aquireDate = GetDateField('aquireDate');
+	$aquireDate = DatePickerUnFormatter(GetDateField('aquireDate'));
 	$commentText = GetTextField('description');
 	$expireDate = GetDateField("expireDate");
-	$warrantyDate = GetDateField("warrantyDate");
+	$warrantyDate = DatePickerUnFormatter(GetDateField("warrantyDate"));
 	$enableWarrantyDate = GetTextField("enableWarranty",0);
 	$cost = GetTextField("cost",0);
 	if ($asset->assetId && (strlen($assetTag)==0))

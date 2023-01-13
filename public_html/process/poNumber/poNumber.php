@@ -26,7 +26,7 @@ if (isset($_POST['submitTest']))
 	$poNumber = GetTextField("poNumber");
 	$vendor = GetTextField("vendor");
 	$vendorOrderID = GetTextField("vendorOrderID");
-	$poDate = GetDateField("poDate");
+	$poDate = DatePickerUnFormatter(GetDateField("poDate"));
 	$poType = GetTextField("poType");
 	$desc = GetTextField("description");
 	$cost = GetTextField("cost");

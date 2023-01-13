@@ -9,8 +9,8 @@ include_once "tracker/duplicateTicket.php";
 PageAccess("Report: Billing");
 $organizationId = GetTextField("organizationId",0);
 $organization = new Organization($organizationId);
-$startDate = GetTextField("startDate");
-$stopDate = GetTextField("stopDate");
+$startDate = DatePickerUnFormatter(GetTextField("startDate"));
+$stopDate = DatePickerUnFormatter(GetTextField("stopDate"));
 ?>
 <div class="adminArea">
 <h2><a href="/billing/" class="breadCrumb">Billing Report</a><?php PrintNBSP(); PrintNBSP(); echo $organization->name;?></h2>

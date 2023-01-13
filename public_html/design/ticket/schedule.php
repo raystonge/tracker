@@ -34,36 +34,22 @@ if (FormSuccess())
 adminFilePath="";
 function toggle()
 {
-  var dueDate_Month_ID = document.getElementById('dueDate_Month_ID');
-  var dueDate_ID = document.getElementById('dueDate_Day_ID');
-  var dueDate_Year_ID = document.getElementById('dueDate_Year_ID');
-  dueDate_Month_ID.disabled = !dueDate_Month_ID.disabled;
-  dueDate_Day_ID.disabled = !dueDate_Day_ID.disabled;
-  dueDate_Year_ID.disabled = !dueDate_Year_ID.disabled;
+  var dueDate = document.getElementById('dueDate');
+  dueDate.disabled = !dueDate.disabled;
 
 }
 function disableDueDate()
 {
-  var dueDate_Month_ID = document.getElementById('dueDate_Month_ID');
-  var dueDate_Day_ID = document.getElementById('dueDate_Day_ID');
-  var dueDate_Year_ID = document.getElementById('dueDate_Year_ID');
-  dueDate_Month_ID.disabled = true;
-  dueDate_Day_ID.disabled = true;
-  dueDate_Year_ID.disabled = true;
+	var dueDate = document.getElementById('dueDate');
+  dueDate.disabled =  true;
 }
 function enableDueDate()
 {
-  var dueDate_Month_ID = document.getElementById('dueDate_Month_ID');
-  var dueDate_Day_ID = document.getElementById('dueDate_Day_ID');
-  var dueDate_Year_ID = document.getElementById('dueDate_Year_ID');
-  dueDate_Month_ID.disabled = false;
-  dueDate_Day_ID.disabled = false;
-  dueDate_Year_ID.disabled = false;
+  var dueDate = document.getElementById('dueDate');
+  dueDate.disabled = false;
 }
 
 </script>
-
-<script type="text/javascript"  src="<?php echo $hostPath;?>/js/calendarDateInput.js"></script>
 
 	<form method="post" autocomplete="<?php echo $autoComplete;?>"  action="/process/ticket/schedule.php">
 		<table>
@@ -90,7 +76,7 @@ function enableDueDate()
 						DebugText("on:".$on);
 			      CreateCheckBox("useDueDate",1,"Enable Due Date",$on,"Click to enable the due date","","onclick='toggle()'");
 			      PrintBR();
-			      CreateDateField("dueDate",$ticket->dueDate);
+			      CreateDatePicker("dueDate",$ticket->dueDate);
 
 			  }
 			  else
@@ -99,7 +85,7 @@ function enableDueDate()
 			  	{
 			  		echo $ticket->dueDate;
 			  	}
-			  	CreateHiddenField("dueDate",$ticket->dueDate);
+			  	CreateHiddenField("dueDate",DatePickerFormatter($ticket->dueDate));
 			  	CreateHiddenField("userDueDate",$on);
 			  }
 			  ?>

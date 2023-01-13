@@ -13,7 +13,7 @@ include_once "tracker/assetType.php";
 include_once "tracker/building.php";
 include_once "tracker/assetCondition.php";
 $moduleId = GetURI(2,0);
-$module = new Module($moduleId); 
+$module = new Module($moduleId);
 ?>
 <script language="javascript">
 $(document).ready(function () {
@@ -102,7 +102,7 @@ $(document).ready(function () {
         $('#aquireDateField').show();
         $('#aquireNumDaysField').hide();
     }
-  })  
+  })
 $('#warrantyDateTest').change();
 $('#aquireDateTest').change();
 	 $('#make').autocomplete({source:'/ajax/lookups/make.php', minLength:1});
@@ -129,16 +129,14 @@ $('#aquireDateTest').change();
 
         data = data.split("\n");
         return data;
-        
+
     }
 
-});  
+});
 </script>
 <script type="text/javascript">
 adminFilePath="";
 </script>
-<script type="text/javascript"  src="<?php echo $hostPath;?>/js/calendarDateInput.js"></script>
-
 <form method="post" action="/process/report/asset.php" autocomplete="<?php echo $autoComplete;?>">
 Name: <?php CreateTextField("moduleName",$module->name);?>
 <?php CreateHiddenField("moduleId",$module->moduleId);?>
@@ -218,7 +216,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     <td valign="top">
       <?php CreateTextField("assetTag",$moduleQuery->testValue);?>
     </td>
-  </tr>  
+  </tr>
   <tr>
     <td valign="top">
     <?php
@@ -238,7 +236,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     <td valign="top">
       <?php CreateTextField("macAddress",$moduleQuery->testValue);?>
     </td>
-  </tr>    
+  </tr>
   <tr>
     <td valign="top">
     <?php
@@ -250,7 +248,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     $values->SetData($moduleQuery->testValue);
     DebugText("fieldTest:".$moduleQuery->fieldTest);
     DebugText("testValue:".$moduleQuery->testValue);
-    ?>    
+    ?>
     Asset Type:
     </td>
     <td valign="top">
@@ -263,7 +261,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     </td>
     <td valign="top">
       <select id="assetTypeId" name="assetTypeId[]" <?php if ($moduleQuery->fieldTest == "In") {echo "multiple='multiple'";};?>>
-        <?php 
+        <?php
         DebugText("test Len:".strlen($moduleQuery->testValue));
         if (strlen($moduleQuery->testValue)==0)
         {
@@ -300,7 +298,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     $values->SetData($moduleQuery->testValue);
     DebugText("fieldTest:".$moduleQuery->fieldTest);
     DebugText("testValue:".$moduleQuery->testValue);
-    ?>    
+    ?>
     Building:
     </td>
     <td valign="top">
@@ -313,7 +311,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     </td>
     <td valign="top">
       <select id="buildingId" name="buildingId[]" <?php if ($moduleQuery->fieldTest == "In") {echo "multiple='multiple'";};?>>
-        <?php 
+        <?php
         DebugText("test Len:".strlen($moduleQuery->testValue));
         if (strlen($moduleQuery->testValue)==0)
         {
@@ -350,7 +348,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     $values->SetData($moduleQuery->testValue);
     DebugText("fieldTest:".$moduleQuery->fieldTest);
     DebugText("testValue:".$moduleQuery->testValue);
-    ?>    
+    ?>
     Condition:
     </td>
     <td valign="top">
@@ -363,7 +361,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     </td>
     <td valign="top">
       <select id="assetConditionId" name="assetConditionId[]" <?php if ($moduleQuery->fieldTest == "In") {echo "multiple='multiple'";};?>>
-        <?php 
+        <?php
         DebugText("test Len:".strlen($moduleQuery->testValue));
         if (strlen($moduleQuery->testValue)==0)
         {
@@ -408,7 +406,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     <td valign="top">
       <?php CreateTextField("name",$moduleQuery->testValue);?>
     </td>
-  </tr> 
+  </tr>
   <tr>
     <td valign="top">
     <?php
@@ -428,7 +426,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     <td valign="top">
       <?php CreateTextField("make",$moduleQuery->testValue);?>
     </td>
-  </tr> 
+  </tr>
   <tr>
     <td valign="top">
     <?php
@@ -448,7 +446,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     <td valign="top">
       <?php CreateTextField("model",$moduleQuery->testValue);?>
     </td>
-  </tr>   
+  </tr>
   <tr>
     <td valign="top">
     <?php
@@ -468,7 +466,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     <td valign="top">
       <?php CreateTextField("poNumber",$moduleQuery->testValue);?>
     </td>
-  </tr>      
+  </tr>
   <tr>
     <td valign="top">
     <?php
@@ -488,7 +486,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     <td valign="top">
       <?php CreateTextField("vendor",$moduleQuery->testValue);?>
     </td>
-  </tr>  
+  </tr>
   <tr>
     <td valign="top">
     <?php
@@ -535,7 +533,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
         </select>
       </span>
     </td>
-  </tr>       
+  </tr>
   <tr>
     <td valign="top">
     <?php
@@ -551,7 +549,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     if ((strlen($moduleQuery->testValue) == 0) || $moduleQuery->fieldTest == "numDays")
     {
     	$moduleQuery->testValue = $today;
-    }    
+    }
     DebugText("fieldToTest:".$moduleQuery->fieldToTest);
     DebugText("fieldTest:".$moduleQuery->fieldTest);
     DebugText("testValue:".$moduleQuery->testValue);
@@ -582,7 +580,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
         </select>
       </span>
     </td>
-  </tr>   
+  </tr>
 </table>
 <?php CreateSubmit();?>
 </form>

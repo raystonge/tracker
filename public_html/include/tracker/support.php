@@ -965,4 +965,30 @@ function getAppBuld()
   }
   return $build;
 }
+function CreateDatePicker($name,$value)
+{
+  $date = DatePickerFormatter($value);
+  ?>
+  <script>
+    $( function() {
+      $( "#<?php echo $name;?>" ).datepicker({
+         showButtonPanel: true
+      });
+    } );
+   </script>
+   <input type="text" id="<?php echo $name;?>" name="<?php echo $name;?>" value="<?php echo $date; ?>">
+  <?php
+}
+function DatePickerFormatter($date)
+{
+ list ($year,$month,$day) = explode("-",$date);
+ $newDate = $month."/".$day."/".$year;
+ return $newDate;
+}
+function DatePickerUnFormatter($date)
+{
+  list ($month,$day,$year) = explode("-",$date);
+  $newDate = $month."/".$day."/".$year;
+  return $newDate;
+}
 ?>

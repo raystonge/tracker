@@ -41,10 +41,10 @@ PageAccess("Report: Billing");
     DebugText("stopdate:".$stopDate);
 
     ?>
-    <td>Start:</td><td><script>DateInput('startDate', true, 'YYYY/MM/DD','<?php echo $startDate;?>')</script></td>
+    <td>Start:</td><td><?php CreateDatePicker("startDate",$startDate);?></td>
     </tr>
     <tr>
-    <td>End:</td><td><script>DateInput('stopDate', true, 'YYYY/MM/DD','<?php echo $stopDate;?>')</script></td>
+    <td>End:</td><td><?php CreateDatePicker("stopDate",$stopDate);?></td>
 
   </tr>
   <tr>

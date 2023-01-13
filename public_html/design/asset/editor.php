@@ -34,7 +34,6 @@ adminFilePath="";
   </script>
 
 
-<script type="text/javascript"  src="<?php echo $hostPath;?>/js/calendarDateInput.js"></script>
 <script type="text/javascript" >
 $(document).ready(function ()
 {
@@ -607,9 +606,8 @@ function disableWarrantyDate()
 			  }
 			  ?>
   			   Warranty:
-			   <script>DateInput('warrantyDate', true, 'YYYY/MM/DD','<?php echo $asset->warrantyDate;?>')</script>
-			   <?php CreateCheckBox("enableWarranty",1,"Use Warranty Date",$enableWarranty,$title="Enable the Warranty Date Field","","onclick='toggle();'");?>
-			   <?php
+			 	   <?php CreateCheckBox("enableWarranty",1,"Use Warranty Date",$enableWarranty,$title="Enable the Warranty Date Field","","onclick='toggle();'");?>
+  			   <br><?php CreateDatePicker("warrantyDate",$asset->warrantyDate);
 			  }
 			  else
 			  {
@@ -617,7 +615,7 @@ function disableWarrantyDate()
 			  	{
 			  		echo "Warranty Date: ".$asset->warrantyDate;
 			  	}
-			  	CreateHiddenField("warrantyDate",$asset->warrantyDate);
+			  	CreateHiddenField("warrantyDate",DatePickerFormatter($asset->warrantyDate));
 			  }
 			  ?>
 			  </td>
@@ -626,9 +624,9 @@ function disableWarrantyDate()
 			  if ($permission->hasPermission("Asset: Edit: Aquire Date"))
 			  {
 			  	?>
-			   Acquired:
-			   <script>DateInput('aquireDate', true, 'YYYY/MM/DD','<?php echo $asset->aquireDate;?>')</script>
+			   Acquired:<br>
 			   <?php
+         CreateDatePicker("aquireDate",$asset->aquireDate);
 			  }
 			  else
 			  {
@@ -636,7 +634,7 @@ function disableWarrantyDate()
 			  	{
 			  		echo "Acquired: ".$asset->aquireDate;
 			  	}
-			  	CreateHiddenField("aquireDate",$asset->aquireDate);
+			  	CreateHiddenField("aquireDate",DatePickerFormatter($asset->aquireDate));
 			  }
 			  ?>
 			  </td>

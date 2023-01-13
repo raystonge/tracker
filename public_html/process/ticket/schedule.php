@@ -106,7 +106,7 @@ if ($openDependencies && $statusId==4)
 $amtWorked = $orgAmtWorked;
 if ($useDueDate)
 {
-	$dueDate = GetDateField("dueDate");
+	$dueDate = DatePickerUnFormatter(GetDateField("dueDate"));
 }
 
 if ($numErrors)
