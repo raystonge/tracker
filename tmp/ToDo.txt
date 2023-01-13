@@ -1,7 +1,10 @@
 System Notes
 
-== 2020-01-12
-= Version 1.3.2
+== 2020-01-16
+ = Version 1.4.0
+   * changed the tinyMCE editor to version 6. Also changed the call to use a global variable loaded
+     from the controls table with the tinyMCE version
+ = Version 1.3.2
    * Fixed asset search so it populates the controls properly
  = Version 1.3.1
     * Fixed ticket search so it actually remembers search results
