@@ -2,6 +2,8 @@
 include_once "globals.php";
 include_once "cmsdb.php";
 include_once "tracker/user.php";
+// Override what is loaded from the database;
+$sitePath = $_SERVER['DOCUMENT_ROOT'];
 
 $currentUser = new User();
 if (!isset($_SESSION['failedLogin']))
