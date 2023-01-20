@@ -83,6 +83,7 @@ $(document).ready(function ()
         	$contract->expireDate = GetTextFromSession('contractExpireDate');
         	$contract->poNumberId = GetTextFromSession('contractpoNumberId',0);
         	$contract->organizationId = GetTextFromSession("organizationId",0);
+					$contract->isLease = GetTextFromSession("contractIsLease",0);
         	$commentText = GetTextFromSession('contractComment');
             ?>
             <div class="feedback error">

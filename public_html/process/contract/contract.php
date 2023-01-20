@@ -52,6 +52,11 @@ if (!strlen($name))
 	$numErrors++;
 	$errorMsg=$errorMsg."<li>Please Specify Name</li>";
 }
+if ($isLease && !$poNumberId)
+{
+	$numErrors++;
+	$errorMsg=$errorMsg."<li>Cannot have a lease without a Purchase Order</li>";
+}
 /*
 if ($poNumberId == 0)
 {
@@ -344,7 +349,8 @@ $_SESSION['contractContractNumber'] = $contractNumber;
 $_SESSION['contractExpireDate'] = $expireDate;
 $_SESSION['contractComment'] = $commentText;
 $_SESSION['contractpoNumberId'] = $poNumberId;
-$_SESSION['contractOrganizationId'] = $organizationId;
+$_SESSION['contractOrganizationId'] = $organizationId
+$_SESSION['contractIsLease'] = $isLease;
 $_SESSION['formErrors'] = $html;
 if ($contract->contractId)
 {
