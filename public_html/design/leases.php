@@ -12,7 +12,7 @@ PageAccess("Report: Leases");
         Contracts: <select name="contractId">
           <?php
           $contract = new Contract();
-          $ok = $contract->Get("");
+          $ok = $contract->Get("isLease=1");
           while ($ok)
           {
             ?>
@@ -24,6 +24,11 @@ PageAccess("Report: Leases");
         </select>
       </td>
     </tr>
+    <tr>
+       <td>
+         <?php CreateSubmit();?>
+       </td>
+    </td>
   </table>
 </form>
 <?php DebugOutput();

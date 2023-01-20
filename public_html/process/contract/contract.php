@@ -34,10 +34,12 @@ $supportName = GetTextField("supportName");
 $supportPhone = GetTextField("supportPhone");
 $supportEmail = GetTextField("supportEmail");
 $expireDate = DatePickerUnFormatter(GetDateField("expireDate"));
+DebugText("expireDate:".$expireDate);
 $commentText = GetTextField("description");
 $contractNumber = GetTextField("contractNumber");
 $poNumberId = GetTextField("poNumberId",0);
 $organizationId = GetTextField("organizationId",0);
+$isLease = GetTextField("isLease",0);
 if ($organizationId == 0)
 {
 	$numErrors++;
@@ -254,6 +256,28 @@ if (!$numErrors)
 		$old = $contract->supportEmail;
 		$contract->supportEmail = $supportEmail;
 	    $historyVal = CreateHistory($action,"Support Email",$old,$supportEmail);
+	    DebugText("history:".$historyVal);
+	    if (strlen($historyVal))
+	    {
+	    	array_push($historyArray,$historyVal);
+	    }
+	}
+
+	if ($contract->isLease != $isLease)
+	{
+		$old = "Not a lease";
+		if ($contract->isLease)
+		{
+			$old = "Was a lease";
+		}
+		$contract->isLease = $isLease;
+		$newLease = "Not a lease";
+		if ($contract->isLease)
+		{
+			$newLease = "Is a lease";
+		}
+
+	    $historyVal = CreateHistory($action,"Lease",$old,$newLease);
 	    DebugText("history:".$historyVal);
 	    if (strlen($historyVal))
 	    {

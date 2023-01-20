@@ -988,7 +988,7 @@ function DatePickerFormatter($date)
 function DatePickerUnFormatter($date)
 {
   list ($month,$day,$year) = explode("-",$date);
-  $newDate = $month."/".$day."/".$year;
+  $newDate = $year."-".$month."-".$day;
   return $newDate;
 }
 ?>

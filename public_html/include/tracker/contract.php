@@ -30,6 +30,7 @@ var $contractNumber;
 var $expireDate;
 var $poNumberId;
 var $organizationId;
+var $isLease;
 
 var $orderBy;
 var $limit;
@@ -61,6 +62,7 @@ var $className="Contract";
 	$this->expireDate = "";
 	$this->poNumberId = 0;
 	$this->organizationId = 0;
+  $this->isLease = 0;
 	$this->page = 1;
 	$this->start = 0;
 	$this->perPage = 0;
@@ -217,6 +219,7 @@ var $className="Contract";
 	    $this->expireDate = trim(stripslashes($this->row['expireDate']));
 	    $this->poNumberId = $this->row['poNumberId'];
 	    $this->organizationId = $this->row['organizationId'];
+      $this->isLease = $this->row['isLease'];
 	 }
 	 else
 	 {
@@ -258,7 +261,7 @@ var $className="Contract";
 	 $supportEmail = trim(mysqli_real_escape_string($link_cms,$this->supportEmail));
 	 $contractNumber = trim(mysqli_real_escape_string($link_cms,$this->contractNumber));
 	 $expireDate = trim(mysqli_real_escape_string($link_cms,$this->expireDate));
-	 $query = "Update contract set name='$name',address1='$address1',address2='$address2',city='$city',state='$state',zipCode='$zipCode', phone='$phone',fax='$fax',email='$email',contactName='$contactName',contactEmail='$contactEmail', contactPhone='$contactPhone',supportName='$supportName',supportEmail='$supportEmail',supportPhone='$supportPhone',expireDate ='$expireDate', poNumberId=$this->poNumberId,contractNumber='$contractNumber', organizationId=$this->organizationId where contractId = $this->contractId";
+	 $query = "Update contract set name='$name',address1='$address1',address2='$address2',city='$city',state='$state',zipCode='$zipCode', phone='$phone',fax='$fax',email='$email',contactName='$contactName',contactEmail='$contactEmail', contactPhone='$contactPhone',supportName='$supportName',supportEmail='$supportEmail',supportPhone='$supportPhone',expireDate ='$expireDate', poNumberId=$this->poNumberId,contractNumber='$contractNumber', organizationId=$this->organizationId, isLease=$this->isLease where contractId = $this->contractId";
      $results = mysqli_query($link_cms,$query);
 	 DebugText($query);
 	 DebugText("Error:".mysqli_error($link_cms));
@@ -286,7 +289,7 @@ var $className="Contract";
 	 $supportEmail = trim(mysqli_real_escape_string($link_cms,$this->supportEmail));
 	 $contractNumber = trim(mysqli_real_escape_string($link_cms,$this->contractNumber));
 	 $expireDate = trim(mysqli_real_escape_string($link_cms,$this->expireDate));
-	 $query = "Insert into contract (name,address1,address2,city,state,zipCode,phone,fax,email,contactName,contactPhone,contactEmail,supportName,supportPhone,supportEmail,expireDate,poNumberId,contractNumber,organizationId) value ('$name','$address1','$address2','$city','$state','$zipCode','$phone','$fax','$email','$contactName','$contactPhone','$contactEmail','$supportName','$supportPhone','$supportEmail','$expireDate',$this->poNumberId,'$contractNumber',$this->organizationId)";
+	 $query = "Insert into contract (name,address1,address2,city,state,zipCode,phone,fax,email,contactName,contactPhone,contactEmail,supportName,supportPhone,supportEmail,expireDate,poNumberId,contractNumber,organizationId,isLease) value ('$name','$address1','$address2','$city','$state','$zipCode','$phone','$fax','$email','$contactName','$contactPhone','$contactEmail','$supportName','$supportPhone','$supportEmail','$expireDate',$this->poNumberId,'$contractNumber',$this->organizationId,$this->isLease)";
      $results = mysqli_query($link_cms,$query);
 	 DebugText($query);
 	 DebugText("Error:".mysqli_error($link_cms));

@@ -1,4 +1,4 @@
-``<?php
+<?php
 include_once "tracker/permission.php";
 include_once "tracker/organization.php";
 include_once "tracker/ticket.php";
@@ -36,7 +36,7 @@ $stopDate = DatePickerUnFormatter(GetTextField("stopDate"));
     if (!$isDuplicate)
     {
       $comment = new Comment();
-      $param = "ticketId=".$ticket->ticketId;
+      $param = "ticketId=".$ticket->ticketId;Can I start before 9am
       $okComment = $comment->Get($param);
 
       $totalTime = $totalTime+$ticket->timeWorked;

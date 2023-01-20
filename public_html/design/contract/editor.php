@@ -461,7 +461,7 @@ $(document).ready(function ()
               Expire Date: <?php
               if ($permission->hasPermission("Contract: Edit: Expire Date"))
               {
-              	CreateDatePicker("expireDate",$contract->expireDate);								
+              	CreateDatePicker("expireDate",$contract->expireDate);
               }
               else
               {
@@ -473,6 +473,11 @@ $(document).ready(function ()
               }?>
             </td>
           </tr>
+					<tr>
+						<td>
+							Lease: <?php CreateCheckBox("isLease",1,"",$contract->isLease);?>
+						</td>
+					</tr>
         </table>
       </fieldset>
      <?php
