@@ -112,7 +112,7 @@ $configClass = "menu-item menu-item-type-taxonomy menu-item-object-category drop
 $monitorClass = "menu-item menu-item-type-taxonomy menu-item-object-category dropdown menu-item-4";
 $reportClass = "menu-item menu-item-type-taxonomy menu-item-object-category dropdown menu-item-5";
 $poClass = "menu-item menu-item-type-taxonomy menu-item-object-category dropdown menu-item-5";
-
+$contractClass = "menu-item menu-item-type-taxonomy menu-item-object-category dropdown menu-item-5";
 
 if (!isset($request_uri[1]) )
 {
@@ -204,11 +204,6 @@ else
 		case "newUserGroup":
 		case "editUserGroup":
 		case "editUserGroupPermission":
-		case "listContracts":
-		case "contractDeleteAttachment":
-		case "contractEdit":
-    case "contractAttachment":
-    case "contractHistory":
 		case "exportStructure":
 		case "upgrade":
 		case "doUpgrade":
@@ -222,6 +217,17 @@ else
 		case "poNumberHistory" :
 		                            $poClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
 		                            break;
+    case "listContracts" :
+    case "contractNew" :
+    case "contractEdit" :
+    case "contractAssets" :
+    case "contractAttachment" :
+    case "listContracts":
+		case "contractDeleteAttachment":
+    case "contractHistory" :
+                               $contractClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
+                               break;
+
 		case "billing" :
 		case "billingReport" :
 		case "listBadAssets" :
@@ -318,6 +324,7 @@ $(document).ready(function () {
 	                  include "menus/index/ticketMenu.php";
 	                  include "menus/index/assetMenu.php";
 	                  include "menus/index/poMenu.php";
+                    include "menus/index/contract.php";
 	                  include "menus/index/monitorMenu.php";
 	                  include "menus/index/reportMenu.php";
 	                  include "menus/index/configMenu.php";

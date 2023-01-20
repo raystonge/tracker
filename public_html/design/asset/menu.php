@@ -64,6 +64,7 @@ include_once "tracker/attachment.php";
 include_once "tracker/assetToTicket.php";
 include_once "tracker/ticket.php";
 include_once "tracker/specToAssetType.php";
+include_once "tracker/contract.php";
 $specToAssetType = new SpecToAssetType();
 $param = AddEscapedParam("","assetTypeId",$asset->assetTypeId);
 $specToAssetType->Get($param);
@@ -130,7 +131,10 @@ DebugText("Doing asset SubMenu");
 	                  <li id="menu-item-20" class="<?php echo $monitorClass;?>"><a href='/assetMonitorList/<?php echo $assetId;?>/' title='Monitors'><span>Monitors</span></a></li>
 	                  <?php
 	                  }
-	                  if ($assetType->hasContract && $permission->hasPermission("Asset: View Contract"))
+										$param = AddEscapedParam("isLease=1","poNumberId",$asset->poNumberId);
+										$contract = new Contract();
+										$contract->Get($param);
+	                  if ($assetType->hasContract && $permission->hasPermission("Asset: View Contract") && $contract->isLease)
 	                  {
 	                  	?>
 	                  <li id="menu-item-20" class="<?php echo $contractClass;?>"><a href='/assetContract/<?php echo $assetId;?>/' title='Contract'><span>Contract</span></a></li>

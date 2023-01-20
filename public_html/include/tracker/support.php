@@ -982,12 +982,20 @@ function CreateDatePicker($name,$value)
 }
 function DatePickerFormatter($date)
 {
+  if (!strlen($date))
+  {
+    return $date;
+  }
  list ($year,$month,$day) = explode("-",$date);
  $newDate = $month."/".$day."/".$year;
  return $newDate;
 }
 function DatePickerUnFormatter($date)
 {
+  if (!strlen($date))
+  {
+    return $date;
+  }
   list ($month,$day,$year) = explode("-",$date);
   $newDate = $year."-".$month."-".$day;
   return $newDate;

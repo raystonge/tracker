@@ -1,37 +1,39 @@
 <?php
-include_once "tracker/permission.php";
-include_once "tracker/organization.php";
+PageAccess("Contract: View Attachments");
+?>
+<div class="adminArea">
+<?php
 include_once "tracker/contract.php";
 include_once "tracker/asset.php";
-include_once "tracker/assetType.php";
-include_once "tracker/permission.php";
 include_once "tracker/building.php";
 include_once "tracker/assetCondition.php";
-include_once "tracker/set.php";
+include_once "tracker/assetType.php";
+$contractId = 0;
+if (isset($request_uri[2]))
+{
+	$contractId = $request_uri[2];
+}
 
-PageAccess("Report: Leases");
-
-$contractId = GetTextField("contractId",0);
 $contract = new Contract($contractId);
 $poNumberId = $contract->poNumberId;
 $param = AddEscapedParam("","poNumberId",$poNumberId);
-if (!$contractId)
-{
-  $param = "expireDate >='".$today."' and isLease=1";
-  $poNumbers = new Set(",");
-  $ok = $contract->Get($param);
-  while ($ok)
-  {
-    if ($contract->poNumberId)
-    {
-      $poNumbers->add($contract->poNumberId);
-    }
-    $ok = $contract->Next();
-  }
-  $param = "poNumberId in (".$poNumbers->data.")";
-}
 $asset = new Asset();
 ?>
+<div id='main_column'>
+	    <nav id="navigation" role="navigation">
+	      <div class="main-navigation navbar navbar-inverse">
+	        <div class="navbar-inner">
+	          <div class="container">
+	            <div class="nav-collapse collapse">
+	              <div class="menu-main-container">
+	              <?php include $sitePath."/design/contract/menu.php";?>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </nav>
+<div class="clear"></div>
 <table class="width100">
   <tr>
     <th>Serial Number
@@ -51,21 +53,11 @@ $asset = new Asset();
     Model
     </th>
     <th>
-      <?php
-      if (!$contractId)
-      {
-        ?>
-        Contract
-        <?php
-      }
-      else {
-        PrintNBSP();
-      }
-       ?>
+    &nbsp;
     </th>
   </tr>
   <?php
-  $asset->setOrderBy("poNumberId");
+
   $ok = $asset->Search($param);
   $showButton = $ok;
   while ($ok)
@@ -130,19 +122,6 @@ $asset = new Asset();
     <?php echo $asset->model;?>
     </td>
     <td>
-      <?php
-      if (!$contractId)
-      {
-        $contract = new Contract($asset->contractId);
-        ?>
-        <a href="/contractEdit/<?php echo $contract->contractId;?>/"><?php echo $contract->name;?></a>
-        <?php
-      }
-      else {
-        PrintNBSP();
-      }
-       ?>
-
     </td>
   </tr>
   	<?php
@@ -150,3 +129,4 @@ $asset = new Asset();
   }
   ?>
 </table>
+</div>

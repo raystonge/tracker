@@ -1,8 +1,10 @@
 <?php
+include_once "tracker/asset.php";
 $contractClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $attachmentClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $assetClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $insuranceClass = "menu-item menu-item-type-custom menu-item-object-custom";
+
 $historyClass = "menu-item menu-item-type-custom menu-item-object-custom";
 if ($request_uri[1] == "contractEdit")
 {
@@ -59,6 +61,21 @@ $param = "contractId=".$contract->contractId;
 	                  	<li id="menu-item-20" class="<?php echo $attachmentClass;?>"><a href='/contractAttachment/<?php echo $contractId;?>/' title='Attachments'><span>Attachments<?php if ($attachment->Count($param)){ echo " ($attachment->numRows)";}?></span></a></li>
 	                  	<?php
 	                  }
+										if ($permission->hasPermission("Contract: View Assets"))
+	                  {
+											$param = "poNumberId = -1"; // since no asset can have this, if the contract,
+											                            // if the contract is not a lease, this will not find assets
+											if ($contract->isLease)
+											{
+												$param = AddEscapedParam("","poNumberId",$contract->poNumberId);
+											}
+											$asset = new Asset();
+	                  	?>
+	                  	<li id="menu-item-20" class="<?php echo $assetClass;?>"><a href='/contractAssets/<?php echo $contractId;?>/' title='Assets'><span>Assets<?php if ($asset->Count($param)){ echo " ($asset->numRows)";}?></span></a></li>
+	                  	<?php
+	                  }
+
+
 	                  if ($permission->hasPermission("Contract: View History"))
 	                  {
 	                  	?>

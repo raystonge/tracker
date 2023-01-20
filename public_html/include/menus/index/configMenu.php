@@ -31,16 +31,6 @@
 	                      <?php
                           }
                           ?>
-
-                          <?php
-                          if ($permission->hasPermission("Config: Contract"))
-                          {
-                          	?>
-	                        <li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="/listContracts/">Contracts</a></li>
-	                      <?php
-                          }
-                          ?>
-
                           <?php
                           if ($permission->hasPermission("Config: Controls"))
                           {

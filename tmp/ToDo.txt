@@ -7,7 +7,9 @@ System Notes
    * changed the code that displays the date pickers to a new jquery control
    * changed how the $sitePath was determined. Now using $_SERVER['DOCUMENT_ROOT']
    * added option to mark a contract as a lease
+   * created a report to view assets on a lease
    * assets associated with a contract that is marked will be updated
+   * moved Contracts to an upper level menu option
 
 == 2023-01-15
  = Version 1.3.2

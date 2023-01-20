@@ -10,9 +10,12 @@ PageAccess("Report: Leases");
     <tr>
       <td>
         Contracts: <select name="contractId">
+          <option value="0">All active Leases</option>
           <?php
           $contract = new Contract();
-          $ok = $contract->Get("isLease=1");
+          $param = "isLease=1 and expireDate >='".$today."'";
+
+          $ok = $contract->Get($param);
           while ($ok)
           {
             ?>
