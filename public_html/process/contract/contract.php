@@ -10,6 +10,7 @@
 include "globals.php";
 include_once "tracker/contract.php";
 include_once "tracker/poNumber.php";
+include_once "tracker/asset.php";
 include_once "tracker/comment.php";
 ProperAccessValidate();
 $errorMsg  = "";
@@ -286,6 +287,16 @@ if (!$numErrors)
 	}
 
 	$contract->Persist();
+	$asset = new Asset();
+	$param = AddEscapedParam("","poNumberId",$contract->poNumberId);
+	$ok = $asset->Get($param);
+	while ($ok)
+	{
+		$asset->leased = $contract->isLease;
+		$asset->contractId = $contract->contractId;
+		$asset->Persist();
+		$ok = $asset->Next();
+	}
 	if (strlen($commentText))
 	{
 		$comment = new Comment();

@@ -62,34 +62,18 @@ if (FormSuccess())
 <table>
   <tr>
     <td>Contract:
-      <select name="contractId" id="contractId" >
-        <option value="0">Select Contract</option>
-        <?php
+			<?php
+      $contract = new Contract($asset->contractId);
+			echo $contract->name;
+			 ?>
 
-$contract = new Contract();
-$ok = $contract->Get("");
-while ($ok)
-{
-  $selected = "";
-	if ($assetToContract->contractId == $contract->contractId)
-	{
-		$selected = "selected='selected'";
-	}
-?>
-        	<option value="<?php echo $contract->contractId;?>" <?php echo $selected;?>><?php echo $contract->name." - ".$contract->expireDate;?></option>
-        	<?php
-
-	$ok = $contract->Next();
-}
-?>
-      </select>
     </td>
     <td>
 			<?php
-			if ($assetToContract->assetToContractId)
+			if ($asset->contractId)
 			{
 				?>
-				<a href="/contractEdit/<?php echo $assetToContract->contractId;?>">View Contract</a>
+				<a href="/contractEdit/<?php echo $asset->contractId;?>">View Contract</a>
 				<?php
 			}
 			 ?>
@@ -97,25 +81,18 @@ while ($ok)
   </tr>
   <tr>
    <td>
-     Leased : <?php CreateCheckBox("leased",1, "",$asset->leased,"Click if asset is leased","toLease"); ?>
+		 <?php
+     $isLeased = "Not Leased";
+		 if ($contract->isLease)
+		 {
+			 $isLeased = "Leased";
+		 }
+		  ?>
+     Leased : <?php echo $isLeased; ?>
    </td>
    <td>
      &nbsp;
    </td>
-  </tr>
-  <tr>
-    <td>
-    &nbsp;
-    </td>
-    <td>
-    <?php
-    PrintFormKey();
-    PrintAJAXFormKey();
-    CreateHiddenField("assetId",$asset->assetId);
-    //CreateHiddenField("contractId",$contract->contractId);
-    CreateSubmit("submit",$button);
-    ?>
-    </td>
   </tr>
 </table>
 </form>

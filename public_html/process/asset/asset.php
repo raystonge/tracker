@@ -429,6 +429,11 @@ if (isset($_POST['submitTest']))
 	    }
 		}
 
+    $contract = new Contract();
+		$param = AddEscapedParam("isLease=1","poNumberId".$asset->poNumberId);
+		$contract->Get($param);
+		$asset->contractId = $contract->contractId;
+		$asset->leased = $contract->isLease;
 		if ($asset->assetId)
 		{
 			$asset->Update();

@@ -491,29 +491,29 @@ function UpgradeAvailable()
 	global $sitePath;
 	global $siteRootPath;
 	$permission = new Permission();
-	if ($permission->hasPermission("Config: Upgrade"))
+  $control = new Control();
+  $param = "sectionValue='SysConfigs' and keyValue='SysVersion'";
+  $control->Get($param);
+  $currentVersion = $control->valueInt;
+  $fileList = array();
+  $arrayIndex = 0;
+	 $dir = $siteRootPath."/sysUpdates";
+	 if ($dh = opendir($dir))
+	 {
+	 	while (($file = readdir($dh)) !== false)
+	 	{
+	 		if (!is_dir($file))
+	 		{
+	 			$file = str_replace(".txt","",$file);
+	 			if ($file > $currentVersion &&  is_numeric($file))
+  		    {
+  		    	$fileList[$arrayIndex++] = $file;
+  		    }
+      }
+   	}
+   	closedir($dh);
+    if ($permission->hasPermission("Config: Upgrade"))
     {
-	  $control = new Control();
-	  $param = "sectionValue='SysConfigs' and keyValue='SysVersion'";
-	  $control->Get($param);
-	  $currentVersion = $control->valueInt;
-	  $fileList = array();
-	  $arrayIndex = 0;
-	  $dir = $siteRootPath."/sysUpdates";
-	  if ($dh = opendir($dir))
-	  {
-	  	while (($file = readdir($dh)) !== false)
-	  	{
-	  		if (!is_dir($file))
-	  		{
-	  			$file = str_replace(".txt","",$file);
-	  			if ($file > $currentVersion &&  is_numeric($file))
-    		    {
-    		    	$fileList[$arrayIndex++] = $file;
-    		    }
-    	    }
-     	}
-     	closedir($dh);
      	if (sizeof($fileList))
      	{
      		?>
@@ -525,6 +525,7 @@ function UpgradeAvailable()
      	}
 	  }
 	}
+  return(sizeof($fileList));
 }
 function PrintNBSP()
 {
