@@ -19,5 +19,6 @@ CREATE TABLE `contract` (
   `expireDate` date DEFAULT NULL,
   `poNumberId` int(11) DEFAULT '0',
   `organizationId` int(11) DEFAULT NULL,
+  `isLease` int(11) DEFAULT NULL,
   PRIMARY KEY (`contractId`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1

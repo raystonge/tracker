@@ -3,9 +3,13 @@
 83,"Adapter",1,0
 102,"adapter",1,0
 135,"Adapter",0,0
+142,"addition memory",0,0
+140,"Anti Blue Light Protector",0,0
 41,"AV Equipment",1,0
 29,"AWS Instance",1,0
 118,"Cell Phone",1,0
+138,"cell phone",0,0
+143,"Cell Phone",0,0
 74,"Cellphone",1,0
 77,"cellphone",1,0
 119,"Cellphone",0,0
@@ -20,9 +24,11 @@
 82,"Computer",0,0
 89,"Computer",0,0
 115,"Computer",0,0
+136,"Computer",0,0
 6,"Copier",1,1
 114,"Copier",0,1
 97,"Ethernet Switch",1,0
+144,"Ethernet Switch",0,0
 100,"extended warranty",1,0
 47,"External Drive",1,0
 48,"External Drive",1,0
@@ -50,6 +56,7 @@
 87,"Laptop",0,0
 105,"Laptop",0,1
 111,"Laptop",0,1
+141,"laptop",0,0
 56,"Laptop Charger",1,0
 64,"Laptop Charger",1,0
 121,"Laptop Fan",0,0
@@ -75,6 +82,7 @@
 80,"Monitor",0,0
 88,"Monitor",0,0
 90,"Monitor",0,0
+137,"Monitor",0,0
 36,"NAS",1,1
 5,"Printer",1,0
 40,"Printer",1,1
@@ -115,6 +123,7 @@
 101,"Web Cam",1,0
 28,"Web Head",1,0
 43,"Web Server",1,0
+139,"webcam",0,0
 85,"WebCamera",1,0
 44,"WiFi Adapter",1,1
 127,"Wired Mouse/Keyboard",0,0

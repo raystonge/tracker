@@ -18,3 +18,4 @@
 "expireDate","date"
 "poNumberId","int(11)"
 "organizationId","int(11)"
+"isLease","int(11)"

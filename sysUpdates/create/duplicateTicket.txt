@@ -5,4 +5,4 @@ CREATE TABLE `duplicateTicket` (
   PRIMARY KEY (`duplicateTicketId`),
   KEY `duplicateOfId` (`duplicateOfId`),
   KEY `ticketId` (`ticketId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1

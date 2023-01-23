@@ -16,4 +16,4 @@ CREATE TABLE `poNumber` (
   `received` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`poNumberId`),
   KEY `organizationId` (`organizationId`)
-) ENGINE=MyISAM AUTO_INCREMENT=120 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=131 DEFAULT CHARSET=latin1

@@ -4,4 +4,4 @@ CREATE TABLE `queue` (
   `organizationId` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`queueId`),
   KEY `organizationId` (`organizationId`)
-) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=latin1
