@@ -349,7 +349,7 @@ $_SESSION['contractContractNumber'] = $contractNumber;
 $_SESSION['contractExpireDate'] = $expireDate;
 $_SESSION['contractComment'] = $commentText;
 $_SESSION['contractpoNumberId'] = $poNumberId;
-$_SESSION['contractOrganizationId'] = $organizationId
+$_SESSION['contractOrganizationId'] = $organizationId;
 $_SESSION['contractIsLease'] = $isLease;
 $_SESSION['formErrors'] = $html;
 if ($contract->contractId)

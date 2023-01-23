@@ -1,6 +1,8 @@
 System Notes
-
 == 2023-01-23
+ = Version 1.4.1
+   * fixed syntax error when processing contract
+
  = Version 1.4.0
    * changed the tinyMCE editor to version 6. Also changed the call to use a global variable loaded
      from the controls table with the tinyMCE version
