@@ -5,6 +5,7 @@ System Notes
    * fixed initializing ticket to use GetTextFromSession and not clear the session variable
    * added breadCrumb to Lease Report
    * created export for Lease report
+   * fixed billing report. Somehow, something got pasted to the end of a line
 
 == 2023-01-23
  = Version 1.4.1

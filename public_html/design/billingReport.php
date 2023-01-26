@@ -36,7 +36,7 @@ $stopDate = DatePickerUnFormatter(GetTextField("stopDate"));
     if (!$isDuplicate)
     {
       $comment = new Comment();
-      $param = "ticketId=".$ticket->ticketId;Can I start before 9am
+      $param = "ticketId=".$ticket->ticketId;
       $okComment = $comment->Get($param);
 
       $totalTime = $totalTime+$ticket->timeWorked;
