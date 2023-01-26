@@ -32,6 +32,20 @@ if (!$contractId)
 }
 $asset = new Asset();
 ?>
+<div class="adminArea">
+<h2><a href="/leases/" class="breadCrumb">Leases</a></h2>
+<p>
+<?php
+  if ($contractId)
+  {
+    echo $contract->name;
+  }
+  else {
+    echo "All Leases";
+  }
+  ?>
+<p><a href="/process/contract/leaseReportExport.php?contractId=<?php echo $contractId;?>" target="_blank">Export</a>
+
 <table class="width100">
   <tr>
     <th>Serial Number
@@ -62,6 +76,9 @@ $asset = new Asset();
         PrintNBSP();
       }
        ?>
+    </th>
+    <th>
+      Expires
     </th>
   </tr>
   <?php
@@ -142,7 +159,9 @@ $asset = new Asset();
         PrintNBSP();
       }
        ?>
-
+    </td>
+    <td>
+      <?php echo $contract->expireDate;?>
     </td>
   </tr>
   	<?php
@@ -150,3 +169,4 @@ $asset = new Asset();
   }
   ?>
 </table>
+</div>

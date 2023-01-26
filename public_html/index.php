@@ -233,6 +233,11 @@ else
 		case "listBadAssets" :
 		case "viewReports":
 		case "listReports":
+    case "leases":
+    case "leaseReport":
+    case "moveReport" :
+    case "personalProperty" :
+    case "personalPropertyReport" :
 		                            $reportClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
 		                            break;
 

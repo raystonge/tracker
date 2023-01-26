@@ -1,4 +1,11 @@
 System Notes
+== 2023-01-30
+ = Version 1.4.2
+   * fixed nav to properly select Reports for leases
+   * fixed initializing ticket to use GetTextFromSession and not clear the session variable
+   * added breadCrumb to Lease Report
+   * created export for Lease report
+
 == 2023-01-23
  = Version 1.4.1
    * fixed syntax error when processing contract
