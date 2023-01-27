@@ -20,6 +20,7 @@
 <?php
 include_once 'globals.php';
 include_once "tracker/asset.php";
+ProperAccessValidate();
 $asset = new Asset();
 $query = "update asset set startingBuildingIdPP=buildingId";
 $asset->execQuery($query);

@@ -23,7 +23,7 @@ include_once "tracker/ticket.php";
 include_once "tracker/mailSupport.php";
 include_once "tracker/history.php";
 $param = "";
-
+ProperAccessValidate();
 $tickets = new Set(",");
   $searchQueueId = GetTextField("searchQueueId",0);
   $searchPriorityId = GetTextField("searchPriorityId",0);

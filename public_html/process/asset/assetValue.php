@@ -23,7 +23,7 @@ include_once 'tracker/asset.php';
 include_once 'tracker/assetType.php';
 
 $_SESSION['formErrors'] ="";
-//ProperAccessValidate();
+ProperAccessValidate();
 if (isset($_POST['submitTest']))
 {
 	$numErrors = 0;

@@ -21,7 +21,7 @@
 include_once "globals.php";
 include_once "tracker/asset.php";
 include_once "tracker/assetToContract.php";
-
+ProperAccessValidate();
 $assetId = GetTextField('assetId',0);
 $asset = new Asset($assetId);
 if (!$asset->assetId)

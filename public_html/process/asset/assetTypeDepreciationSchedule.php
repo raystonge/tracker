@@ -24,7 +24,7 @@ include_once 'tracker/assetType.php';
 include_once "tracker/assetTypeDepreciationSchedule.php";
 
 $_SESSION['formErrors'] ="";
-//ProperAccessValidate();
+ProperAccessValidate();
 $errorMsg = "";
 $numErrors = 0;
 $assetTypeId = GetTextField("assetTypeId",0);

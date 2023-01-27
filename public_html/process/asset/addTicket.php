@@ -28,7 +28,7 @@ $_SESSION['assetTicketId'] = "";
 $html = "";
 $numErrors = 0;
 
-//ProperAccessValidate();
+ProperAccessValidate();
 $assetId = GetTextField("assetId",0);
 $asset = new Asset($assetId);
 if (!$asset->assetId)

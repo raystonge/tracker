@@ -49,7 +49,7 @@ $_SESSION['assetNumOfLicenses'] = "";
 $_SESSION['assetExpireDate'] = "";
 $_SESSION['assetWarrantyDate'] = "";
 $_SESSION['assetOrganizationId'] = 0;
-//ProperAccessValidate();
+ProperAccessValidate();
 if (isset($_POST['submitTest']))
 {
 	$asset = new Asset();
@@ -440,7 +440,7 @@ if (isset($_POST['submitTest']))
 		}
 
     $contract = new Contract();
-		$param = AddEscapedParam("isLease=1","poNumberId".$asset->poNumberId);
+		$param = AddEscapedParam("isLease=1","poNumberId",$asset->poNumberId);
 		$contract->Get($param);
 		$asset->contractId = $contract->contractId;
 		$asset->leased = $contract->isLease;

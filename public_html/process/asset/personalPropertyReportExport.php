@@ -28,7 +28,7 @@ include_once "tracker/assetCondition.php";
 include_once "tracker/set.php";
 
 PageAccess("Report: Billing");
-
+ProperAccessValidate();
 $organizationId =0;
 if (isset($request_uri[2]))
 {

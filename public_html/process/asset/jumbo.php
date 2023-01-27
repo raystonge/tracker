@@ -20,6 +20,8 @@
 <?php
 include_once "globals.php";
 include_once "tracker/asset.php";
+
+ProperAccessValidate();
 $param = "";
 $asset = new Asset();
 $assets = new Set(",");

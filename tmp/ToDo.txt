@@ -1,5 +1,8 @@
 System Notes
 == 2023-01-30
+ = Version 1.4.3
+   * addng calls to make sure that form processors are not suspect to cross site sripting
+
  = Version 1.4.2
    * fixed nav to properly select Reports for leases
    * fixed initializing ticket to use GetTextFromSession and not clear the session variable

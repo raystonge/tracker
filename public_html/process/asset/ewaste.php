@@ -20,7 +20,7 @@
 <?php
 include_once "globals.php";
 include_once "tracker/asset.php";
-
+ProperAccessValidate();
 $asset = new Asset();
 $param = AddEscapedParam("","assetConditionId",5);
 $ok = $asset->Get($param);
