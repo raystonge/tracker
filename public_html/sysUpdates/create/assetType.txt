@@ -1,8 +1,0 @@
-CREATE TABLE `assetType` (
-  `assetTypeId` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `monitor` int(11) DEFAULT '0',
-  `hasMacAddress` int(11) DEFAULT '0',
-  `requireMacAddress` int(11) DEFAULT '0',
-  PRIMARY KEY (`assetTypeId`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1

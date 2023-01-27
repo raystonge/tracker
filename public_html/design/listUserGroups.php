@@ -16,6 +16,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 //
+?>
+<?php
 include_once "tracker/userGroup.php";
 include_once "tracker/permission.php";
 include_once "tracker/organization.php";
@@ -30,7 +32,6 @@ else
 {
 	$formKey = getFormKey();
 }
-
 ?>
 <h2><a href="/config/" class="breadCrumb">Configuration</a> -> UserGroups</h2>
 <?php
@@ -45,7 +46,7 @@ if ($permission->hasPermission("Config: User Group: Create"))
 <table width="100%" border="0">
 		    <tr>
 		      <td>
-		      <?php echo $orgOrDept;?> : 
+		      <?php echo $orgOrDept;?> :
 		        <?php CreateHiddenField("hideLabel",1);?>
 		        <select id="organizationId" name="organizationId">
 		          <option value="0">All <?php echo $orgOrDept;?>s</option>

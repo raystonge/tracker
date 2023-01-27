@@ -1,8 +1,0 @@
-CREATE TABLE `ticketDependencies` (
-  `ticketDependenciesId` int(11) NOT NULL,
-  `blockId` int(11) DEFAULT NULL,
-  `dependsId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ticketDependenciesId`),
-  KEY `block` (`blockId`),
-  KEY `dep` (`dependsId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1

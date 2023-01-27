@@ -1,3 +1,0 @@
-"ticketToAttachment","int(11)"
-"ticketId","int(11)"
-"attachmentId","int(11)"

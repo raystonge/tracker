@@ -1,6 +1,0 @@
-CREATE TABLE `ticketToInsuranceRepairComplete` (
-  `ticketToInsuranceRepairCompleteId` int(11) NOT NULL AUTO_INCREMENT,
-  `ticketId` int(11) DEFAULT NULL,
-  `insuranceRepairCompleteId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ticketToInsuranceRepairCompleteId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1

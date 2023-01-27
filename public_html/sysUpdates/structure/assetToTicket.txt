@@ -1,3 +1,0 @@
-"assetToTicketId","int(11)"
-"assetId","int(11)"
-"ticketId","varchar(45)"

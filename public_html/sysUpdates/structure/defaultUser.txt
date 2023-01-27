@@ -1,4 +1,0 @@
-"defaultUserId","int(11)"
-"userType","varchar(45)"
-"userId","varchar(45)"
-"queueId","varchar(45)"

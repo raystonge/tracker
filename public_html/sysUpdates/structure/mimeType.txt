@@ -1,4 +1,0 @@
-"mimeTypeId","int(11)"
-"name","varchar(25)"
-"mimeType","varchar(45)"
-"handler","varchar(25)"

@@ -1,4 +1,23 @@
 <?php
+//
+//  Tracker - Version 1.0
+//
+//    Copyright 2012 RaywareSoftware - Raymond St. Onge
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
+?>
+<?php
 class TmpLink
 {
 	var $initialized = 0;
@@ -114,7 +133,7 @@ class TmpLink
 		global $database_cms;
 		mysqli_select_db($link_cms, $database_cms); // Reselect to make sure db is selected
 		$rndString = prepForDB("tmpLink","rndString");
-		$password = prepForDB("tmpLink","rndString");		
+		$password = prepForDB("tmpLink","rndString");
 		$query = "Update tmpLink set rndString='$rndString', userId=$this->userId,password='$password' where tmpLinkId = $this->tmpLinkId";
 		$results = mysqli_query($link_cms,$query);
 		DebugText($query);
@@ -129,7 +148,7 @@ class TmpLink
 		$this->password = $this->generatePassword();
 		$this->rndString = crypt($this->password);
 		$rndString = prepForDB("tmpLink","rndString",$this->rndString);
-		$password = prepForDB("tmpLink","rndString",$this->password);		
+		$password = prepForDB("tmpLink","rndString",$this->password);
 		$query = "Insert into tmpLink (rndString,userId,password) value ('$rndString',$this->userId,'$password')";
 		$results = mysqli_query($link_cms,$query);
 		$this->tmpLinkId = mysqli_insert_id($link_cms);

@@ -1,3 +1,0 @@
-"ticketToInsurancePaymentId","int(11)"
-"ticketId","int(11)"
-"insurancePaymentId","int(11)"

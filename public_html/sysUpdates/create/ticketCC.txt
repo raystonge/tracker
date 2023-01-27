@@ -1,6 +1,0 @@
-CREATE TABLE `ticketCC` (
-  `ticketCCId` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ticketId` int(10) unsigned NOT NULL,
-  `userId` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`ticketCCId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1

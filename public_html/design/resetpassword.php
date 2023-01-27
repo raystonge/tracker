@@ -1,3 +1,22 @@
+<?php
+//
+//  Tracker - Version 1.0
+//
+//    Copyright 2012 RaywareSoftware - Raymond St. Onge
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
+?>
 <script language="javascript" src="/js/validate_form.js"></script>
 <script language="javascript" src="/js/ajax.js"></script>
 
@@ -42,7 +61,7 @@ DebugText("key:".$key);
 if (strlen($key) && strlen($userId))
 {
 	$yesterday = date("Y-m-d H:i:s", time() - 60 * 60 * 24);
-	
+
 	$tmpLink = new TmpLink();
 	$param = AddEscapedParam("","rndString",$key);
 	$param = AddEscapedParam($param,"userId",$userId);
@@ -57,7 +76,7 @@ if (strlen($key) && strlen($userId))
 ?>
 
     <h2 id="post-">Reset Password</h2>
-    <div class="postwrap fix">	
+    <div class="postwrap fix">
 	  <div class="post-8 page type-page hentry" id="post-8">
 		<div class="copy fix">
 		  <div class="textcontent">
@@ -77,9 +96,9 @@ if (strlen($key) && strlen($userId))
               	echo "Password reset is invalid";
               }
               ?>
-			  
+
 			</div>
-          </div>	
+          </div>
 		  <div class="tags">
 					&nbsp;
 		  </div>

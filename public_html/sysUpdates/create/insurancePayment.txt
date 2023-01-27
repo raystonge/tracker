@@ -1,5 +1,0 @@
-CREATE TABLE `insurancePayment` (
-  `insurancePaymentId` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`insurancePaymentId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1

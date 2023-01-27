@@ -1,3 +1,0 @@
-"ticketDependenciesId","int(11)"
-"blockId","int(11)"
-"dependsId","int(11)"

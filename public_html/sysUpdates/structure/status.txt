@@ -1,3 +1,0 @@
-"statusId","int(10) unsigned"
-"name","varchar(45)"
-"sortOn","int(11)"

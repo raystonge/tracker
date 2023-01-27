@@ -1,4 +1,23 @@
-<?php 
+<?php
+//
+//  Tracker - Version 1.0
+//
+//    Copyright 2012 RaywareSoftware - Raymond St. Onge
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
+?>
+<?php
 include_once "tracker/asset.php";
 include_once "tracker/assetType.php";
 include_once "tracker/permission.php";
@@ -9,11 +28,11 @@ $asset = new Asset();
 ?>
 <script type="text/javascript" src="/js/jquery.tablesorter.js"></script>
 <script type="text/javascript">
-$(document).ready(function() 
-    { 
-        $("#myTickets").tablesorter(); 
-    } 
-); 
+$(document).ready(function()
+    {
+        $("#myTickets").tablesorter();
+    }
+);
 </script>
 <div id="widget-boxes-container" class="row-fluid">
 
@@ -90,7 +109,7 @@ $(document).ready(function()
     <?php echo $asset->name;?>
     </td>
     <td>
-    <?php 
+    <?php
     $assetType = new AssetType($asset->assetTypeId);
     echo $assetType->name;
     ?>
@@ -105,7 +124,7 @@ $(document).ready(function()
       <input type="checkbox" name="asset<?php echo $asset->assetId;?>" class="asset"/>
     </td>
     -->
-  </tr>  	
+  </tr>
   	<?php
   	$ok = $asset->Next();
   }

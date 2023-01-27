@@ -1,10 +1,21 @@
 <?php
-/*
- * Created on Jun 27, 2012
- *
- * To change the template for this generated file go to
- * Window - Preferences - PHPeclipse - PHP - Code Templates
- */
+//
+//  Tracker - Version 1.0
+//
+//    Copyright 2012 RaywareSoftware - Raymond St. Onge
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
 ?>
 <?php
 include_once "globals.php";
@@ -85,7 +96,7 @@ $control->SetPage($page);
 			<td class="adminData"><?php echo $control->section;?></td>
 			<td class="adminData"><?php echo $control->key;?></td>
 			<td>
-			<?php 
+			<?php
 			include $sitePath."/design/actions/control.php";
 			echo $htmlAction;
 			?>
@@ -96,11 +107,11 @@ $control->SetPage($page);
 		}
 		?>
 	</table>
-<?php 
+<?php
 //include $sitePath."/design/pagination/lower.php";
 ?>
 <script language="javascript">
     	jQuery("body").removeClass("waitng");
     	jQuery("body").addClass("waitOver");
-</script>    	
+</script>
 <?php DebugOutput();?>

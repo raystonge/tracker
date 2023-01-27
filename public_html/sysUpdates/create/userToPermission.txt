@@ -1,6 +1,0 @@
-CREATE TABLE `userToPermission` (
-  `userToPermissionId` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` int(11) DEFAULT NULL,
-  `permissionId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`userToPermissionId`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1

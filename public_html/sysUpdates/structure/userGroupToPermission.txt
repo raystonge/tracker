@@ -1,3 +1,0 @@
-"userGroupToPermissionId","int(11)"
-"userGroupId","int(11)"
-"permissionId","int(11)"

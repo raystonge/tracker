@@ -1,10 +1,21 @@
 <?php
-/*
- * Created on Jan 29, 2014
- *
- * To change the template for this generated file go to
- * Window - Preferences - PHPeclipse - PHP - Code Templates
- */
+//
+//  Tracker - Version 1.0
+//
+//    Copyright 2012 RaywareSoftware - Raymond St. Onge
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
 ?>
 <?php
 include_once "tracker/status.php";
@@ -16,7 +27,7 @@ include_once "tracker/module.php";
 include_once "tracker/moduleQuery.php";
 include_once "tracker/organization.php";
 $moduleId = GetURI(2,0);
-$module = new Module($moduleId); 
+$module = new Module($moduleId);
 ?>
 <script language="javascript">
 $(document).ready(function () {
@@ -120,7 +131,7 @@ $(document).ready(function () {
     }
   })
 
-});  
+});
 </script>
 <form method="post" action="/process/report/ticket.php" autocomplete="<?php echo $autoComplete;?>">
 Name: <?php CreateTextField("moduleName",$module->name);?>
@@ -192,13 +203,13 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     $values->SetData($moduleQuery->testValue);
     DebugText("fieldTest:".$moduleQuery->fieldTest);
     DebugText("testValue:".$moduleQuery->testValue);
-    ?>    
+    ?>
     Queue:
     </td>
     <td valign="top">
       <select id="queueIdTest" name="queueIdTest">
         	<option value="">Select Test</option>
-        
+
         <option value="=" <?php if ($moduleQuery->fieldTest == "="){echo "selected='selected'";}?>>Equals</option>
         <option value="<>" <?php if ($moduleQuery->fieldTest == "<>"){echo "selected='selected'";}?>>Does not Equal</option>
         <option value="In" <?php if ($moduleQuery->fieldTest == "In"){echo "selected='selected'";}?>>In</option>
@@ -206,7 +217,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     </td>
     <td valign="top">
       <select id="queueId" name="queueId[]" <?php if ($moduleQuery->fieldTest == "In") {echo "multiple='multiple'";};?>>
-        <?php 
+        <?php
         DebugText("test Len:".strlen($moduleQuery->testValue));
         if (strlen($moduleQuery->testValue)==0)
         {
@@ -243,7 +254,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     $values->SetData($moduleQuery->testValue);
     DebugText("fieldTest:".$moduleQuery->fieldTest);
     DebugText("testValue:".$moduleQuery->testValue);
-    ?>    
+    ?>
     Status:
     </td>
     <td valign="top">
@@ -287,7 +298,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     $values->SetData($moduleQuery->testValue);
     DebugText("fieldTest:".$moduleQuery->fieldTest);
     DebugText("testValue:".$moduleQuery->testValue);
-    ?>    
+    ?>
     Priority:
     </td>
     <td valign="top">
@@ -331,7 +342,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     $values->SetData($moduleQuery->testValue);
     DebugText("fieldTest:".$moduleQuery->fieldTest);
     DebugText("testValue:".$moduleQuery->testValue);
-    ?>    
+    ?>
     Requestor:
     </td>
     <td valign="top">
@@ -375,7 +386,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     $values->SetData($moduleQuery->testValue);
     DebugText("fieldTest:".$moduleQuery->fieldTest);
     DebugText("testValue:".$moduleQuery->testValue);
-    ?>    
+    ?>
     Assignee:
     </td>
     <td valign="top">
@@ -405,4 +416,4 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
   </tr>
 </table>
 <?php CreateSubmit();?>
-</form>  
+</form>

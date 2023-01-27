@@ -1,10 +1,21 @@
 <?php
-/*
- * Created on Jan 16, 2014
- *
- * To change the template for this generated file go to
- * Window - Preferences - PHPeclipse - PHP - Code Templates
- */
+//
+//  Tracker - Version 1.0
+//
+//    Copyright 2012 RaywareSoftware - Raymond St. Onge
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
 ?>
 <div class="adminArea">
 <?php
@@ -41,7 +52,7 @@ if (isset($_FILES['importFile']))
 				echo "File is not properly formated";
 				exit();
 			}
-			$fp = fopen($fname,"r"); 
+			$fp = fopen($fname,"r");
 			?>
 			<form method="post" action="/completeAssetImport/">
 			<?php CreateHiddenField("fname",$fname);?>
@@ -59,7 +70,7 @@ if (isset($_FILES['importFile']))
 			      <th>
 			      Model
 			      </th>
-	
+
 			      <th>
 			      Building
 			      </th>
@@ -73,7 +84,7 @@ if (isset($_FILES['importFile']))
 			  <?php
 			   	$delimiter = ",";
 			   	$asset = new Asset();
-			   	
+
 			   	while (($row = fgetcsv($fp, 1000, $delimiter)) !== FALSE)
 			   	{
 			   		$asset->macAddress = $asset->FormatMacAddress(trim($row[1]));
@@ -87,7 +98,7 @@ if (isset($_FILES['importFile']))
 			   		$asset->model = trim($row[5]);
 			   		$asset->modelNumber = trim($row[6]);
 			   		$asset->serialNumber = trim($row[7]);
-			   		
+
 			   		$buildingName = trim($row[8]);
 			   		$building = new Building();
 			   		$param = AddEscapedParam("","name",$buildingName);
@@ -140,7 +151,7 @@ if (isset($_FILES['importFile']))
 			   		}
 			   		if (!$testAsset->assetId && ($cnt < 1000))
 			   		{
-			   			
+
 			   			$disabled = "";
 			   			if (strlen($building->name) && strlen($assetType->name))
 			   			{
@@ -169,7 +180,7 @@ if (isset($_FILES['importFile']))
 			   		     ?>
 			   		   </td>
 			   		   <td width="100px">
-			   		     <?php 
+			   		     <?php
 			   		     if (!strlen($asset->macAddress))
 			   		     {
 			   		     	CreateTextField("macAddress".$cnt);
@@ -217,7 +228,7 @@ if (isset($_FILES['importFile']))
 			   		     	  }
 			   		     	  ?>
 			   		     	</select>
-			   		     	<?php		
+			   		     	<?php
 			   		     }
 			   		     CreateHiddenField("buildingLocation".$cnt,$asset->buildingLocation);
 			   		     ?>
@@ -266,13 +277,13 @@ if (isset($_FILES['importFile']))
 			   		   </td>
 			   		  </tr>
 			   		</tr>
-			   		
-			   		
+
+
 			   		<?php
 			   			}
 			   		}
 			   	}
-			  
+
 			  ?>
 			  </table>
 			  <?php

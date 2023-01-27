@@ -1,10 +1,21 @@
 <?php
-/*
- * Created on Aug 3, 2013
- *
- * To change the template for this generated file go to
- * Window - Preferences - PHPeclipse - PHP - Code Templates
- */
+//
+//  Tracker - Version 1.0
+//
+//    Copyright 2012 RaywareSoftware - Raymond St. Onge
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
 ?>
 <?php
 include_once "globals.php";
@@ -83,7 +94,7 @@ $serialNumber = $asset->serialNumber;
     <?php echo $asset->name;?>
     </td>
     <td>
-    <?php 
+    <?php
     $assetType = new AssetType($asset->assetTypeId);
     echo $assetType->name;
     ?>
@@ -97,13 +108,13 @@ $serialNumber = $asset->serialNumber;
       <?php
       CreateCheckBox("attachedAsset".$asset->assetId,$asset->assetId,"",0,"Click to remove asset","toRemoveAsset");
       ?>
-    </td>    
-  </tr>  	
+    </td>
+  </tr>
   	<?php
   	$ok = $assetToAsset->Next();
   }
   ?>
-  
+
 </table>
 <?php
 if ($showButton)

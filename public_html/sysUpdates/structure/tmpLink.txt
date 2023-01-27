@@ -1,5 +1,0 @@
-"tmpLinkId","int(11)"
-"rndString","varchar(255)"
-"userId","int(11)"
-"password","varchar(255)"
-"ts","timestamp"

@@ -1,8 +1,0 @@
-CREATE TABLE `userGroup` (
-  `userGroupId` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `admin` int(11) DEFAULT NULL,
-  `developer` int(11) DEFAULT NULL,
-  `assignee` int(11) DEFAULT '0',
-  PRIMARY KEY (`userGroupId`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1

@@ -1,6 +1,0 @@
-CREATE TABLE `permission` (
-  `permissionId` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `developer` int(10) unsigned DEFAULT '0',
-  PRIMARY KEY (`permissionId`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1 ROW_FORMAT=FIXED
