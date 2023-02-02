@@ -16,7 +16,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 //
-?><div class="adminArea">
+?>
 <?php
 include_once "tracker/attachment.php";
 include_once "tracker/asset.php";
@@ -34,9 +34,10 @@ include_once "tracker/assetType.php";
 $assetType = new AssetType($asset->assetTypeId);
 include $sitePath."/design/asset/assetInfoHeader.php";
 ?>
-<a href="/process/asset/createTicket.php?assetId=<?php echo $asset->assetId;?>">Create Ticket for Asset</a>
+<div class="adminArea">
+  <a href="/process/asset/createTicket.php?assetId=<?php echo $asset->assetId;?>">Create Ticket for Asset</a>
 
-<div id='main_column'>
+  <div id='main_column'>
 	    <nav id="navigation" role="navigation">
 	      <div class="main-navigation navbar navbar-inverse">
 	        <div class="navbar-inner">

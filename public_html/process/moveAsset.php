@@ -21,7 +21,7 @@
 include_once "globals.php";
 include_once "tracker/asset.php";
 
-//ProperAccessValidate();
+ProperAccessValidate();
 
 $assetId = GetTextField("assetId",0);
 

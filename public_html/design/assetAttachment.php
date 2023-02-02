@@ -21,9 +21,6 @@
 PageAccess("Asset: View Attachments");
 include_once "tracker/assetType.php";
 include_once "tracker/ticket.php";
-?>
-<div class="adminArea">
-<?php
 $assetId = 0;
 if (isset($request_uri[2]))
 {
@@ -37,7 +34,8 @@ $ticket = new Ticket();
 $assetType = new AssetType($asset->assetTypeId);
 include $sitePath."/design/asset/assetInfoHeader.php";
 ?>
-<div id='main_column'>
+<div class="adminArea">
+  <div id='main_column'>
 	    <nav id="navigation" role="navigation">
 	      <div class="main-navigation navbar navbar-inverse">
 	        <div class="navbar-inner">

@@ -25,9 +25,7 @@ if (!$permission->hasPermission("Asset: View Tickets"))
 	include $sitePath."/design/noAccess.php";
 	exit;
 }
-?>
-<div class="adminArea">
-<?php
+
 $ticketId = 0;
 if (isset($request_uri[2]))
 {
@@ -38,8 +36,8 @@ include_once "tracker/ticket.php";
 $ticket = new Ticket($ticketId);
 echo "Ticket: ".$ticket->ticketId." - ".$ticket->subject."<br>";
 ?>
-
-<div id='main_column'>
+<div class="adminArea">
+  <div id='main_column'>
 	    <nav id="navigation" role="navigation">
 	      <div class="main-navigation navbar navbar-inverse">
 	        <div class="navbar-inner">

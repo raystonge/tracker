@@ -175,6 +175,28 @@ var $className="AssetToAsset";
 	 DebugText($query);
 	 DebugText("Error:".mysqli_error($link_cms));
   }
+  function Count($param)
+  {
+   DebugText($this->className."[Count($param)]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $query = "select count(*) as numRows from assetToAsset";
+    if (strlen($param))
+    {
+      $query = $query." where ".$param;
+    }
+    $results = mysqli_query($link_cms,$query);
+    DebugText($query);
+    DebugText("Error:".mysqli_error($link_cms));
+    $numRows = 0;
+    if ($row = mysqli_fetch_array($results))
+    {
+      $numRows = $row['numRows'];
+    }
+    $this->numRows = $numRows;
+    return($numRows);
+  }
   function LicensesInUse($assetId)
   {
 	 DebugText($this->className."[LicensesInUse($assetId)]");

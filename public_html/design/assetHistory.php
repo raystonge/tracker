@@ -17,7 +17,6 @@
 //  limitations under the License.
 //
 ?>
-<div class="adminArea">
 <?php
 $assetId = 0;
 if (isset($request_uri[2]))
@@ -30,7 +29,8 @@ $asset = new Asset($assetId);
 $assetType = new AssetType($asset->assetTypeId);
 include $sitePath."/design/asset/assetInfoHeader.php";
 ?>
-<div id='main_column' class="main-navigation navbar navbar-inverse">
+<div class="adminArea">
+  <div id='main_column' class="main-navigation navbar navbar-inverse">
 	    <nav id="navigation" role="navigation">
 	      <div class="main-navigation navbar navbar-inverse">
 	        <div class="navbar-inner">

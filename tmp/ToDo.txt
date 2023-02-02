@@ -1,7 +1,12 @@
 System Notes
+== 2023-02-02
+ = Version 1.4.4
+   * adding checks to make sure that form processors are not suspect to cross site scripting
+   * fixing nav menu not properly selected
+
 == 2023-01-30
  = Version 1.4.3
-   * addng calls to make sure that form processors are not suspect to cross site sripting
+   * adding calls to make sure that form processors are not suspect to cross site scripting
 
  = Version 1.4.2
    * fixed nav to properly select Reports for leases
@@ -9,6 +14,7 @@ System Notes
    * added breadCrumb to Lease Report
    * created export for Lease report
    * fixed billing report. Somehow, something got pasted to the end of a line
+   * adding counter to nav to show number of accessoriesa
 
 == 2023-01-23
  = Version 1.4.1

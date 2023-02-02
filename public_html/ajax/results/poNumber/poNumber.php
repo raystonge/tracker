@@ -221,9 +221,7 @@ if ($reconciled >= 0)
    <td align="center" width="8%">
      <?php
         CreateCheckBox("reconciled".$poNumber->poNumberId,$poNumber->poNumberId, "",$poNumber->reconciled,"Click to reconcile PO","toReconcilePO");
-
-     //CreateCheckBox("attachedAsset".$asset->assetId,$asset->assetId,"",0,"Click to remove asset","toRemoveAsset");
-     ?>
+      ?>
    </td>
    <?php
      }?>
@@ -236,7 +234,7 @@ if ($reconciled >= 0)
 ?>
 </table>
 <?php
- PrintFormKey("rupdateKey");
+ PrintFormKey( );
  CreateSubmit("Update","Update");?>
 </form>
 <div class='result_bar'>

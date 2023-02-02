@@ -17,7 +17,6 @@
 //  limitations under the License.
 //
 ?>
-<div class="adminArea">
 <?php
 include_once "tracker/asset.php";
 include_once "tracker/assetToAsset.php";
@@ -29,7 +28,8 @@ $asset1 = new Asset($assetToAsset->assetId1);
 $asset2 = new Asset($assetToAsset->assetId2);
 include $sitePath."/design/asset/assetInfoHeader.php";
 ?>
-<div id='main_column'>
+<div class="adminArea">
+  <div id='main_column'>
 	    <nav id="navigation" role="navigation">
 	      <div class="main-navigation navbar navbar-inverse">
 	        <div class="navbar-inner">

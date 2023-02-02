@@ -185,6 +185,7 @@ else
     case "assetCredentials":
     case "editUserCredentials":
     case "newUserCredentials":
+    case "moveAsset":
 		case "historyAsset": $assetClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
 		                     break;
 		case "monitor":

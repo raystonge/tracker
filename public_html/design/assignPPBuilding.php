@@ -34,5 +34,7 @@ PageAccess("Report: Assign Personal Propety Building");
 
 <form method="post" action="/process/asset/assignPPBuilding.php">
   <p>This process CANNOT be undone. Once the update is completed, the current building will be saved so any building changes will be recorded for Personal Property Reports</p>
-  <?php CreateSubmit("submit","Update"); ?>
+  <?php
+  PrintFormKey();
+  CreateSubmit("submit","Update"); ?>
 </form>

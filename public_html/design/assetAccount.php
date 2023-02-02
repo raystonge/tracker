@@ -22,9 +22,7 @@ PageAccess("Asset: Account Info");
 include_once "tracker/assetType.php";
 include_once "tracker/asset.php";
 include_once "tracker/contract.php";
-?>
-<div class="adminArea">
-<?php
+
 $assetId = 0;
 if (isset($request_uri[2]))
 {
@@ -35,7 +33,6 @@ include_once "tracker/assetType.php";
 $asset = new Asset($assetId);
 $assetType = new AssetType($asset->assetTypeId);
 include $sitePath."/design/asset/assetInfoHeader.php";
-
 ?>
 <style>
 .dialog{
@@ -49,7 +46,8 @@ include $sitePath."/design/asset/assetInfoHeader.php";
 <script type="text/javascript">
 $userPassword = "<?php echo $_SESSION['userPassword'];?>";
 </script>
-<div id='main_column'>
+<div class="adminArea">
+  <div id='main_column'>
 	    <nav id="navigation" role="navigation">
 	      <div class="main-navigation navbar navbar-inverse">
 	        <div class="navbar-inner">
@@ -132,5 +130,5 @@ $userPassword = "<?php echo $_SESSION['userPassword'];?>";
          </form>
        </div>
 
-</div>
+  </div>
 </div>

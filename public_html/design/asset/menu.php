@@ -83,6 +83,7 @@ include_once "tracker/attachment.php";
 include_once "tracker/assetToTicket.php";
 include_once "tracker/ticket.php";
 include_once "tracker/specToAssetType.php";
+include_once "tracker/assetToAsset.php";
 include_once "tracker/contract.php";
 $specToAssetType = new SpecToAssetType();
 $param = AddEscapedParam("","assetTypeId",$asset->assetTypeId);
@@ -170,8 +171,12 @@ DebugText("Doing asset SubMenu");
 										DebugText("hasAccessory:".$assetType->hasAccessory);
 	                  if (($assetType->isAccessory || $assetType->hasAccessory) && ($permission->hasPermission("Asset: Edit Accessory") || $permission->hasPermission("Asset: Edit Accessory")))
 	                  {
+											$assetToAsset = new AssetToAsset();
+											$param = AddEscapedParam("","assetId1",$asset->assetId);
+											$param = AddOrEscapedParam($param,"assetId2",$asset->assetId);
+											$assetToAsset->Count($param);
 	                  ?>
-	                  <li id="menu-item-20" class="<?php echo $accessoryClass;?>"><a href='/accessory/<?php echo $assetId;?>/' title='Assign Accessory'><span>Accessory</span></a></li>
+	                  <li id="menu-item-20" class="<?php echo $accessoryClass;?>"><a href='/accessory/<?php echo $assetId;?>/' title='Assign Accessory'><span>Accessory <?php if ($assetToAsset->numRows) { echo "(".$assetToAsset->numRows.")"; } ?></span></a></li>
 	                  <?php
 	                  }
 										DebugText("do spec test");

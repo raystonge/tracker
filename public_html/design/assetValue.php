@@ -17,7 +17,6 @@
 //  limitations under the License.
 //
 ?>
-<div class="adminArea">
 <?php
 include_once "tracker/poNumber.php";
 $assetId = 0;
@@ -40,9 +39,9 @@ if (FormSuccess())
 
 include $sitePath."/design/asset/assetInfoHeader.php";
 ?>
-<div id='main_column'>
-
-	    <nav id="navigation" role="navigation">
+<div class="adminArea">
+  <div id='main_column'>
+    <nav id="navigation" role="navigation">
 	      <div class="main-navigation navbar navbar-inverse">
 	        <div class="navbar-inner">
 	          <div class="container">

@@ -43,21 +43,14 @@ if (isset($request_uri[2]))
 	$assetId = $request_uri[2];
 }
 
-
 $asset = new Asset($assetId);
 $assetType = new AssetType($asset->assetTypeId);
-?>
-<div class="adminArea">
-<!--
-	<h2><a href="/listAssets/" class="breadCrumb">Assets</a> -> New Asset</h2>
--->
-<?php
 
 include $sitePath."/design/asset/assetInfoHeader.php";
 ?>
-<div id='main_column'>
-
-	    <nav id="navigation" role="navigation">
+<div class="adminArea">
+  <div id='main_column'>
+    <nav id="navigation" role="navigation">
 	      <div class="main-navigation navbar navbar-inverse">
 	        <div class="navbar-inner">
 	          <div class="container">

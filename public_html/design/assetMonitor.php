@@ -20,9 +20,7 @@
 <?php
 PageAccess("Asset: Monitor");
 include_once "tracker/assetType.php";
-?>
-<div class="adminArea">
-<?php
+
 $assetId = 0;
 if (isset($request_uri[2]))
 {
@@ -41,7 +39,8 @@ $assetType = new AssetType($asset->assetTypeId);
 include $sitePath."/design/asset/assetInfoHeader.php";
 ?>
 <script language="javascript" src="/ajax/assetMonitor.js"></script>
-<div id='main_column'>
+<div class="adminArea">
+  <div id='main_column'>
 	    <nav id="navigation" role="navigation">
 	      <div class="main-navigation navbar navbar-inverse">
 	        <div class="navbar-inner">
