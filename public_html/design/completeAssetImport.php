@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+// v1.5.0
+//  - added test for active buildings
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -16,7 +19,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 //
-?><div class="adminArea">
+?>
+<div class="adminArea">
 <?php
 include_once "tracker/asset.php";
 include_once "tracker/assetType.php";
@@ -149,7 +153,7 @@ $numItems = GetTextField("cnt",0);
 			   		     	<select name="buildingId<?php echo $cnt;?>">
 			   		     	  <option value="0"><?php echo $buildingName;?></option>
 			   		     	  <?php
-			   		     	  $ok = $building->Get("");
+			   		     	  $ok = $building->Get("active = 1");
 			   		     	  while ($ok)
 			   		     	  {
 			   		     	  	?>

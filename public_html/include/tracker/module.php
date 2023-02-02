@@ -253,18 +253,19 @@ var $className="Module";
   }
   function Update()
   {
-	 DebugText($this->className."[Update]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $name = prepForDB("module","name",$this->name);
-	 $desc = prepForDB("module","name",$this->description);
-	 $queryStr = prepForDB("module","name",$this->query);
-	 $moduleType = prepForDB("module","name",$this->moduleType);
-	 $query = "Update module set name='$name',userId=$this->userId,admin=$this->admin,description='$desc',query='$queryStr',moduleType='$moduleType' where moduleId = $this->moduleId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Update]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $name = prepForDB("module","name",$this->name);
+	  $desc = prepForDB("module","name",$this->description);
+	  $queryStr = prepForDB("module","name",$this->query);
+	  $moduleType = prepForDB("module","name",$this->moduleType);
+	  $query = "Update module set name='$name',userId=$this->userId,admin=$this->admin,description='$desc',query='$queryStr',moduleType='$moduleType' where moduleId = $this->moduleId";
+    echo $query."<br>";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {

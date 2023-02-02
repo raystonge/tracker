@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+//  v1.5.0
+//   - fixing issue with search
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -49,6 +52,7 @@ if (isset($_POST['submitTest']))
 	$queueId = GetTextField("queueId",0);
 	$domain = GetTextField("network");
 	$organizationId = GetTextField("organizationId",0);
+	$active = GetTextField("active",0);
 	if (strlen($name) == 0)
 	{
 		$numErrors++;
@@ -107,6 +111,7 @@ if (isset($_POST['submitTest']))
 		$building->queueId = $queueId;
 		$building->domain = $domain;
 		$building->organizationId = $organizationId;
+		$building->active = $active;
 
 		if ($building->buildingId)
 		{
@@ -125,6 +130,7 @@ if (isset($_POST['submitTest']))
 		$_SESSION['buildingBuildingId'] = $queueId;
 		$_SESSION['buildingDomain'] = $domain;
 		$_SESSION['buildingOrganizationId'] = $organizationId;
+		$_SESSION['buildingActive'] = $active;
 		$_SESSION['formErrors'] = $html;
 		if ($building->buildingId)
 		{

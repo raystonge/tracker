@@ -294,7 +294,7 @@ $(document).ready(function ()
             <option value="0">Select a Building</option>
             <?php
             $building = new Building();
-            $ok = $building->Get("");
+            $ok = $building->Get("active=1");
             while ($ok)
             {
             	$selected = "";

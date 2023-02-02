@@ -71,7 +71,7 @@ if ($permission->hasPermission("Ticket: Add Asset"))
 	    Building:<select name="searchBuildingId">
 	      <option value="0">All</option>
 	      <?php
-	      $param = "organizationId=".$organizationId;
+	      $param = "active = 1 and organizationId=".$organizationId;
 	      $building = new Building();
 	      $ok = $building->Get($param);
 	      while ($ok)

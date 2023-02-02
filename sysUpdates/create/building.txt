@@ -4,5 +4,9 @@ CREATE TABLE `building` (
   `domain` varchar(25) DEFAULT NULL,
   `queueId` int(11) DEFAULT NULL,
   `organizationId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`buildingId`)
+  `active` int(11) DEFAULT NULL,
+  PRIMARY KEY (`buildingId`),
+  KEY `active` (`active`),
+  KEY `organizationId` (`organizationId`),
+  KEY `activeOrganizationId` (`organizationId`,`active`)
 ) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1

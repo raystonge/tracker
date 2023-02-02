@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+// v1.5.0
+//  - added test for active buildings
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -64,7 +67,7 @@ $searchAssetTypeId = GetTextField("searchAssetTypeId",0);
 	      <option value="0">All</option>
 	      <?php
 	      $building = new Building();
-	      $ok = $building->Get("");
+	      $ok = $building->Get("active=1");
 	      while ($ok)
 	      {
 	      	$selected = "";

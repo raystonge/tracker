@@ -1,7 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
 //
+// v1.5.0
+//  - added test for active buildings//
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -476,7 +478,7 @@ function disableWarrantyDate()
             <option value="0">Select a Building</option>
             <?php
             $building = new Building();
-            $param = AddEscapedParam("","organizationId",$asset->organizationId);
+            $param = AddEscapedParam("active = 1","organizationId",$asset->organizationId);
             $ok = $building->Get($param);
             while ($ok)
             {

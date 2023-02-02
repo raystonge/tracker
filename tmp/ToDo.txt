@@ -1,4 +1,10 @@
 System Notes
+== 2023-02-06
+ = Version 1.5.0
+   * mark building as Inactive, remove them from dropdowns
+   * added CSS to hide the border of datepicker
+   * fixed issue on asset search where dropdowns were not updating properly after org change
+
 == 2023-02-02
  = Version 1.4.4
    * adding checks to make sure that form processors are not suspect to cross site scripting
@@ -14,7 +20,7 @@ System Notes
    * added breadCrumb to Lease Report
    * created export for Lease report
    * fixed billing report. Somehow, something got pasted to the end of a line
-   * adding counter to nav to show number of accessoriesa
+   * adding counter to nav to show number of accessories
 
 == 2023-01-23
  = Version 1.4.1

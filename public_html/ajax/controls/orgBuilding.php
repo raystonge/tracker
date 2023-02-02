@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+//  v1.5.0
+//  - added test for active building
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -22,10 +25,10 @@ include_once "globals.php";
 include_once "tracker/building.php";
 include_once "tracker/organization.php";
 $organizationId = GetTextField("organization",GetTextField("searchOrganizationId",0));
-$param = "";
+$param = "active=1";
 if ($organizationId)
 {
-	$param = AddEscapedParam($param,"organizationId",$organizationId);
+	$param = AddEscapedParam("$param","organizationId",$organizationId);
 }
 ?>
 

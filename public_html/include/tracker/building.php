@@ -2,6 +2,9 @@
 //
 //  Tracker - Version 1.0
 //
+// v1.5.0
+//  - added active field
+//
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,14 +50,15 @@ var $className="Building";
   function init()
   {
     $this->buildingId = 0;
-	$this->name = "";
-	$this->domain = "";
-	$this->queueId = 0;
-	$this->organizationId = 0;
-	$this->page = 1;
-	$this->start = 0;
-	$this->perPage = 0;
-	$this->orderBy = "name";
+	  $this->name = "";
+	  $this->domain = "";
+	  $this->queueId = 0;
+  	$this->organizationId = 0;
+    $this->active = 1;
+  	$this->page = 1;
+  	$this->start = 0;
+	  $this->perPage = 0;
+	  $this->orderBy = "name";
   }
   function __construct()
   {
@@ -193,6 +197,7 @@ var $className="Building";
 	    $this->domain = trim(stripslashes($this->row['domain']));
 	    $this->queueId = $this->row['queueId'];
 	    $this->organizationId = $this->row['organizationId'];
+      $this->active = $this->row['active'];
 	 }
 	 else
 	 {
@@ -217,9 +222,9 @@ var $className="Building";
      global $link_cms;
      global $database_cms;
      mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $name = trim(mysqli_real_escape_string($link_cms,$this->name));
-	 $domain = trim(mysqli_real_escape_string($link_cms,$this->domain));
-	 $query = "Update building set name='$name',domain='$domain',queueId=$this->queueId,organizationId=$this->organizationId where buildingId = $this->buildingId";
+	   $name = trim(mysqli_real_escape_string($link_cms,$this->name));
+	   $domain = trim(mysqli_real_escape_string($link_cms,$this->domain));
+	   $query = "Update building set name='$name',domain='$domain',queueId=$this->queueId,organizationId=$this->organizationId,active=$this->active where buildingId = $this->buildingId";
      $results = mysqli_query($link_cms,$query);
 	 DebugText($query);
 	 DebugText("Error:".mysqli_error($link_cms));
@@ -232,7 +237,7 @@ var $className="Building";
      mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
 	 $name = trim(mysqli_real_escape_string($link_cms,$this->name));
 	 $domain = trim(mysqli_real_escape_string($link_cms,$this->domain));
-	 $query = "Insert into building (name,domain,queueId,organizationId) value ('$name','$domain',$this->queueId,$this->organizationId)";
+	 $query = "Insert into building (name,domain,queueId,organizationId,active) value ('$name','$domain',$this->queueId,$this->organizationId,$this->active)";
      $results = mysqli_query($link_cms,$query);
 	 DebugText($query);
 	 DebugText("Error:".mysqli_error($link_cms));

@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+// v1.5.0
+//  - added active checkbox
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -38,6 +41,7 @@ $cnt = 0;
    		$building->queueId = GetTextFromSession("buildingQueueId",0);
    		$building->domain = GetTextFromSession("buildingDomain");
    		$building->organizationId = GetTextFromSession("buildingOrganizationId");
+			$building->active = GetTextFromSession("buildingActive",0);
    		DisplayFormErrors();
     }
     ?>
@@ -93,49 +97,16 @@ $cnt = 0;
       </td>
       <td>
 				<div id="queueResults"></div>
-				<!--
-
- 				<select name="queueId" id="queueId">
-            <option value="0">Select Default Queue</option>
-			<?php
-
-			$param = "";
-			if ($building->queueId)
-			{
-				$param = "buildingId <>".$building->buildingId;
-			}
-			$queues = new Set(",");
-			$buildings = new Building();
-			$ok = $buildings->Get($param);
-			while ($ok)
-			{
-				$queues->Add($buildings->queueId);
-				$ok = $buildings->Next();
-			}
-			$param = "";
-			if ($queues->hasItems())
-			{
-				$param = "queueId not in ($queue->data)";
-			}
-			$queue = new Queue();
-			$ok = $queue->Get("");
-            while ($ok)
-            {
-            	$selected="";
-            	if ($building->queueId ==$queue->queueId)
-            	{
-            		$selected="selected='selected'";
-            	}
-            	?>
-            	<option value="<?php echo $queue->queueId;?>" <?php echo $selected;?>><?php echo $queue->name;?></option>
-            	<?php
-            	$ok = $queue->Next();
-            }
-            ?>
-            </select>
-					-->
       </td>
     </tr>
+		<tr>
+			<td>
+				Active:
+			</td>
+			<td>
+				<?php CreateCheckBox("active",1,"",$building->active);?>
+			</td>
+		</tr>
     <tr>
       <td>&nbsp;
       <input type="hidden" value="<?php echo $cnt;?>" name="cnt">

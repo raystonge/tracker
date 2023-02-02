@@ -3,3 +3,4 @@
 "domain","varchar(25)"
 "queueId","int(11)"
 "organizationId","int(11)"
+"active","int(11)"

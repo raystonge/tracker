@@ -101,7 +101,7 @@ if (isset($_FILES['importFile']))
 
 			   		$buildingName = trim($row[8]);
 			   		$building = new Building();
-			   		$param = AddEscapedParam("","name",$buildingName);
+			   		$param = AddEscapedParam("active = 1","name",$buildingName);
 			   		$asset->buildingId = $building->Get($param);
 			   		$type = trim($row[9]);
 			   		if ($type == "desktop" || $type=="Desktop")
@@ -218,7 +218,7 @@ if (isset($_FILES['importFile']))
 			   		     	<select name="buildingId<?php echo $cnt;?>">
 			   		     	  <option value="0"><?php echo $buildingName;?></option>
 			   		     	  <?php
-			   		     	  $ok = $building->Get("");
+			   		     	  $ok = $building->Get("active = 1");
 			   		     	  while ($ok)
 			   		     	  {
 			   		     	  	?>

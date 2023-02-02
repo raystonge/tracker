@@ -331,7 +331,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
         	<?php
         }
         $building = new Building();
-        $ok = $building->Get("");
+        $ok = $building->Get("active = 1");
         while ($ok)
         {
         	$selected = "";

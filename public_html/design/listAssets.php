@@ -1,7 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
 //
+//  v1.5.0
+//   - fixing issue with search//
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -117,7 +119,7 @@ if (!is_numeric($page))
 		      </td>
 		      <td>
 		        <?php CreateHiddenField("hideLabel",1);?>
-		        <select id="searchOrganizationId" name="searchOrganizationId">
+		        <select id="organizationId" name="organizationId">
 		          <option value="0">All <?php echo $orgOrDept;?></option>
 		          <?php
 		          $param = "organizationId in (".GetMyOrganizations().") and active=1";

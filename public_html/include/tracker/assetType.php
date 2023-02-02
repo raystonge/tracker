@@ -232,6 +232,10 @@ var $className="AssetType";
       $this->enforceCost = fixFlag($this->row['enforceCost']);
       $this->personalProperty = fixFlag($this->row['personalProperty']);
       $this->depreciationSchedule = fixFlag($this->row['depreciationSchedule']);
+      if (!strlen($this->depreciationSchedule))
+      {
+        $this->depreciationSchedule =0;
+      }
       $this->noSerialNumber = fixFlag($this->row['noSerialNumber']);
       if (!strlen($this->noSerialNumber))
       {

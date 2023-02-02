@@ -1,7 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
 //
+//  v1.5.0
+//   - fixing issue with search//
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,6 +24,7 @@ include_once "globals.php";
 include_once "tracker/assetType.php";
 include_once "tracker/organization.php";
 $organizationId = GetTextField("organization",GetTextFromSession("searchAssetOrganizationId",0,0));
+$organizationId = GetTextField("organizationId",$organizationId);
 $searchAssetTypeId = GetTextFromSession("searchAssetType",0,0);
 $param = "";
 if ($organizationId)

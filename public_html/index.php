@@ -109,6 +109,9 @@ include "pageStart.php";
         .container {
        /* max-width: 1020px; */
       }
+      .ui-widget.ui-widget-content{
+        border-color: white;
+      }
     </style>
     <?php
 $jqueryFile = $sitePath."/ajax/".$firstDir.".js";

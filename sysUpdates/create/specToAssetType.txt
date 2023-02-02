@@ -4,4 +4,4 @@ CREATE TABLE `specToAssetType` (
   `assetTypeId` int(11) DEFAULT NULL,
   `displayOrder` int(11) DEFAULT NULL,
   PRIMARY KEY (`specToAssetTypeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1

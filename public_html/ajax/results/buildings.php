@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+// v1.5.0
+//  - added test for active buildings
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -28,7 +31,7 @@ $building = new Building();
 $building->SetPerPage(25);
 $user = new User($_SESSION['userId']);
 
-$param = "";
+$param = "active = 1";
 $sectionName = "";
 $organizationId = 0;
 /*

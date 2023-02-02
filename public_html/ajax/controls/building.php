@@ -2,6 +2,8 @@
 //
 //  Tracker - Version 1.0
 //
+//  v1.5.0
+//   - fixing issue with search//
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +25,7 @@ include_once "tracker/building.php";
 include_once "tracker/organization.php";
 $organizationId = GetTextField("organizationId",GetTextFromSession("searchAssetOrganizationId",0,0));
 $searchBuildingId = GetTextField("searchBuildingId",GetTextFromSession("searchBuildingId",0,0));
-$param = "";
+$param = "active = 1";
 if ($organizationId)
 {
 	$param = AddEscapedParam($param,"organizationId",$organizationId);

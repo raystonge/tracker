@@ -11,7 +11,7 @@ $(document).ready(function () {
 
    $(document).on('click','#reset',function()
     {
-     $("#searchOrganizationId").val(0);
+     $("#organizationId").val(0);
      $("#searchConditionId").val(0);
      $("#searchSerialNumber").val("");
      $("#searchAssetTag").val("");
@@ -19,7 +19,7 @@ $(document).ready(function () {
      $("#searchName").val("");
      $("#searchEmployeeName").val("");
      $("#searchMake").val("");
-     $( "#searchOrganizationId").change();
+     $( "#organizationId").change();
     });
 
     $("#search").click(function () {
@@ -99,7 +99,7 @@ $(document).ready(function () {
     	});
     	*/
     }
-    $( "#searchOrganizationId").change(function() {
+    $( "#organizationId").change(function() {
         link = "/ajax/controls/building.php";
         var formData = $(":input").serializeArray();
         $.post(link, formData, function (theResponse) {
@@ -120,7 +120,7 @@ $(document).ready(function () {
         });
 
     });
-    $("#searchOrganizationId").change();
+    $("#organizationId").change();
 	 $('#searchMake').autocomplete({minLength:1,
 	      source: function (request, response) {
 

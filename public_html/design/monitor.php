@@ -49,7 +49,7 @@ $formKey = getAJAXFormKey();
      <option value="0">All</option>
      <?php
      $building = new Building();
-     $param = "organizationId in (".GetMyOrganizations().")";
+     $param = "actvive = 1 and organizationId in (".GetMyOrganizations().")";
 
      $ok = $building->Get($param);
      while ($ok)

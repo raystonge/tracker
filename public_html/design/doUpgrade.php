@@ -77,7 +77,7 @@ if ($dh = opendir($dir))
 	UpdateAssetConditions();
 	UpdateValidCondition();
 	UpdateAssetTypes();
-	UpdateModules();
+	//UpdateModules();
 	foreach($fileList as &$file)
 	{
 		PostUpgrade($file);

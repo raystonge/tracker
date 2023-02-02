@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+// v1.5.0
+//  - added test for active buildings
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -227,7 +230,7 @@ $(document).ready(function ()
             <option value="--do_not_change--">--do_not_change--</option>
             <?php
             $building = new Building();
-            $ok = $building->Get("");
+            $ok = $building->Get("active = 1");
             while ($ok)
             {
             	$selected = "";
