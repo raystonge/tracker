@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+//  v1.5.0
+//   - cleaning up appears of checkbox
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -61,7 +64,7 @@ $userGroup = new UserGroup($userGroupId);
     	}
     	?>
     	<td>
-    	  <input type="checkbox" name="<?php echo $field;?>" <?php echo $checked;?> value="1"><?php echo $permission->name;?>
+    	  <input type="checkbox" name="<?php echo $field;?>" <?php echo $checked;?> value="1">&nbsp;<?php echo $permission->name;?>
     	</td>
     	<?php
     	$cnt++;
