@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+//  v1.5.0
+//   - relaced each() with legacy_each()
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -136,7 +139,7 @@ while ($ticketIds->GetIndex() >=0)
 			array_push($historyArray,$historyVal);
 			$ticketCC = new TicketCC();
 			$ticketCC->Reset($ticket->ticketId);
-			while (list ($key, $cc) = each ($ccs))
+			while (list ($key, $cc) = legacy_each ($ccs))
 			{
 			    $ticketCC->ticketId = $ticket->ticketId;
 				$ticketCC->userId=$cc;

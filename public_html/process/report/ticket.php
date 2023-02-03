@@ -1,6 +1,10 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+//  v1.5.0
+//   - relaced each() with legacy_each()
+
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -45,7 +49,7 @@ foreach ($_POST as $key=>$value)
 			if (is_array($_POST[$testValue]))
 			{
 			  @$testValues = $_POST[$testValue];
-			  while (list ($key, $val) = each ($testValues))
+			  while (list ($key, $val) = legacy_each ($testValues))
 			  {
 			  	$values->Add($val);
 			  }

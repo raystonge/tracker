@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+//  v1.5.0
+//   - relaced each() with legacy_each()
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -97,7 +100,7 @@ if (isset($_POST['submitTest']))
 		$userToGroup->Reset();
 		if ($userGroups)
 		{
-			while (list ($key, $group) = each ($userGroups))
+			while (list ($key, $group) = legacy_each ($userGroups))
 			{
 				$userToGroup->userGroupId=$group;
 				$userToGroup->Insert();
@@ -114,7 +117,7 @@ if (isset($_POST['submitTest']))
 		$userToOrganization->Reset();
 		if ($userOrganizations)
 		{
-			while (list ($key, $organization) = each ($userOrganizations))
+			while (list ($key, $organization) = legacy_each ($userOrganizations))
 			{
 				$userToOrganization->organizationId=$organization;
 				$userToOrganization->Insert();

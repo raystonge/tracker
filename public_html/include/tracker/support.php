@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+//  v1.5.0
+//   - add function legacy_each to replace each() which was removed from PHP 8.0
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -1019,5 +1022,18 @@ function DatePickerUnFormatter($date)
   list ($month,$day,$year) = explode("-",$date);
   $newDate = $year."-".$month."-".$day;
   return $newDate;
+}
+
+function legacy_each($array){
+    $key = key($array);
+    $value = current($array);
+    $each = is_null($key) ? false : [
+        1        => $value,
+        'value'    => $value,
+        0        => $key,
+        'key'    => $key,
+    ];
+    next($array);
+    return $each;
 }
 ?>
