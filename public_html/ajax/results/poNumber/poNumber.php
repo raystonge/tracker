@@ -139,7 +139,6 @@ if ($reconciled >= 0)
     <th>
     Received
     </th>
-
     <?php
     if ($permission->hasPermission("poNumber: Reconcile"))
     {
@@ -152,7 +151,6 @@ if ($reconciled >= 0)
     ?>
     <th>
     &nbsp;
-
   </tr>
 <?php
   $ok = $poNumber->Search($param);
@@ -181,10 +179,8 @@ if ($reconciled >= 0)
         	{
         		echo $poNumber->poNumber;
         	}
-
         }
 	    ?>
-
     </td>
     <td>
       <?php echo $poNumber->description;?>
@@ -199,11 +195,11 @@ if ($reconciled >= 0)
      <?php echo $poNumber->cost;?>
    </td>
 
-   <td>
+   <td >
    <?php
    if (strlen($poNumber->receivedDate))
    {
-     echo $poNumber->receivedDate;
+     echo substr($poNumber->receivedDate,0,10);
    }
    else
    {
@@ -214,17 +210,25 @@ if ($reconciled >= 0)
    }
    ?>
    </td>
-   <?php
-     if ($poNumber->received && $permission->hasPermission("poNumber: Edit: PO Reconcile"))
-     {
-     ?>
-   <td align="center" width="8%">
-     <?php
+	 	 <td>
+	 <?php
+
+	 DebugText("reconciledDateTime:".$poNumber->reconciledDateTime);
+
+   if (strlen($poNumber->reconciled))
+   {
+     echo substr($poNumber->reconciledDateTime,0,10);
+   }
+   else
+   {
+		 if ($permission->hasPermission("poNumber: Edit: PO Reconcile"))
+		 {
         CreateCheckBox("reconciled".$poNumber->poNumberId,$poNumber->poNumberId, "",$poNumber->reconciled,"Click to reconcile PO","toReconcilePO");
-      ?>
-   </td>
-   <?php
-     }?>
+		 }
+   }
+   ?>
+ </td>
+
    <td>
    &nbsp;
    </td>

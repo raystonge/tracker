@@ -273,7 +273,7 @@ var $className="poNumber";
   	 $poType = prepForDB("poNumber","poType",$this->poType);
      $vendorOrderID = prepForDB("poNumber","vendorOrderID",$this->vendorOrderID);
      $vendor = prepForDB("poNumber","vendor",$this->vendor);
-	   $query = "Update poNumber set poNumber='$poNumber', description='$desc',poDate='$poDate', poType='$poType',organizationId=$this->organizationId,cost='$this->cost', receivedDate='$poReceivedDate', receivedUserId = $this->receivedUserId, vendorOrderID='$vendorOrderID', vendor='$vendor', received=$this->received where poNumberId = $this->poNumberId";
+	   $query = "Update poNumber set poNumber='$poNumber', description='$desc',poDate='$poDate', poType='$poType',organizationId=$this->organizationId,cost='$this->cost', receivedDate='$poReceivedDate', receivedUserId = $this->receivedUserId, vendorOrderID='$vendorOrderID', vendor='$vendor', received=$this->received, reconciled=$this->reconciled, reconciledUserId=$this->reconciledUserId,reconciledDateTime='$this->reconciledDateTime' where poNumberId = $this->poNumberId";
      $results = mysqli_query($link_cms,$query);
 	   DebugText($query);
 	   DebugText("Error:".mysqli_error($link_cms));

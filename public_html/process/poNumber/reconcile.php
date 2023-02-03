@@ -23,7 +23,7 @@ include_once "tracker/poNumber.php";
 include_once "tracker/user.php";
 include_once "tracker/history.php";
 $poNumber = new poNumber();
-ProperAccessValidate("rupdateKey");
+ProperAccessValidate();
 $param = "reconciled=0 or reconciled is null";
 $ok = $poNumber->Get($param);
 while ($ok)

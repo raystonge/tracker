@@ -4,6 +4,7 @@ System Notes
    * mark building as Inactive, remove them from dropdowns
    * added CSS to hide the border of datepicker
    * fixed issue on asset search where dropdowns were not updating properly after org change
+   * fixed issue where reconciled for po was not updating properly
 
 == 2023-02-02
  = Version 1.4.4
