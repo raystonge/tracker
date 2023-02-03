@@ -47,7 +47,7 @@ $searchSerialNumber = GetTextField("searchSerialNumber");
 $searchName = GetTextField("searchName");
 $searchpoNumberId = GetTextField("searchpoNumberId",GetTextField("poNumberId",0));
 $searchEmployeeName = GetTextField("searchEmployeeName");
-$searchOrganizationId = GetTextField("searchOrganizationId");
+$searchOrganizationId = GetTextField("organizationId");
 $searchMake = GetTextField("searchMake");
 if (strlen($searchAssetTag))
 {
