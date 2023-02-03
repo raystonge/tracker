@@ -6,6 +6,8 @@ System Notes
    * fixed issue on asset search where dropdowns were not updating properly after org change
    * fixed issue where reconciled for po was not updating properly
    * replaced each() with foreach() for PHP 8.0
+   * fixed issues where contract view was not working.
+   * fixed issues where asset view was not working properly
 
 == 2023-02-02
  = Version 1.4.4

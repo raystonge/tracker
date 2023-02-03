@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+//  v1.5.0
+//   - updated the nav for new pages
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -249,7 +252,7 @@ else
     case "contractAttachment" :
     case "listContracts":
 		case "contractDeleteAttachment":
-    case "contractHistory" :   
+    case "contractHistory" :
                                $contractClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
                                break;
 
