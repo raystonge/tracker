@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+// v1.5.0
+//  - fixed issue for reconciling po
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -213,15 +216,19 @@ if ($reconciled >= 0)
 	 	 <td>
 	 <?php
 
+   DebugText("reconciled:".$poNumber->poNumberId.":".$poNumber->reconciled);
 	 DebugText("reconciledDateTime:".$poNumber->reconciledDateTime);
 
-   if (strlen($poNumber->reconciled))
+
+   if ($poNumber->reconciled)
    {
+		 DebugText("po is reconciled");
      echo substr($poNumber->reconciledDateTime,0,10);
    }
    else
    {
-		 if ($permission->hasPermission("poNumber: Edit: PO Reconcile"))
+		 DebugText("po is not reconciled");
+		 if ($permission->hasPermission("poNumber: Edit: PO Reconcile") && strlen($poNumber->receivedDate))
 		 {
         CreateCheckBox("reconciled".$poNumber->poNumberId,$poNumber->poNumberId, "",$poNumber->reconciled,"Click to reconcile PO","toReconcilePO");
 		 }
