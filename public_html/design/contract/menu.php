@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+//  v1.5.0
+//   - set formating for viewContract and contractView
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -25,7 +28,7 @@ $assetClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $insuranceClass = "menu-item menu-item-type-custom menu-item-object-custom";
 
 $historyClass = "menu-item menu-item-type-custom menu-item-object-custom";
-if ($request_uri[1] == "contractEdit")
+if ($request_uri[1] == "contractEdit" || $request_uri[1] == "contractView" || $request_uri[1] == "viewContract")
 {
 	$contractClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-20 active";
 }

@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+//  v1.5.0
+//   - added code to handle edit vs view
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -495,7 +498,21 @@ $(document).ready(function ()
           </tr>
 					<tr>
 						<td>
-							Lease: <?php CreateCheckBox("isLease",1,"",$contract->isLease);?>
+							Lease: <?php
+							        if ($permission->hasPermission("Contract: Edit"))
+											{
+												CreateCheckBox("isLease",1,"",$contract->isLease);
+											}
+											else {
+												if ($contract->isLease)
+												{
+													echo "Yes";
+												}
+												else {
+													echo "No";
+												}
+											}
+											?>
 						</td>
 					</tr>
         </table>
@@ -667,11 +684,15 @@ $(document).ready(function ()
 	CreateHiddenField("type","contract");
   //CreateHiddenField("poNumberId",$contract->poNumberId);
   ?>
-<br>				<input type="hidden" name="formKey" value="<?php echo $formKey;?>"/>
-                <input type="hidden" name="submitTest" value="1"/>
-
-				<input type="submit" name="Submit" value="<?php echo $button;?>" /></td>
-
+<br>
+ <?php
+	 PrintFormKey();
+	 CreateHiddenField("submitTest",1);
+	 if ($permission->hasPermission("Asset: Edit Spec"))
+	 {
+		 CreateSubmit("submit",$button);
+	 }
+ ?>
 	</form>
 
 

@@ -81,9 +81,19 @@ if (FormSuccess())
 			<?php
 			if ($asset->contractId)
 			{
+				if ($permission->hasPermission("Contract: Edit"))
+				{
 				?>
 				<a href="/contractEdit/<?php echo $asset->contractId;?>">View Contract</a>
 				<?php
+			  }
+				if ($permission->hasPermission("Contract: View"))
+				{
+				?>
+				<a href="/contractView/<?php echo $asset->contractId;?>">View Contract</a>
+				<?php
+			  }
+
 			}
 			 ?>
     </td>

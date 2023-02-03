@@ -56,15 +56,33 @@ if (FormSuccess())
 			</td>
 			<td>
 				<?php
-				if ($spec->dataType == "text")
+				if ($permission->hasPermission("Asset: Edit Spec"))
 				{
-					CreateTextField("specId".$spec->specId,$assetToSpec->specValue);
+					if ($spec->dataType == "text")
+				  {
+						CreateTextField("specId".$spec->specId,$assetToSpec->specValue);
+				  }
+				  else
+				  {
+						CreateCheckBox("specId".$spec->specId,1,"",$assetToSpec->specValue);
+					}
 				}
 				else
 				{
-
-					CreateCheckBox("specId".$spec->specId,1,"",$assetToSpec->specValue);
-					//function CreateCheckBox($name,$val,$dspVal="",$checked=0,$title="",$class="",$js="")
+					if ($spec->dataType == "text")
+				  {
+						echo $assetToSpec->specValue;
+				  }
+				  else
+				  {
+						if ($assetToSpec->specValue)
+						{
+							echo "Yes";
+						}
+						else {
+							echo "No";
+						}
+					}
 				}
 				?>
 			</td>
@@ -79,7 +97,7 @@ if (FormSuccess())
 PrintFormKey();
 CreateHiddenField("submitText",1);
 CreateHiddenField("assetId",$asset->assetId);
-if (!$asset->isEwasted())
+if (!$asset->isEwasted() && $permission->hasPermission("Asset: Edit Spec"))
 {
   CreateSubmit("Submit","Submit");
 }

@@ -243,11 +243,13 @@ else
     case "listContracts" :
     case "contractNew" :
     case "contractEdit" :
+    case "contractView" :
+    case "viewContract" :
     case "contractAssets" :
     case "contractAttachment" :
     case "listContracts":
 		case "contractDeleteAttachment":
-    case "contractHistory" :
+    case "contractHistory" :   
                                $contractClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
                                break;
 

@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.0
+//
+//  v1.5.0
+//   - set nav for contracts
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -44,6 +47,10 @@ if ($request_uri[1] == "assetCredentials" || $request_uri[1] == "editUserCredent
 if ($request_uri[1] == "assetTickets")
 {
 	$ticketClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-20 active";
+}
+if ($request_uri[1] == "assetContract")
+{
+	$contractClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-20 active";
 }
 if ($request_uri[1] == "assetSpecs")
 {
