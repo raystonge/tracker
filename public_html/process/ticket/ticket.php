@@ -3,7 +3,7 @@
 //  Tracker - Version 1.5.0
 //
 //  v1.5.0
-//   - relaced each() with legacy_each()
+//   - relaced each() with foreach()
 
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
@@ -500,7 +500,7 @@ if (isset($_POST['submitTest']))
 			{
 				$ticketCC = new TicketCC();
 				$ticketCC->Reset($ticket->ticketId);
-				while (list ($key, $cc) = legacy_each ($ccs))
+				foreach ($ccs as $cc)
 				{
 					$ticketCC->ticketId = $ticket->ticketId;
 					$ticketCC->userId=$cc;

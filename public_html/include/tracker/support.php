@@ -1024,16 +1024,11 @@ function DatePickerUnFormatter($date)
   return $newDate;
 }
 
-function legacy_each($array){
-    $key = key($array);
-    $value = current($array);
-    $each = is_null($key) ? false : [
-        1        => $value,
-        'value'    => $value,
-        0        => $key,
-        'key'    => $key,
-    ];
-    next($array);
-    return $each;
+function legacy_each($arr) {
+      $key = key($arr);
+      $result = ($key === null) ? false : [$key, current($arr), 'key' => $key, 'value' => current($arr)];
+      next($arr);
+      return $result;
+  
 }
 ?>
