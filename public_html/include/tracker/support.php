@@ -1,6 +1,10 @@
 <?php
 //
-//  Tracker - Version 1.5.0
+//  Tracker - Version 1.5.1
+//
+//  v1.5.1
+//   -the code in legacy_each is not compatible with older versions of PHP,
+//    since it is not being used, it was Removed
 //
 //  v1.5.0
 //   - add function legacy_each to replace each() which was removed from PHP 8.0
@@ -1022,13 +1026,5 @@ function DatePickerUnFormatter($date)
   list ($month,$day,$year) = explode("-",$date);
   $newDate = $year."-".$month."-".$day;
   return $newDate;
-}
-
-function legacy_each($arr) {
-      $key = key($arr);
-      $result = ($key === null) ? false : [$key, current($arr), 'key' => $key, 'value' => current($arr)];
-      next($arr);
-      return $result;
-  
 }
 ?>
