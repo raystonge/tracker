@@ -1,6 +1,6 @@
 <?php
 //
-//  Tracker - Version 1.4.0
+//  Tracker - Version 1.5.2
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -74,7 +74,7 @@ while ($ok)
   $assetType = new AssetType($asset->assetTypeId);
   $building = new Building($asset->buildingId);
   $assetCondition = new AssetCondition($asset->assetConditionId);
-  $parm = AddEscapedParam("","poNumberId",$asset->poNumberId);
+  $param = AddEscapedParam("","poNumberId",$asset->poNumberId);
   $contract->Get($param);
 
 	$line = $asset->assetTag.",".$asset->serialNumber.",".$assetType->name.",".$asset->make.",".$asset->model.",".$asset->purchasePrice.",".$building->name.",".$asset->employeeName.",".$asset->vendor.",".$asset->aquireDate.",".$contract->name.",".$contract->expireDate."\n";
@@ -84,6 +84,7 @@ while ($ok)
 $filename="contract-".$name.".csv";
 header('Content-Type: application/csv');
 header('Content-Disposition: attachment; filename="'.$filename.'"');
-echo $data; exit();
+echo $data;
 //DebugOutput();
+exit();
 ?>
