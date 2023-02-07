@@ -1,9 +1,10 @@
 <strong>System Notes</strong>
-== 2023-02-13
+
+== 2023-02-07
  = Version 1.5.2
    * Fixed js on listAssets to reset other fields properly
    * Fixed error in leaseReportExport
-   
+
 == 2023-02-06
  = Version 1.5.1
    * removed the code for legacy_each since it is not being used
