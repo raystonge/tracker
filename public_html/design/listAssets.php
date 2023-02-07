@@ -258,7 +258,9 @@ if (!is_numeric($page))
 				<td>&nbsp;
 				<input type="hidden" name="formKey" value="<?php echo $formKey;?>"/>
 				<input type="hidden" name="page" id="page" value="<?php echo $page;?>">
-				<?php CreateHiddenField("type","asset");?>
+				<?php CreateHiddenField("type","asset");
+				CreateHiddenField("reset",0);
+				?>
 				</td>
 				<td><input id="search" type="button" name="Submit" value="Submit" />
 				&nbsp;

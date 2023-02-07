@@ -19,7 +19,11 @@ $(document).ready(function () {
      $("#searchName").val("");
      $("#searchEmployeeName").val("");
      $("#searchMake").val("");
-     $( "#organizationId").change();
+		 $("#searchBuildingId").val(0);
+		 $("#reset").val(1);
+     $("#organizationId").change();
+		  $("#reset").val(0);		 
+
     });
 
     $("#search").click(function () {

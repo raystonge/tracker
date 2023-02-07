@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.5.2
+//
+//  v1.5.2
+//   - fixed for Reset button is hit
 //
 //  v1.5.0
 //   - fixing issue with search//
@@ -25,6 +28,12 @@ include_once "tracker/building.php";
 include_once "tracker/organization.php";
 $organizationId = GetTextField("organizationId",GetTextFromSession("searchAssetOrganizationId",0,0));
 $searchBuildingId = GetTextField("searchBuildingId",GetTextFromSession("searchBuildingId",0,0));
+$reset = GetTextField("reset",0);
+if ($reset)
+{
+	$organizationId = 0;
+	$searchBuildingId = 0;
+}
 $param = "active = 1";
 if ($organizationId)
 {
