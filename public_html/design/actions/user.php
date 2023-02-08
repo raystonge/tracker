@@ -48,6 +48,14 @@ if ($permission->hasPermission("Config: User: Permissions"))
 	}
 	$htmlAction=$htmlAction.' href="/editUserPermission/'.$user->userId. '/"><img alt="Permissions" src="/images/icons/list_security.gif"></a>';
 }
+
+$htmlAction=$htmlAction.'<a href="/assignService/'.$user->userId.'/" class="assign_service" ';
+if ($showMouseOvers)
+{
+	$htmlAction = $htmlAction.' title="Assign Service"';
+}
+$htmlAction=$htmlAction.' alt="Assign"><img src="/images/icons/icon_settings.gif"></a>';
+
 if ($permission->hasPermission("Config: User: Delete"))
 {
 	$htmlAction = $htmlAction.'<a href="/deleteUser/'.$user->userId. '/"  class="delete_user"';

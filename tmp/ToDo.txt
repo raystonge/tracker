@@ -1,4 +1,7 @@
 <strong>System Notes</strong>
+== 2023-02-13
+ = Version 1.6.0
+   * Added ability to enter services and assign users to them
 
 == 2023-02-07
  = Version 1.5.2

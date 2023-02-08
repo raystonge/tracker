@@ -42,6 +42,14 @@
 	                      <?php
                           }
                           ?>
+													<?php
+													if ($permission->hasPermission("Config: Service"))
+													{
+														?>
+													<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="/listServices/">Services</a></li>
+												<?php
+													}
+													?>
                           <?php
                           if ($permission->hasPermission("Config: Building"))
                           {

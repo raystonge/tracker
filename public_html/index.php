@@ -1,7 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.5.0
+//  Tracker - Version 1.6.0
 //
+//  v1.6.0
+//   - updated nav for service pages
 //  v1.5.0
 //   - updated the nav for new pages
 //
@@ -230,6 +232,10 @@ else
 		case "newUserGroup":
 		case "editUserGroup":
 		case "editUserGroupPermission":
+    case "listServices" :
+    case "newService" :
+    case "editService" :
+    case "assignService" :
 		case "exportStructure":
 		case "upgrade":
 		case "doUpgrade":
