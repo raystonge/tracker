@@ -19,12 +19,12 @@
 ?>
 <?php
 include_once "tracker/permission.php";
-include_once "tracker/assetType.php";
+include_once "tracker/service.php";
 $button = "Create";
 $formKey = "";
-PageAccess("Config: AssetType Edit");
-$assetTypeId = GetURI(2,0);
-$assetType = new AssetType($assetTypeId);
+PageAccess("Config: Service");
+$serviceId = GetURI(2,0);
+$service = new Service($serviceId);
 $formKey = "";
 if (isset($_POST['formKey']))
 {
@@ -34,10 +34,10 @@ else
 {
 	$formKey = getFormKey();
 }
-if ($assetType->assetTypeId)
+if ($service->serviceId)
 {
 	$button = "Update";
 }
 
-include $sitePath."/design/editors/assetType.php";
+include $sitePath."/design/editors/service.php";
 ?>

@@ -19,16 +19,16 @@
 ?>
 <?php
 include_once "globals.php";
+include_once "tracker/service.php";
+include_once "tracker/userToService.php";
 include_once "tracker/user.php";
-include_once "tracker/defaultUser.php";
-include_once "tracker/organization.php";
 $editingUserGroup = 0;
 $errorMsg = "";
 $numErrors = 0;
 $cnt = 0;
 ?>
 <div class="adminArea">
-	<h2><a href="/config/" class="breadCrumb">Configuration</a> -> <a href="/listAssetType/">Asset Types</a></h2>
+	<h2><a href="/config/" class="breadCrumb">Configuration</a> -> <a href="/listServices/">Services</a></h2>
     <?php
     if (FormErrors())
     {
@@ -61,4 +61,47 @@ $cnt = 0;
     </tr>
   </table>
 </form>
+<?php
+if ($serviceId)
+{
+	?>
+<table width="100%">
+	<th>
+		User
+	</th>
+	<th>
+		Admin Access
+	</th>
+	<?php
+	$userToService = new UserToService();
+	$param = AddEscapedParam("","serviceId",$serviceId);
+	$ok = $userToService->Get($param);
+	while ($ok)
+	{
+		$user = new User($userToService->userId);
+		?>
+		<tr>
+		<td>
+			<?php echo $user->fullName;?>
+		</td>
+		<td>
+		<?php
+		 if ($userToService->adminAccess)
+		 {
+			 echo "Yes";
+		 }
+		 else {
+		 	echo "No";
+		 }
+		 ?>
+	 </td>
+ </tr>
+	 <?php
+		$ok = $userToService->Next();
+	}
+	?>
+</table>
+<?php
+}
+ ?>
 </div>
