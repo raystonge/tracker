@@ -4,4 +4,4 @@ CREATE TABLE `userGroupToPermission` (
   `permissionId` int(11) DEFAULT NULL,
   `organizationId` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`userGroupToPermissionId`)
-) ENGINE=MyISAM AUTO_INCREMENT=8009 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=8700 DEFAULT CHARSET=latin1

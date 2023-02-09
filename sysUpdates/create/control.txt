@@ -10,4 +10,4 @@ CREATE TABLE `control` (
   PRIMARY KEY (`controlId`) USING BTREE,
   KEY `section` (`sectionValue`),
   KEY `section_key` (`sectionValue`,`keyValue`)
-) ENGINE=MyISAM AUTO_INCREMENT=368 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=369 DEFAULT CHARSET=latin1

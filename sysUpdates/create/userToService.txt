@@ -1,0 +1,9 @@
+CREATE TABLE `userToService` (
+  `userToServiceId` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) DEFAULT NULL,
+  `serviceId` int(11) DEFAULT NULL,
+  `adminAccess` int(11) DEFAULT NULL,
+  PRIMARY KEY (`userToServiceId`),
+  KEY `service` (`serviceId`),
+  KEY `userId` (`userId`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1

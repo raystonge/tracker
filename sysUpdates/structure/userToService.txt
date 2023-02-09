@@ -1,0 +1,4 @@
+"userToServiceId","int(11)"
+"userId","int(11)"
+"serviceId","int(11)"
+"adminAccess","int(11)"
