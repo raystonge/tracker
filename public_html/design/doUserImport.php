@@ -127,7 +127,7 @@ if (is_uploaded_file($fname))
           }
           else
           {
-            if ($user->userId && $blocked == "True")
+            if ($user->userId && $blocked == "True" && $user->active)
             {
               ?>
               <tr>

@@ -225,6 +225,8 @@ else
 		case "newStatus":
 		case "editStatus":
 		case "listUsers":
+    case "doUserImport":
+    case "importUsers";
 		case "newUser":
 		case "editUser":
 		case "editUserPermission":
