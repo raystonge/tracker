@@ -2,6 +2,7 @@
 == 2023-02-13
  = Version 1.6.0
    * Added ability to enter services and assign users to them
+   * Added ability to import users from Office 365 export file
 
 == 2023-02-07
  = Version 1.5.2

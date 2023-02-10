@@ -1,6 +1,6 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.6.0
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -41,7 +41,16 @@ $searchActive = GetTextField("searchActive",GetTextFromSession("searchActive",1)
 if ($permission->hasPermission("Config: User: Create"))
 {
 ?>
-<a id="newUser" href="/newUser/" class="addLink" <?php if ($showMouseOvers) {echo 'title="Create new User"';}?>>New User</a><br/>
+<table width='100%'>
+	<tr>
+		<td>
+     <a id="newUser" href="/newUser/" class="addLink" <?php if ($showMouseOvers) {echo 'title="Create new User"';}?>>New User</a>
+	 </td>
+	 <td>
+		 <a id="importUsers" href="/importUsers/" class="addLink" <?php if ($showMouseOvers) {echo 'title="Import Users"';}?>>Import Users</a>
+	 </td>
+ </tr>
+</table>
 <?php
 }
 ?>

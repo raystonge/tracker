@@ -86,14 +86,14 @@ var $className = "User";
   	$this->password = "";
   	$this->email ="";
   	$this->fullName ="";
-    $this->lastLogin="";
+    $this->lastLogin="0000-00-00 00:00:00";
     $this->initials="";
     $this->active = 1;
     $this->emailMessage = "";
     $this->snsTopic = "";
-	$this->page = 1;
-	$this->start = 0;
-	$this->perPage = 0;
+	  $this->page = 1;
+	  $this->start = 0;
+	  $this->perPage = 0;
   }
   function doQuery($query)
   {
@@ -391,7 +391,10 @@ var $className = "User";
 	 $initials = prepForDB("users","initials",trim($this->initials));
 	 $emailMessage = prepForDB("users","emailMessage",$this->emailMessage);
 	 $snsTopic = prepForDB("users", "snsTopic", trim($this->snsTopic));
-
+   if (!strlen(trim($this->lastLogin)))
+   {
+     $this->lastLogin = "0000-00-00 00:00:00";
+   }
 	 $query = "update users set fullName='$fullName',email='$email', lastLogin='$this->lastLogin',  active=$this->active,initials='$initials',emailMessage='$emailMessage', snsTopic='$snsTopic' where userId=$this->userId";
      $results = mysqli_query($link_cms,$query);
 	 DebugText($query);
