@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.3.0
+//  Tracker - Version 1.6.0
+//
+//  v1.6.0
+//   - removed check for cross site scripting. PageAccess will also limit access
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -28,7 +31,6 @@ include_once "tracker/assetCondition.php";
 include_once "tracker/set.php";
 
 PageAccess("Report: Billing");
-ProperAccessValidate();
 $organizationId =0;
 if (isset($request_uri[2]))
 {
