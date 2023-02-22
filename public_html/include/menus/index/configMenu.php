@@ -75,7 +75,7 @@
                           }
                           ?>
 													<?php
-                          if ($permission->hasPermission("Config: Specs"))
+                          if ($permission->hasPermission("Config: Spec"))
                           {
                           	?>
 	                        <li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="/listSpecs/">Specs</a></li>
