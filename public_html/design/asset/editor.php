@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.5.0
+//  Tracker - Version 1.7.0
+//
+// v1.7.0
+//  - added depreciation value and date
 //
 // v1.5.0
 //  - added test for active buildings//
@@ -590,7 +593,7 @@ function disableWarrantyDate()
 			  </td>
 			</tr>
       <?php
-      if ($permission->hasPermission("Asset: Edit: Price"))
+      if ($permission->hasPermission("Asset: Edit: Price") || $permission->hasPermission("Asset: Edit: Depreciation Value"))
       {
         ?>
         <tr>
@@ -608,7 +611,35 @@ function disableWarrantyDate()
              ?>
           </td>
           <td>
+            Asset Value after depreciation:
+            <?php
+            if (!$asset->assetId || $permission->hasPermission("Asset: Edit: Depreciation Value"))
+            {
+              CreateTextField("depreciationValue",$asset->depreciationValue,getFieldSize("asset","depreciationValue"),"Value of the Asset after depreciation");
+            }
+            else {
+              echo $asset->depreciationValue;
+              CreateHiddenField("cost",$asset->depreciationValue);
+            }
+             ?>
+          </td>
+        </tr>
+        <tr>
+          <td>
             &nbsp;
+          </td>
+          <td>
+            Depreciation Date:
+            <?php
+            if ($permission->hasPermission("Asset: Edit: Depreciation Value"))
+            {
+              CreateDatePicker("depreciationDate",$asset->depreciationDate);
+            }
+            else
+            {
+              echo $asset->depreciationDate;
+            }
+            ?>
           </td>
         </tr>
         <?php

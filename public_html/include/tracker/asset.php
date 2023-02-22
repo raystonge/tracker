@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.0
+//
+//  v1.7.0
+//   - added depreciationDate and depreciationValue
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -61,6 +64,8 @@ var $ewastedDate;
 var $leased;
 var $startingBuildingIdPP;
 var $contractId;
+var $depreciationValue;
+var $depreciationDate;
 
 
 var $orderBy;
@@ -110,6 +115,8 @@ function init()
   $this->leased = 0;
   $this->startingBuildingIdPP = 0;
   $this->contractId = 0;
+  $this->depreciationDate = "";
+  $this->depreciationValue = "";
 
 	$this->page = 1;
 	$this->start = 0;
@@ -322,6 +329,13 @@ function init()
       {
         $this->contractId = 0;
       }
+      $this->depreciationDate = $this->row['depreciationDate'];
+      $this->depreciationDate = substr($this->depreciationDate,0,10);
+      if ($this->depreciationDate == "0000-00-00")
+      {
+        $this->depreciationDate = "";
+      }
+      $this->depreciationValue = $this->row['depreciationValue'];
 	 }
 	 else
 	 {
@@ -382,8 +396,9 @@ function init()
     $sold = prepForDB("asset", "sold", $this->sold);
     $expireDate = prepForDB("asset","expireDate",$this->expireDate);
     $ewastedDate = prepForDB("asset","ewastedDate",$this->ewastedDate);
+    $depreciationDate = prepForDB("asset","depreciationDate",$this->depreciationDate);
 
-    $query = "Update asset set name='$name',numOfLicenses=$this->numOfLicenses,buildingLocation='$buildingLocation',poNumberId='$poNumberId',assetTag = '$assetTag', employeeName='$employeeName', assetConditionId=$this->assetConditionId,assetTypeId=$this->assetTypeId,buildingId=$this->buildingId,macAddress='$macAddress',serialNumber='$serialNumber',assetConditionId=$this->assetConditionId,make='$make',model='$model',modelNumber='$modelNumber',vendor='$vendor',aquireDate='$aquireDate',warrantyDate='$warrantyDate',expireDate='$expireDate',organizationId=$this->organizationId, adminUser=encode('$adminUser','tracker'),adminPassword=encode('$adminPassword','tracker'), taxable=$taxable,purchasePrice='$purchasePrice',sold=$sold,soldPrice='$soldPrice',soldDate='$soldDate',soldTo='$soldTo', expireDate='$expireDate', leased=$this->leased, ewastedDate='$ewastedDate', contractId=$this->contractId where assetId = $this->assetId";
+    $query = "Update asset set name='$name',numOfLicenses=$this->numOfLicenses,buildingLocation='$buildingLocation',poNumberId='$poNumberId',assetTag = '$assetTag', employeeName='$employeeName', assetConditionId=$this->assetConditionId,assetTypeId=$this->assetTypeId,buildingId=$this->buildingId,macAddress='$macAddress',serialNumber='$serialNumber',assetConditionId=$this->assetConditionId,make='$make',model='$model',modelNumber='$modelNumber',vendor='$vendor',aquireDate='$aquireDate',warrantyDate='$warrantyDate',expireDate='$expireDate',organizationId=$this->organizationId, adminUser=encode('$adminUser','tracker'),adminPassword=encode('$adminPassword','tracker'), taxable=$taxable,purchasePrice='$purchasePrice',sold=$sold,soldPrice='$soldPrice',soldDate='$soldDate',soldTo='$soldTo', expireDate='$expireDate', leased=$this->leased, ewastedDate='$ewastedDate', contractId=$this->contractId, depreciationDate='$depreciationDate', depreciationValue='$this->depreciationValue' where assetId = $this->assetId";
     $results = mysqli_query($link_cms,$query);
 	  DebugText($query);
     DebugText("Error:".mysqli_error($link_cms));
@@ -425,8 +440,9 @@ function init()
     $adminUser = prepForDB("asset","adminUser", $this->adminUser);
     $adminPassword = prepForDB("asset","adminPassword", $this->adminPassword);
     $this->startingBuildingIdPP = $this->buildingId;
+    $depreciationDate = prepForDB("asset","depreciationDate",$this->depreciationDate);
 
-	  $query = "Insert into asset (name,serialNumber,macAddress,buildingId,assetTypeId,assetConditionId,employeeName,make,model,modelNumber,vendor,aquireDate,creatorId,createDate,assetTag,poNumberId,buildingLocation,warrantyDate,numOfLicenses,expireDate,organizationId,purchasePrice,sold,soldPrice,soldDate,soldTo,adminUser,adminPassword,taxable,leased,startingBuildingIdPP,contractId) value ('$name','$serialNumber','$macAddress',$this->buildingId,$this->assetTypeId,$this->assetConditionId,'$employeeName','$make','$model','$modelNumber','$vendor','$aquireDate',$this->creatorId,'$today','$assetTag','$poNumberId','$buildingLocation','$warrantyDate',$this->numOfLicenses,'$expireDate',$this->organizationId,'$purchasePrice',$this->sold,'$soldPrice','$soldDate','$soldTo','$adminUser','$adminPassword',$this->taxable,$this->leased,$this->startingBuildingIdPP,$this->contractId)";
+	  $query = "Insert into asset (name,serialNumber,macAddress,buildingId,assetTypeId,assetConditionId,employeeName,make,model,modelNumber,vendor,aquireDate,creatorId,createDate,assetTag,poNumberId,buildingLocation,warrantyDate,numOfLicenses,expireDate,organizationId,purchasePrice,sold,soldPrice,soldDate,soldTo,adminUser,adminPassword,taxable,leased,startingBuildingIdPP,contractId, depreciationDate,depreciationValue) value ('$name','$serialNumber','$macAddress',$this->buildingId,$this->assetTypeId,$this->assetConditionId,'$employeeName','$make','$model','$modelNumber','$vendor','$aquireDate',$this->creatorId,'$today','$assetTag','$poNumberId','$buildingLocation','$warrantyDate',$this->numOfLicenses,'$expireDate',$this->organizationId,'$purchasePrice',$this->sold,'$soldPrice','$soldDate','$soldTo','$adminUser','$adminPassword',$this->taxable,$this->leased,$this->startingBuildingIdPP,$this->contractId,'$depreciationDate','$this->depreciationValue')";
     $results = mysqli_query($link_cms,$query);
 	  DebugText($query);
 	  DebugText("Error:".mysqli_error($link_cms));

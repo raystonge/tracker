@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.0
+//
+//  v1.7.0
+//   - added depreciation date and value
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -49,6 +52,10 @@ $_SESSION['assetNumOfLicenses'] = "";
 $_SESSION['assetExpireDate'] = "";
 $_SESSION['assetWarrantyDate'] = "";
 $_SESSION['assetOrganizationId'] = 0;
+$_SESSION['assetDepreciationValue'] = 0;
+$_SESSION['assetDepreciationDate'] = 0;
+$_SESSION['assetCost'] = 0;
+
 ProperAccessValidate();
 if (isset($_POST['submitTest']))
 {
@@ -107,6 +114,8 @@ if (isset($_POST['submitTest']))
 	$expireDate = GetDateField("expireDate");
 	$warrantyDate = DatePickerUnFormatter(GetDateField("warrantyDate"));
 	$enableWarrantyDate = GetTextField("enableWarranty",0);
+	$depreciationDate = DatePickerUnFormatter(GetDateField("depreciationDate"));
+	$depreciationValue = GetTextField("depreciationValue",0);
 	$cost = GetTextField("cost",0);
 	if ($asset->assetId && (strlen($assetTag)==0))
 	{
@@ -438,12 +447,34 @@ if (isset($_POST['submitTest']))
 	    	array_push($historyArray,$historyVal);
 	    }
 		}
-
+		if ($asset->depreciationDate != $depreciationDate)
+		{
+			$old = $asset->depreciationDate;
+			$asset->depreciationDate = $depreciationDate;
+	    $historyVal = CreateHistory($action,"Depreciation Date", $old,$depreciationDate);
+	    DebugText("history:".$historyVal);
+	    if (strlen($historyVal))
+	    {
+	    	array_push($historyArray,$historyVal);
+	    }
+		}
+		if ($asset->depreciationValue != $depreciationValue)
+		{
+			$old = $asset->depreciationValue;
+			$asset->depreciationValue = $depreciationValue;
+			$historyVal = CreateHistory($action,"Depreciation value", $old,$depreciationValue);
+			DebugText("history:".$historyVal);
+			if (strlen($historyVal))
+			{
+				array_push($historyArray,$historyVal);
+			}
+		}
     $contract = new Contract();
 		$param = AddEscapedParam("isLease=1","poNumberId",$asset->poNumberId);
 		$contract->Get($param);
 		$asset->contractId = $contract->contractId;
 		$asset->leased = $contract->isLease;
+
 		if ($asset->assetId)
 		{
 			$asset->Update();
@@ -538,6 +569,9 @@ if (isset($_POST['submitTest']))
 		$_SESSION['assetEmployeeName'] = $employeeName;
 		$_SESSION['assetName'] = $name;
 		$_SESSION['assetOrganizationId'] = $organizationId;
+		$_SESSION['assetCost'] = $cost;
+		$_SESSION['assetDepreciationValue'] = $depreciationValue;
+		$_SESSION['assetDepreciationDate'] = $depreciationDate;
 		if ($asset->assetId)
 		{
 			DebugPause("/assetEdit/$asset->assetId/");

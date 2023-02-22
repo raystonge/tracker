@@ -36,5 +36,7 @@ CREATE TABLE `asset` (
   `moveDate` date DEFAULT NULL,
   `startingBuildingIdPP` int(11) DEFAULT NULL,
   `contractId` int(11) DEFAULT NULL,
+  `depreciationValue` varchar(45) DEFAULT NULL,
+  `depreciationDate` date DEFAULT NULL,
   PRIMARY KEY (`assetId`)
-) ENGINE=MyISAM AUTO_INCREMENT=509 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=510 DEFAULT CHARSET=latin1

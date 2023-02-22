@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.0
+//
+//  v1.7.0
+//   - Cross site scripting check was not allowing redirecting to the next page
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -21,7 +24,6 @@
 include_once "globals.php";
 include_once "tracker/asset.php";
 
-ProperAccessValidate();
 $param = "";
 $asset = new Asset();
 $assets = new Set(",");

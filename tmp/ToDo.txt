@@ -1,4 +1,9 @@
 <strong>System Notes</strong>
+== 2023-02-21
+ = Version 1.7.0
+   * adding depreciation information to assets
+   * fixed issue with form security on eWaste
+
 == 2023-02-13
  = Version 1.6.0
    * Added ability to enter services and assign users to them

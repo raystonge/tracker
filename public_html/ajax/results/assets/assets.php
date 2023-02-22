@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.0
+//
+//  v1.7.0
+//   - No longer shows check box is the asset is eWasted Disposed
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -286,7 +289,7 @@ $asset->SetPage($page);
     </td>
     <td>
     <?php
-    if ($permission->hasPermission("Asset: Jumbo"))
+    if ($permission->hasPermission("Asset: Jumbo") && $asset->assetConditionId !=8)
     {
     	?>
       <input type="checkbox" name="asset<?php echo $asset->assetId;?>" class="asset"/>

@@ -1,6 +1,6 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.0
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -139,6 +139,7 @@ if ($showButton)
     <tr>
       <td>
         <input type="submit" value="eWaste" name="ewaste" id="ewaste"/>
+        <?php PrintFormKey(); ?>
       </td>
       <td align="right">
         <input type="button" value="Select All" name="addSelectAll" id="addSelectAll" />

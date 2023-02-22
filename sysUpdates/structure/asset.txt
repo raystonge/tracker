@@ -35,3 +35,5 @@
 "moveDate","date"
 "startingBuildingIdPP","int(11)"
 "contractId","int(11)"
+"depreciationValue","varchar(45)"
+"depreciationDate","date"
