@@ -3,6 +3,7 @@
  = Version 1.7.0
    * adding depreciation information to assets
    * fixed issue with form security on eWaste
+   * fixed poNumberView
 
 == 2023-02-13
  = Version 1.6.0
