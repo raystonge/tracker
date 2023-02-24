@@ -246,6 +246,7 @@ else
 		case "poNumberEdit" :
 		case "poNumberNew" :
 		case "listpoNumber" :
+    case "poNumberView" :
 		case "poNumberAssets" :
 		case "poNumberAttachment" :
 		case "poNumberHistory" :

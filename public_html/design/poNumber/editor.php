@@ -76,8 +76,10 @@ DebugText("po date:".$poNumber->poDate);
 	<form method="post" autocomplete="<?php echo $autoComplete;?>"  action="/process/poNumber/poNumber.php">
 	   <table>
     <?php
-    if ($permission->hasPermission("Contract: Edit: Organization") || $permission->hasPermission("Contract: View: Organization"))
+    if ($permission->hasPermission("poNumber: Edit: Organization") || $permission->hasPermission("poNumber: View: Organization"))
     {
+      DebugText("Display organization");
+      DebugText("orgorDept:".$orgOrDept);
     	?>
     <tr>
       <td>
@@ -85,7 +87,7 @@ DebugText("po date:".$poNumber->poDate);
       </td>
       <td>
         <?php
-        if ($permission->hasPermission("Contract: Edit: Organization"))
+        if ($permission->hasPermission("poNumber: Edit: Organization"))
         {
         	?>
         	<select name="organizationId">
@@ -116,7 +118,7 @@ DebugText("po date:".$poNumber->poDate);
         }
         else
         {
-        	$organization = new Organization($contract->organizationId);
+        	$organization = new Organization($poNumber->organizationId);
         	echo $organization->name;
         }
         ?>
@@ -186,8 +188,17 @@ DebugText("po date:".$poNumber->poDate);
 	     {
 	     	if ($permission->hasPermission("poNumber: View: PO Vendor"))
 	     	{
-	     		echo $poNumber->vendor;
-	     		CreateHiddenField("vendor",$poNumber->vendor);
+          ?>
+         <tr>
+           <td>
+           Vendor:
+           </td>
+           <td>
+             <?php echo $poNumber->vendor;
+	     		CreateHiddenField("vendor",$poNumber->vendor);?>
+        </td>
+      </tr>
+      <?php
 	     	}
 	     	CreateHiddenField("vendor",$poNumber->vendor);
 	     }
@@ -198,7 +209,7 @@ DebugText("po date:".$poNumber->poDate);
 	     	?>
 	     <tr>
 	       <td>
-	       Vendor Order ID:
+	       Vendor Order Id:
 	       </td>
 	       <td>
 	         <?php CreateTextField("vendorOrderID",$poNumber->vendorOrderID,getFieldSize("poNumber","vendorOrderID"),"Vendor Order ID for the PO");?>
@@ -210,10 +221,21 @@ DebugText("po date:".$poNumber->poDate);
 	     {
 	     	if ($permission->hasPermission("poNumber: View: PO Vendor Order ID"))
 	     	{
+          ?>
+          <tr>
+            <td>
+              Vendor Order Id:
+            <td>
+            <td>
+            <?php
 	     		echo $poNumber->vendorOrderID;
-	     		CreateHiddenField("vendor",$poNumber->vendorOrderID);
+	     		CreateHiddenField("vendorOrderID",$poNumber->vendorOrderID);
+          ?>
+        </td>
+      </tr>
+      <?php
 	     	}
-	     	CreateHiddenField("vendor",$poNumber->vendorOrderID);
+	     	CreateHiddenField("vendorOrderID",$poNumber->vendorOrderID);
 	     }
 	     ?>
 
@@ -323,8 +345,17 @@ DebugText("po date:".$poNumber->poDate);
 	     {
 	     	if ($permission->hasPermission("poNumber: View: PO Desc"))
 	     	{
-	     		echo $poNumber->description;
-	     		CreateHiddenField("description",$poNumber->description);
+          ?>
+         <tr>
+           <td>
+           Description:
+           </td>
+           <td>
+             <?php echo $poNumber->description;
+	     		CreateHiddenField("description",$poNumber->description);?>
+        </td>
+      </tr>
+      <?php
 	     	}
 	     	CreateHiddenField("description",$poNumber->description);
 	     }
@@ -347,7 +378,16 @@ DebugText("po date:".$poNumber->poDate);
 	     {
 	     	if ($permission->hasPermission("poNumber: View: PO Cost"))
 	     	{
-	     		echo $poNumber->cost;
+          ?>
+         <tr>
+           <td>
+           Cost:
+           </td>
+           <td>
+             <?php echo $poNumber->cost;?>
+  	       </td>
+  	     </tr>
+  	     <?php
 
 	     	}
 	     	CreateHiddenField("cost",$poNumber->cost);
@@ -403,14 +443,25 @@ DebugText("po date:".$poNumber->poDate);
 	     {
 	     	if ($poNumber->poNumberId && $permission->hasPermission("poNumber: View: PO Received"))
 	     	{
-	     		if ($poNumber->reconciled)
+          ?>
+          <tr>
+            <td>
+              Recieved:
+            </td>
+            <td>
+          <?php
+	     		if ($poNumber->received)
 	     		{
-	     			echo "Reconciled";
+	     			echo "Received";
 	     		}
 	     		else
 	     		{
-	     			echo "Not reconciled";
+	     			echo "Not Received";
 	     		}
+          ?>
+        </td>
+      </tr>
+      <?php
 	     	}
 	     	CreateHiddenField("reconciled",$poNumber->received);
 	     }

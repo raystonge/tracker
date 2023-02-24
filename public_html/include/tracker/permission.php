@@ -336,6 +336,7 @@ var $className="Permission";
   	//DebugText("numrows:".mysqli_num_rows($results));
   	if (mysqli_num_rows($results))
   	{
+      DebugText($action." has permission");
   		return (1);
   	}
   	$query = "Select * from permission p inner join userToPermission up on p.permissionId=up.permissionId";
@@ -353,9 +354,10 @@ var $className="Permission";
   	DebugText("numrows:".mysqli_num_rows($results));
   	if (mysqli_num_rows($results))
   	{
+      DebugText($action." has permission");
   		return (1);
   	}
-
+    DebugText($action." has no permission");
   	return (0);
 
   }

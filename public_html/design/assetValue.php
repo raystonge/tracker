@@ -269,7 +269,8 @@ include $sitePath."/design/asset/assetInfoHeader.php";
           <?php
           if ($permission->hasPermission("Asset: Edit: Sold Date"))
           {
-          	CreateDateField("soldDate",$asset->soldDate);
+          	//CreateDateField("soldDate",$asset->soldDate);
+						CreateDatePicker("soldDate",$asset->soldDate);
           }
           else
           {

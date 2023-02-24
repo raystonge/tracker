@@ -206,7 +206,7 @@ if ($reconciled >= 0)
    }
    else
    {
-		 if ($permission->hasPermission("poNumber: Edit: PO Recieve"))
+		 if ($permission->hasPermission("poNumber: Edit: PO Recieved"))
 		 {
         CreateCheckBox("received".$poNumber->poNumberId,$poNumber->poNumberId, "",0,"Click to Receive PO","toReceivePO");
 		 }
