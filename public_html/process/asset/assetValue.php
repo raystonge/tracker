@@ -35,12 +35,13 @@ if (isset($_POST['submitTest']))
 	$asset->poNumberId = GetTextField("poNumberId",0);
 	$asset->vendor = GetTextField("vendor");
 	$asset->taxable = GetTextField("taxable",0);
-	$asset->sold = GetTextField("sold",0);
+	$asset->sold = GetTextField("Sold",0);
 	if ($asset->sold)
 	{
 		$asset->soldPrice = GetTextField("soldPrice","0.00");
 		$asset->soldDate = GetTextField("soldDate","0000-00-00");
 		$asset->soldTo = GetTextField("soldTo");
+		$asset->soldDate = DatePickerUnFormatter($asset->soldDate);
 	}
 	else
 	{

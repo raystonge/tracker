@@ -160,7 +160,7 @@ include $sitePath."/design/asset/assetInfoHeader.php";
           <?php
           if ($permission->hasPermission("Asset: Edit: Taxable"))
           {
-          	CreateCheckBox("taxable", $asset->taxable);
+          	CreateCheckBox("taxable", 1,"",$asset->taxable);
           }
           else
           {
@@ -191,7 +191,7 @@ include $sitePath."/design/asset/assetInfoHeader.php";
           <?php
           if ($permission->hasPermission("Asset: Edit: Sold"))
           {
-          	CreateCheckBox("Sold", $asset->sold);
+          	CreateCheckBox("Sold", 1,"",$asset->sold);
           }
           else
           {
@@ -222,7 +222,7 @@ include $sitePath."/design/asset/assetInfoHeader.php";
           <?php
           if ($permission->hasPermission("Asset: Edit: Sold TO"))
           {
-          	CreateTextField("Sold", $asset->soldTo);
+          	CreateTextField("soldTo", $asset->soldTo);
           }
           else
           {
