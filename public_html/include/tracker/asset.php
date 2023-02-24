@@ -399,7 +399,7 @@ function init()
     $depreciationDate = prepForDB("asset","depreciationDate",$this->depreciationDate);
 
     $query = "Update asset set name='$name',numOfLicenses=$this->numOfLicenses,buildingLocation='$buildingLocation',poNumberId='$poNumberId',assetTag = '$assetTag', employeeName='$employeeName', assetConditionId=$this->assetConditionId,assetTypeId=$this->assetTypeId,buildingId=$this->buildingId,macAddress='$macAddress',serialNumber='$serialNumber',assetConditionId=$this->assetConditionId,make='$make',model='$model',modelNumber='$modelNumber',vendor='$vendor',aquireDate='$aquireDate',warrantyDate='$warrantyDate',expireDate='$expireDate',organizationId=$this->organizationId, adminUser=encode('$adminUser','tracker'),adminPassword=encode('$adminPassword','tracker'), taxable=$taxable,purchasePrice='$purchasePrice',sold=$this->sold,soldPrice='$soldPrice',soldDate='$soldDate',soldTo='$soldTo', expireDate='$expireDate', leased=$this->leased, ewastedDate='$ewastedDate', contractId=$this->contractId, depreciationDate='$depreciationDate', depreciationValue='$this->depreciationValue' where assetId = $this->assetId";
-    echo $query."<br>";
+
     $results = mysqli_query($link_cms,$query);
 	  DebugText($query);
     DebugText("Error:".mysqli_error($link_cms));
