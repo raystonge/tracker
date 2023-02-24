@@ -4,6 +4,8 @@
    * adding depreciation information to assets
    * fixed issue with form security on eWaste
    * fixed poNumberView
+   * fixed error when updating assetType
+   * fixed permission on displaying contract list and editing lease
 
 == 2023-02-13
  = Version 1.6.0

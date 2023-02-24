@@ -20,7 +20,7 @@
 <?php
 include_once "tracker/contract.php";
 include_once "tracker/permission.php";
-PageAccess("Config: Contract");
+PageAccess("Contract: List");
 $contract = new Contract();
 $formKey = "";
 if (isset($_POST['formKey']))

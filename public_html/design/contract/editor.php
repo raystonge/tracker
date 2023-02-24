@@ -499,7 +499,7 @@ $(document).ready(function ()
 					<tr>
 						<td>
 							Lease: <?php
-							        if ($permission->hasPermission("Contract: Edit"))
+							        if ($permission->hasPermission("Contract: Edit: Lease"))
 											{
 												CreateCheckBox("isLease",1,"",$contract->isLease);
 											}
