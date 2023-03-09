@@ -273,7 +273,6 @@ var $className="AssetType";
        $monitor = 1;
      }
 	   $query = "Update assetType set name='$name',hasContract=$this->hasContract,requireMacAddress=$this->requireMacAddress,monitor=$monitor,hasMacAddress = $this->hasMacAddress, organizationId = $this->organizationId, monitorType ='$monitorType', hasAccessory=$this->hasAccessory,isAccessory=$this->isAccessory,hasUserPassword=$this->hasUserPassword, hasConstantMonitorDown=$this->hasConstantMonitorDown, hasUserCredentials=$this->hasUserCredentials, hasSpecs=$this->hasSpecs, enforceCost=$this->enforceCost, personalProperty=$this->personalProperty, depreciationSchedule=$this->depreciationSchedule,noSerialNumber=$this->noSerialNumber where assetTypeId = $this->assetTypeId";
-     echo $query."<br>";
      $results = mysqli_query($link_cms,$query);
 	   DebugText($query);
 	   DebugText("Error:".mysqli_error($link_cms));
