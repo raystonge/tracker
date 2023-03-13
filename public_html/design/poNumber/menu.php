@@ -23,7 +23,7 @@ $attachmentClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $assetClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $insuranceClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $historyClass = "menu-item menu-item-type-custom menu-item-object-custom";
-if ($request_uri[1] == "poNumberEdit")
+if ($request_uri[1] == "poNumberEdit" || $request_uri[1] == "poNumberView")
 {
 	$poNumberClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-20 active";
 }
