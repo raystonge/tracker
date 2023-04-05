@@ -234,7 +234,7 @@ if (!is_numeric($page))
 			  <td>
 			  Name:
 			  </td>
-			  <td><input id="searchName" type="text" name="searchName" value="<?php echo $searchName;?>"/>
+			  <td><?php CreateTextField("searchName",$searchName,getFieldSize("asset","name"));?>
 			  </td>
 				<td>
 				Employee Name
@@ -256,9 +256,10 @@ if (!is_numeric($page))
 			</tr>
 			<tr>
 				<td>&nbsp;
-				<input type="hidden" name="formKey" value="<?php echo $formKey;?>"/>
-				<input type="hidden" name="page" id="page" value="<?php echo $page;?>">
-				<?php CreateHiddenField("type","asset");
+				<?php
+				CreateHiddenField("formKey",$formKey);
+				CreateHiddenField("page",$page);
+				CreateHiddenField("type","asset");
 				CreateHiddenField("reset",0);
 				?>
 				</td>
