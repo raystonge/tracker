@@ -234,7 +234,7 @@ if (!is_numeric($page))
 			  <td>
 			  Name:
 			  </td>
-			  <td><input type="text" name="searchName" value="<?php echo $searchName;?>"/>
+			  <td><input id="searchName" type="text" name="searchName" value="<?php echo $searchName;?>"/>
 			  </td>
 				<td>
 				Employee Name

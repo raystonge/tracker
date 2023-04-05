@@ -1,11 +1,12 @@
 <strong>System Notes</strong>
-== 2023-03-13
+== 2023-04-05
  = Version 1.7.0
    * adding depreciation information to assets
    * fixed issue with form security on eWaste
    * fixed poNumberView
    * fixed error when updating assetType
    * fixed permission on displaying contract list and editing lease
+   * fixed issue where name was not reset on asset search
 
 == 2023-02-13
  = Version 1.6.0
