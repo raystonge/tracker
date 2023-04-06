@@ -1,7 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.5.1
+//  Tracker - Version 1.7.0
 //
+//  v1.7.0
+//   - add a test for the depreciated each function
 //  v1.5.1
 //   -the code in legacy_each is not compatible with older versions of PHP,
 //    since it is not being used, it was Removed

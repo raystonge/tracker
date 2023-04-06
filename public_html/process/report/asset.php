@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.0
+//
+//  v1.7.0
+//   - fix for test when the result was an array
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //

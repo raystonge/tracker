@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.0
+//
+//  v1.7.0
+//   - added ability to search on expireDate
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //

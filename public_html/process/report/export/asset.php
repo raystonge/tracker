@@ -1,6 +1,6 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.0
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -96,8 +96,8 @@ while ($ok)
 	$reportData = $reportData.'"'.$asset->expireDate.'",';
 	$reportData = $reportData.'"'.$asset->aquireDate.'",';
 	$reportData = $reportData.'"'.$asset->purchasePrice.'",';
-    $reportData = $reportData.'"'.$creator->fullName.'",';
-    $reportData = $reportData.'"'.$asset->createDate.'",';
+  $reportData = $reportData.'"'.$creator->fullName.'",';
+  $reportData = $reportData.'"'.$asset->createDate.'",';
 	$reportData = $reportData."\n";
 	$ok = $asset->Next();
 }
