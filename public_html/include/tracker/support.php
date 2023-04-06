@@ -723,6 +723,7 @@ function CreateCheckBox($name,$val,$dspVal="",$checked=0,$title="",$class="",$js
 }
 function CreateDateField($name,$val = "")
 {
+  DebugText("CreateDateField($name,$val)");
 	global $today;
 	if (strlen($val)==0)
 	{
@@ -1026,5 +1027,16 @@ function DatePickerUnFormatter($date)
   list ($month,$day,$year) = explode("-",$date);
   $newDate = $year."-".$month."-".$day;
   return $newDate;
+}
+/**
+ * Adds the depreciated each() function back into 7.2
+ */
+if (!function_exists('each')) {
+    function each($arr) {
+        $key = key($arr);
+        $result = ($key === null) ? false : [$key, current($arr), 'key' => $key, 'value' => current($arr)];
+        next($arr);
+        return $result;
+    }
 }
 ?>

@@ -31,8 +31,8 @@ $module->Persist();
 foreach ($_POST as $key=>$value)
 {
     echo "key:".$key."<br>";
-	DebugText("key:".$key);
-	DebugText("value:".$_POST[$key]);
+//	DebugText("key:".$key);
+//	DebugText("value:".$_POST[$key]);
 	if (strpos($key,"Test"))
 	{
 		DebugText("test key:".$_POST[$key]);
@@ -53,12 +53,16 @@ foreach ($_POST as $key=>$value)
 				          $values = new Set(",");
 				          if (is_array($_POST[$testValue]))
 				          {
+
 				          	@$testValues = $_POST[$testValue];
+                  //  print_r($testValues);
+                    /*
 				          	while (list ($key, $val) = each ($testValues))
 				          	{
 				          		$values->Add($val);
 				          	}
-				          	$value = $values->data;
+				          	$value = $values->data;*/
+                    $value = $testValues[0];
 				          }
 				          else
 				          {

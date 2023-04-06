@@ -26,13 +26,16 @@ include_once "tracker/poNumber.php";
 include_once "tracker/building.php";
 include_once "tracker/assetCondition.php";
 include_once "tracker/assetType.php";
+include_once "tracker/organization.php";
 
 $moduleId = $_GET["id"];
 $module = new Module($moduleId);
 $reportFname = $module->name;
 $reportFname = str_replace(" ","_",$reportFname);
+$reportFname = $reportFname.".csv";
 $reportData = "";
 $reportData = $reportData.'"Asset Id",';
+$reportData = $reportData.'"Organization",';
 $reportData = $reportData.'"Serial Number",';
 $reportData = $reportData.'"Asset Tag",';
 $reportData = $reportData.'"MAC Address",';
@@ -52,6 +55,7 @@ $reportData = $reportData.'"Warranty Date",';
 $reportData = $reportData.'"Number of Licenses",';
 $reportData = $reportData.'"Expire Date",';
 $reportData = $reportData.'"Aquire Date",';
+$reportData = $reportData.'"Cost",';
 $reportData = $reportData.'"Creator",';
 $reportData = $reportData.'"Create Date",';
 
@@ -59,6 +63,7 @@ $reportData = $reportData."\n";
 
 $param = $module->GetParam();
 $asset = new Asset();
+$asset->SetOrderBy("organizationId,buildingId");
 $mm_type = "text/csv";
 
 $ok = $asset->Get($param);
@@ -68,7 +73,9 @@ while ($ok)
 	$po = new poNumber($asset->poNumberId);
 	$assetType = new AssetType($asset->assetTypeId);
 	$building = new Building($asset->buildingId);
+	$organization = new Organization($asset->organizationId);
 	$reportData = $reportData.'"'.$asset->assetId.'",';
+	$reportData = $reportData.'"'.$organization->name.'",';
 	$reportData = $reportData.'"'.$asset->serialNumber.'",';
 	$reportData = $reportData.'"'.$asset->assetTag.'",';
 	$reportData = $reportData.'"'.$asset->macAddress.'",';
@@ -88,6 +95,7 @@ while ($ok)
 	$reportData = $reportData.'"'.$asset->numOfLicenses.'",';
 	$reportData = $reportData.'"'.$asset->expireDate.'",';
 	$reportData = $reportData.'"'.$asset->aquireDate.'",';
+	$reportData = $reportData.'"'.$asset->purchasePrice.'",';
     $reportData = $reportData.'"'.$creator->fullName.'",';
     $reportData = $reportData.'"'.$asset->createDate.'",';
 	$reportData = $reportData."\n";

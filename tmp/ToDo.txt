@@ -8,6 +8,9 @@
    * fixed permission on displaying contract list and editing lease
    * fixed issue where name was not reset on asset search
    * work on standardizing form field creation by using functions
+   * fixes to asset report
+   * added organization and cost to asset export report
+   * added ability to test ewastedDate
 
 == 2023-02-13
  = Version 1.6.0

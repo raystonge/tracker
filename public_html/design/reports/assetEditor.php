@@ -114,8 +114,23 @@ $(document).ready(function () {
         $('#aquireNumDaysField').hide();
     }
   })
+  $('#ewastedDateTest').change(function()
+  {
+    test = $(this).val();
+    if (test == "numDays")
+    {
+        $('#ewastedDateField').hide();
+        $('#ewastedNumDaysField').show();
+    }
+    else
+    {
+        $('#ewastedDateField').show();
+        $('#ewastedNumDaysField').hide();
+    }
+  })
 $('#warrantyDateTest').change();
 $('#aquireDateTest').change();
+$('#ewastedDateTest').change();
 	 $('#make').autocomplete({source:'/ajax/lookups/make.php', minLength:1});
 	 $('#buildingLocation').autocomplete({source:'/ajax/lookups/buildingLocation.php', minLength:1});
 	 $('#vendor').autocomplete({source:'/ajax/lookups/vendor.php', minLength:1});
@@ -592,6 +607,55 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
       </span>
     </td>
   </tr>
+
+  <tr>
+    <td valign="top">
+    <?php
+    $moduleQuery = new ModuleQuery();
+    $param = AddParam("","moduleId=".$module->moduleId);
+    $param = AddParam($param,"fieldToTest='ewastedDate'");
+    $moduleQuery->Get($param);
+    $numDays = "";
+    if ($moduleQuery->fieldTest == "numDays")
+    {
+    	$numDays = $moduleQuery->testValue;
+    }
+    if ((strlen($moduleQuery->testValue) == 0) || $moduleQuery->fieldTest == "numDays")
+    {
+    	$moduleQuery->testValue = $today;
+    }
+    DebugText("fieldToTest:".$moduleQuery->fieldToTest);
+    DebugText("fieldTest:".$moduleQuery->fieldTest);
+    DebugText("testValue:".$moduleQuery->testValue);
+    ?>
+    Ewasted Date:
+    </td>
+    <td valign="top">
+      <select id="ewastedDateTest" name="ewastedDateTest">
+        <option value="">Select Test</option>
+        <option value="=" <?php if ($moduleQuery->fieldTest == "="){echo "selected='selected'";}?>>Equals</option>
+        <option value="<?php $lessThan;?>" <?php if ($moduleQuery->fieldTest == $lessThan){echo "selected='selected'";}?>>Less Than</option>
+        <option value="<=" <?php if ($moduleQuery->fieldTest == "<="){echo "selected='selected'";}?>>Less Than or Equal</option>
+        <option value=">" <?php if ($moduleQuery->fieldTest == ">"){echo "selected='selected'";}?>>Greater Than</option>
+        <option value=">=" <?php if ($moduleQuery->fieldTest == ">="){echo "selected='selected'";}?>>Greater Than or Equal</option>
+        <option value="numDays" <?php if ($moduleQuery->fieldTest == "numDays") { echo "selected='selected'";}?>>Expires in</option>
+      </select>
+    </td>
+    <td valign="top">
+      <span id="ewastedDateField">
+      <?php CreateDateField("ewastedDate",$moduleQuery->testValue);?>
+      </span>
+      <span id="ewastedNumDaysField">
+        <select id="ewastedDateNumDays" name="ewastedDateNumDays">
+          <option value="0">Any Date in Future</option>
+          <option value="30" <?php if ($numDays == 30){echo "selected='selected'";}?>>30 Days</option>
+          <option value="60" <?php if ($numDays == 60){echo "selected='selected'";}?>>60 Days</option>
+          <option value="120" <?php if ($numDays == 120){echo "selected='selected'";}?>>120 Days</option>
+        </select>
+      </span>
+    </td>
+  </tr>
+
 </table>
 <?php CreateSubmit();?>
 </form>
