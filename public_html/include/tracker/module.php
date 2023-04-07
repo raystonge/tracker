@@ -24,6 +24,7 @@
 include_once "tracker/set.php";
 include_once "tracker/userGroup.php";
 include_once "tracker/userToGroup.php";
+include_once "tracker/moduleToUserGroup.php";
 class Module
 {
 var $initialized = 0;
@@ -197,6 +198,7 @@ var $className="Module";
   function GetMyVisible()
   {
   	$userId = $_SESSION['userId'];
+/*
   	$userGroup = new UserGroup();
   	$param = "name='Admin'";
   	$userGroup->Get($param);
@@ -209,6 +211,30 @@ var $className="Module";
   	{
   		$param = AddParam($param,"admin=0");
   	}
+    */
+    $userToGroup = new UserToGroup();
+    $myGroups = new Set(",");
+    $param = AddEscapedParam("","userId",$userId);
+    $ok = $userToGroup->Get($param);
+    while ($ok)
+    {
+      $myGroups->Add($userToGroup->userGroupId);
+      $ok = $userToGroup->Next();
+    }
+    $moduleToUserGroup = new ModuleToUserGroup();
+    $moduleGroups = new Set(",");
+    $param = "userGroupId in (".$myGroups->data.")";
+    $ok = $moduleToUserGroup->Get($param);
+    while ($ok)
+    {
+      $moduleGroups->Add($moduleToUserGroup->moduleId);
+      $ok = $moduleToUserGroup->Next();
+    }
+    $param = AddEscapedParam("","userId",$userId);
+    if (strlen($moduleGroups->data))
+    {
+      $param = $param." or moduleId in (".$moduleGroups->data.")";
+    }
   	return($this->Get($param));
   }
 

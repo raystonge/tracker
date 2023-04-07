@@ -180,6 +180,10 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
       <?php CreateCheckbox("personalProperty",1,"",$module->personalProperty,"Report is for personal property");?>
     </td>
   </tr>
+  <?php
+  if ($permission->hasPermission("Report: Edit"))
+  {
+   ?>
   <tr>
     <td>
       User Group:
@@ -205,6 +209,10 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
              $ok = $userGroup->Next();
            }
          ?>
+       </td>
+     </tr>
+   <?php 
+   } ?>
 
 </table>
 <?php CreateHiddenField("moduleId",$module->moduleId);?>

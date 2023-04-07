@@ -50,7 +50,10 @@ $reportType = strtolower($module->moduleType);
   <tr>
     <td>
     <?php
-  if ($module->userId)
+		DebugText("module UserId:".$module->userId);
+		DebugText("currentUser:".$currentUser->userId);
+		DebugText("hasPermission:".$permission->hasPermission("Report: Edit"));
+  if ($module->userId == $currentUser->userId || $permission->hasPermission("Report: Edit"))
   {
   	CreateLink("/edit".$module->moduleType."Report/".$module->moduleId."/","Edit Report","editReport","Edit ".$module->name);
   }
