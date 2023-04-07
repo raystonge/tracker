@@ -27,6 +27,7 @@ include_once "tracker/building.php";
 include_once "tracker/assetCondition.php";
 include_once "tracker/assetType.php";
 include_once "tracker/organization.php";
+include_once "tracker/set.php";
 
 $moduleId = $_GET["id"];
 $module = new Module($moduleId);
@@ -55,13 +56,26 @@ $reportData = $reportData.'"Warranty Date",';
 $reportData = $reportData.'"Number of Licenses",';
 $reportData = $reportData.'"Expire Date",';
 $reportData = $reportData.'"Aquire Date",';
-$reportData = $reportData.'"Cost",';
+$reportData = $reportData.'"eWasted Date",';
 $reportData = $reportData.'"Creator",';
 $reportData = $reportData.'"Create Date",';
 
 $reportData = $reportData."\n";
-
+$param1 = "";
 $param = $module->GetParam();
+if ($module->personalProperty)
+{
+	$assetType = new AssetType();
+	$assetTypes = new Set(",");
+	$ok = $assetType->Get("personalProperty=1");
+	while ($ok)
+	{
+		$assetTypes->Add($assetType->assetTypeId);
+		$ok = $assetType->Next();
+	}
+	$param1 = "assetTypeId in (".$assetTypes->data.")";
+	$param = $param1." and ".$param;
+}
 $asset = new Asset();
 $asset->SetOrderBy("organizationId,buildingId");
 $mm_type = "text/csv";
@@ -95,7 +109,7 @@ while ($ok)
 	$reportData = $reportData.'"'.$asset->numOfLicenses.'",';
 	$reportData = $reportData.'"'.$asset->expireDate.'",';
 	$reportData = $reportData.'"'.$asset->aquireDate.'",';
-	$reportData = $reportData.'"'.$asset->purchasePrice.'",';
+	$reportData = $reportData.'"'.$asset->ewastedDate.'",';
   $reportData = $reportData.'"'.$creator->fullName.'",';
   $reportData = $reportData.'"'.$asset->createDate.'",';
 	$reportData = $reportData."\n";

@@ -24,11 +24,28 @@ include_once "tracker/permission.php";
 include_once "tracker/building.php";
 include_once "tracker/assetCondition.php";
 include_once "tracker/poNumber.php";
+include_once "tracker/set.php";
+
 $param = "";
+$param1 = "";
+$param = $module->GetParam();
 
 $asset = new Asset();
 $asset->SetPerPage($maxAssetsPerPage);
-$param = $module->GetParam();
+if ($module->personalProperty)
+{
+	$assetType = new AssetType();
+	$assetTypes = new Set(",");
+	$ok = $assetType->Get("personalProperty=1");
+	while ($ok)
+	{
+		$assetTypes->Add($assetType->assetTypeId);
+		$ok = $assetType->Next();
+	}
+	$param1 = "assetTypeId in (".$assetTypes->data.")";
+	$param = $param1." and ".$param;
+}
+
 $pages = 1;
 //$ticket->SetOrderBy("dueDate desc,priorityId");
 DebugText("report param:".$param);

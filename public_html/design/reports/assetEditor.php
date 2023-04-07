@@ -26,6 +26,9 @@ include_once "tracker/moduleQuery.php";
 include_once "tracker/assetType.php";
 include_once "tracker/building.php";
 include_once "tracker/assetCondition.php";
+include_once "tracker/moduleToUserGroup.php";
+include_once "tracker/userGroup.php";
+
 $moduleId = GetURI(2,0);
 $module = new Module($moduleId);
 ?>
@@ -168,6 +171,42 @@ adminFilePath="";
 </script>
 <form method="post" action="/process/report/asset.php" autocomplete="<?php echo $autoComplete;?>">
 Name: <?php CreateTextField("moduleName",$module->name);?>
+<table>
+  <tr>
+    <td>
+      Personal Property:
+    </td>
+    <td>
+      <?php CreateCheckbox("personalProperty",1,"",$module->personalProperty,"Report is for personal property");?>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      User Group:
+    </td>
+    <td>
+      <select id="userGroup" name="userGroup[]" size="5" multiple="multiple" >
+        <?php
+           $moduleToUserGroup = new ModuleToUserGroup();
+           $param1 = AddEscapedParam("","moduleId",$module->moduleId);
+           $userGroup = new UserGroup();
+           $ok = $userGroup->Get("");
+           while ($ok)
+           {
+             $param = AddEscapedParam($param1,"userGroupId",$userGroup->userGroupId);
+             $selected = "";
+             if ($moduleToUserGroup->Get($param))
+             {
+               $selected = "selected='selected'";
+             }
+             ?>
+             <option value="<?php echo $userGroup->userGroupId;?>" <?php echo $selected;?>><?php echo $userGroup->name;?></option>
+             <?php
+             $ok = $userGroup->Next();
+           }
+         ?>
+
+</table>
 <?php CreateHiddenField("moduleId",$module->moduleId);?>
 <table>
   <tr>

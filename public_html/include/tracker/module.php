@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.0
+//
+//  v1.7.0
+//   - removed debug info
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -40,6 +43,7 @@ var $query;
 var $userId;
 var $admin;
 var $moduleType;
+var $personalProperty;
 
 var $orderBy;
 var $limit;
@@ -52,30 +56,30 @@ var $className="Module";
   function init()
   {
     $this->moduleId = 0;
-	$this->name = "";
-	$this->description = "";
-	$this->query = "";
-	$this->moduleType = "";
-	$this->userId = 0;
-	$this->admin = 0;
-	$this->page = 1;
-	$this->start = 0;
-	$this->perPage = 0;
-	$this->orderBy = "name";
+    $this->name = "";
+	  $this->description = "";
+	  $this->query = "";
+	  $this->moduleType = "";
+	  $this->userId = 0;
+	  $this->admin = 0;
+    $this->personalProperty = 0;
+	  $this->page = 1;
+	  $this->start = 0;
+	  $this->perPage = 0;
+	  $this->orderBy = "name";
   }
   function __construct()
   {
-	$a = func_get_args();
-    $i = func_num_args();
-    if (method_exists($this,$f='__construct'.$i))
-    {
-    	call_user_func_array(array($this,$f),$a);
-    }
-    else
-    {
-    	$this->init();
-    }
-   // $this->SetOrderBy("name");
+     $a = func_get_args();
+     $i = func_num_args();
+     if (method_exists($this,$f='__construct'.$i))
+     {
+       call_user_func_array(array($this,$f),$a);
+     }
+     else
+     {
+       $this->init();
+     }
   }
   function __construct0()
   {
@@ -232,6 +236,7 @@ var $className="Module";
 	    $this->query = trim(stripslashes($this->row['query']));
 	    $this->userId = $this->row['userId'];
 	    $this->admin = $this->row['admin'];
+      $this->personalProperty = $this->row['personalProperty'];
 	    $this->moduleType = trim(stripslashes($this->row['moduleType']));
 	 }
 	 else
@@ -261,27 +266,26 @@ var $className="Module";
 	  $desc = prepForDB("module","name",$this->description);
 	  $queryStr = prepForDB("module","name",$this->query);
 	  $moduleType = prepForDB("module","name",$this->moduleType);
-	  $query = "Update module set name='$name',userId=$this->userId,admin=$this->admin,description='$desc',query='$queryStr',moduleType='$moduleType' where moduleId = $this->moduleId";
-    echo $query."<br>";
+	  $query = "Update module set name='$name',userId=$this->userId,admin=$this->admin,description='$desc',query='$queryStr',moduleType='$moduleType', personalProperty=$this->personalProperty where moduleId = $this->moduleId";
     $results = mysqli_query($link_cms,$query);
 	  DebugText($query);
 	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {
-	 DebugText($this->className."[Insert]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $name = prepForDB("module","name",$this->name);
-	 $desc = prepForDB("module","name",$this->description);
-	 $queryStr = prepForDB("module","name",$this->query);
-	 $moduleType = prepForDB("module","name",$this->moduleType);
-	 $query = "Insert into module (name,description,query,userId,admin,moduleType) value ('$name','$desc','$queryStr',$this->userId,$this->admin,'$moduleType')";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 $this->moduleId = mysqli_insert_id($link_cms);
+    DebugText($this->className."[Insert]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $name = prepForDB("module","name",$this->name);
+	  $desc = prepForDB("module","name",$this->description);
+	  $queryStr = prepForDB("module","name",$this->query);
+	  $moduleType = prepForDB("module","name",$this->moduleType);
+	  $query = "Insert into module (name,description,query,userId,admin,moduleType,personalProperty) value ('$name','$desc','$queryStr',$this->userId,$this->admin,'$moduleType',$this->personalProperty)";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  $this->moduleId = mysqli_insert_id($link_cms);
   }
   function Persist()
   {

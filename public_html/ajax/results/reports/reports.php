@@ -68,7 +68,7 @@ $reportType = strtolower($module->moduleType);
   </tr>
 </table>
 <?php
-echo $sitePath.$reportType."<Br>";
+//echo $sitePath.$reportType."<Br>";
 DebugText("Report File:".$sitePath.$reportFile);
 include $sitePath.$reportFile;
 DebugOutput();

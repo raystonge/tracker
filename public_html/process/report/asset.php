@@ -25,17 +25,32 @@ include_once "globals.php";
 include_once "tracker/module.php";
 include_once "tracker/moduleQuery.php";
 include_once "tracker/set.php";
+include_once "tracker/moduleToUserGroup.php";
 $module = new Module(GetTextField("moduleId",0));
 $moduleQuery = new ModuleQuery();
 $moduleQuery->Reset($module->moduleId);
 $module->name = GetTextField("moduleName");
+$module->personalProperty = GetTextField("personalProperty",0);
 $module->userId = $currentUser->userId;
 $module->Persist();
+$userGroups="";
+if (isset($_POST['userGroup']))
+{
+  @$userGroups=$_POST['userGroup'];
+}
+$moduleToUserGroup = new ModuleToUserGroup();
+$moduleToUserGroup->moduleId = $module->moduleId;
+$moduleToUserGroup->Reset();
+if ($userGroups)
+{
+  foreach($userGroups as $group)
+  {
+    $moduleToUserGroup->userGroupId=$group;
+    $moduleToUserGroup->Insert();
+  }
+}
 foreach ($_POST as $key=>$value)
 {
-    echo "key:".$key."<br>";
-//	DebugText("key:".$key);
-//	DebugText("value:".$_POST[$key]);
 	if (strpos($key,"Test"))
 	{
 		DebugText("test key:".$_POST[$key]);
