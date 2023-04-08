@@ -1,0 +1,3 @@
+"moduleToUserGroupId","int(11)"
+"moduleId","int(11)"
+"userGroupId","int(11)"

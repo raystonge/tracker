@@ -6,3 +6,4 @@
 "admin","int(11)"
 "moduleType","varchar(45)"
 "assignee","int(11)"
+"personalProperty","int(11)"

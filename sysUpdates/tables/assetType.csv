@@ -16,17 +16,17 @@
 75,"cellphone charger",1,0
 78,"cellphone charger",1,0
 71,"Charger",1,0
-1,"Computer",0,0
-27,"Computer",0,1
-38,"Computer",0,1
-50,"Computer",0,0
-52,"Computer",0,1
-82,"Computer",0,0
-89,"Computer",0,0
-115,"Computer",0,0
+1,"Computer",1,0
+27,"Computer",1,1
+38,"Computer",1,1
+50,"Computer",1,0
+52,"Computer",1,1
+82,"Computer",1,0
+89,"Computer",1,0
+115,"Computer",1,0
 136,"Computer",0,0
 6,"Copier",1,1
-114,"Copier",0,1
+114,"Copier",1,1
 97,"Ethernet Switch",1,0
 144,"Ethernet Switch",0,0
 100,"extended warranty",1,0
@@ -39,7 +39,7 @@
 42,"Firewall",1,1
 117,"GoPro",1,0
 61,"Hard Drive",1,0
-116,"Hard Drive",0,0
+116,"Hard Drive",1,0
 96,"Headset",1,0
 67,"Hosting Service",1,0
 106,"Ink & Toner",1,0
@@ -48,14 +48,14 @@
 130,"Keyboard Tray",0,0
 30,"KVM Switch",1,0
 120,"Label Maker",0,0
-4,"Laptop",0,1
-37,"Laptop",0,1
+4,"Laptop",1,1
+37,"Laptop",1,1
 55,"Laptop",1,1
 62,"Laptop",1,0
-70,"Laptop",0,1
-87,"Laptop",0,0
-105,"Laptop",0,1
-111,"Laptop",0,1
+70,"Laptop",1,1
+87,"Laptop",1,0
+105,"Laptop",1,1
+111,"Laptop",1,1
 141,"laptop",0,0
 56,"Laptop Charger",1,0
 64,"Laptop Charger",1,0
@@ -63,7 +63,7 @@
 7,"LCD Monitor",1,0
 134,"Light",0,0
 125,"Loud Speaker",0,0
-3,"Managed Switch",1,1
+3,"Managed Switch",0,1
 39,"Managed Switch",1,1
 45,"Memory",1,0
 49,"Memory",1,0
@@ -74,32 +74,32 @@
 128,"Microphone",0,0
 79,"Misc. Accessory",1,0
 131,"Mixer",0,1
-15,"Monitor",0,0
+15,"Monitor",1,0
 46,"Monitor",1,0
-51,"Monitor",0,0
-53,"Monitor",0,0
-58,"Monitor",0,0
-73,"Monitor",0,1
-80,"Monitor",0,0
-88,"Monitor",0,0
-90,"Monitor",0,0
+51,"Monitor",1,0
+53,"Monitor",1,0
+58,"Monitor",1,0
+73,"Monitor",1,1
+80,"Monitor",1,0
+88,"Monitor",1,0
+90,"Monitor",1,0
 137,"Monitor",0,0
 36,"NAS",1,1
 5,"Printer",1,0
 40,"Printer",1,1
-63,"Printer",0,1
-69,"Printer",0,1
-72,"Printer",0,1
+63,"Printer",1,1
+69,"Printer",1,1
+72,"Printer",1,1
 98,"Printer",1,1
 16,"Projector",1,0
 129,"Receiver",0,0
 13,"Scanner",1,0
-66,"Scanner",0,0
+66,"Scanner",1,0
 133,"Scanner",0,0
 21,"Server",1,1
 33,"Server",1,1
 35,"Server",1,1
-22,"Software",0,0
+22,"Software",1,0
 92,"Speakers",1,0
 95,"Speakers",1,0
 132,"Speakers",0,0
@@ -118,7 +118,7 @@
 32,"Virtual Machine",1,0
 25,"Virtual Server",1,1
 84,"VirtualBox",1,1
-2,"WAP",1,1
+2,"WAP",0,1
 103,"WAP",1,0
 146,"WAP",0,1
 104,"Warrantee",1,0

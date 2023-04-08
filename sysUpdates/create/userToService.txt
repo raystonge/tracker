@@ -6,4 +6,4 @@ CREATE TABLE `userToService` (
   PRIMARY KEY (`userToServiceId`),
   KEY `service` (`serviceId`),
   KEY `userId` (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1
