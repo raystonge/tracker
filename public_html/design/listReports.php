@@ -35,7 +35,8 @@ PageAccess("Report: List");
 		</tr>
         <?php
         $module = new Module();
-        $param = "userId=".$currentUser->userId;
+        //$param = "userId=".$currentUser->userId;
+				$param = $module->GetMyVisible();
         $ok = $module->Get($param);
         while ($ok)
         {

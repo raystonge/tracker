@@ -197,6 +197,7 @@ var $className="Module";
 
   function GetMyVisible()
   {
+    global $permission;
   	$userId = $_SESSION['userId'];
 /*
   	$userGroup = new UserGroup();
@@ -234,6 +235,10 @@ var $className="Module";
     if (strlen($moduleGroups->data))
     {
       $param = $param." or moduleId in (".$moduleGroups->data.")";
+    }
+    if ($permission->hasPermission("Report: Admin"))
+    {
+      $param = "";
     }
   	return($this->Get($param));
   }
