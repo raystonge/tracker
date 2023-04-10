@@ -22,9 +22,9 @@ include_once "tracker/module.php";
 $moduleId = $request_uri[2];
 
 $param = "moduleId=".$moduleId;
-if ($permission->hasPermission("Report: Edit"))
+$module = new Module($moduleId);
+if ($permission->hasPermission("Report: Edit") || $module->userId == $currentUser->userId)
 {
-  $module = new Module($moduleId);
   $module->Delete();
   echo "Report ".$module->name." has been deleted";
 }

@@ -49,7 +49,7 @@ PageAccess("Report: List");
 			<td class="right">
 			<?php
 			include $sitePath."/design/actions/module.php";
-			if ($permission->hasPermission("Report: Edit"))
+			if ($permission->hasPermission("Report: Edit") || $module->userId == $currentUser->userId)
 			{
 				echo $htmlAction;
 			}
