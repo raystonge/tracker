@@ -36,8 +36,8 @@ PageAccess("Report: List");
         <?php
         $module = new Module();
         //$param = "userId=".$currentUser->userId;
-				$param = $module->GetMyVisible();
-        $ok = $module->Get($param);
+				$ok = $module->GetMyVisible();
+        //$ok = $module->Get($param);
         while ($ok)
         {
 			?>
@@ -49,7 +49,10 @@ PageAccess("Report: List");
 			<td class="right">
 			<?php
 			include $sitePath."/design/actions/module.php";
-			echo $htmlAction;
+			if ($permission->hasPermission("Report: Edit"))
+			{
+				echo $htmlAction;
+			}
 			?>
 		    </td>
 		</tr>

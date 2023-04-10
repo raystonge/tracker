@@ -25,6 +25,7 @@ include_once "tracker/set.php";
 include_once "tracker/userGroup.php";
 include_once "tracker/userToGroup.php";
 include_once "tracker/moduleToUserGroup.php";
+include_once "tracker/moduleQuery.php";
 class Module
 {
 var $initialized = 0;
@@ -169,34 +170,35 @@ var $className="Module";
   }
   function Get($param = "")
   {
-	 DebugText($this->className."[Get]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $this->start = ($this->page-1)*$this->perPage;
+    DebugText($this->className."[Get]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $this->start = ($this->page-1)*$this->perPage;
 
-	 $query = "Select * from module";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-  	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
+    $query = "Select * from module";
+    if ($param)
+    {
+      $query = $query . " where ". $param;
+    }
+  	if (strlen($this->orderBy))
+	  {
+	    $query = $query . " order by ".$this->orderBy;
+	  }
+	  if ($this->limit > 0)
+	  {
+	  	$query = $query . " limit ".$this->limit;
+	  }
 
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	  $this->results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  return($this->Next());
   }
 
   function GetMyVisible()
   {
+    DebugText($this->className.":GetMyVisible");
     global $permission;
   	$userId = $_SESSION['userId'];
 /*
@@ -240,6 +242,7 @@ var $className="Module";
     {
       $param = "";
     }
+    DebugText("resulting param:".$param);
   	return($this->Get($param));
   }
 
@@ -332,7 +335,7 @@ var $className="Module";
   function GetParam()
   {
   	global $today;
-  	DebugText("GetParam:".$this->query);
+  	DebugText($this->className."GetParam:".$this->query);
   	$overDueDate = date('Y-m-d', strtotime($today. ' + 3 day'));
   	$userId = $_SESSION['userId'];
   	$param = $this->query;
@@ -355,6 +358,25 @@ var $className="Module";
   	}
   	return $param;
 
+  }
+  function Delete()
+  {
+    DebugText($this->className."Delete");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    if ($this->moduleId)
+    {
+      $param = AddEscapedParam("","moduleId",$this->moduleId);
+      $query = "Delete from module where ".$param;
+      $results = mysqli_query($link_cms,$query);
+      DebugText($query);
+      DebugText("Error:".mysqli_error($link_cms));
+      $query = "delete from moduleQuery where ".$param;
+      DebugText($query);
+      DebugText("Error:".mysqli_error($link_cms));
+    }
+    return (1);
   }
 }
 ?>

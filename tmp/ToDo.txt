@@ -11,6 +11,8 @@
    * fixes to asset report
    * added organization and cost to asset export report
    * added ability to test ewastedDate
+   * added functionality to be able to delete Reports
+   * fixed permission on listReports so only admin can edit
 
 == 2023-02-13
  = Version 1.6.0
