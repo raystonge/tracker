@@ -3,3 +3,7 @@ DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '303');
 DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '369');
 DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '266');
 DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '260');
+DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '471');
+DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '474');
+DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '486');
+DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '264');
