@@ -239,7 +239,7 @@ var $className="poNumber";
 	 {
 	   $this->init();
 	 }
-     return($this->poNumberId);
+   return($this->poNumberId);
   }
   function GetById($id)
   {

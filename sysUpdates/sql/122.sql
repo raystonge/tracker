@@ -7,3 +7,4 @@ DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '471');
 DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '474');
 DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '486');
 DELETE FROM `trackerVS`.`permission` WHERE (`permissionId` = '264');
+update poNumber set vendorOrderID = null  where vendorOrderID='vendorOrderID';
