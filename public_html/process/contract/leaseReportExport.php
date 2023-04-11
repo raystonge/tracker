@@ -26,6 +26,7 @@ include_once "tracker/assetType.php";
 include_once "tracker/building.php";
 include_once "tracker/assetCondition.php";
 include_once "tracker/contract.php";
+include_once "tracker/poNumber.php";
 include_once "tracker/set.php";
 
 PageAccess("Report: Leases");
@@ -45,6 +46,7 @@ $poNumbers = new Set(",");
 $assetType = new AssetType();
 $param = AddEscapedParam("","contractId",$contractId);
 $name = str_replace(' ', '', $contract->name);
+$header = "Asset Tag".","."Serial Number".","."Asset Type".","."Make".","."Model".","."Price".","."PO Number".","."Building".","."Employee".","."Vendor".","."Aquire Date".","."Contract".","."Expire Date"."\n";
 if (!$contractId)
 {
   $param = "expireDate >='".$today."' and isLease=1";
@@ -67,6 +69,7 @@ if ($contractId)
 else {
   $data = $data."All Contract\n";
 }
+$data = $data.$header;
 $asset->setOrderBy("poNumberId");
 $ok = $asset->Search($param);
 while ($ok)
@@ -76,8 +79,9 @@ while ($ok)
   $assetCondition = new AssetCondition($asset->assetConditionId);
   $param = AddEscapedParam("","poNumberId",$asset->poNumberId);
   $contract->Get($param);
+	$poNumber = new poNumber($asset->poNumberId);
 
-	$line = $asset->assetTag.",".$asset->serialNumber.",".$assetType->name.",".$asset->make.",".$asset->model.",".$asset->purchasePrice.",".$building->name.",".$asset->employeeName.",".$asset->vendor.",".$asset->aquireDate.",".$contract->name.",".$contract->expireDate."\n";
+	$line = $asset->assetTag.",".$asset->serialNumber.",".$assetType->name.",".$asset->make.",".$asset->model.",".$asset->purchasePrice.",".$poNumber->poNumber.",".$building->name.",".$asset->employeeName.",".$asset->vendor.",".$asset->aquireDate.",".$contract->name.",".$contract->expireDate."\n";
 	$data = $data.$line;
   $ok = $asset->Next();
 }
