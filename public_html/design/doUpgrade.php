@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.0
+//
+//  -v 1.7.0
+//    - added funcaionality to run sql scripts
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -56,7 +59,6 @@ if ($dh = opendir($dir))
 				$fileList[$arrayIndex++] = $file;
 			}
 		}
-
 	}
 	closedir($dh);
 	if (sizeof($fileList))
@@ -78,6 +80,25 @@ if ($dh = opendir($dir))
 	UpdateValidCondition();
 	UpdateAssetTypes();
 	//UpdateModules();
+	$fileList = array();
+	$arrayIndex = 0;
+	$dir = $siteRootPath."/sysUpdates/sql";
+	if ($dh = opendir($dir))
+	{
+		while (($file = readdir($dh)) !== false)
+	  {
+			if (!is_dir($file))
+		  {
+				$file = str_replace(".sql","",$file);
+			  if ($file > $currentVersion &&  is_numeric($file))
+			  {
+				  $fileList[$arrayIndex++] = $file;
+			  }
+		  }
+		}
+	}
+	closedir($dh);
+
 	foreach($fileList as &$file)
 	{
 		PostUpgrade($file);
@@ -484,15 +505,18 @@ function PostUpgrade($version)
 	global $password_cms;
 	global $database_cms;
 
-	$sqlFile = $dir."/sql/".$version.".sql";
+	$sqlFile = $dir."/".$version.".sql";
+	DebugText("SQL:".$sqlFile);
 	if (file_exists($sqlFile))
 	{
+		  echo "Processing SQL ".$version."<br>";
 	    $cmd = "mysql -u ".$username_cms;
 	    if (strlen($password_cms))
 	    {
-	        $cmd = $cmd." -p".$$password_cms;
+	        $cmd = $cmd." -p".$password_cms;
 	    }
-	    $cmd = $cmd." ".$database_cms."<".$sqlFile;
+	    $cmd = $cmd." ".$database_cms." < ".$sqlFile;
+			DebugText($cmd);
 	    system($cmd);
 	}
 
