@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.1
+//
+//  v1.7.1
+//   - fixing issue with wrong attachment file being included
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -124,7 +127,7 @@ while ($ok)
 	  </td>
 	  <td>
 	  			<?php
-			include $sitePath."/design/actions/attachment.php";
+			include $sitePath."/design/actions/ticketAttachment.php";
 			echo $htmlAction;
 			?>
 	  </td>

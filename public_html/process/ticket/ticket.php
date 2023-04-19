@@ -4,7 +4,6 @@
 //
 //  v1.5.0
 //   - relaced each() with foreach()
-
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -83,7 +82,7 @@ if (isset($_POST['submitTest']))
 		$errorMsg=$errorMsg."<li>Please Specify ".$orgOrDept."</li>";
 	}
 	DebugText("queueId:".$queueId);
-	if ($queueId == 0 && $permission->hasPermission("Ticket: Create: User Ticket"))
+	if ($queueId == 0 && !$permission->hasPermission("Ticket: Create: User Ticket"))
 	{
 		DebugText("there is no queue specified");
 		$numErrors++;

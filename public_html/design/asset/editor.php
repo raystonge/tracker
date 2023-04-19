@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.7.0
+//  Tracker - Version 1.7.1
+//
+// v1.7.1
+//  - fixing labels
 //
 // v1.7.0
 //  - added depreciation value and date
@@ -463,7 +466,7 @@ function disableWarrantyDate()
 					if ($permission->hasPermission("Asset: View: Condition"))
 					{
 						$condition = new AssetCondition($asset->assetConditionId);
-						echo $condition->name;
+						echo "Condition: ".$condition->name;
 					}
 					CreateHiddenField("assetConditionId",$asset->assetConditionId);
 				}

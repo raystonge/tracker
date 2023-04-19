@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.7.0
+//  Tracker - Version 1.7.1
+//
+//  v1.7.1
+//   - cleaning up labels
 //
 //  v1.7.0
 //   - added ability to search on expireDate
@@ -211,7 +214,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
          ?>
        </td>
      </tr>
-   <?php 
+   <?php
    } ?>
 
 </table>
@@ -222,7 +225,7 @@ Name: <?php CreateTextField("moduleName",$module->name);?>
     Field
     </th>
     <th>
-    IdTest
+    Condition
     </th>
     <th>
     Value

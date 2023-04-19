@@ -117,7 +117,12 @@ if (!is_numeric($page))
 		      </td>
 		    </tr>
 			<tr>
-				<td valign="top">Queue:
+				<td valign="top">
+					<?php if ($permission->hasPermission("Ticket: Search: Queue"))
+					{?>
+					Queue:
+					<?php
+				  } ?>
 				</td>
 				<td>
 				<div id="queueResults"></div>
