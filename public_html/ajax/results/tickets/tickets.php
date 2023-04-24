@@ -44,6 +44,10 @@ $_SESSION['searchNumPerPage'] = $maxTicketsPerPage;
   $ticket = new Ticket();
   $ticket->SetPerPage(GetTextField("searchNumPerPage",$maxTicketsPerPage));
   $param = "";
+  if ($permission->hasPermission("Ticket: Create: User Ticket"))
+  {
+    $param = AddEscapedParam($param,"requestorId",$currentUser->userId);
+  }
   if ($searchOrganizationId)
   {
     $_SESSION['searchTicketOrganizationId'] = $searchOrganizationId;

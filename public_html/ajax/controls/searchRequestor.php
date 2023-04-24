@@ -39,12 +39,12 @@ $queueId = GetTextField("queue",0);
 						else {
 							$param = $param." and organizationId in (".GetMyOrganizations().")";
 						}
-						/*
-						if ($permission->hasPermission("Ticket: Search: Queue"))
+
+						if ($permission->hasPermission("Ticket: Create: User Ticket") && !$permission->hasPermission("Developer"))
 						{
 							$param = AddEscapedParam($param,"u.userId",$currentUser->userId);
 						}
-						*/
+
 						$searchRequestorId = GetTextFromSession("searchTicketRequestorId",0,0);
 			      $ok = $user->GetRequestors($param);
 			      while($ok)

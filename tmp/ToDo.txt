@@ -3,6 +3,7 @@
  = Version 1.7.1
    * fixing missing labels
    * adjustments to permission calls for users to enter tickets
+   * adjusted query so that users can only see their tickets
 
 == 2023-04-05
  = Version 1.7.0
