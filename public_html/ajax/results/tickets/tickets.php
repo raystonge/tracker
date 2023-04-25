@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.1
+//
+// v1.7.1
+//  - if user has Ticket: Create: User Ticket permission, limit only to their tickets
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //

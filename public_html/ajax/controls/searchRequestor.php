@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.7.1
+//
+// v1.7.1
+//  - limit requestor list to the user, if limited permissions
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
