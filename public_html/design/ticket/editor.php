@@ -465,7 +465,8 @@ function enableDueDate()
 			  <div id="assigneeResults"></div>
 			  </td>
 			  <td valign="top">
-<div id="CCResults"></div>			  </td>
+					<div id="CCResults"></div>
+				</td>
 			</tr>
 		<?php
     if ($ticket->statusId == 4)

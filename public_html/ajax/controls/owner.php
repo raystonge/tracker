@@ -25,23 +25,13 @@ $ticketId = GetTextField("ticketId",0);
 $organizationId = GetTextField("organizationId",0);
 $ticket = new Ticket($ticketId);
 $queueId = GetTextField("queue",0);
-if (!$ticket->ticketId)
+if ((!$ticket->ticketId && !$permission->hasPermission("Ticket: Create: User Ticket")) || $permission->hasPermission("Developer"))
 {
 	$defaultUser = new DefaultUser();
     $param = "userType='assignee'";
     $param = AddEscapedParam($param,"queueId",$queueId);
     $defaultUser->Get($param);
     $ticket->ownerId = $defaultUser->userId;
-}
-
-if ($permission->hasPermission("Ticket: Edit: Assignee"))
-{
-	if (!GetTextField("hideLabel",0))
-	{
-?>
-Assignee:
-<?php
-	}
 	?>
 <select name="assignee" id="assignee">
   <option value="0">Select Assignee</option>
@@ -71,13 +61,22 @@ Assignee:
 </select>
 <?php
 }
+/*
 else
 {
 	$user = new User($ticket->ownerId);
 	if ($permission->hasPermission("Ticket: View: Assignee"))
 	{
-		echo "Assignee: ".$user->fullName;
+		if (strlen($user->fullName))
+		{
+			echo "Assignee: ".$user->fullName;
+		}
+		else
+		{
+			echo "Assignee: Unassigned";
+		}
 	}
 	CreateHiddenField("assignee",$ticket->ownerId);
-}
+
+}*/
 ?>

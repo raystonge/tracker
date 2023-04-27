@@ -37,7 +37,7 @@ if (!$ticket->ticketId)
 
 if ($permission->hasPermission("Ticket: Edit: Assignee"))
 {
-	if (!GetTextField("hideLabel",0))
+	if (!GetTextField("hideLabel",0) || !$permission->hasPermission("Ticket: Create: User Ticket"))
 	{
 ?>
 Assignee:

@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.0
+//
+// v1.8.0
+//  - Updated datepicker
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -153,12 +156,20 @@ if (!is_numeric($page))
 				</td>
 			</tr>
 			<tr>
-			  <td>Requestor:
+			  <td>
+					Requestor:
 			  </td>
 			  <td>
 			    <div id="requestorResults"></div>
 			  </td>
-			  <td>Owner:
+			  <td>
+					<?php
+					if (!$permission->hasPermission("Ticket: Create: User Ticket") || $permission->hasPermission("Developer"))
+					{
+					 ?>
+           Assignee:
+					<?php
+				  } ?>
 			  </td>
 			  <td>
 			  <?php CreateHiddenField("hideLabel",1);?>
@@ -212,7 +223,8 @@ Status:
 				<td>
 					<?php
 					$afterDate = date('Y-m-d', strtotime($today.' - 29 days'));
-					CreateDateField("afterDate",$afterDate);
+					//CreateDateField("afterDate",$afterDate);
+					CreateDatePicker("afterDate",$afterDate);
 					 ?>
 				</td>
 				<td>
@@ -221,7 +233,8 @@ Status:
 				<td>
 					<?php
 					$beforeDate = "";
-					CreateDateField("beforeDate",$beforeDate);
+					//CreateDateField("beforeDate",$beforeDate);
+					CreateDatePicker("beforeDate",$beforeDate);
 					 ?>
 				</td>
 			</tr>

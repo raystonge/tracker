@@ -35,7 +35,7 @@ if (!$organizationId)
 					if (!GetTextField("hideLabel",0))
 					{
 					?>
-					<!-- Queue: -->
+					 Queue: 
 					<?php
 					}
 					?>
