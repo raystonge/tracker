@@ -163,6 +163,8 @@ else
 		case "ticketInsurance":
 		case "ticketDeleteAttachment":
     case "viewTicket" :
+    case "ticketPO" :
+    case "deleteTickePO" :
 		case "ticketHistory": $ticketClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-2 dropdown active";
 		                 break;
 		case "listAssets":

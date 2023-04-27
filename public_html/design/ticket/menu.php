@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.0
+//
+// v1.8.0
+//  - Added ticketPO
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -21,6 +24,7 @@
 $ticketClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $attachmentClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $assetClass = "menu-item menu-item-type-custom menu-item-object-custom";
+$poClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $insuranceClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $historyClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $scheduleClass = "menu-item menu-item-type-custom menu-item-object-custom";
@@ -40,6 +44,10 @@ if ($request_uri[1] == "ticketAttachment")
 if ($request_uri[1] == "ticketHistory")
 {
 	$historyClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-20 active";
+}
+if ($request_uri[1] == "ticketPO")
+{
+	$poClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-20 active";
 }
 if ($request_uri[1] == "ticketInsurance")
 {
@@ -77,6 +85,13 @@ $param = "ticketId=".$ticket->ticketId;
 	                  {
 	                  	?>
 	                  <li id="menu-item-20" class="<?php echo $insuranceClass;?>"><a href='/ticketInsurance/<?php echo $ticketId;?>/' title='Warranty'><span>Warranty</span></a></li>
+										<?php
+	                  }
+	                  if ($permission->hasPermission("Ticket: View PO") && $useInsurance)
+	                  {
+	                  	?>
+	                  <li id="menu-item-20" class="<?php echo $poClass;?>"><a href='/ticketPO/<?php echo $ticketId;?>/' title='PO'><span>PO</span></a></li>
+
 	                  <?php
 	                  }
 	                  if ($permission->hasPermission("Ticket: Schedule"))

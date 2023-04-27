@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.0
+//
+//  v1.8.0
+//   - fixed insert so the vendorOrderID is inserted and not the string 
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -294,7 +297,7 @@ var $className="poNumber";
    $vendor = prepForDB("poNumber","vendor",$this->vendor);
    DebugText("cost:".$this->cost);
 	 $reconciledDateTime = prepForDB("poNumber","reconciledDateTime",$this->reconciledDateTime);
-	 $query = "Insert into poNumber (poNumber,description,poDate,poType,organizationId,reconciled,reconciledUserId,reconciledDateTime,cost,vendorOrderID,vendor,received) value ('$poNumber','$desc','$poDate','$poType',$this->organizationId,$this->reconciled,$this->reconciledUserId,'$reconciledDateTime','$this->cost','vendorOrderID','$vendor',$this->received)";
+	 $query = "Insert into poNumber (poNumber,description,poDate,poType,organizationId,reconciled,reconciledUserId,reconciledDateTime,cost,vendorOrderID,vendor,received) value ('$poNumber','$desc','$poDate','$poType',$this->organizationId,$this->reconciled,$this->reconciledUserId,'$reconciledDateTime','$this->cost','$vendorOrderID','$vendor',$this->received)";
    $results = mysqli_query($link_cms,$query);
 	 DebugText($query);
 	 DebugText("Error:".mysqli_error($link_cms));
