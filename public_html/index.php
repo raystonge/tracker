@@ -251,6 +251,7 @@ else
     case "poNumberView" :
 		case "poNumberAssets" :
 		case "poNumberAttachment" :
+    case "poNumberTickets" :
 		case "poNumberHistory" :
 		                            $poClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
 		                            break;

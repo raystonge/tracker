@@ -34,6 +34,11 @@ var $ticketPOId;
 var $ticketId;
 var $poNumberId;
 
+var $page;
+var $limit;
+var $perPage;
+var $start;
+var $numRows;
 var $orderBy;
 
 var $className="TicketPO";
@@ -65,6 +70,10 @@ var $className="TicketPO";
     $this->ticketPOId = 0;
     $this->ticketId = 0;
     $this->poNumberId = 0;
+
+    $this->page = 1;
+    $this->start = 0;
+    $this->perPage = 0;
     $this->orderBy = "ticketPOId asc";
   }
   function setOrderBy($orderBy)
@@ -82,6 +91,56 @@ var $className="TicketPO";
    return($this->Get($param));
 
   }
+  function SetPage($page)
+  {
+  	DebugText($this->className."[SetPage($page)]");
+  	$this->page = $page;
+  	DebugText("Setting Page:".$this->page);
+  }
+  function SetPerPage($perPage)
+  {
+  	DebugText($this->className."[SetPerPage($perPage)]");
+  	$this->perPage = $perPage;
+  	DebugText("Setting perPage:".$this->perPage);
+  }
+  function Search($param)
+  {
+	 DebugText($this->className."[Search]");
+     global $link_cms;
+     global $database_cms;
+     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+     if (!isnumeric($this->page))
+     {
+     	$this->page = 1;
+     }
+     $this->start = ($this->page-1)*$this->perPage;
+     DebugText("start:".$this->start);
+     DebugText("page:".$this->page);
+     DebugText("perPage:".$this->perPage);
+
+	 $query = "Select * from ticketPO";
+	 if ($param)
+	 {
+	   $query = $query . " where ". $param;
+	 }
+  	 if (strlen($this->orderBy))
+	 {
+	   $query = $query . " order by ".$this->orderBy;
+	 }
+	 if ($this->limit > 0)
+	 {
+	 	$query = $query . " limit ".$this->limit;
+	 }
+	 if ($this->perPage > 0)
+	 {
+	 	$query = $query ." limit ".$this->start.",".$this->perPage;
+	 }
+	 $this->results = mysqli_query($link_cms,$query);
+	 DebugText($query);
+	 DebugText("Error:".mysqli_error($link_cms));
+	 return($this->Next());
+  }
+
   function Get($param = "")
   {
 	 DebugText($this->className."[Get]");

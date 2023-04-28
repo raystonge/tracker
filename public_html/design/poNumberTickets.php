@@ -18,7 +18,7 @@
 //
 ?>
 <?php
-PageAccess("poNumber: View Assets");
+PageAccess("poNumber: View Tickets");
 ?>
 <div class="adminArea">
 <?php
@@ -29,6 +29,8 @@ if (isset($request_uri[2]))
 }
 
 include_once "tracker/poNumber.php";
+include_once "tracker/ticketPO.php";
+include_once "tracker/ticket.php";
 $poNumber = new poNumber($poNumberId);
 $label = "";
 if (strlen($poNumber->poNumber))
@@ -56,7 +58,7 @@ echo $label." - ".$poNumber->description;
 
 	<div id='tab-editor'>
      <?php
-     include $sitePath."/design/poNumber/assets.php";
+     include $sitePath."/design/poNumber/tickets.php";
      ?>
 	</div>
   </div>

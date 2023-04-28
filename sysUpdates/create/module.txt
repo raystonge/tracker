@@ -7,6 +7,6 @@ CREATE TABLE `module` (
   `admin` int(11) DEFAULT NULL,
   `moduleType` varchar(45) DEFAULT NULL,
   `assignee` int(11) DEFAULT NULL,
-  `personalProperty` int(11) DEFAULT '0',
+  `personalProperty` int(11) DEFAULT NULL,
   PRIMARY KEY (`moduleId`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1
