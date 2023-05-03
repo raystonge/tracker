@@ -37,7 +37,7 @@ $htmlAction=$htmlAction.' alt="Assign"><img src="/images/icons/icon_settings.gif
 else {
 	$htmlAction = $htmlAction.'<img src="/images/icon_blank.png">';
 }
-$htmlAction=$htmlAction.'<a href="/deleteAssetType/'.$assetType->assetTypeId.'/" class="delete_assetType" ';
+$htmlAction=$htmlAction.'<a href="/deleteAssetType/'.$assetType->assetTypeId.'/'.$key.'/" class="delete_assetType" ';
 if ($showMouseOvers)
 {
 	$htmlAction = $htmlAction.' title="Delete"';

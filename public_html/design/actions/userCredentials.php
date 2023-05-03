@@ -18,6 +18,7 @@
 //
 ?>
 <?php
+$key = CreateLinkKey("deleteAssetCredentials");
 $htmlAction=' <div class="roptions">';
 
 	$htmlAction=$htmlAction.'<a href="/editUserCredentials/'.$assetCredentials->assetCredentialsId."/".$assetCredentials->assetCredentialsId. '/" ';
@@ -45,7 +46,7 @@ if ($permission->hasPermission("Config: User Group: View"))
 	}
 	$htmlAction=$htmlAction.' href="/editAssetCredentialsPermission/'.$assetCredentials->assetCredentialsId. '/"><img alt="Permissions" src="/images/icons/list_security.gif"></a>';
 */
-	$htmlAction = $htmlAction.'<a href="/deleteAssetCredentials/'.$assetCredentials->assetCredentialsId. '/"  class="delete_assetCredentials"';
+	$htmlAction = $htmlAction.'<a href="/deleteAssetCredentials/'.$assetCredentials->assetCredentialsId.'/'.$key. '/"  class="delete_assetCredentials"';
 	if ($showMouseOvers)
 	{
 		$htmlAction=$htmlAction.' title="Delete User Group"';

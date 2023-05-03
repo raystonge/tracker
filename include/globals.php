@@ -28,6 +28,10 @@ include_once "tracker/permission.php";
 include_once "db/fieldValidators.php";
 include_once "debug.php";
 include_once "cmsdb.php";
+if (file_exists("/var/www/dev/php8/functions.php"))
+{
+	include_once("/var/www/dev/php8/functions.php");
+}
 $permission = new Permission();
 $yesterday = date("Y-m-d", time() - 60 * 60 * 24);
 $oneYear = date("Y-m-d", time() + 365*(60 * 60 * 24));
@@ -188,7 +192,7 @@ function OneYear()
 
 function Now()
 {
-	return date("Y-m-d H:i:s");	
+	return date("Y-m-d H:i:s");
 }
 function NowInt()
 {

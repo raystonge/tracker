@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.1
+//
+//  v1.8.1
+//   - fixing cross site security error on delete
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -20,7 +23,19 @@
 <?php
 include_once "tracker/assetType.php";
 include_once "tracker/asset.php";
-$assetTypeId = $request_uri[2];
+$assetTypeId = GetURI(2,0);
+$key = GetURI(3,"");
+if (!$assetTypeId)
+{
+	echo "Invalid operation";
+	exit;
+}
+if (!testLinkKey($key,"deleteAssetType"))
+{
+	echo "This is not allowed at this time";
+	exit;
+}
+
 $assetType = new AssetType($assetTypeId);
 $asset = new Asset();
 $param = "assetTypeId=".$assetType->assetTypeId;

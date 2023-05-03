@@ -17,6 +17,7 @@ $(document).ready(function () {
       $("#searchOwnerId").val(0);
       $("#searchStatusId").val(-1);
 			$("#assignee").val(0);
+			$("#searchTicketId").val("");
     });
 		$( "#organizationId").change(function() {
         link = "/ajax/controls/searchQueue.php";

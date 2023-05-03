@@ -27,6 +27,7 @@ PageAccess("Config: Asset Type");
 $assetType = new AssetType();
 $assetType->SetPerPage(25);
 $user = new User($_SESSION['userId']);
+$key = CreateLinkKey("deleteAssetType");
 
 $param = "";
 $sectionName = "";

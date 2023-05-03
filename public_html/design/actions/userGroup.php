@@ -18,6 +18,7 @@
 //
 ?>
 <?php
+$key = CreateLinkKey("deleteUserGroup");
 $htmlAction=' <div class="roptions">';
 if ($permission->hasPermission("Config: User: Edit"))
 {
@@ -50,7 +51,7 @@ if ($permission->hasPermission("Config: User Group: Permissions"))
 }
 if ($permission->hasPermission("Config: User Group: Delete"))
 {
-	$htmlAction = $htmlAction.'<a href="/deleteUserGroup/'.$userGroup->userGroupId. '/"  class="delete_userGroup"';
+	$htmlAction = $htmlAction.'<a href="/deleteUserGroup/'.$userGroup->userGroupId.'/'.$key. '/"  class="delete_userGroup"';
 	if ($showMouseOvers)
 	{
 		$htmlAction=$htmlAction.' title="Delete User Group"';

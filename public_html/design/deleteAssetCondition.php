@@ -21,33 +21,37 @@
 //
 ?>
 <?php
-include_once "tracker/module.php";
-$moduleId = GetURI(2,0);
-
+include_once "tracker/assetCondition.php";
+include_once "tracker/asset.php";
+$assetConditionId = GetURI(2,0);
 $key = GetURI(3,"");
-if (!$ticketPOId)
+if (!$assetConditionId)
 {
 	echo "Invalid operation";
 	exit;
 }
-if (!testLinkKey($key,"deleteModule"))
+if (!testLinkKey($key,"deleteAssetCondition"))
 {
 	echo "This is not allowed at this time";
 	exit;
 }
-$param = "moduleId=".$moduleId;
-$module = new Module($moduleId);
-if (!$module->moduleId)
+
+$assetCondition = new AssetCondition($assetConditionId);
+if (!$assetCondition->assetConditionId)
+if (!$assetConditionId)
 {
-  echo "Invalid operation";
-  exit;
+	echo "Invalid operation";
+	exit;
 }
-if ($permission->hasPermission("Report: Edit") || $module->userId == $currentUser->userId)
+$asset = new Asset();
+$param = "assetConditionId=".assetCondition->assetConditionId;
+if ($asset->Get($param))
 {
-  $module->Delete();
-  echo "Report ".$module->name." has been deleted";
+	echo "AssetCondition ".$assetCondition->name." cannot be deleted because assets are marked for that Asset Condition.";
 }
-else {
-  echo "Report was not deleted";
+else
+{
+	$assetCondition->Delete();
+	echo "AssetCondition ".$assetCondition->name." has been deleted";
 }
 ?>

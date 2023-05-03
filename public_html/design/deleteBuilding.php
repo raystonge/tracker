@@ -21,17 +21,37 @@
 //
 ?>
 <?php
-$key = CreateLinkKey("deleteModule");
-$htmlAction='<a href="/editModule/'.$module->moduleId.'/" class="edit_report" ';
-if ($showMouseOvers)
+include_once "tracker/building.php";
+include_once "tracker/asset.php";
+$buildingId = GetURI(2,0);
+$key = GetURI(3,"");
+if (!$buildingId)
 {
-	$htmlAction=$htmlAction.' title="Edit"';
+	echo "Invalid operation";
+	exit;
 }
-$htmlAction=$htmlAction.' alt="Edit"><img src="/images/icon_edit.png"></a>';
-$htmlAction=$htmlAction.'<a href="/deleteModule/'.$module->moduleId.'/'.$key.'/" class="delete_report" ';
-if ($showMouseOvers)
+if (!testLinkKey($key,"deleteBuilding"))
 {
-	$htmlAction = $htmlAction.' title="Delete"';
+	echo "This is not allowed at this time";
+	exit;
 }
-$htmlAction=$htmlAction.' alt="Delete"><img src="/images/icon_trash.png"></a>';
+
+$building = new Building($buildingId);
+if (!$building->buildingId)
+if (!$buildingId)
+{
+	echo "Invalid operation";
+	exit;
+}
+$asset = new Asset();
+$param = "buildingId=".building->buildingId;
+if ($asset->Get($param))
+{
+	echo "Building ".$building->name." cannot be deleted because assets are marked for that building.";
+}
+else
+{
+	$building->Delete();
+	echo "Building ".$building->name." has been deleted";
+}
 ?>
