@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.1
+//
+//  v1.8.1
+//   - adding code for a key for links
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -176,7 +179,7 @@ function testFormKey($key="formKey")
 	}
 	if (isset($_GET[$key]))
 	{
-		$formKey = strip_tags($_GET[$key]);
+		$formKey = strip_tags($_GET[$key]);$val = md5($now);
 	}
 	$_SESSION[$key] = "";
 	DebugText("sessionKey:".$sessionKey);
@@ -246,5 +249,27 @@ function testAJAXFormKey($key="ajaxFormKey")
 {
 	DebugText("testAJAXFormKey($key)");
 	return testFormKey($key);
+}
+function CreateLinkKey($key="linkKey")
+{
+	global $now;
+	DebugText("CreateLinkKey($key)");
+	$val = md5($now);
+	$_SESSION[$key] = $val;
+	return $val;
+}
+function testLinkKey($val,$key="linkKey")
+{
+	DebugText("testLinkKey($val,$key)");
+	$results = 0;
+	if (isset($_SESSION[$key]))
+	{
+		$test = $_SESSION[$key];
+		if ($test == $val)
+		{
+			$results = 1;
+		}
+	}
+	return $results;
 }
 ?>

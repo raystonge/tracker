@@ -21,33 +21,29 @@
 //
 ?>
 <?php
-include_once "tracker/module.php";
-$moduleId = GetURI(2,0);
-
+include_once "tracker/control.php";
+include_once "tracker/asset.php";
+$controlId = GetURI(2,0);
 $key = GetURI(3,"");
-if (!$ticketPOId)
+if (!$controlId)
 {
 	echo "Invalid operation";
 	exit;
 }
-if (!testLinkKey($key,"deleteModule"))
+if (!testLinkKey($key,"deleteControl"))
 {
 	echo "This is not allowed at this time";
 	exit;
 }
-$param = "moduleId=".$moduleId;
-$module = new Module($moduleId);
-if (!$module->moduleId)
+
+$control = new Control($controlId);
+if (!$control->controlId)
+if (!$controlId)
 {
-  echo "Invalid operation";
-  exit;
+	echo "Invalid operation";
+	exit;
 }
-if ($permission->hasPermission("Report: Edit") || $module->userId == $currentUser->userId)
-{
-  $module->Delete();
-  echo "Report ".$module->name." has been deleted";
-}
-else {
-  echo "Report was not deleted";
-}
+$control->Delete();
+echo "Control ".$control->name." has been deleted";
+
 ?>

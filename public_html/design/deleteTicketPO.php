@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.8.0
+//  Tracker - Version 1.8.2
+//
+//  v1.8.2
+//   - fixing cross site security error on delete
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -20,7 +23,19 @@
 <?php
 include_once "tracker/ticketPO.php";
 include_once "tracker/poNumber.php";
-$ticketPOId = $request_uri[2];
+$ticketPOId = GetURI(2,0);
+
+$key = GetURI(3,"");
+if (!$ticketPOId)
+{
+	echo "Invalid operation";
+	exit;
+}
+if (!testLinkKey($key,"deleteTicketPO"))
+{
+	echo "This is not allowed at this time";
+	exit;
+}
 $ticketPO = new TicketPO($ticketPOId);
 $po = new poNumber($ticketPO->poNumberId);
 $ticketPO->Delete($ticketPOId);

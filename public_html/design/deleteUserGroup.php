@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.2
+//
+//  v1.8.2
+//   - fixing cross site security error on delete
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -21,16 +24,24 @@
 include_once "tracker/userGroup.php";
 include_once "tracker/userToGroup.php";
 include_once "tracker/userGroupToPermission.php";
-$userGroupId = 0;
-if (isset($request_uri[2]))
+$userGroupId = GetURI(2,0);
+$key = GetURI(3,"");
+if (!$userGroupId)
 {
-	if (strlen($request_uri[2]))
-	{
-		$userGroupId = $request_uri[2];
-		DebugText("using param 2:".$userGroupId);
-	}
+	echo "Invalid operation";
+	exit;
+}
+if (!testLinkKey($key,"deleteUserGroup"))
+{
+	echo "This is not allowed at this time";
+	exit;
 }
 $userGroup = new UserGroup($userGroupId);
+if (!$userGroup->Id)
+{
+	echo "Invalid operation";
+	exit;
+}
 $userToGroup = new UserToGroup();
 $userGroupToPermission = new UserGroupToPermission();
 $param = "userGroupId=".$userGroup->userGroupId;

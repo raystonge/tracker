@@ -1,8 +1,11 @@
 <strong>System Notes</strong>
+== 2023-05-08
+ = Version 1.8.2
+   * fixing cross site security error on delete
 == 2023-05-02
  = Version 1.8.1
    * updated js to clear ticket Id on ticket search form when hitting reset
-   
+
 == 2023-05-01
  = Version 1.8.0
    * updated datepicker on listTickets

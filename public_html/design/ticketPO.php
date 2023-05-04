@@ -117,6 +117,7 @@ if (FormSuccess())
       </th>
     </tr>
     <?php
+		$key = CreateLinkKey("deleteTicketPO");
     $ticketPO = new TicketPO();
     $param = AddEscapedParam("","ticketId",$ticketId);
     $ok = $ticketPO->Get($param);
@@ -140,7 +141,7 @@ if (FormSuccess())
         <td>
           <?php
           $htmlAction = "";
-          $htmlAction=$htmlAction.'<a href="/deleteTicketPO/'.$ticketPO->ticketPOId.'/" class="delete_ticketPO" ';
+          $htmlAction=$htmlAction.'<a href="/deleteTicketPO/'.$ticketPO->ticketPOId.'/'.$key.'/" class="delete_ticketPO" ';
           if ($showMouseOvers)
           {
           	$htmlAction = $htmlAction.' title="Delete"';

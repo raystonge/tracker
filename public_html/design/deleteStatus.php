@@ -1,8 +1,8 @@
 <?php
 //
-//  Tracker - Version 1.8.1
+//  Tracker - Version 1.8.2
 //
-//  v1.8.1
+//  v1.8.2
 //   - fixing cross site security error on delete
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge

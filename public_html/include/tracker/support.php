@@ -1,9 +1,13 @@
 <?php
 //
-//  Tracker - Version 1.7.0
+//  Tracker - Version 1.8.1
+//
+//  v1.8.1
+//   - moved stuff for PHP 8 support to external file that is only included if it exists
 //
 //  v1.7.0
 //   - add a test for the depreciated each function
+//
 //  v1.5.1
 //   -the code in legacy_each is not compatible with older versions of PHP,
 //    since it is not being used, it was Removed
@@ -1029,16 +1033,5 @@ function DatePickerUnFormatter($date)
   list ($month,$day,$year) = explode("-",$date);
   $newDate = $year."-".$month."-".$day;
   return $newDate;
-}
-/**
- * Adds the depreciated each() function back into 7.2
- */
-if (!function_exists('each')) {
-    function each($arr) {
-        $key = key($arr);
-        $result = ($key === null) ? false : [$key, current($arr), 'key' => $key, 'value' => current($arr)];
-        next($arr);
-        return $result;
-    }
 }
 ?>
