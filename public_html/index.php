@@ -1,7 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.6.0
+//  Tracker - Version 1.8.2
 //
+//  v1.8.2
+//   - updating nav for new delete pages
 //  v1.6.0
 //   - updated nav for service pages
 //  v1.5.0
@@ -243,6 +245,20 @@ else
 		case "exportStructure":
 		case "upgrade":
 		case "doUpgrade":
+    case "deleteBuilding":
+    case "deleteAssetCondition":
+    case "deleteService":
+    case "deleteAssetCredentials":
+    case "deleteQueue":
+    case "deleteStaus":
+    case "deleteUserGroup":
+    case "deleteUser":
+    case "deleteSpec":
+    case "deleteService":
+    case "deleteModule":
+    case "deleteOrganization":
+    case "deleteControl":
+    case "deleteAssetType":
 		                            $configClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
 		                            break;
 		case "poNumberEdit" :
