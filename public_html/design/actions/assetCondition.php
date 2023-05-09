@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.2
+//
+//  v1.8.2
+//   - fixing cross site security error on delete
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -18,13 +21,14 @@
 //
 ?>
 <?php
+$key = CreateLinkKey("deleteAssetCondition");
 $htmlAction='<a href="/editAssetCondition/'.$assetCondition->assetConditionId.'/" class="edit_assetCondition" ';
 if ($showMouseOvers)
 {
 	$htmlAction=$htmlAction.' title="Edit"';
 }
 $htmlAction=$htmlAction.' alt="Edit"><img src="/images/icon_edit.png"></a>';
-$htmlAction=$htmlAction.'<a href="/deleteAssetCondition/'.$assetCondition->assetConditionId.'/" class="delete_assetCondition" ';
+$htmlAction=$htmlAction.'<a href="/deleteAssetCondition/'.$assetCondition->assetConditionId.'/'.$key.'/" class="delete_assetCondition" ';
 if ($showMouseOvers)
 {
 	$htmlAction = $htmlAction.' title="Delete"';

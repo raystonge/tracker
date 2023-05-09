@@ -44,7 +44,7 @@ if (!$assetConditionId)
 	exit;
 }
 $asset = new Asset();
-$param = "assetConditionId=".assetCondition->assetConditionId;
+$param = "assetConditionId=".$assetCondition->assetConditionId;
 if ($asset->Get($param))
 {
 	echo "AssetCondition ".$assetCondition->name." cannot be deleted because assets are marked for that Asset Condition.";

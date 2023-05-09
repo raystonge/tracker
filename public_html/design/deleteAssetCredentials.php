@@ -30,7 +30,7 @@ if (!$assetCredentialsId)
 	echo "Invalid operation";
 	exit;
 }
-if (!testLinkKey($key,"deleteAssetType"))
+if (!testLinkKey($key,"deleteAssetCredentials"))
 {
 	echo "This is not allowed at this time";
 	exit;

@@ -44,7 +44,7 @@ if (!$statusId)
 	exit;
 }
 $ticket = new Ticket();
-$param = "statusId=".status->statusId;
+$param = "statusId=".$status->statusId;
 if ($ticket->Get($param))
 {
 	echo "Status ".$ticket->name." cannot be deleted because tickets are marked for that status.";

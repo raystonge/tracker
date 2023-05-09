@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.2
+//
+//  v1.8.2
+//   - fixing cross site security error on delete
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -18,6 +21,7 @@
 //
 ?>
 <?php
+$key = CreateLinkKey("deleteUser");
 $htmlAction=' <div class="roptions">';
 if ($permission->hasPermission("Config: User: Edit"))
 {
@@ -58,7 +62,7 @@ $htmlAction=$htmlAction.' alt="Assign"><img src="/images/icons/icon_settings.gif
 
 if ($permission->hasPermission("Config: User: Delete"))
 {
-	$htmlAction = $htmlAction.'<a href="/deleteUser/'.$user->userId. '/"  class="delete_user"';
+	$htmlAction = $htmlAction.'<a href="/deleteUser/'.$user->userId.'/'.$key. '/"  class="delete_user"';
 	if ($showMouseOvers)
 	{
 		$htmlAction=$htmlAction.' title="Delete User"';

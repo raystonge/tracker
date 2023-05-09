@@ -44,7 +44,7 @@ if (!$buildingId)
 	exit;
 }
 $asset = new Asset();
-$param = "buildingId=".building->buildingId;
+$param = "buildingId=".$building->buildingId;
 if ($asset->Get($param))
 {
 	echo "Building ".$building->name." cannot be deleted because assets are marked for that building.";
