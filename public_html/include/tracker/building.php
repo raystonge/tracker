@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.2
+//
+//  v1.8.2
+//   - added Delete function
 //
 // v1.5.0
 //  - added active field
@@ -253,6 +256,23 @@ var $className="Building";
   	{
   		$this->Insert();
   	}
+  }
+  function Delete()
+  {
+    DebugText($this->className."[Delete]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    if (!$this->buildingId)
+    {
+      return(0);
+    }
+    $query = "Delete from building where buildingId=$this->buildingId";
+    $results = mysqli_query($link_cms,$query);
+    DebugText($query);
+    DebugText("Error:".mysqli_error($link_cms));
+    return(1);
+
   }
 }
 ?>

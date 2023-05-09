@@ -1,6 +1,10 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.2
+//
+//  v1.8.2
+//   - added Delete function
+//
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -241,6 +245,22 @@ var $className="AssetCondition";
   	{
   		$this->Insert();
   	}
+  }
+  function Delete()
+  {
+    DebugText($this->className."[Delete]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    if (!$this->assetConditionId)
+    {
+      return(0);
+    }
+    $query = "Delete from assetCondition where assetConditionId=$this->assetConditionId";
+    $results = mysqli_query($link_cms,$query);
+    DebugText($query);
+    DebugText("Error:".mysqli_error($link_cms));
+    return(1);
   }
 }
 ?>
