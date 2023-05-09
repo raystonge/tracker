@@ -101,40 +101,39 @@ var $className="DefaultUser";
   }
   function Update()
   {
-	 DebugText($this->className."[Update]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $userType = trim(mysqli_real_escape_string($link_cms,$this->userType));
-	 $query = "Update defaultUser set userId=$this->userId,queueId=$this->queueId where defaultUserId = $this->defaultUserId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Update]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $userType = trim(mysqli_real_escape_string($link_cms,$this->userType));
+	  $query = "Update defaultUser set userId=$this->userId,queueId=$this->queueId where defaultUserId = $this->defaultUserId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {
-	 DebugText($this->className."[Insert]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $userType = trim(mysqli_real_escape_string($link_cms,$this->userType));
-	 $query = "Insert into defaultUser (userType,userId,queueId) value ('$userType',$this->userId,$this->queueId)";
-     $results = mysqli_query($link_cms,$query);
-     $this->defaultUserId = mysqli_insert_id($link_cms);
-
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Insert]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $userType = trim(mysqli_real_escape_string($link_cms,$this->userType));
+	  $query = "Insert into defaultUser (userType,userId,queueId) value ('$userType',$this->userId,$this->queueId)";
+    $results = mysqli_query($link_cms,$query);
+    $this->defaultUserId = mysqli_insert_id($link_cms);
+    DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Reset($queueId)
   {
-	 DebugText($this->className."[Reset]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $query = "Delete from defaultUser where queueId=$queueId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Reset]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $query = "Delete from user where userId=$userId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
 }
 ?>
