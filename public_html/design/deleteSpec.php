@@ -21,37 +21,48 @@
 //
 ?>
 <?php
-include_once "tracker/queue.php";
-include_once "tracker/ticket.php";
-$queueId = GetURI(2,0);
+include_once "tracker/spec.php";
+include_once "tracker/specToAssetType.php";
+include_once "tracker/assetToSpec.php";
+$specId = GetURI(2,0);
 $key = GetURI(3,"");
-if (!$queueId)
+if (!$specId)
 {
 	echo "Invalid operation";
 	exit;
 }
-if (!testLinkKey($key,"deleteQueue"))
+if (!testLinkKey($key,"deleteSpec"))
 {
-	echo "This is not allowed at this time";a
+	echo "This is not allowed at this time";
 	exit;
 }
 
-$queue = new Queue($queueId);
-if (!$queue->queueId)
-if (!$queueId)
+$spec = new Spec($specId);
+if (!$spec->specId)
+if (!$specId)
 {
 	echo "Invalid operation";
 	exit;
 }
-$ticket = new Ticket();
-$param = "queueId=".$queue->queueId;
-if ($ticket->Get($param))
+$param = AddEscapedParam("","specId",$specId);
+$assetToSpec = new assetToSpec();
+$specToAssetType = new specToAssetType();
+$inUse = 0;
+if ($assetToSpec->Get($param))
 {
-	echo "Queue ".$ticket->name." cannot be deleted because tickets are marked for that queue.";
+  echo "Spec ".$spec->name." is assigned to Assets<br>";
+  $inUse = 1;
 }
-else
+if ($specToAssetType->Get($param))
 {
-	$queue->Delete();
-	echo "Queue ".$queue->name." has been deleted";
+  echo "Spec ".$spec->name." is assigned to AssetTypes<br>";
+  $inUse = 1;
 }
+if ($inUse)
+{
+  echo "Spec ".$spec->name." cannot be deleted at this time<br>";
+  exit;
+}
+$spec->Delete();
+echo "Spec ".$spec->name." has been deleted";
 ?>
