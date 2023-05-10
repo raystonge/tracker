@@ -32,7 +32,7 @@ if (!$statusId)
 }
 if (!testLinkKey($key,"deleteStatus"))
 {
-	echo "This is not allowed at this time";a
+	echo "This is not allowed at this time";
 	exit;
 }
 

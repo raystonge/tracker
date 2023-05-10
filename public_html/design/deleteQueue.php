@@ -32,7 +32,7 @@ if (!$queueId)
 }
 if (!testLinkKey($key,"deleteQueue"))
 {
-	echo "This is not allowed at this time";a
+	echo "This is not allowed at this time";
 	exit;
 }
 
