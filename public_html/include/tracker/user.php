@@ -436,19 +436,19 @@ var $className = "User";
   }
   function Delete()
   {
-     global $link_cms;
-     global $database_cms;
-	 DebugText($this->className."[Delete]");
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    global $link_cms;
+    global $database_cms;
+	  DebugText($this->className."[Delete]");
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
 
-	 if ($this->userId <= 0)
-	 {
-	   DebugText("userId <= 0($this->userId)");
-	 }
-	 $query = "delete from users where userId=$this->userId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+	  if ($this->userId <= 0)
+	  {
+      DebugText("userId <= 0($this->userId)");
+	  }
+	  $query = "delete from users where userId=$this->userId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function addHistory($action)
   {

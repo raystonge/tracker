@@ -237,5 +237,22 @@ var $className="Service";
   		$this->Insert();
   	}
   }
+  function Delete()
+  {
+    global $link_cms;
+    global $database_cms;
+    DebugText($this->className."[Delete]");
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+
+    if ($this->serviceId <= 0)
+    {
+      DebugText("serviceId <= 0($this->serviceId)");
+    }
+    $query = "delete from service where serviceId=$this->serviceId";
+    $results = mysqli_query($link_cms,$query);
+    DebugText($query);
+    DebugText("Error:".mysqli_error($link_cms));
+
+  }
 }
 ?>
