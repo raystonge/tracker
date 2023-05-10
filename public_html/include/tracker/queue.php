@@ -207,28 +207,28 @@ var $className="Queue";
   }
   function Update()
   {
-	 DebugText($this->className."[Update]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $name = trim(mysqli_real_escape_string($link_cms,$this->name));
-	 $query = "Update queue set name='$name', organizationId = $this->organizationId where queueId = $this->queueId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Update]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $name = trim(mysqli_real_escape_string($link_cms,$this->name));
+	  $query = "Update queue set name='$name', organizationId = $this->organizationId where queueId = $this->queueId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {
-	 DebugText($this->className."[Insert]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $name = trim(mysqli_real_escape_string($link_cms,$this->name));
-	 $query = "Insert into queue (name,organizationId) value ('$name',$this->organizationId)";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 $this->queueId = mysqli_insert_id($link_cms);
+    DebugText($this->className."[Insert]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $name = trim(mysqli_real_escape_string($link_cms,$this->name));
+	  $query = "Insert into queue (name,organizationId) value ('$name',$this->organizationId)";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  $this->queueId = mysqli_insert_id($link_cms);
   }
   function Persist()
   {
@@ -240,6 +240,23 @@ var $className="Queue";
   	{
   		$this->Insert();
   	}
+  }
+  function Delete()
+  {
+    global $link_cms;
+    global $database_cms;
+    DebugText($this->className."[Delete]");
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+
+    if ($this->queueId <= 0)
+    {
+      DebugText("queueId <= 0($this->queueId)");
+    }
+    $query = "delete from queue where queueId=$this->queueId";
+    $results = mysqli_query($link_cms,$query);
+    DebugText($query);
+    DebugText("Error:".mysqli_error($link_cms));
+
   }
 }
 ?>
