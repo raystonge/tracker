@@ -47,7 +47,7 @@ $ticket = new Ticket();
 $param = "queueId=".$queue->queueId;
 if ($ticket->Get($param))
 {
-	echo "Queue ".$ticket->name." cannot be deleted because tickets are marked for that queue.";
+	echo "Queue ".$queue->name." cannot be deleted because tickets are marked for that queue.";
 }
 else
 {

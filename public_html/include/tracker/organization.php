@@ -1,6 +1,10 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.2
+//
+//  v1.8.2
+//   - fixing cross site security error on delete
+//
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -132,36 +136,36 @@ var $className="Organization";
 
   function Search($param)
   {
-	 DebugText($this->className."[Search]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $this->start = ($this->page-1)*$this->perPage;
-     DebugText("start:".$this->start);
-     DebugText("page:".$this->page);
-     DebugText("perPage:".$this->perPage);
+    DebugText($this->className."[Search]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $this->start = ($this->page-1)*$this->perPage;
+    DebugText("start:".$this->start);
+    DebugText("page:".$this->page);
+    DebugText("perPage:".$this->perPage);
 
-	 $query = "Select * from organization";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-  	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
-	 if ($this->perPage > 0)
-	 {
-	 	$query = $query ." limit ".$this->start.",".$this->perPage;
-	 }
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	  $query = "Select * from organization";
+	  if ($param)
+	  {
+      $query = $query . " where ". $param;
+	  }
+  	if (strlen($this->orderBy))
+	  {
+      $query = $query . " order by ".$this->orderBy;
+	  }
+	  if ($this->limit > 0)
+	  {
+      $query = $query . " limit ".$this->limit;
+	  }
+	  if ($this->perPage > 0)
+	  {
+      $query = $query ." limit ".$this->start.",".$this->perPage;
+	  }
+	  $this->results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  return($this->Next());
   }
   function Get($param = "")
   {
@@ -171,25 +175,25 @@ var $className="Organization";
     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
     $this->start = ($this->page-1)*$this->perPage;
 
-	 $query = "Select * from organization";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-  	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
+	  $query = "Select * from organization";
+	  if ($param)
+	  {
+      $query = $query . " where ". $param;
+	  }
+  	if (strlen($this->orderBy))
+	  {
+      $query = $query . " order by ".$this->orderBy;
+	  }
+	  if ($this->limit > 0)
+	  {
+      $query = $query . " limit ".$this->limit;
+	  }
 
-	 $this->results = mysqli_query($link_cms,$query);
-   $this->numRows = mysqli_num_rows($this->results);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+    $this->results = mysqli_query($link_cms,$query);
+    $this->numRows = mysqli_num_rows($this->results);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  return($this->Next());
   }
 
   function Next()
@@ -217,14 +221,13 @@ var $className="Organization";
   }
   function GetById($id)
   {
-	 DebugText($this->className."[GetById]");
-	 if (!is_numeric($id))
-	 {
-	   return;
-	 }
-	 $param = "organizationId = $id";
-	 return($this->Get($param));
-
+    DebugText($this->className."[GetById]");
+	  if (!is_numeric($id))
+	  {
+      return;
+	  }
+	  $param = "organizationId = $id";
+	  return($this->Get($param));
   }
   function Update()
   {
@@ -263,6 +266,22 @@ var $className="Organization";
   	{
   		$this->Insert();
   	}
+  }
+  function Delelte()
+  {
+    DebugText($this->className."[Delete]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    if (!$this->buildingId)
+    {
+      return(0);
+    }
+    $query = "Delete from organization where organizationId=$this->organizationId";
+    $results = mysqli_query($link_cms,$query);
+    DebugText($query);
+    DebugText("Error:".mysqli_error($link_cms));
+    return(1);
   }
 }
 ?>
