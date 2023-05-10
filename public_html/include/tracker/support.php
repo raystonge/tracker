@@ -1010,6 +1010,16 @@ function CreateDatePicker($name,$value)
     } );
    </script>
    <input type="text" id="<?php echo $name;?>" name="<?php echo $name;?>" value="<?php echo $date; ?>">
+   <script type="text/javascript">
+   $('#<?php echo $name;?>').datepicker({
+     //comment the beforeShow handler if you want to see the ugly overlay
+     beforeShow: function() {
+         setTimeout(function(){
+             $('.ui-datepicker').css('z-index', 99999999999999);
+         }, 0);
+     }
+   });
+   </script>
   <?php
 }
 function DatePickerFormatter($date)
