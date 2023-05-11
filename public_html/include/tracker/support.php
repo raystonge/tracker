@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.8.1
+//  Tracker - Version 1.8.2
+//
+//  v1.8.2
+//   - added js to move the datepicker in front of other items on the pages
 //
 //  v1.8.1
 //   - moved stuff for PHP 8 support to external file that is only included if it exists
