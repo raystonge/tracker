@@ -1,7 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.7.1
+//  Tracker - Version 1.8.2
 //
+// v1.8.2
+//  - fixed issue where if the cost was entered, it was not dispayed if there was an error
 // v1.7.1
 //  - fixing labels
 //
@@ -176,6 +178,7 @@ function parseLineSeperated(data)
        	$enableWarranty = GetTextFromSession("assetEnableWarranty");
        	$commentText = GetTextFromSession('assetComment');
        	$asset->organizationId = GetTextFromSession("assetOrganizationId");
+        $asset->purchasePrice = GetTextFromSession("assetCost");
        	DisplayFormErrors();
     }
     if (FormSuccess())
