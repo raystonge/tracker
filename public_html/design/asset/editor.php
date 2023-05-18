@@ -1,8 +1,8 @@
 <?php
 //
-//  Tracker - Version 1.8.2
+//  Tracker - Version 1.8.3
 //
-// v1.8.2
+// v1.8.3
 //  - fixed issue where if the cost was entered, it was not dispayed if there was an error
 // v1.7.1
 //  - fixing labels
