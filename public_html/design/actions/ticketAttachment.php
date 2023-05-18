@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.7.1
+//  Tracker - Version 1.8.2
+//
+//  v1.8.2
+//   - fixing cross site security error on delete
 //
 //  v1.7.1
 //   - fixing issue with wrong attachment file being included
@@ -22,8 +25,9 @@
 ?>
 <?php
 $type = strtolower($type);
+$key = CreateLinkKey($type."DeleteAttachment");
 $htmlAction = "<div class='roptions'>";
-$htmlAction=$htmlAction.'<a href="/'.$type.'DeleteAttachment/'.$attachment->attachmentId.'/" class="delete_attachment" ';
+$htmlAction=$htmlAction.'<a href="/'.$type.'DeleteAttachment/'.$attachment->attachmentId.'/'.$key.'/" class="delete_attachment" ';
 if ($showMouseOvers)
 {
   $htmlAction = $htmlAction.' title="Delete"';

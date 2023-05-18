@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.8.2
+//
+//  v1.8.2
+//   - fixing cross site security error on delete
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -18,6 +21,7 @@
 //
 ?>
 <?php
+$key = CreateLinkKey("deleteService");
 $htmlAction='<a href="/editService/'.$service->serviceId.'/" class="edit_service" ';
 if ($showMouseOvers)
 {

@@ -18,6 +18,7 @@
 //
 ?>
 <?php
+$key = CreateLinkKey("deleteAttachment");
 $type = strtolower($type);
 $htmlAction = "<div class='roptions'>";
 /*
@@ -30,7 +31,7 @@ $htmlAction=$htmlAction.' alt="Edit"><img src="/images/icon_edit.png"></a>';
 */
 if ($asset->assetConditionId != 8)
 {
-  $htmlAction=$htmlAction.'<a href="/'.$type.'DeleteAttachment/'.$attachment->attachmentId.'/" class="delete_attachment" ';
+  $htmlAction=$htmlAction.'<a href="/'.$type.'DeleteAttachment/'.$attachment->attachmentId.'/'.$key.'/" class="delete_attachment" ';
   if ($showMouseOvers)
   {
     $htmlAction = $htmlAction.' title="Delete"';
