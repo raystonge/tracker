@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.6.0
+//  Tracker - Version 1.8.4
+//
+// v1.8.4
+//  - removed double spaces in name
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -54,6 +57,7 @@ if (is_uploaded_file($fname))
         DebugText("cnt:".$cnt);
         DebugText("blocked:".$blocked);
         $name = getCSVField($line,6);
+        $name = str_replace("  "," ",$name);
         $license = getCSVField($line,13);
         if ($license == "Exchange Online (Plan 1)")
         {

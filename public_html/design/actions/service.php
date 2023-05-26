@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.8.2
+//  Tracker - Version 1.9.0
+//
+//  v1.9.0
+//   - add ability to edit users of service
 //
 //  v1.8.2
 //   - fixing cross site security error on delete
@@ -28,7 +31,12 @@ if ($showMouseOvers)
 	$htmlAction=$htmlAction.' title="Edit"';
 }
 $htmlAction=$htmlAction.' alt="Edit"><img src="/images/icon_edit.png"></a>';
-
+$htmlAction=$htmlAction.'<a href="/serviceUser/'.$service->serviceId.'/" class="user_service" ';
+if ($showMouseOvers)
+{
+	$htmlAction = $htmlAction.' title="Modify Users"';
+}
+$htmlAction=$htmlAction.' alt="Delete"><img src="/images/icons/list_users.gif"></a>';
 
 $htmlAction=$htmlAction.'<a href="/deleteService/'.$service->serviceId.'/" class="delete_service" ';
 if ($showMouseOvers)

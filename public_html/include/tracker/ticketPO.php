@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.8.0
+//  Tracker - Version 1.9.0
+//
+//  v1.9.0
+//   - added Count function
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -74,6 +77,7 @@ var $className="TicketPO";
     $this->page = 1;
     $this->start = 0;
     $this->perPage = 0;
+    $this->numRows = 0;
     $this->orderBy = "ticketPOId asc";
   }
   function setOrderBy($orderBy)
@@ -140,7 +144,28 @@ var $className="TicketPO";
 	 DebugText("Error:".mysqli_error($link_cms));
 	 return($this->Next());
   }
-
+  function Count($param)
+  {
+    DebugText($this->className."[Count]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $query = "select count(*) as numRows from ticketPO";
+    if (strlen($param))
+    {
+      $query = $query." where ".$param;
+    }
+    $results = mysqli_query($link_cms,$query);
+    DebugText($query);
+    DebugText("Error:".mysqli_error($link_cms));
+    $numRows = 0;
+    if ($row = mysqli_fetch_array($results))
+    {
+      $numRows = $row['numRows'];
+    }
+    $this->numRows = $numRows;
+    return($numRows);
+  }
   function Get($param = "")
   {
 	 DebugText($this->className."[Get]");
@@ -154,7 +179,8 @@ var $className="TicketPO";
 	   $query = $query . " where ". $param;
 	 }
 	 $query = $query . " order by ".$this->orderBy;
-     $this->results = mysqli_query($link_cms,$query);
+   $this->results = mysqli_query($link_cms,$query);
+   $this->numRows = mysqli_num_rows($this->results);
 	 DebugText($query);
 	 DebugText("Error:".mysqli_error($link_cms));
 	 return($this->Next());

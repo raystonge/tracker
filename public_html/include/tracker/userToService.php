@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.6.0
+//  Tracker - Version 1.9.0
+//
+//  v1.9.0
+//   - added a Delete and Persit function
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -100,6 +103,14 @@ var $className="UserToService";
 	 return($this->Get($param));
 
   }
+  function Persist()
+  {
+    if (!$this->userToServiceId)
+    {
+      return($this->Insert());
+    }
+    return ($this->userToServiceId);
+  }
 
   function Insert()
   {
@@ -120,6 +131,17 @@ var $className="UserToService";
     global $database_cms;
     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
 	  $query = "Delete from userToService where userId=$this->userId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+  }
+  function Delete()
+  {
+    DebugText($this->className."[Delete]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $query = "Delete from userToService where userToServiceId=$this->userToServiceId";
     $results = mysqli_query($link_cms,$query);
 	  DebugText($query);
 	  DebugText("Error:".mysqli_error($link_cms));

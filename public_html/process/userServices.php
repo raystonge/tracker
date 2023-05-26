@@ -1,6 +1,6 @@
 <?php
 //
-//  Tracker - Version 1.6.0
+//  Tracker - Version 1.9.0
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -21,7 +21,13 @@
 include_once "globals.php";
 include_once "tracker/service.php";
 include_once "tracker/userToService.php";
-
+$validAccess = testFormKey();
+DebugText("validAccess:".$validAccess);
+if ($validAccess == 0)
+{
+	DebugText("problem with keys");
+   DebugPause("/improperAccess/");
+}
 $userId = 0;
 if (isset($_POST['userId']))
 {

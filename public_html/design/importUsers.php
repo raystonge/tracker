@@ -23,7 +23,7 @@ include_once "tracker/userGroup.php";
 include_once "tracker/organization.php";
 include_once "tracker/permission.php";
 $button = "Create";
-PageAccess("CConfig: User: Create");
+PageAccess("Config: User: Create");
 $user = new User();
 $formKey = "";
 if (isset($_POST['formKey']))

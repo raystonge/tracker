@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.9.0
+//
+//  -v1.9.0
+//   - fixed issue where number of tickets on PO were not showing
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -52,8 +55,10 @@ if ($request_uri[1] == "poNumberTickets")
 include_once "tracker/attachment.php";
 include_once "tracker/asset.php";
 include_once "tracker/ticket.php";
+include_once "tracker/ticketPO.php";
 $asset = new Asset();
 $ticket = new Ticket();
+$ticketPO = new TicketPO();
 $attachment = new Attachment();
 $param = "poNumberId=".$poNumber->poNumberId;
 ?>
@@ -103,7 +108,7 @@ $param = "poNumberId=".$poNumber->poNumberId;
 	                  if ($permission->hasPermission("Ticket: View"))
 	                  {
 	                  	?>
-	                  <li id="menu-item-20" class="<?php echo $ticketClass;?>"><a href='/poNumberTickets/<?php echo $poNumberId;?>/' title='Tickets'><span>Tickets<?php if ($ticket->Count($param)){ echo " ($ticket->numRows)";}?></span></a></li>
+	                  <li id="menu-item-20" class="<?php echo $ticketClass;?>"><a href='/poNumberTickets/<?php echo $poNumberId;?>/' title='Tickets'><span>Tickets<?php if ($ticketPO->Count($param)){ echo " ($ticketPO->numRows)";}?></span></a></li>
 	                  <?php
 	                  }
 	                  ?>

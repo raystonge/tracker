@@ -1,7 +1,18 @@
 <strong>System Notes</strong>
+== 2023-05-30
+ = Version 1.9.0
+  * added ability to view all users using a services
+  * fixed issue where number of tickets on PO were not showing
+  * fixed security error for cross-site scripting when adding a service to a user
+== 2023-05-25
+ = Version 1.8.4
+  * sort services by name on listServices
+  * removed double spaces in name when importing users
+
 == 2023-05-22
  = Version 1.8.3
    * fixed issue where if the cost was entered, it was not dispayed if there was an error
+
 == 2023-05-15
  = Version 1.8.2
    * fixing cross site security error on delete

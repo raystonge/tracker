@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.6.0
+//  Tracker - Version 1.8.4
+//
+// v1.8.4
+//  - order services by name
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -25,6 +28,7 @@ include_once "tracker/permission.php";
 include_once "tracker/organization.php";
 PageAccess("Config: Asset Type");
 $service = new Service();
+$service->SetOrderBy("name");
 $service->SetPerPage(25);
 $user = new User($_SESSION['userId']);
 

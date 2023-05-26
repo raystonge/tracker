@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.8.2
+//  Tracker - Version 1.9.0
+//
+//  v.1.9.0
+//   - fixed nav for services
 //
 //  v1.8.2
 //   - updating nav for new delete pages
@@ -259,6 +262,7 @@ else
     case "deleteOrganization":
     case "deleteControl":
     case "deleteAssetType":
+    case "serviceUser":
 		                            $configClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
 		                            break;
 		case "poNumberEdit" :
