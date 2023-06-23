@@ -1,7 +1,10 @@
 <?php
 //
-//  Tracker - Version 1.5.0
+//  Tracker - Version 1.9.1
 //
+//  v1.9.1
+//   - fixed issue where due date was not automatically set when status was WaitingForUser, WaitingForThridPary, FollowUp
+
 //  v1.5.0
 //   - relaced each() with foreach()
 //
@@ -56,7 +59,7 @@ if (isset($_POST['submitTest']))
 	$statusId = GetTextField("status",0);
 	$ownerId = GetTextField("ownerId",0);
 	$timeWorked = GetTextField("timeWorked",0);
-	$userDueDate = GetTextField("useDueDate",0);
+	$useDueDate = GetTextField("useDueDate",0);
 	$dueDate = GetTextField("dueDate");
 	$duplicateId = GetTextField("duplicateId",0);
 	$ccs = "";
@@ -157,6 +160,33 @@ if (isset($_POST['submitTest']))
 	{
 		$dateCompleted = $today;
 	}
+
+	if ($statusId == 7 && !$useDueDate && !strlen($ticket->dueDate))
+	{
+		global $numDaysForWaitingOnUser;
+		$daysAdd = " + ".$numDaysForWaitingOnUser." days";
+		$dueDate = date('Y-m-d', strtotime(Today(). $daysAdd));
+		DebugText("dueDate waiting for User:".$dueDate);
+		$useDueDate = 1;
+	}
+	if ($statusId == 8 && !$useDueDate && !strlen($ticket->dueDate))
+	{
+		global $numDaysForWaitingOnThirdParty;
+		$daysAdd = " + ".$numDaysForWaitingOnThirdParty." days";
+		$dueDate = date('Y-m-d', strtotime(Today(). $daysAdd));
+		DebugText("dueDate waiting for User:".$dueDate);
+		$useDueDate = 1;
+	}
+	if ($statusId == 9 && !$useDueDate && !strlen($ticket->dueDate))
+	{
+		global $numDaysForFollowUp;
+		$daysAdd = " + ".$numDaysForFollowUp." days";
+		$dueDate = date('Y-m-d', strtotime(Today(). $daysAdd));
+		DebugText("dueDate FollowUp:".$dueDate);
+		$useDueDate = 1;
+	}
+
+
 	DebugText("ticketId:".$ticket->ticketId);
 	DebugText("statusId:".$statusId.":".$ticket->statusId);
 	if (!$ticket->ticketId && strlen($commentText) == 0)
@@ -345,33 +375,33 @@ if (isset($_POST['submitTest']))
 		}
 		DebugText("Test Waiting for User");
 		DebugText("statusId:".$statusId);
-		DebugText("useDueDate:".$userDueDate);
+		DebugText("useDueDate:".$useDueDate);
 		DebugText("dueDate:".$ticket->dueDate);
-		if ($statusId == 7 && !$userDueDate && !strlen($ticket->dueDate))
+		if ($statusId == 7 && !$useDueDate && !strlen($ticket->dueDate))
 		{
 			global $numDaysForWaitingOnUser;
 			$daysAdd = " + ".$numDaysForWaitingOnUser." days";
 			$dueDate = date('Y-m-d', strtotime(Today(). $daysAdd));
 			DebugText("dueDate waiting for User:".$dueDate);
-			$userDueDate = 1;
+			$useDueDate = 1;
 		}
-		if ($statusId == 8 && !$userDueDate && !strlen($ticket->dueDate))
+		if ($statusId == 8 && !$useDueDate && !strlen($ticket->dueDate))
 		{
 			global $numDaysForWaitingOnThirdParty;
 			$daysAdd = " + ".$numDaysForWaitingOnThirdParty." days";
 			$dueDate = date('Y-m-d', strtotime(Today(). $daysAdd));
 			DebugText("dueDate waiting for User:".$dueDate);
-			$userDueDate = 1;
+			$useDueDate = 1;
 		}
-		if ($statusId == 9 && !$userDueDate && !strlen($ticket->dueDate))
+		if ($statusId == 9 && !$useDueDate && !strlen($ticket->dueDate))
 		{
 			global $numDaysForFollowUp;
 			$daysAdd = " + ".$numDaysForFollowUp." days";
 			$dueDate = date('Y-m-d', strtotime(Today(). $daysAdd));
 			DebugText("dueDate FollowUp:".$dueDate);
-			$userDueDate = 1;
+			$useDueDate = 1;
 		}
-		if ($userDueDate && ($ticket->dueDate != $dueDate))
+		if ($useDueDate && ($ticket->dueDate != $dueDate))
 		{
 		    $action = "Change";
 		    $oldDateDue = $ticket->dueDate;
@@ -384,7 +414,7 @@ if (isset($_POST['submitTest']))
 		}
 		else
 		{
-			if (!$userDueDate && ($ticket->dueDate != $dueDate))
+			if (!$useDueDate && ($ticket->dueDate != $dueDate))
 			{
 				$action = "Change";
 				$oldDateDue = $ticket->dueDate;
