@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.10.0
+//
+//  v1.10.0
+//   - changed the due date picker to be consistent  with the other forms
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -210,31 +213,19 @@ $("#requestorName").autocomplete({
 adminFilePath="";
 function toggle()
 {
-  var dueDate_Month_ID = document.getElementById('dueDate_Month_ID');
-  var dueDate_ID = document.getElementById('dueDate_Day_ID');
-  var dueDate_Year_ID = document.getElementById('dueDate_Year_ID');
-  dueDate_Month_ID.disabled = !dueDate_Month_ID.disabled;
-  dueDate_Day_ID.disabled = !dueDate_Day_ID.disabled;
-  dueDate_Year_ID.disabled = !dueDate_Year_ID.disabled;
+  var dueDate = document.getElementById('dueDate');
+  dueDate.disabled = !dueDate.disabled;
 
 }
 function disableDueDate()
 {
-  var dueDate_Month_ID = document.getElementById('dueDate_Month_ID');
-  var dueDate_Day_ID = document.getElementById('dueDate_Day_ID');
-  var dueDate_Year_ID = document.getElementById('dueDate_Year_ID');
-  dueDate_Month_ID.disabled = true;
-  dueDate_Day_ID.disabled = true;
-  dueDate_Year_ID.disabled = true;
+	var dueDate = document.getElementById('dueDate');
+  dueDate.disabled =  true;
 }
 function enableDueDate()
 {
-  var dueDate_Month_ID = document.getElementById('dueDate_Month_ID');
-  var dueDate_Day_ID = document.getElementById('dueDate_Day_ID');
-  var dueDate_Year_ID = document.getElementById('dueDate_Year_ID');
-  dueDate_Month_ID.disabled = false;
-  dueDate_Day_ID.disabled = false;
-  dueDate_Year_ID.disabled = false;
+  var dueDate = document.getElementById('dueDate');
+  dueDate.disabled = false;
 }
 
 </script>
@@ -501,7 +492,8 @@ function enableDueDate()
 													 {
 														 CreateCheckBox("useDueDate",1,"Enable Due Date",$on,"Click to enable the due date","","onclick='toggle()'");
 														 PrintBR();
-														 CreateDateField("dueDate",$ticket->dueDate);
+														 //CreateDateField("dueDate",$ticket->dueDate);
+														 CreateDatePicker("dueDate",$ticket->dueDate);
 													 }
 													 else {
 														 echo $ticket->dueDate;

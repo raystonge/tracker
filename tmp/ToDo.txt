@@ -1,8 +1,12 @@
 <strong>System Notes</strong>
+== 2023-07-17
+ = Version 1.10.0
+  * changed the due date picker for tickets to be consistent  with the other forms
+
 == 2023-06-26
  = Version 1.9.1
   * fixed issue where selecting Waiting for 3rd party doesn't set due date
-  
+
 == 2023-05-30
  = Version 1.9.0
   * added ability to view all users using a services

@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.9.1
+//  Tracker - Version 1.10.0
+//
+//  v1.10.0
+//   - changed the due date picker to be consistent  with the other forms
 //
 //  v1.9.1
 //   - fixed issue where due date was not automatically set when status was WaitingForUser, WaitingForThridPary, FollowUp
@@ -60,7 +63,11 @@ if (isset($_POST['submitTest']))
 	$ownerId = GetTextField("ownerId",0);
 	$timeWorked = GetTextField("timeWorked",0);
 	$useDueDate = GetTextField("useDueDate",0);
-	$dueDate = GetTextField("dueDate");
+	$dueDate = "";
+	if ($useDueDate)
+	{
+		$dueDate = DatePickerUnFormatter(GetDateField("dueDate"));
+	}
 	$duplicateId = GetTextField("duplicateId",0);
 	$ccs = "";
 	if (isset($_POST['cc']))
