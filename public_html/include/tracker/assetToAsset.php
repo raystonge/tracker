@@ -41,7 +41,7 @@ var $orderBy;
 var $className="AssetToAsset";
   function __construct()
   {
-	$a = func_get_args();
+    $a = func_get_args();
     $i = func_num_args();
     if (method_exists($this,$f='__construct'.$i))
     {
@@ -80,21 +80,21 @@ var $className="AssetToAsset";
   }
   function Get($param = "")
   {
-	 DebugText($this->className."[Get]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    DebugText($this->className."[Get]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
 
-	 $query = "Select * from assetToAsset";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-	 $query = $query . " order by ".$this->orderBy;
-     $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	  $query = "Select * from assetToAsset";
+	  if ($param)
+	  {
+	    $query = $query . " where ". $param;
+	  }
+	  $query = $query . " order by ".$this->orderBy;
+    $this->results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  return($this->Next());
   }
   function Next()
   {
@@ -130,54 +130,54 @@ var $className="AssetToAsset";
   }
   function Update()
   {
-	 DebugText($this->className."[Update]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $serialNumber = prepForDB("assetToAsset","serialNumber",$this->serialNumber);
-	 $query = "Update assetToAsset set assetId1=$this->assetId1,assetId2=$this->assetId2, serialNumber='$serialNumber' where assetToAssetId = $this->assetToAssetId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Update]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $serialNumber = prepForDB("assetToAsset","serialNumber",$this->serialNumber);
+	  $query = "Update assetToAsset set assetId1=$this->assetId1,assetId2=$this->assetId2, serialNumber='$serialNumber' where assetToAssetId = $this->assetToAssetId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {
-	 DebugText($this->className."[Insert]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $serialNumber = prepForDB("assetToAsset","serialNumber",$this->serialNumber);
-	 $query = "Insert into assetToAsset (assetId1,assetId2,serialNumber) value ($this->assetId1,$this->assetId2,'$serialNumber')";
-     $results = mysqli_query($link_cms,$query);
-     $this->assetToAssetId = mysqli_insert_id($link_cms);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Insert]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $serialNumber = prepForDB("assetToAsset","serialNumber",$this->serialNumber);
+	  $query = "Insert into assetToAsset (assetId1,assetId2,serialNumber) value ($this->assetId1,$this->assetId2,'$serialNumber')";
+    $results = mysqli_query($link_cms,$query);
+    $this->assetToAssetId = mysqli_insert_id($link_cms);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Reset()
   {
-	 DebugText($this->className."[Reset]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $query = "Delete from assetToAsset where assetId1=$this->assetId1";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Reset]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $query = "Delete from assetToAsset where assetId1=$this->assetId1";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Delete()
   {
-	 DebugText($this->className."[Delete]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $query = "Delete from assetToAsset where assetToAssetId=$this->assetToAssetId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Delete]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $query = "Delete from assetToAsset where assetToAssetId=$this->assetToAssetId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Count($param)
   {
-   DebugText($this->className."[Count($param)]");
+    DebugText($this->className."[Count($param)]");
     global $link_cms;
     global $database_cms;
     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
@@ -199,7 +199,7 @@ var $className="AssetToAsset";
   }
   function LicensesInUse($assetId)
   {
-	 DebugText($this->className."[LicensesInUse($assetId)]");
+	  DebugText($this->className."[LicensesInUse($assetId)]");
   	global $link_cms;
   	global $database_cms;
   	mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
