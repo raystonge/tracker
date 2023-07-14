@@ -1,6 +1,12 @@
 <?php
 //
-//  Tracker - Version 1.7.0
+//  Tracker - Version 1.10.0
+//
+//  v1.10.0
+//   - changed so when an asset is set to eWaste, eWaste Disposed, Out of Service or parts
+//     it is now removed as an accessory.
+//   - changed so when an asset is set to eWaste, eWaste Disposed, Out of Service or parts
+//     it now if it has accessories, those are no longer associated.
 //
 //  v1.7.0
 //   - added depreciation date and value
@@ -544,6 +550,23 @@ if (isset($_POST['submitTest']))
 			$history->Insert();
 			$historyVal = array_pop($historyArray);
 		}
+		if (($asset->assetConditionId == 4) || ($asset->assetConditionId == 5) || ($asset->assetConditionId == 6)  || ($asset->assetConditionId == 8))
+		{
+			$assetAccessory = new AssetToAsset();
+			if ($assetType->isAccessory)
+		  {
+			  $param = AddEscapedParam("","assetId2",$assetId);
+			  $ok = $assetToAsset->Get($param);
+			  $assetToAsset->Delete();
+			}
+			if ($assetType->hasAccessory)
+			{
+				$param = AddEscapedParam("","assetId1",$assetId);
+				$ok = $assetToAsset->Get($param);
+				$assetToAsset->Reset();
+			}
+		}
+	}
 		$asset->Update();
 		DebugPause("/assetEdit/$asset->assetId/");
 	}
@@ -578,6 +601,6 @@ if (isset($_POST['submitTest']))
 		}
 		DebugPause("/assetNew/");
 	}
-}
+
 DebugPause("/listAssets/");
 ?>

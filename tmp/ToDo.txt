@@ -2,6 +2,10 @@
 == 2023-07-17
  = Version 1.10.0
   * changed the due date picker for tickets to be consistent  with the other forms
+  * changed so when an asset is set to eWaste, eWaste Disposed, Out of Service or parts
+    it is now removed as an accessory.
+  * changed so when an asset is set to eWaste, eWaste Disposed, Out of Service or parts
+    it now if it has accessories, those are no longer associated.
 
 == 2023-06-26
  = Version 1.9.1
