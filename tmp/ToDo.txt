@@ -1,26 +1,32 @@
 <strong>System Notes</strong>
+== 2023-07-24
+ = Version 1.11.0
+   * added orderBy on modules
+   * fixed issue on modules where fields were not displayed properly if error
+     occurred while editing
+     
 == 2023-07-17
  = Version 1.10.0
-  * changed the due date picker for tickets to be consistent  with the other forms
-  * changed so when an asset is set to eWaste, eWaste Disposed, Out of Service or parts
-    it is now removed as an accessory.
-  * changed so when an asset is set to eWaste, eWaste Disposed, Out of Service or parts
-    it now if it has accessories, those are no longer associated.
+   * changed the due date picker for tickets to be consistent  with the other forms
+   * changed so when an asset is set to eWaste, eWaste Disposed, Out of Service or parts
+     it is now removed as an accessory.
+   * changed so when an asset is set to eWaste, eWaste Disposed, Out of Service or parts
+     it now if it has accessories, those are no longer associated.
 
 == 2023-06-26
  = Version 1.9.1
-  * fixed issue where selecting Waiting for 3rd party doesn't set due date
+   * fixed issue where selecting Waiting for 3rd party doesn't set due date
 
 == 2023-05-30
  = Version 1.9.0
-  * added ability to view all users using a services
-  * fixed issue where number of tickets on PO were not showing
-  * fixed security error for cross-site scripting when adding a service to a user
+   * added ability to view all users using a services
+   * fixed issue where number of tickets on PO were not showing
+   * fixed security error for cross-site scripting when adding a service to a user
 
 == 2023-05-25
  = Version 1.8.4
-  * sort services by name on listServices
-  * removed double spaces in name when importing users
+   * sort services by name on listServices
+   * removed double spaces in name when importing users
 
 == 2023-05-22
  = Version 1.8.3

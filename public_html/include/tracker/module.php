@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.7.0
+//  Tracker - Version 1.11.0
+//
+//  v1.11.0
+//   - added orderBy field
 //
 //  v1.7.0
 //   - removed debug info
@@ -46,6 +49,7 @@ var $userId;
 var $admin;
 var $moduleType;
 var $personalProperty;
+var $orderByResults;
 
 var $orderBy;
 var $limit;
@@ -69,6 +73,7 @@ var $className="Module";
 	  $this->start = 0;
 	  $this->perPage = 0;
 	  $this->orderBy = "name";
+    $this->orderByResults = "";
   }
   function __construct()
   {
@@ -137,7 +142,7 @@ var $className="Module";
 
   function Search($param)
   {
-	 DebugText($this->className."[Search]");
+     DebugText($this->className."[Search]");
      global $link_cms;
      global $database_cms;
      mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
@@ -146,27 +151,27 @@ var $className="Module";
      DebugText("page:".$this->page);
      DebugText("perPage:".$this->perPage);
 
-	 $query = "Select * from module";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
+	   $query = "Select * from module";
+	   if ($param)
+	   {
+       $query = $query . " where ". $param;
+	   }
   	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
-	 if ($this->perPage > 0)
-	 {
-	 	$query = $query ." limit ".$this->start.",".$this->perPage;
-	 }
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	   {
+	     $query = $query . " order by ".$this->orderBy;
+	   }
+	   if ($this->limit > 0)
+	   {
+	 	   $query = $query . " limit ".$this->limit;
+	   }
+	   if ($this->perPage > 0)
+	   {
+	 	   $query = $query ." limit ".$this->start.",".$this->perPage;
+	   }
+	   $this->results = mysqli_query($link_cms,$query);
+	   DebugText($query);
+	   DebugText("Error:".mysqli_error($link_cms));
+	   return($this->Next());
   }
   function Get($param = "")
   {
@@ -272,6 +277,7 @@ var $className="Module";
 	    $this->admin = $this->row['admin'];
       $this->personalProperty = $this->row['personalProperty'];
 	    $this->moduleType = trim(stripslashes($this->row['moduleType']));
+      $this->orderByResults = trim(stripslashes($this->row['orderBy']));
 	 }
 	 else
 	 {
@@ -300,7 +306,8 @@ var $className="Module";
 	  $desc = prepForDB("module","name",$this->description);
 	  $queryStr = prepForDB("module","name",$this->query);
 	  $moduleType = prepForDB("module","name",$this->moduleType);
-	  $query = "Update module set name='$name',userId=$this->userId,admin=$this->admin,description='$desc',query='$queryStr',moduleType='$moduleType', personalProperty=$this->personalProperty where moduleId = $this->moduleId";
+    $orderByResults = prepForDB("module","orderBy",$this->orderByResults);
+	  $query = "Update module set name='$name',userId=$this->userId,admin=$this->admin,description='$desc',query='$queryStr',moduleType='$moduleType', personalProperty=$this->personalProperty,orderBy='$orderByResults' where moduleId = $this->moduleId";
     $results = mysqli_query($link_cms,$query);
 	  DebugText($query);
 	  DebugText("Error:".mysqli_error($link_cms));
@@ -315,7 +322,9 @@ var $className="Module";
 	  $desc = prepForDB("module","name",$this->description);
 	  $queryStr = prepForDB("module","name",$this->query);
 	  $moduleType = prepForDB("module","name",$this->moduleType);
-	  $query = "Insert into module (name,description,query,userId,admin,moduleType,personalProperty) value ('$name','$desc','$queryStr',$this->userId,$this->admin,'$moduleType',$this->personalProperty)";
+    $orderByResults = prepForDB("module","orderBy",$this->orderByResults);
+
+	  $query = "Insert into module (name,description,query,userId,admin,moduleType,personalProperty,orderBy) value ('$name','$desc','$queryStr',$this->userId,$this->admin,'$moduleType',$this->personalProperty,'$orderByResults')";
     $results = mysqli_query($link_cms,$query);
 	  DebugText($query);
 	  DebugText("Error:".mysqli_error($link_cms));

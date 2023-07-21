@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.11.0
+//
+//  v1.11.0
+//   - added orderBy field
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -51,6 +54,7 @@ if (isset($_POST['submitTest']))
 	$moduleQuery = GetTextField("moduleQuery");
 	$moduleType = GetTextField("moduleType");
 	$adminOnly = GetTextField("adminOnly",0);
+  $orderByResults = GetTextField("moduleOrderBy");
 
 	if (strlen($name) == 0)
 	{
@@ -79,7 +83,11 @@ if (isset($_POST['submitTest']))
 		$numErrors++;
 		$errorMsg=$errorMsg."<li>Please Specify Query</li>";
 	}
-
+  if (strlen($orderByResults) == 0)
+	{
+		$numErrors++;
+		$errorMsg=$errorMsg."<li>Please Specify Order By</li>";
+	}
 
 	if ($numErrors ==0)
 	{
@@ -88,6 +96,7 @@ if (isset($_POST['submitTest']))
 		$module->query = $moduleQuery;
 		$module->moduleType = $moduleType;
 		$module->admin = $adminOnly;
+    $module->orderByResults = $orderByResults;
 
 		if ($module->moduleId)
 		{
@@ -109,6 +118,7 @@ if (isset($_POST['submitTest']))
 		$_SESSION['moduleQuery'] = $moduleQuery;
 		$_SESSION['moduleType'] = $moduleType;
 		$_SESSION['moduleAdminOnly'] = $adminOnly;
+    $_SESSION['moduleOrderBy'] = $orderByResults;
 		$_SESSION['formErrors'] = $html;
 		if ($module->moduleId)
 		{

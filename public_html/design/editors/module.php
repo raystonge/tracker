@@ -1,6 +1,10 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.11.0
+//
+//  v1.11.0
+//   - added orderBy field
+//   - fixed issue where fields were not popluated when there was an error
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -34,8 +38,10 @@ $cnt = 0;
     {
     	DisplayFormErrors();
     	$module->moduleId = GetTextFromSession("moduleId",0);
-   		$module->name = GetTextFromSession("name");
-			$module->description = GetTextFromSession("description");
+   		$module->name = GetTextFromSession("moduleName");
+			$module->description = GetTextFromSession("moduleDescription");
+      $module->query = GetTextFromSession("moduleQuery");
+      $module->orderByResults = GetTextFromSession('moduleOrderBy');
     }
     ?>
 <form method="post" autocomplete="<?php echo $autoComplete;?>" action="/process/module.php">
@@ -73,6 +79,14 @@ $cnt = 0;
       </td>
       <td>
       <?php CreateTextAreaField("moduleQuery",$module->query,getFieldSize("module","query"),"Query for Module",$editFieldClass);?>
+      </td>
+      <td>
+    </tr>
+    <tr>
+      <td>Order By :
+      </td>
+      <td>
+      <?php CreateTextAreaField("moduleOrderBy",$module->orderByResults,getFieldSize("module","orderBy"),"Order by for Module",$editFieldClass);?>
       </td>
       <td>
     </tr>

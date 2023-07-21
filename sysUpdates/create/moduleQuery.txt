@@ -5,4 +5,4 @@ CREATE TABLE `moduleQuery` (
   `fieldTest` varchar(45) DEFAULT NULL,
   `testValue` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`moduleQueryId`)
-) ENGINE=MyISAM AUTO_INCREMENT=64 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=latin1

@@ -3,4 +3,4 @@ CREATE TABLE `moduleToUserGroup` (
   `moduleId` int(11) DEFAULT NULL,
   `userGroupId` int(11) DEFAULT NULL,
   PRIMARY KEY (`moduleToUserGroupId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
