@@ -1,10 +1,14 @@
 <strong>System Notes</strong>
-== 2023-07-24
+== 2023-09-13
  = Version 1.11.0
    * added orderBy on modules
    * fixed issue on modules where fields were not displayed properly if error
      occurred while editing
-     
+   * fixed error when trying to delete modules
+   * fixed issue where member of Tech could not find completed tickets
+   * fixed issue when inserting an asset. If there was an error, a blank form
+     was displayed and the url was /assetEdit/0/ now the error is displayed
+
 == 2023-07-17
  = Version 1.10.0
    * changed the due date picker for tickets to be consistent  with the other forms

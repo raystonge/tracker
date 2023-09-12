@@ -277,7 +277,7 @@ var $className="Module";
 	    $this->admin = $this->row['admin'];
       $this->personalProperty = $this->row['personalProperty'];
 	    $this->moduleType = trim(stripslashes($this->row['moduleType']));
-      $this->orderByResults = trim(stripslashes($this->row['orderBy']));
+      $this->orderByResults = trim(stripslashes($this->row['orderByResults']));
 	 }
 	 else
 	 {
@@ -306,8 +306,9 @@ var $className="Module";
 	  $desc = prepForDB("module","name",$this->description);
 	  $queryStr = prepForDB("module","name",$this->query);
 	  $moduleType = prepForDB("module","name",$this->moduleType);
+    $personalProperty = prepForDB("module","personalProperty",$this->personalProperty);
     $orderByResults = prepForDB("module","orderBy",$this->orderByResults);
-	  $query = "Update module set name='$name',userId=$this->userId,admin=$this->admin,description='$desc',query='$queryStr',moduleType='$moduleType', personalProperty=$this->personalProperty,orderBy='$orderByResults' where moduleId = $this->moduleId";
+	  $query = "Update module set name='$name',userId=$this->userId,admin=$this->admin,description='$desc',query='$queryStr',moduleType='$moduleType', personalProperty='$personalProperty',orderByResults='$orderByResults' where moduleId = $this->moduleId";
     $results = mysqli_query($link_cms,$query);
 	  DebugText($query);
 	  DebugText("Error:".mysqli_error($link_cms));
@@ -324,7 +325,7 @@ var $className="Module";
 	  $moduleType = prepForDB("module","name",$this->moduleType);
     $orderByResults = prepForDB("module","orderBy",$this->orderByResults);
 
-	  $query = "Insert into module (name,description,query,userId,admin,moduleType,personalProperty,orderBy) value ('$name','$desc','$queryStr',$this->userId,$this->admin,'$moduleType',$this->personalProperty,'$orderByResults')";
+	  $query = "Insert into module (name,description,query,userId,admin,moduleType,personalProperty,orderByResults) value ('$name','$desc','$queryStr',$this->userId,$this->admin,'$moduleType',$this->personalProperty,'$orderByResults')";
     $results = mysqli_query($link_cms,$query);
 	  DebugText($query);
 	  DebugText("Error:".mysqli_error($link_cms));

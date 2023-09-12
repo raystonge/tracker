@@ -2,6 +2,9 @@
 //
 //  Tracker - Version 1.10.0
 //
+//  v1.11.0
+//   - fixed issue when inserting an asset. If there was an error, a blank form
+//     was displayed and the url was /assetEdit/0/ now the error is displayed
 //  v1.10.0
 //   - changed so when an asset is set to eWaste, eWaste Disposed, Out of Service or parts
 //     it is now removed as an accessory.
@@ -123,6 +126,8 @@ if (isset($_POST['submitTest']))
 	$depreciationDate = DatePickerUnFormatter(GetDateField("depreciationDate"));
 	$depreciationValue = GetTextField("depreciationValue",0);
 	$cost = GetTextField("cost",0);
+	DebugText("assetId:".$assetId);
+	DebugText("asset assetId:".$asset->assetId);
 	if ($asset->assetId && (strlen($assetTag)==0))
 	{
 		$ogranization = new Organization($organizationId);
@@ -137,6 +142,7 @@ if (isset($_POST['submitTest']))
 	DebugText("warrantyDate:".$warrantyDate);
 	$numOfLicenses = GetTextField("numOfLicenses",0);
 	$assetType = new AssetType($assetTypeId);
+	DebugText("assetTypeId:".$assetType->assetTypeId);
 
 	if (!$organizationId && $permission->hasPermission("Asset: Edit: Organization"))
 	{
@@ -190,6 +196,9 @@ if (isset($_POST['submitTest']))
 		$numErrors++;
 		$errorMsg=$errorMsg."<li>Cost must be specified</li>";
 	}
+	DebugText("numErrors:".$numErrors);
+	DebugText("$errorMsg:".$errorMsg);
+
 
 	if ($numErrors ==0)
 	{
@@ -199,6 +208,7 @@ if (isset($_POST['submitTest']))
 			$action = "Change";
 		}
 		$asset->assetId = $assetId;
+		DebugText("assetId:asset assetId:".$assetId.":".$asset->assetId);
 		if ($asset->organizationId != $organizationId)
 		{
 			$oldOrganization = new Organization($asset->organizationId);
@@ -342,8 +352,8 @@ if (isset($_POST['submitTest']))
     $param = AddEscapedParam("","poNumberId",$poNumberId);
     $contract = new Contract();
     $contract->Get($param);
-      if ($poNumberId && $contract->contractId && !$asset->contractId)
-      {
+    if ($poNumberId && $contract->contractId && !$asset->contractId)
+    {
         $assetToContract = new AssetToContract();
         $param = AddEscapedParam("","assetId",$asset->assetId);
         $assetToContract->Get($param);
@@ -356,11 +366,11 @@ if (isset($_POST['submitTest']))
       //  $contract = new Contract($po->contractId);
         $historyVal = CreateHistory($action,"Contract", $old,$contract->name);
         DebugText("history:".$historyVal);
-        if (strlen($historyVal))
-        {
-          array_push($historyArray,$historyVal);
-        }
+      if (strlen($historyVal))
+      {
+        array_push($historyArray,$historyVal);
       }
+    }
 
 
 		if ($asset->purchasePrice != $cost)
@@ -480,7 +490,7 @@ if (isset($_POST['submitTest']))
 		$contract->Get($param);
 		$asset->contractId = $contract->contractId;
 		$asset->leased = $contract->isLease;
-
+    DebugText("before update test:".$asset->assetId);
 		if ($asset->assetId)
 		{
 			$asset->Update();
@@ -566,8 +576,8 @@ if (isset($_POST['submitTest']))
 				$assetToAsset->Reset();
 			}
 		}
-	}
-		$asset->Update();
+
+		$asset->Persist();
 		DebugPause("/assetEdit/$asset->assetId/");
 	}
 	else
@@ -601,6 +611,7 @@ if (isset($_POST['submitTest']))
 		}
 		DebugPause("/assetNew/");
 	}
+}
 
 DebugPause("/listAssets/");
 ?>

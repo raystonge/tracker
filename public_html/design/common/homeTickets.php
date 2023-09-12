@@ -53,7 +53,8 @@ include_once "tracker/comment.php";
     DebugText("in homeTickets");
     $ticket = new Ticket();
 
-    $ticket->SetOrderBy("dueDate desc,priorityId asc");
+    //$ticket->SetOrderBy("dueDate desc,priorityId asc");
+    $ticket->SetOrderBy($module->orderByResults);
     $ok = $ticket->Get($param);
     while ($ok)
     {

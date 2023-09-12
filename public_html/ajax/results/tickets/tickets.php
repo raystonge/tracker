@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.7.1
+//  Tracker - Version 1.11.0
+//
+// v1.11.0
+//  - fixed issue where members of Tech could not find completed tickets
 //
 // v1.7.1
 //  - if user has Ticket: Create: User Ticket permission, limit only to their tickets
@@ -30,6 +33,8 @@ include_once "tracker/status.php";
 include_once "tracker/permission.php";
 include_once "tracker/organization.php";
 include_once "tracker/comment.php";
+include_once "tracker/userGroup.php";
+include_once "tracker/userToGroup.php";
 ProperAccessTest();
 $permission = new Permission();
 $_SESSION['searchNumPerPage'] = $maxTicketsPerPage;
@@ -47,7 +52,16 @@ $_SESSION['searchNumPerPage'] = $maxTicketsPerPage;
   $ticket = new Ticket();
   $ticket->SetPerPage(GetTextField("searchNumPerPage",$maxTicketsPerPage));
   $param = "";
-  if ($permission->hasPermission("Ticket: Create: User Ticket"))
+  $isTech = 0;
+  $userGroup = new UserGroup();
+  $techGroupId = $userGroup->Get("name='Tech'");
+  $userToGroup = new userToGroup();
+  $param = AddEscapedParam($param,"userId",$currentUser->userId);
+  $param = AddEscapedParam($param,"userGroupId",$techGroupId);
+  $inTech = $userToGroup->Get($param);
+  $param = "";
+
+  if ($permission->hasPermission("Ticket: Create: User Ticket") && !$inTech)
   {
     $param = AddEscapedParam($param,"requestorId",$currentUser->userId);
   }
@@ -94,7 +108,7 @@ $_SESSION['searchNumPerPage'] = $maxTicketsPerPage;
       $_SESSION['searchTicketStatusId'] = $searchStatusId;
   		$param = AddEscapedParam($param,"statusId",$searchStatusId);
   	}
-    if ($searchStatusId == 4)
+    if ($searchStatusId == 4 && (strlen($searchBeforeDate) || strlen($searchAfterDate)))
     {
       $param = AddEscapedParamWithTest($param,"dateCompleted",">=",$searchAfterDate);
       $param = AddEscapedParamWithTest($param,"dateCompleted","<=",$searchBeforeDate);

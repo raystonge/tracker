@@ -7,4 +7,4 @@
 "moduleType","varchar(45)"
 "assignee","int(11)"
 "personalProperty","int(11)"
-"orderBy","varchar(255)"
+"orderByResults","varchar(255)"

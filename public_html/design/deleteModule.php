@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.8.2
+//  Tracker - Version 1.11.0
+//
+//  v1.11.0
+//   - fixed error when trying to delete modules
 //
 //  v1.8.2
 //   - fixing cross site security error on delete
@@ -25,7 +28,7 @@ include_once "tracker/module.php";
 $moduleId = GetURI(2,0);
 
 $key = GetURI(3,"");
-if (!$ticketPOId)
+if (!$moduleId)
 {
 	echo "Invalid operation";
 	exit;

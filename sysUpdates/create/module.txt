@@ -8,6 +8,6 @@ CREATE TABLE `module` (
   `moduleType` varchar(45) DEFAULT NULL,
   `assignee` int(11) DEFAULT NULL,
   `personalProperty` int(11) DEFAULT NULL,
-  `orderBy` varchar(255) DEFAULT NULL,
+  `orderByResults` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`moduleId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1

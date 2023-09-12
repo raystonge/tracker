@@ -132,7 +132,7 @@ function UpdateAssetConditions()
 
 		}
 	}
-	fclose($handle);
+	fclose($handle); 
 
 }
 function UpdateValidCondition()

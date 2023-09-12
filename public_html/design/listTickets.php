@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.8.0
+//  Tracker - Version 1.11.0
+//
+// v1.11.0
+//  - completed dates are now blank by default
 //
 // v1.8.0
 //  - Updated datepicker
@@ -222,7 +225,8 @@ Status:
 				</td>
 				<td>
 					<?php
-					$afterDate = date('Y-m-d', strtotime($today.' - 29 days'));
+					//$afterDate = date('Y-m-d', strtotime($today.' - 29 days'));
+					$afterDate  = "";
 					//CreateDateField("afterDate",$afterDate);
 					CreateDatePicker("afterDate",$afterDate);
 					 ?>
