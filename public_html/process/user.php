@@ -30,10 +30,10 @@ $_SESSION['formErrors'] ="";
 
 if (isset($_POST['submitTest']))
 {
-    $user = new User();
+  $user = new User();
 	if (!validateAJAXFormKey())
 	{
-        DebugPause("/improperAccess/");
+    DebugPause("/improperAccess/");
 	}
 	DebugText("form submitted");
 	$userId = GetTextField("userId",0);
@@ -137,16 +137,16 @@ if (isset($_POST['submitTest']))
 		$_SESSION['userUserGroups'] = "";
 		$_SESSION['userUserOrganizations'] = "";
 		$_SESSION['userSNSTopic'] = $snsTopic;
-        if (isset($_POST['userOrganizations']))
-        {
-            @$userGroups=$_POST['userOrganizations'];
-            $_SESSION['userOrganizations'] = $_POST['userOrganizations'];
-        }
-        if (isset($_POST['userGroups']))
-        {
-            @$userGroups=$_POST['userGroups'];
-            $_SESSION['userGroups'] = $_POST['userGroups'];
-        }
+    if (isset($_POST['userOrganizations']))
+    {
+      @$userGroups=$_POST['userOrganizations'];
+      $_SESSION['userOrganizations'] = $_POST['userOrganizations'];
+    }
+    if (isset($_POST['userGroups']))
+    {
+      @$userGroups=$_POST['userGroups'];
+      $_SESSION['userGroups'] = $_POST['userGroups'];
+    }
 		if ($user->userId)
 		{
 			DebugPause("/editUser/".$user->userId."/");

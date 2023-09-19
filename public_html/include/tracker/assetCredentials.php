@@ -40,7 +40,7 @@ var $orderBy;
 var $className="AssetCredentials";
 function __construct()
 {
-$a = func_get_args();
+  $a = func_get_args();
   $i = func_num_args();
   if (method_exists($this,$f='__construct'.$i))
   {
@@ -121,30 +121,30 @@ function __construct1($id)
   }
   function Update()
   {
-	 DebugText($this->className."[Update]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $userName = prepForDB("assetCredentials", "userName", $this->userName);
-     $password = prepForDB("assetCredentials", "password", $this->password);
-	 $query = "Update assetCredentials set assetId=$this->assetId,userName='$userName', password='$password' where assetCredentialsId = $this->assetCredentialsId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Update]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $userName = prepForDB("assetCredentials", "userName", $this->userName);
+    $password = prepForDB("assetCredentials", "password", $this->password);
+	  $query = "Update assetCredentials set assetId=$this->assetId,userName='$userName', password='$password' where assetCredentialsId = $this->assetCredentialsId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {
-	 DebugText($this->className."[Insert]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $userName = prepForDB("assetCredentials", "userName", $this->userName);
-     $password = prepForDB("assetCredentials", "password", $this->password);
-	 $query = "Insert into assetCredentials (assetId,userName,password) value ($this->assetId,'$userName','$password')";
-     $results = mysqli_query($link_cms,$query);
-     $this->assetCredentialsId = mysqli_insert_id($link_cms);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Insert]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $userName = prepForDB("assetCredentials", "userName", $this->userName);
+    $password = prepForDB("assetCredentials", "password", $this->password);
+	  $query = "Insert into assetCredentials (assetId,userName,password) value ($this->assetId,'$userName','$password')";
+    $results = mysqli_query($link_cms,$query);
+    $this->assetCredentialsId = mysqli_insert_id($link_cms);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Persist()
   {
@@ -160,14 +160,14 @@ function __construct1($id)
   }
   function Reset()
   {
-	 DebugText($this->className."[Reset]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $query = "Delete from assetCredentials where assetCredentialsId=$this->assetCredentialsId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Reset]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $query = "Delete from assetCredentials where assetCredentialsId=$this->assetCredentialsId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Delete()
   {

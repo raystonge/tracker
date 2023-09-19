@@ -22,15 +22,15 @@ function getTableInfo($table)
 {
 	DebugText("getTableInfo($table)");
 	global $link_cms;
-    global $database_cms;
+  global $database_cms;
 	mysqli_select_db($link_cms,$database_cms);
 	$query = "show columns from ".$table;
 	$results = mysqli_query($link_cms,$query);
 	if (mysqli_num_rows($results) > 0)
+  {
+  	while ($row = mysqli_fetch_assoc($results))
     {
-    	while ($row = mysqli_fetch_assoc($results))
-        {
-        	$field = $table."-".$row['Field'];
+    	$field = $table."-".$row['Field'];
 			$_SESSION[$field] = $row['Type'];
 		}
 	}
@@ -52,7 +52,6 @@ function getFieldSize($table,$field)
 		return $fieldSize;
 	}
 	return (0);
-
 }
 function checkField($table,$field,$data)
 {
@@ -160,7 +159,6 @@ function prepForDB($table,$field,$data)
   DebugText("data:".$data);
 	DebugText("prepForDB return:".$data);
 	return $data;
-
 }
 function IsFieldInt($table,$field)
 {
@@ -180,7 +178,6 @@ function IsFieldInt($table,$field)
 		return 0;
 	}
 	return 1;
-
 }
 function IsFieldDate($table,$field)
 {
@@ -196,7 +193,6 @@ function IsFieldDate($table,$field)
 		return 1;
 	}
 	return 0;
-
 }
 function IsFieldDateTime($table,$field)
 {
@@ -212,7 +208,6 @@ function IsFieldDateTime($table,$field)
 		return 1;
 	}
 	return 0;
-
 }
 
 function IsFieldVarChar($table,$field)
@@ -281,9 +276,6 @@ function FieldSize($table,$field)
 	{
 		$fieldSize = 4294967295;
 	}
-
-
-
 	if (strpos($fieldType,"int")==0)
 	{
 		$fieldSize = str_replace("int(","",$fieldType);

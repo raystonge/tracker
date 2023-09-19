@@ -76,5 +76,4 @@ $filename="personalProperty-".$organization->name.".csv";
 header('Content-Type: application/csv');
 header('Content-Disposition: attachment; filename="'.$filename.'"');
 echo $data; exit();
-//DebugOutput();
 ?>

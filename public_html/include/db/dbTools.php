@@ -110,8 +110,6 @@ function createTable($table,$fname)
   $result = mysqli_query($link_cms,$query);
 	DebugText($query);
 	DebugText("Error:".mysqli_error($link_cms));
-
-
 }
 function addTableField($table,$field,$dataType)
 {
@@ -134,11 +132,9 @@ function modifyTableField($table,$field,$dataType)
   mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
   DebugText("modifyTableField($table,$field,$dataType)");
 	$query = "alter table ".$table." change column ".$field." ".$field." ".formatDataType($dataType);
-
 	$results = mysqli_query($link_cms,$query);
 	DebugText($query);
 	DebugText("Error:".mysqli_error($link_cms));
-
 }
 function formatDataType($dataType)
 {

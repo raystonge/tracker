@@ -46,7 +46,6 @@
 				?>
 					<ul class="dropdown-menu">
 				 <li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a href="<?php echo $newContract;?>">New</a></li>
-				 <!--<li id="menu-item-13" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13"><a href="/blog/category/news/state/">State</a></li>-->
 				 </ul>
 				 <?php
 			}
@@ -55,7 +54,6 @@
 				?>
 					<ul class="dropdown-menu">
 				 <li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a href="<?php echo $newContract;?>">New</a></li>
-				 <!--<li id="menu-item-13" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13"><a href="/blog/category/news/state/">State</a></li>-->
 				 </ul>
 				 <?php
 			}

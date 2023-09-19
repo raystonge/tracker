@@ -32,9 +32,9 @@
 	                        if ($permission->hasPermission("poNumber: Create"))
 	                        {
 	                        	?>
-                              <ul class="dropdown-menu">
-	                           <li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a href="<?php echo $newTicket;?>">New</a></li>
-                             </ul>
+                            <ul class="dropdown-menu">
+	                            <li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a href="<?php echo $newTicket;?>">New</a></li>
+                            </ul>
                              <?php
 	                        }
 	                        ?>

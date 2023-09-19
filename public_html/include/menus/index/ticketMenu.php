@@ -46,17 +46,15 @@
 	                        	?>
                               <ul class="dropdown-menu">
 	                           <li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a href="<?php echo $newTicket;?>">New</a></li>
-	                           <!--<li id="menu-item-13" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13"><a href="/blog/category/news/state/">State</a></li>-->
-                             </ul>
+	                            </ul>
                              <?php
 	                        }
 													if ($permission->hasPermission("Ticket: Create: User Ticket"))
 	                        {
 	                        	?>
-                              <ul class="dropdown-menu">
-	                           <li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a href="<?php echo $newTicket;?>">New</a></li>
-	                           <!--<li id="menu-item-13" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13"><a href="/blog/category/news/state/">State</a></li>-->
-                             </ul>
+                            <ul class="dropdown-menu">
+	                            <li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a href="<?php echo $newTicket;?>">New</a></li>
+	                          </ul>
                              <?php
 	                        }
 	                        ?>

@@ -51,7 +51,6 @@ if ($ok)
 {
   $numErrors++;
   $html = $html."<li>Ticket Number already assigned</li>";
-
 }
 
 if ($numErrors)

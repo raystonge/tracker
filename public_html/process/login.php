@@ -39,15 +39,15 @@ if (!validateFormKey())
 {
 	DebugPause("/");
 }
-		if (isset($_SESSION['requestURI']))
-		{
-			$redirect = $_SESSION['requestURI'];
-			if ($redirect == "favicon.ico")
-			{
-				$redirect = "/";
-				$_SESSION['requestURI'] = "/";
-			}
-		}
+if (isset($_SESSION['requestURI']))
+{
+	$redirect = $_SESSION['requestURI'];
+	if ($redirect == "favicon.ico")
+	{
+		$redirect = "/";
+		$_SESSION['requestURI'] = "/";
+	}
+}
 $username = "";
 $password = "";
 if (isset($_SESSION['UserName']) )
