@@ -119,7 +119,7 @@ if (isset($_POST['submitTest']))
 	$poNumberId = GetTextField('poNumberId');
 	$vendor = GetTextField('vendor');
 	$aquireDate = DatePickerUnFormatter(GetDateField('aquireDate'));
-	$commentText = GetTextField('description');
+	$commentText = GetTextAreaField('description');
 	$expireDate = GetDateField("expireDate");
 	$warrantyDate = DatePickerUnFormatter(GetDateField("warrantyDate"));
 	$enableWarrantyDate = GetTextField("enableWarranty",0);

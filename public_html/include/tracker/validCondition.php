@@ -87,48 +87,46 @@ var $className="ValidCondition";
   }
   function GetById($id)
   {
-	 DebugText($this->className."[GetById]");
-	 if (!is_numeric($id))
-	 {
-	   return;
-	 }
-	 $param = "validConditionId = $id";
-	 return($this->Get($param));
-
+    DebugText($this->className."[GetById]");
+	  if (!is_numeric($id))
+	  {
+	    return;
+	  }
+	  $param = "validConditionId = $id";
+	  return($this->Get($param));
   }
   function GetForCurrentCondition($assetConditionId)
   {
-	 DebugText($this->className."[GetForCurrentCondition]");
-	 if (!is_numeric($assetConditionId))
-	 {
-	   return;
-	 }
-	 $param = "currentAssetConditionId = $assetConditionId";
-	 return($this->Get($param));
-
+    DebugText($this->className."[GetForCurrentCondition]");
+	  if (!is_numeric($assetConditionId))
+	  {
+	    return;
+	  }
+	  $param = "currentAssetConditionId = $assetConditionId";
+	  return($this->Get($param));
   }
   function Update()
   {
-	 DebugText($this->className."[Update]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $query = "Update validCondition set currentAssetConditionId=$this->currentAssetConditionId,assetConditionId=$this->assetConditionId where validConditionId = $this->validConditionId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Update]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $query = "Update validCondition set currentAssetConditionId=$this->currentAssetConditionId,assetConditionId=$this->assetConditionId where validConditionId = $this->validConditionId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {
-	 DebugText($this->className."[Insert]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	   $query = "Insert into validCondition (currentAssetConditionId,assetConditionId) value ($this->currentAssetConditionId,$this->assetConditionId)";
-     $results = mysqli_query($link_cms,$query);
-     $this->validConditionId = mysqli_insert_id($link_cms);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Insert]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $query = "Insert into validCondition (currentAssetConditionId,assetConditionId) value ($this->currentAssetConditionId,$this->assetConditionId)";
+    $results = mysqli_query($link_cms,$query);
+    $this->validConditionId = mysqli_insert_id($link_cms);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Reset()
   {

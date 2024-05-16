@@ -63,7 +63,6 @@ if (isset($_POST['submitTest']))
 		{
 			$numErrors++;
 			$errorMsg=$errorMsg."<li>".$orgOrDept." already in use</li>";
-
 		}
 	}
 	if (strlen($assetPrefix) == 0)
@@ -73,15 +72,12 @@ if (isset($_POST['submitTest']))
 	}
 	$billable = GetTextField("billable",0);
 	$defaultAssigneeId = GetTextField("defaultAssgineeId",0);
-
-
 	if ($numErrors ==0)
 	{
 		$organization->name = $name;
 		$organization->assetPrefix = $assetPrefix;
 		$organization->billable = $billable;
 		$organization->defaultAssigneeId = $defaultAssigneeId;
-
 		if ($organization->organizationId)
 		{
 			$organization->Update();

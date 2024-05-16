@@ -60,48 +60,47 @@ var $className="UserToService";
   }
   function Get($param = "")
   {
-	 DebugText($this->className."[Get]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    DebugText($this->className."[Get]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
 
-	 $query = "Select * from userToService";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-	 $query = $query . " order by ".$this->orderBy;
-   $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	  $query = "Select * from userToService";
+	  if ($param)
+	  {
+	    $query = $query . " where ". $param;
+	  }
+	  $query = $query . " order by ".$this->orderBy;
+    $this->results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  return($this->Next());
   }
   function Next()
   {
-	 DebugText($this->className."[Next]");
-	 if ($this->row = mysqli_fetch_array($this->results))
-	 {
+    DebugText($this->className."[Next]");
+	  if ($this->row = mysqli_fetch_array($this->results))
+	  {
 	    $this->userToServiceId = $this->row['userToServiceId'];
 	    $this->userId = $this->row['userId'];
 	    $this->serviceId = $this->row['serviceId'];
       $this->adminAccess = $this->row['adminAccess'];
-	 }
-	 else
-	 {
-	   $this->init();
-	 }
-     return($this->userToServiceId);
+	  }
+	  else
+	  {
+      $this->init();
+	  }
+    return($this->userToServiceId);
   }
   function GetById($id)
   {
-	 DebugText($this->className."[GetById]");
-	 if (!is_numeric($id))
-	 {
-	   return;
-	 }
-	 $param = "userToServiceId = $id";
-	 return($this->Get($param));
-
+    DebugText($this->className."[GetById]");
+	  if (!is_numeric($id))
+	  {
+	    return;
+	  }
+	  $param = "userToServiceId = $id";
+	  return($this->Get($param));
   }
   function Persist()
   {

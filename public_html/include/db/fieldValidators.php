@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.11.0
+//
+//  -v1.11.0
+//     -adding a level to reduce the amout of debug text
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -37,7 +40,7 @@ function getTableInfo($table)
 }
 function getFieldSize($table,$field)
 {
-	DebugText("getFieldSize($table,$field)");
+	DebugText("getFieldSize($table,$field)",3);
 	if (!isset($_SESSION[$table."-".$field]))
 	{
 		getTableInfo($table);
@@ -48,26 +51,26 @@ function getFieldSize($table,$field)
 	{
 		$fieldSize = str_replace("varchar(","",$fieldType);
 		$fieldSize = str_replace(")","",$fieldSize);
-		DebugText("fieldSize:".$fieldSize);
+		DebugText("fieldSize:".$fieldSize,3);
 		return $fieldSize;
 	}
 	return (0);
 }
 function checkField($table,$field,$data)
 {
-	DebugText("checkField($table,$field,$data)");
+	DebugText("checkField($table,$field,$data)",3);
 	if (!isset($_SESSION[$table."-".$field]))
 	{
 		getTableInfo($table);
 	}
 	$fieldType = $_SESSION[$table."-".$field];
-	DebugText("fieldType:".$fieldType);
-	DebugText("data:".$data);
-	DebugText("pos:".strpos($fieldType,"int"));
+	DebugText("fieldType:".$fieldType,3);
+	DebugText("data:".$data,3);
+	DebugText("pos:".strpos($fieldType,"int"),3);
 	//if (strpos($fieldType,"int") >=0)
 	if (IsFieldInt($table, $field))
 	{
-		DebugText("looks like an int");
+		DebugText("looks like an int",3);
 		if (ctype_digit($data))
 		{
 			return($data);
@@ -77,20 +80,20 @@ function checkField($table,$field,$data)
 			return (0);
 		}
 	}
-	DebugText("data:".$data);
-	DebugText("fieldType:".$fieldType);
+	DebugText("data:".$data,3);
+	DebugText("fieldType:".$fieldType,3);
 	if ($fieldType == "date")
 	{
 		$data = substr($data,0,10);
 		$data = str_replace("/", "-", $data);
 		if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$data))
 		{
-			DebugText("returning formated date:".$data);
+			DebugText("returning formated date:".$data,3);
 			return ($data);
 		}
 		else
 		{
-			DebugText("returning all zero date");
+			DebugText("returning all zero date",3);
 			return ("0000-00-00");
 		}
 	}
@@ -101,12 +104,12 @@ function checkField($table,$field,$data)
 		//if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$data))
 		if (preg_match('/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/',$data))
 		{
-			DebugText("returning formated date:".$data);
+			DebugText("returning formated date:".$data,3);
 			return ($data);
 		}
 		else
 		{
-			DebugText("returning all zero date");
+			DebugText("returning all zero date",3);
 			return ("0000-00-00 00:00:00");
 		}
 	}
@@ -129,52 +132,52 @@ function prepForDB($table,$field,$data)
 {
 	global $link_cms;
 	$data = trim($data);
-	DebugText("prepForDB($table,$field,$data)");
+	DebugText("prepForDB($table,$field,$data)",3);
 	if (IsFieldVarChar($table,$field))
 	{
-		Debugtext("Field is varchar");
+		Debugtext("Field is varchar",3);
 		$data = checkField($table,$field,$data);
 		$data = mysqli_real_escape_string($link_cms,trim($data));
 	}
-  DebugText("data:".$data);
+  DebugText("data:".$data,3);
 	if (IsFieldInt($table,$field))
 	{
-		DebugText("Field is int");
+		DebugText("Field is int",3);
 		$data = checkField($table,$field,$data);
 	}
-  DebugText("data:".$data);
+  DebugText("data:".$data,3);
 	if (IsFieldDate($table,$field))
 	{
-		DebugText("Field is Date");
+		DebugText("Field is Date",3);
 		$data = checkField($table,$field,$data);
 		$data = mysqli_real_escape_string($link_cms,trim($data));
 	}
-  DebugText("data:".$data);
+  DebugText("data:".$data,3);
 	if (IsFieldDateTime($table,$field))
 	{
-		DebugText("Field is DateTime");
+		DebugText("Field is DateTime",3);
 		$data = checkField($table,$field,$data);
 		$data = mysqli_real_escape_string($link_cms,trim($data));
 	}
-  DebugText("data:".$data);
-	DebugText("prepForDB return:".$data);
+  DebugText("data:".$data,3);
+	DebugText("prepForDB return:".$data,3);
 	return $data;
 }
 function IsFieldInt($table,$field)
 {
-	DebugText("IsFieldInt($table,$field)");
+	DebugText("IsFieldInt($table,$field)",3);
 	if (!isset($_SESSION[$table."-".$field]))
 	{
 		getTableInfo($table);
 	}
 	$fieldType = $_SESSION[$table."-".$field];
-	DebugText("fieldType:".$fieldType);
-	DebugText("varchar:".strpos($fieldType,"varchar"));
+	DebugText("fieldType:".$fieldType,3);
+	DebugText("varchar:".strpos($fieldType,"varchar"),3);
 	$pos = strpos($fieldType,"int");
-	DebugText("pos:".$pos);
+	DebugText("pos:".$pos,3);
 	if ($pos === false)
 	{
-		DebugText("return 0 for int");
+		DebugText("return 0 for int",3);
 		return 0;
 	}
 	return 1;
@@ -186,8 +189,8 @@ function IsFieldDate($table,$field)
 		getTableInfo($table);
 	}
 	$fieldType = $_SESSION[$table."-".$field];
-	DebugText("fieldType:".$fieldType);
-	DebugText("date:".strpos($fieldType,"date"));
+	DebugText("fieldType:".$fieldType,3);
+	DebugText("date:".strpos($fieldType,"date"),3);
 	if ($fieldType == "date")
 	{
 		return 1;
@@ -201,8 +204,8 @@ function IsFieldDateTime($table,$field)
 		getTableInfo($table);
 	}
 	$fieldType = $_SESSION[$table."-".$field];
-	DebugText("fieldType:".$fieldType);
-	DebugText("varchar:".strpos($fieldType,"varchar"));
+	DebugText("fieldType:".$fieldType,3);
+	DebugText("varchar:".strpos($fieldType,"varchar"),3);
 	if (strpos($fieldType,"datetime") >= 0)
 	{
 		return 1;
@@ -212,25 +215,25 @@ function IsFieldDateTime($table,$field)
 
 function IsFieldVarChar($table,$field)
 {
-	DebugText("IsFieldVar($table,$field)");
+	DebugText("IsFieldVar($table,$field)",3);
 	if (!isset($_SESSION[$table."-".$field]))
 	{
 		getTableInfo($table);
 	}
 	$fieldType = $_SESSION[$table."-".$field];
-	DebugText("fieldType:".$fieldType);
-	DebugText("varchar:".strpos($fieldType,"varchar"));
+	DebugText("fieldType:".$fieldType,3);
+	DebugText("varchar:".strpos($fieldType,"varchar"),3);
 	$pos = strpos($fieldType,"varchar");
 	if ($pos === false)
 	{
-		DebugText("return 0 for varchar");
+		DebugText("return 0 for varchar",3);
 		return 0;
 	}
 	return 1;
 }
 function FieldSize($table,$field)
 {
-	DebugText("FieldSize($table,$field)");
+	DebugText("FieldSize($table,$field)",3);
 	$fieldSize = 0;
 	if (!isset($_SESSION[$table."-".$field]))
 	{

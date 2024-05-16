@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.11.0
+//
+//  -v1.11.0
+//     -adding a level to reduce the amout of debug text
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -23,11 +26,11 @@ function getTables()
   global $link_cms;
   global $database_cms;
   mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-  DebugText("getTables");
+  DebugText("getTables",3);
   $result = mysqli_query($link_cms,"show tables");
   $tables = array();
   $cnt = 0;
-  while ($row = mysqli_fetch_row($result))
+  while ($row = mysqli_fetch_row($result))//  Tracker - Version 1.0
   {
   	$tables[$cnt++] = $row[0];
   }
@@ -39,10 +42,10 @@ function getFields($table)
   global $link_cms;
   global $database_cms;
   mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-  DebugText("getFields($table)");
+  DebugText("getFields($table)",3);
 
   $result = mysqli_query($link_cms,"SHOW COLUMNS FROM ".$table);
-  $fields = array();
+  $fields = array();//  Tracker - Version 1.0
   $cnt = 0;
   if (mysqli_num_rows($result) > 0)
   {
@@ -58,9 +61,9 @@ function getFieldsArray($table)
   global $link_cms;
   global $database_cms;
   mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-  DebugText("getFields($table)");
+  DebugText("getFields($table)",3);
 
-  $result = mysqli_query($link_cms,"SHOW COLUMNS FROM ".$table);
+  $result = mysqli_query($link_cms,"SHOW COLUMNS FROM ".$table); //  Tracker - Version 1.0le);
   $fields = array();
   $cnt = 0;
   if (mysqli_num_rows($result) > 0)
@@ -73,7 +76,7 @@ function getFieldsArray($table)
       }
   }
   return $fields;
-}
+}//  Tracker - Version 1.0
 
 function createTable($table,$fname)
 {
@@ -81,7 +84,7 @@ function createTable($table,$fname)
   global $database_cms;
   echo "Creating table:".$table."<br>";
   mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-  DebugText("createTable($table)");
+  DebugText("createTable($table)",3);
   $query = "create table ".$table."(";
   $fp = fopen($fname,"r");
   $cnt = 1;
@@ -108,8 +111,8 @@ function createTable($table,$fname)
   $query = $query.", primary key (`$primaryKey`)) ENGINE=MyISAM";
   fclose($fp);
   $result = mysqli_query($link_cms,$query);
-	DebugText($query);
-	DebugText("Error:".mysqli_error($link_cms));
+	DebugText($query,3);
+	DebugText("Error:".mysqli_error($link_cms),3);
 }
 function addTableField($table,$field,$dataType)
 {
@@ -117,29 +120,29 @@ function addTableField($table,$field,$dataType)
   global $database_cms;
   echo "Adding Field:".$field."<br>";
   mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-  DebugText("addTableField($table,$field,$dataType)");
+  DebugText("addTableField($table,$field,$dataType)",3);
 	$query = "alter table ".$table." add column ".$field." ".formatDataType($dataType);
 	$results = mysqli_query($link_cms,$query);
-	DebugText($query);
-	DebugText("Error:".mysqli_error($link_cms));
+	DebugText($query,3);
+	DebugText("Error:".mysqli_error($link_cms),3);
 }
 function modifyTableField($table,$field,$dataType)
 {
   global $link_cms;
   global $database_cms;
   echo "Modify Field:".$field."<br>";
-  DebugText("modifyTableField($table,$field,$dataType");
+  DebugText("modifyTableField($table,$field,$dataType",3);
   mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-  DebugText("modifyTableField($table,$field,$dataType)");
+  DebugText("modifyTableField($table,$field,$dataType)",3);
 	$query = "alter table ".$table." change column ".$field." ".$field." ".formatDataType($dataType);
 	$results = mysqli_query($link_cms,$query);
-	DebugText($query);
-	DebugText("Error:".mysqli_error($link_cms));
+	DebugText($query,3);
+	DebugText("Error:".mysqli_error($link_cms),3);
 }
 function formatDataType($dataType)
 {
 	if ($dataType == "datetime")
-	{
+	{//  Tracker - Version 1.0
 		return $dataType;
 	}
 	if ($dataType == "date")
@@ -157,7 +160,7 @@ function formatDataType($dataType)
 
 	if (substr($dataType,0,4) == "int(")
 	{
-		$type = "integer";
+		$type = "integer";//  Tracker - Version 1.0
 		if (strpos($dataType,"unsigned"))
 		{
 			$type = $type." unsigned";
@@ -174,11 +177,11 @@ function doQuery($query)
 {
   global $link_cms;
   global $database_cms;
-	DebugText("[doQuery]");
+	DebugText("[doQuery]",5);
 
   $results = mysqli_query($link_cms,$query);
-	DebugText($query);
-	DebugText("Error:".mysqli_error($link_cms));
+	DebugText($query,5);
+	DebugText("Error:".mysqli_error($link_cms),5);
 	$rows = array();
 	$cnt = 0;
 	while ($row = mysqli_fetch_array($results))
@@ -191,10 +194,10 @@ function executeQuery($query)
 {
   global $link_cms;
   global $database_cms;
-	DebugText("[doQuery]");
+	DebugText("[executeQuery]",5);
 
   $results = mysqli_query($link_cms,$query);
-	DebugText($query);
-	DebugText("Error:".mysqli_error($link_cms));
+	DebugText($query,5);
+	DebugText("Error:".mysqli_error($link_cms),5);
   }
 ?>

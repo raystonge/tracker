@@ -43,7 +43,7 @@ if (isset($_POST['submitTest']))
 	$cost = GetTextField("cost");
 	$reconciled = GetTextField("reconciled",0);
 	$received = GetTextField("received",0);
-	$commentText = GetTextField("comment");
+	$commentText = GetTextAreaField("comment");
 	$numErrors = 0;
 	if (!$organizationId)
 	{

@@ -64,7 +64,8 @@ else
 					if ($type == "contract")
 					{
 						$param1 = AddEscapedParam("","poType","asset");
-						$param = $param." or ".$param1;
+            $param2 = AddEscapedParam("","poType","assetcontract");
+						$param = $param." or ".$param1." or ".$param2;
 					}
 			    if ($organizationId)
 			    {
@@ -96,5 +97,5 @@ else
 			  	}
 			  	CreateHiddenField("poNumberId",$poNumberId);
 			  }
-			// DebugOutput();
+			 //DebugOutput();
 			  ?>

@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.11.0
+//
+//  -v1.11.0
+//     -adding a level to reduce the amout of debug text
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -47,16 +50,16 @@ var $className="Permission";
   function init()
   {
     $this->permissionId = 0;
-	$this->name = "";
-	$this->developer = 0;
-	$this->page = 1;
-	$this->start = 0;
-	$this->perPage = 0;
-	$this->orderBy = "name";
+  	$this->name = "";
+  	$this->developer = 0;
+	  $this->page = 1;
+	  $this->start = 0;
+	  $this->perPage = 0;
+	  $this->orderBy = "name";
   }
   function __construct()
   {
-	$a = func_get_args();
+	  $a = func_get_args();
     $i = func_num_args();
     if (method_exists($this,$f='__construct'.$i))
     {
@@ -88,19 +91,19 @@ var $className="Permission";
   }
   function SetPage($page)
   {
-  	DebugText($this->className."[SetPage($page)]");
+  	DebugText($this->className."[SetPage($page)]",3);
   	$this->page = $page;
-  	DebugText("Setting Page:".$this->page);
+  	DebugText("Setting Page:".$this->page,3);
   }
   function SetPerPage($perPage)
   {
-  	DebugText($this->className."[SetPerPage($perPage)]");
+  	DebugText($this->className."[SetPerPage($perPage)]",3);
   	$this->perPage = $perPage;
-  	DebugText("Setting perPage:".$this->perPage);
+  	DebugText("Setting perPage:".$this->perPage,3);
   }
   function Count($param)
   {
-  	DebugText($this->className."[Count]");
+  	DebugText($this->className."[Count]",3);
   	global $link_cms;
   	global $database_cms;
   	mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
@@ -110,8 +113,8 @@ var $className="Permission";
   		$query = $query." where ".$param;
   	}
   	$results = mysqli_query($link_cms,$query);
-  	DebugText($query);
-  	DebugText("Error:".mysqli_error($link_cms));
+  	DebugText($query,3);
+  	DebugText("Error:".mysqli_error($link_cms),3);
   	$numRows = 0;
   	if ($row = mysqli_fetch_array($results))
   	{
@@ -122,115 +125,114 @@ var $className="Permission";
 
   function Search($param)
   {
-	 DebugText($this->className."[Search]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $this->start = ($this->page-1)*$this->perPage;
-     DebugText("start:".$this->start);
-     DebugText("page:".$this->page);
-     DebugText("perPage:".$this->perPage);
+    DebugText($this->className."[Search]",3);
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $this->start = ($this->page-1)*$this->perPage;
+    DebugText("start:".$this->start,3);
+    DebugText("page:".$this->page,3);
+    DebugText("perPage:".$this->perPage,3);
 
-	 $query = "Select * from permission";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-  	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
-	 if ($this->perPage > 0)
-	 {
-	 	$query = $query ." limit ".$this->start.",".$this->perPage;
-	 }
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	  $query = "Select * from permission";
+	  if ($param)
+	  {
+	    $query = $query . " where ". $param;
+	  }
+  	if (strlen($this->orderBy))
+	  {
+	    $query = $query . " order by ".$this->orderBy;
+	  }
+	  if ($this->limit > 0)
+	  {
+	 	  $query = $query . " limit ".$this->limit;
+	  }
+	  if ($this->perPage > 0)
+	  {
+      $query = $query ." limit ".$this->start.",".$this->perPage;
+	  }
+	  $this->results = mysqli_query($link_cms,$query);
+	  DebugText($query,3);
+	  DebugText("Error:".mysqli_error($link_cms),3);
+	  return($this->Next());
   }
   function Get($param = "")
   {
-	 DebugText($this->className."[Get]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $this->start = ($this->page-1)*$this->perPage;
+    DebugText($this->className."[Get]",3);
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $this->start = ($this->page-1)*$this->perPage;
 
-	 $query = "Select * from permission";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-  	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
+	  $query = "Select * from permission";
+	  if ($param)
+	  {
+	    $query = $query . " where ". $param;
+	  }
+  	if (strlen($this->orderBy))
+	  {
+	    $query = $query . " order by ".$this->orderBy;
+	  }
+	  if ($this->limit > 0)
+	  {
+	 	  $query = $query . " limit ".$this->limit;
+	  }
 
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	  $this->results = mysqli_query($link_cms,$query);
+	  DebugText($query,3);
+	  DebugText("Error:".mysqli_error($link_cms),3);
+	  return($this->Next());
   }
 
   function Next()
   {
-	 DebugText($this->className."[Next]");
-	 if ($this->row = mysqli_fetch_array($this->results))
-	 {
+    DebugText($this->className."[Next]",3);
+	  if ($this->row = mysqli_fetch_array($this->results))
+	  {
 	    $this->permissionId = $this->row['permissionId'];
 	    $this->name = trim(stripslashes($this->row['name']));
 	    $this->developer = $this->row['developer'];
-	 }
-	 else
-	 {
-	   $this->init();
-	 }
-     return($this->permissionId);
+	  }
+	  else
+	  {
+	    $this->init();
+	  }
+    return($this->permissionId);
   }
   function GetById($id)
   {
-	 DebugText($this->className."[GetById]");
-	 if (!is_numeric($id))
-	 {
-	   return;
-	 }
-	 $param = "permissionId = $id";
-	 return($this->Get($param));
-
+    DebugText($this->className."[GetById]",3);
+	  if (!is_numeric($id))
+	  {
+	    return;
+	  }
+	  $param = "permissionId = $id";
+	  return($this->Get($param));
   }
   function Update()
   {
-	 DebugText($this->className."[Update]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $name = trim(mysqli_real_escape_string($link_cms,$this->name));
-	 $query = "Update permission set name='$name',developer=$this->developer where permissionId = $this->permissionId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Update]",3);
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $name = trim(mysqli_real_escape_string($link_cms,$this->name));
+	  $query = "Update permission set name='$name',developer=$this->developer where permissionId = $this->permissionId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query,3);
+	  DebugText("Error:".mysqli_error($link_cms),3);
   }
   function Insert()
   {
-	 DebugText($this->className."[Insert]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $name = trim(mysqli_real_escape_string($link_cms,$this->name));
-	 $query = "Insert into permission (name,developer) value ('$name',$this->developer)";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 $this->permissionId = mysqli_insert_id($link_cms);
+    DebugText($this->className."[Insert]",3);
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $name = trim(mysqli_real_escape_string($link_cms,$this->name));
+	  $query = "Insert into permission (name,developer) value ('$name',$this->developer)";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query,3);
+	  DebugText("Error:".mysqli_error($link_cms),3);
+	  $this->permissionId = mysqli_insert_id($link_cms);
   }
   function Persist()
   {
@@ -246,16 +248,14 @@ var $className="Permission";
   }
   function hasPermission($action,$organizationId=0,$userId=0)
   {
-
-  	DebugText($this->className."[hasPermission($action,$organizationId,$userId)]");
-  //	return(1);
+  	DebugText($this->className."[hasPermission($action,$organizationId,$userId)]",5);
   	if ($userId == 0)
   	{
-  		DebugText("need to use session value");
+  		DebugText("need to use session value",3);
   		if (isset($_SESSION['userId']))
   		{
   			$userId = $_SESSION['userId'];
-  			DebugText("getting session userId:".$userId);
+  			DebugText("getting session userId:".$userId,3);
   		}
   	}
   	global $link_cms;
@@ -267,12 +267,12 @@ var $className="Permission";
   	$this->Get($param);
   	$this->name=$action;
   	$this->Persist();
-  	DebugText("Action:".$action);
-  	DebugText("Edit Position:".strpos($action,"Edit"));
+  	DebugText("Action:".$action,3);
+  	DebugText("Edit Position:".strpos($action,"Edit"),3);
   	if (strpos($action,"Edit") > 0)
   	{
   		$newAction = str_ireplace("Edit", "View", $action);
-  		DebugText("newAction:".$newAction);
+  		DebugText("newAction:".$newAction,5);
   		$param = AddEscapedParam("","name",$newAction);
   		$this->Get($param);
   		$this->name=$newAction;
@@ -297,7 +297,7 @@ var $className="Permission";
   		}
 
   	}
-  	DebugText("useSessionInfo:".$useSessionInfo);
+  	DebugText("useSessionInfo:".$useSessionInfo,3);
   	if ($useSessionInfo)
   	{
   		$param = $param." and ugp.userGroupId in (".$_SESSION['userGroups'].")";
@@ -331,12 +331,12 @@ var $className="Permission";
 
   	$query = $query." where ".$param;
   	$results = mysqli_query($link_cms,$query);
-  	DebugText($query);
-  	DebugText("Error:".mysqli_error($link_cms));
+  	DebugText($query,3);
+  	DebugText("Error:".mysqli_error($link_cms),3);
   	//DebugText("numrows:".mysqli_num_rows($results));
   	if (mysqli_num_rows($results))
   	{
-      DebugText($action." has permission");
+      DebugText($action." has permission",3);
   		return (1);
   	}
   	$query = "Select * from permission p inner join userToPermission up on p.permissionId=up.permissionId";
@@ -349,18 +349,16 @@ var $className="Permission";
   	}
   	$query = $query." where ".$param;
   	$results = mysqli_query($link_cms,$query);
-  	DebugText($query);
-  	DebugText("Error:".mysqli_error($link_cms));
-  	DebugText("numrows:".mysqli_num_rows($results));
+  	DebugText($query,3);
+  	DebugText("Error:".mysqli_error($link_cms),3);
+  	DebugText("numrows:".mysqli_num_rows($results),3);
   	if (mysqli_num_rows($results))
   	{
-      DebugText($action." has permission");
+      DebugText($action." has permission",3);
   		return (1);
   	}
-    DebugText($action." has no permission");
+    DebugText($action." has no permission",3);
   	return (0);
-
   }
-
 }
 ?>

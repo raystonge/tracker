@@ -59,6 +59,12 @@
 	                      <li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="/assetImport/">Import</a></li>
                           <?php
 	                     }
+						 if ($permission->hasPermission("Asset: Import"))
+	                     {
+	                      ?>
+	                      <li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="/assetImportCSV/">Import CSV</a></li>
+                          <?php
+	                     }
                        if ($permission->hasPermission("Asset: eWaste"))
                        {
                         ?>

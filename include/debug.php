@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.11.0
+//
+//  -v1.11.0
+//    - added a debug level for adding text to debug string
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -21,8 +24,9 @@ if (!isset($debugtext))
 if (!isset($debug))
 	$debug = 1;
 if (!isset($debugaddress))
-	$debugaddress = "192.168.0.2|172.16.128.9|127.0.0.1|69.49.141.8|192.168.16.62|192.168.56.16|192.168.56.6|192.168.16.237| 192.168.56.23| 192.168.56.30 | 192.168.16.252";
+	$debugaddress = "192.168.16.226|192.168.56.12|192.168.0.2|172.16.128.9|127.0.0.1|69.49.141.8|192.168.16.62|192.168.56.16|192.168.56.6|192.168.16.237| 192.168.56.23| 192.168.56.30 | 192.168.16.252";
 	//$debugaddress ="";
+$debugLevel = 5;
 
 function DoDebug()
 {
@@ -72,11 +76,17 @@ function DebugPause($redirect)
 	header($redirectstr);
 	exit();
 }
-function DebugText($text)
+function DebugText($text,$level=10)
 {
 	global $debugtext;
 	global $debug;
 	global $debugtext;
+  global $debugLevel;
+
+  if ($level < $debugLevel)
+  {
+    return;
+  }
 
 	$debuguser = DoDebug();
 	if (($debug == 1) && ($debuguser == 1))

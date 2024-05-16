@@ -756,7 +756,7 @@ function enableDueDate()
 		{
 			?>
 		<tr <?php echo $class;?> >
-		  <td><?php echo $user->fullName." on ".$comment->posted;?>
+		  <td><strong><?php echo $user->fullName." on ".$comment->posted;?></strong>
 		  </td>
 		</tr>
 		<tr <?php echo $class;?> >

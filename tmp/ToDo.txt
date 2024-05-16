@@ -1,4 +1,8 @@
 <strong>System Notes</strong>
+== 2023-12-04
+ = Version 1.11.1
+   * fixed typo in code that caused timeWorked not to be returned
+   
 == 2023-09-13
  = Version 1.11.0
    * added orderBy on modules

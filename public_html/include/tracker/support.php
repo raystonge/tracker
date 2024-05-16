@@ -40,7 +40,7 @@ include_once "tracker/userToOrganization.php";
 function GetMyGroupsResetCache()
 {
   global $currentUser;
-  DebugText("GetMyGroupsResetCache()");
+  DebugText("GetMyGroupsResetCache()",3);
   $userToGroup = new UserToGroup();
   $myGroups = "";
   $ok = $userToGroup->Get("userId=$currentUser->userId");
@@ -63,13 +63,13 @@ function GetMyGroupsResetCache()
 function GetMyGroups()
 {
   global $currentUser;
-  DebugText("GetMyGroups()");
+  DebugText("GetMyGroups()",3);
   $userToGroup = new UserToGroup();
   if (isset($_COOKIE['myGroups']))
   {
     if ($_COOKIE['myGroups'] != "0")
     {
-      DebugText("Using cached value:".$_COOKIE['myGroups']);
+      DebugText("Using cached value:".$_COOKIE['myGroups'],3);
 	    return ($_COOKIE['myGroups']);
 	  }
   }
@@ -87,14 +87,14 @@ function GetMyGroups()
 	  }
 	  $ok = $userToGroup->Next();
   }
-  DebugText("myGroups:".$myGroups);
+  DebugText("myGroups:".$myGroups,3);
   @setcookie("myGroups",$myGroups,time()+300);
   return($myGroups);
 }
 
 function isMemberOfGroup($userId,$groupName)
 {
-  DebugText("isMemberofGroup($userId,$groupName)");
+  DebugText("isMemberofGroup($userId,$groupName)",3);
   $userGroup = new UserGroup();
   $param = AddEscapedParam("", "name", $groupName);
   $userGroup->Get($param);
@@ -106,13 +106,13 @@ function isMemberOfGroup($userId,$groupName)
 function GetMyOrganizations()
 {
   global $currentUser;
-  DebugText("GetMyOrganizations()");
+  DebugText("GetMyOrganizations()",3);
   $userToOrganization = new UserToOrganization();
   if (isset($_COOKIE['myOrganizations']))
   {
     if ($_COOKIE['myOrganizations'] != "0")
 	  {
-      DebugText("Using cached value:".$_COOKIE['myOrganizations']);
+      DebugText("Using cached value:".$_COOKIE['myOrganizations'],3);
 	    return ($_COOKIE['myOrganizations']);
 	  }
   }
@@ -130,15 +130,15 @@ function GetMyOrganizations()
 	  }
 	  $ok = $userToOrganization->Next();
   }
-  DebugText("myOrganizations:".$myOrganizations);
+  DebugText("myOrganizations:".$myOrganizations,3);
   @setcookie("myOrganizations",$myOrganizations,time()+300);
   return($myOrganizations);
 }
 
 function CreateHistory($action,$property,$newVal,$oldVal)
 {
-  DebugText("newVal:".$newVal);
-	DebugText("oldVal:".$oldVal);
+  DebugText("newVal:".$newVal,3);
+	DebugText("oldVal:".$oldVal,3);
 	$historyVal="";
 	if ($action == "Create")
 	{
@@ -152,8 +152,8 @@ function CreateHistory($action,$property,$newVal,$oldVal)
 	{
 		if ($action == "Change")
 		{
-			DebugText("newVal:".$newVal);
-			DebugText("oldVal:".$oldVal);
+			DebugText("newVal:".$newVal,3);
+			DebugText("oldVal:".$oldVal,3);
 			if ($newVal != $oldVal)
 			{
 				//$historyVal = "Changed ".$property." to ".$oldVal." from ".$newVal;
@@ -285,7 +285,7 @@ function AddOrEscapedParam($param,$newParam,$value)
   {
     $param = $newParam."='".mysqli_real_escape_string($link_cms,$value)."'";
   }
-  DebugText("resulting param:".$param);
+  DebugText("resulting param:".$param,3);
   return($param);
 }
 function AddOrFullLikeEscapedParam($param,$newParam,$value)
@@ -301,7 +301,7 @@ function AddOrFullLikeEscapedParam($param,$newParam,$value)
   {
     $param = $newParam." like '%".mysqli_real_escape_string($link_cms,$value)."%'";
   }
-  DebugText("resulting param:".$param);
+  DebugText("resulting param:".$param,3);
   return($param);
 }
 function AddOrParam($param,$newParam)
@@ -316,8 +316,6 @@ function AddOrParam($param,$newParam)
   }
   return($param);
 }
-
-
 function isAlpha($c)
 {
   $c = strtolower($c);
@@ -399,14 +397,14 @@ function canEnterOrder()
 function trimText($text,$maxLen = 30)
 {
 	//$maxLen = 30;
-	DebugText("trimText:".$text);
+	DebugText("trimText:".$text,3);
 	$len = strlen($text);
-	DebugText("len:".$len);
+	DebugText("len:".$len,3);
 	if ($len > $maxLen)
 	{
 		$text = substr($text,0,$maxLen)."...";
 	}
-	DebugText("text:".$text);
+	DebugText("text:".$text,3);
 	return $text;
 }
 function fixFlag($val)
@@ -424,7 +422,6 @@ function fixFlag($val)
     return 1;
   }
   return 0;
-
 }
 function DisplayText($text,$maxLen = 30)
 {
@@ -467,7 +464,7 @@ function GetURI($index,$default="")
 			$val = $request_uri[$index];
 		}
 	}
-	DebugText("GetURI($index,$default):$val");
+	DebugText("GetURI($index,$default):$val",5);
 	return $val;
 }
 
@@ -478,9 +475,18 @@ function GetTextField($fieldName,$default="")
 	{
 		$val = trim(strip_tags($_POST[$fieldName]));
 	}
-	DebugText("GetTextField($fieldName,$default):$val");
+	DebugText("GetTextField($fieldName,$default):$val",5);
 	return $val;
-
+}
+function GetTextAreaField($fieldName,$default="")
+{
+	$val = $default;
+	if (isset($_POST[$fieldName]))
+	{
+		$val = trim($_POST[$fieldName]);
+	}
+	DebugText("GetTextAreaField($fieldName,$default):$val",5);
+	return $val;
 }
 function GetDateField($fieldName,$default="")
 {
@@ -490,7 +496,7 @@ function GetDateField($fieldName,$default="")
 		$val = trim(strip_tags($_POST[$fieldName]));
 	}
 	$val = str_replace("/","-",$val);
-	DebugText("GetDateField($fieldName,$default):$val");
+	DebugText("GetDateField($fieldName,$default):$val",5);
 	return $val;
 
 }
@@ -510,19 +516,19 @@ function GetTextFromSession($key,$default="",$clear=1)
 	$val = $default;
 	if (isset($_SESSION[$key]))
 	{
-		DebugText("SESSION[$key]:".$_SESSION[$key]);
+		DebugText("SESSION[$key]:".$_SESSION[$key],3);
 		$val = $_SESSION[$key];
 	}
 	if ($clear)
 	{
 		unset($_SESSION[$key]);
 	}
-	DebugText("GetTextFromSession($key,$default,$clear):$val");
+	DebugText("GetTextFromSession($key,$default,$clear):$val",5);
 	return $val;
 }
 function UpgradeAvailable()
 {
-	global $sitePath;
+  global $sitePath;
 	global $siteRootPath;
 	$permission = new Permission();
   $control = new Control();
@@ -531,9 +537,9 @@ function UpgradeAvailable()
   $currentVersion = $control->valueInt;
   $fileList = array();
   $arrayIndex = 0;
-	 $dir = $siteRootPath."/sysUpdates";
-	 if ($dh = opendir($dir))
-	 {
+	$dir = $siteRootPath."/sysUpdates";
+	if ($dh = opendir($dir))
+	{
 	 	while (($file = readdir($dh)) !== false)
 	 	{
 	 		if (!is_dir($file))
@@ -544,7 +550,7 @@ function UpgradeAvailable()
   		    	$fileList[$arrayIndex++] = $file;
   		    }
       }
-   	}
+    }
    	closedir($dh);
     if ($permission->hasPermission("Config: Upgrade"))
     {
@@ -572,7 +578,7 @@ function PrintBR()
 function CreateTextAreaField($name,$val="",$fieldSize=0,$title="",$rows=4,$cols=50,$class="ui-corner-left ui-corner-right")
 {
 	global $showMouseOvers;
-	DebugText("CreateTextAreaField($name,$val,$fieldSize,$title)");
+	DebugText("CreateTextAreaField($name,$val,$fieldSize,$title)",3);
 	$maxLength = "";
 	if ($fieldSize)
 	{
@@ -586,9 +592,7 @@ function CreateTextAreaField($name,$val="",$fieldSize=0,$title="",$rows=4,$cols=
 	if (strlen($class))
 	{
 		$class = "class='$class'";
-
 	}
-
 	?>
   <textarea id="<?php echo $name;?>" name="<?php echo $name;?>" rows="<?php echo $rows;?>" cols="<?php echo $cols;?>" <?php echo $class;?>><?php echo $val;?></textarea>
 	<?php
@@ -596,7 +600,7 @@ function CreateTextAreaField($name,$val="",$fieldSize=0,$title="",$rows=4,$cols=
 function CreateTextField($name,$val="",$fieldSize=0,$title="",$class="ui-corner-left ui-corner-right")
 {
 	global $showMouseOvers;
-	DebugText("CreateTextField($name,$val,$fieldSize,$title)");
+	DebugText("CreateTextField($name,$val,$fieldSize,$title)",3);
 	$maxLength = "";
 	if ($fieldSize)
 	{
@@ -610,9 +614,7 @@ function CreateTextField($name,$val="",$fieldSize=0,$title="",$class="ui-corner-
 	if (strlen($class))
 	{
 		$class = "class='$class'";
-
 	}
-
 	?>
 	<input type="text" <?php echo $displayTitle;?> name="<?php echo $name;?>" id="<?php echo $name;?>" <?php echo $class;?> value="<?php echo $val;?>" <?php echo $maxLength;?>/>
 	<?php
@@ -620,7 +622,7 @@ function CreateTextField($name,$val="",$fieldSize=0,$title="",$class="ui-corner-
 function CreatePasswordField($name,$val="",$fieldSize=0,$title="",$class="ui-corner-left ui-corner-right")
 {
 	global $showMouseOvers;
-	DebugText("CreatePasswordld($name,$val,$fieldSize,$title)");
+	DebugText("CreatePasswordld($name,$val,$fieldSize,$title)",3);
 	$maxLength = "";
 	if ($fieldSize)
 	{
@@ -634,9 +636,7 @@ function CreatePasswordField($name,$val="",$fieldSize=0,$title="",$class="ui-cor
 	if (strlen($class))
 	{
 		$class = "class='$class'";
-
 	}
-
 	?>
 	<input type="password" <?php echo $displayTitle;?> name="<?php echo $name;?>" id="<?php echo $name;?>" <?php echo $class;?> value="<?php echo $val;?>" <?php echo $maxLength;?>/>
 	<?php
@@ -644,15 +644,14 @@ function CreatePasswordField($name,$val="",$fieldSize=0,$title="",$class="ui-cor
 
 function CreateHiddenField($name,$val="")
 {
-	DebugText("CreateTextField($name,$val)");
+	DebugText("CreateTextField($name,$val)",3);
 	?>
 	<input type="hidden" name="<?php echo $name;?>" id="<?php echo $name;?>" class="ui-corner-left ui-corner-right" value="<?php echo $val;?>"/>
 	<?php
-
 }
 function CreateSubmit($name="submit",$val="Submit",$class = "")
 {
-	DebugText("CreateSubmit($name,$val)");
+	DebugText("CreateSubmit($name,$val)",3);
 	if (strlen($class))
 	{
 		$class="class='$class'";
@@ -660,11 +659,10 @@ function CreateSubmit($name="submit",$val="Submit",$class = "")
 	?>
 	<input type="submit" name="<?php echo $name;?>" id="<?php echo $name;?>"  value="<?php echo $val;?>" <?php echo $class;?>/>
 	<?php
-
 }
 function CreateResetButton($name="reset",$val="Reset",$class = "")
 {
-	DebugText("CreateSubmit($name,$val)");
+	DebugText("CreateSubmit($name,$val)",3);
 	if (strlen($class))
 	{
 		$class="class='$class'";
@@ -672,16 +670,14 @@ function CreateResetButton($name="reset",$val="Reset",$class = "")
 	?>
 	<input type="button" name="<?php echo $name;?>" id="<?php echo $name;?>"  value="<?php echo $val;?>" <?php echo $class;?>/>
 	<?php
-
 }
 
 function CreateButton($name,$val="Submit")
 {
-	DebugText("CreateButton($name,$val)");
+	DebugText("CreateButton($name,$val)",3);
 	?>
 	<input type="button" name="<?php echo $name;?>" id="<?php echo $name;?>"  value="<?php echo $val;?>"/>
 	<?php
-
 }
 
 function CreateYesNo()
@@ -696,7 +692,7 @@ function CreateYesNo()
 function CreateFileField($name,$title="")
 {
 	global $showMouseOvers;
-	DebugText("CreateFileField($name,$title)");
+	DebugText("CreateFileField($name,$title)",3);
 
 	$displayTitle = "";
 	if ($showMouseOvers && strlen($title))
@@ -710,7 +706,7 @@ function CreateFileField($name,$title="")
 function CreateCheckBox($name,$val,$dspVal="",$checked=0,$title="",$class="",$js="")
 {
 	global $showMouseOvers;
-	DebugText("CreateCheckBox($name,$val,$dspVal,$checked,$title,$class)");
+	DebugText("CreateCheckBox($name,$val,$dspVal,$checked,$title,$class)",3);
 	$displayTitle = "";
 	if ($showMouseOvers && strlen($title))
 	{
@@ -725,14 +721,14 @@ function CreateCheckBox($name,$val,$dspVal="",$checked=0,$title="",$class="",$js
 	{
 		$dspChecked = "checked='checked'";
 	}
-	DebugText("js:".$js);
+	DebugText("js:".$js,3);
 	?>
 	<input type="checkbox" <?php echo $dspChecked;?> <?php echo $displayTitle;?> name="<?php echo $name;?>" id="<?php echo $name;?>" <?php echo $class;?> value="<?php echo $val;?>" <?php echo $js;?>>&nbsp;<?php echo $dspVal;?>
 	<?php
 }
 function CreateDateField($name,$val = "")
 {
-  DebugText("CreateDateField($name,$val)");
+  DebugText("CreateDateField($name,$val)",3);
 	global $today;
 	if (strlen($val)==0)
 	{
@@ -794,7 +790,7 @@ function CreateLinkNewWindow($href,$linkValue,$id="",$title="",$class="")
 
 function CreateSelect($name,$values,$selectedVal="",$defaultVal="",$defaultText="",$class="")
 {
-  DebugText("CreateSelect($name,'vals',$selectedVal,$defaultVal,$defaultText,$class)");
+  DebugText("CreateSelect($name,'vals',$selectedVal,$defaultVal,$defaultText,$class)",3);
   ?>
   <select name="<?php echo $name;?>" id="<?php echo $name;?>">
   </select>
@@ -807,7 +803,7 @@ function FormErrors()
 	{
 		if (strlen(trim($_SESSION['formErrors'])))
 		{
-			DebugText("formErrors:".$_SESSION['formErrors']);
+			DebugText("formErrors:".$_SESSION['formErrors'],5);
 			$errors = 1;
 		}
 	}
@@ -844,11 +840,11 @@ function DisplayFormErrors()
 }
 function FormSuccess()
 {
-	DebugText("FormSuccess()");
+	DebugText("FormSuccess()",5);
 	$errors = 0;
 	if (isset($_SESSION['formSuccess']))
 	{
-		DebugText("form");
+		DebugText("form",3);
 		if (strlen(trim($_SESSION['formSuccess'])))
 		{
 			$errors = 1;
@@ -876,7 +872,7 @@ function DisplayFormSuccess()
 }
 function SetFocus($id)
 {
-	DebugText("SetFocus($id");
+	DebugText("SetFocus($id",3);
 	?>
 	<script language="javascript">
 	$(document).ready(function () {
@@ -936,7 +932,7 @@ function OpenBlockTicket($ticketId)
 }
 function getAppVersion()
 {
-  DebugText("getAppVerison");
+  DebugText("getAppVerison",5);
   global $siteRootPath;
   $version = GetTextFromSession("appVersion");
   if (!strlen($version))
@@ -945,7 +941,7 @@ function getAppVersion()
     $version = file_get_contents($siteRootPath."/tmp/version.txt");
   }
   $_SESSION['appVersion'] = $version;
-  DebugText("version:".$version);
+  DebugText("version:".$version,5);
   return ($version);
 }
 
@@ -953,13 +949,13 @@ function getAppBuld()
 {
   global $sitePath;
   global $siteRootPath;
-  DebugText("getAppBuld");
+  DebugText("getAppBuld",5);
 
   $build = GetTextFromSession("appBuild","");
 
   if (strlen($build))
   {
-    DebugText("found build:".$build);
+    DebugText("found build:".$build,5);
     return $build;
   }
 
@@ -970,7 +966,7 @@ function getAppBuld()
   $fileList = array();
   $arrayIndex = 0;
   $dir = $siteRootPath."/sysUpdates";
-  DebugText("currentVersion:".$currentVersion);
+  DebugText("currentVersion:".$currentVersion,5);
   if ($dh = opendir($dir))
   {
     while (($file = readdir($dh)) !== false)
@@ -995,7 +991,7 @@ function getAppBuld()
           $build = $fileList[$i];
         }
       }
-      DebugText("build:".$build);
+      DebugText("build:".$build,5);
       $_SESSION['appBuild'] = $build;
     }
   }
@@ -1046,5 +1042,36 @@ function DatePickerUnFormatter($date)
   list ($month,$day,$year) = explode("-",$date);
   $newDate = $year."-".$month."-".$day;
   return $newDate;
+}
+
+function DisplayComments()
+{
+	global $comment;
+	$ok = 1;
+	?>
+	<hr>
+	<table class="width100">
+	<?php
+	while ($ok)
+	{
+		$user = new User($comment->userId);
+		?>
+		<tr>
+		  <td>
+			<hr>
+			<strong><?php echo $user->fullName." on ".$comment->posted;?></strong>		 
+		  </td>
+		</tr>
+		<tr>
+		  <td>
+		  <?php echo $comment->comment;?>
+		  </td>
+		</tr>
+		<?php
+		$ok = $comment->Next();
+	}
+	?>
+	</table>
+	<?php
 }
 ?>

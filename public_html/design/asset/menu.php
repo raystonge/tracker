@@ -34,7 +34,7 @@ $softwareClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $accessoryClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $valueClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $accountClass = "menu-item menu-item-type-custom menu-item-object-custom";
-$speclass = "menu-item menu-item-type-custom menu-item-object-custom";
+$specClass = "menu-item menu-item-type-custom menu-item-object-custom";
 $credentialsClass = "menu-item menu-item-type-custom menu-item-object-custom";
 if ($request_uri[1] == "assetEdit")
 {

@@ -45,16 +45,16 @@ var $className="Priority";
   function init()
   {
     $this->priorityId = 0;
-	$this->name = "";
-	$this->sortOn = 0;
-	$this->page = 1;
-	$this->start = 0;
-	$this->perPage = 0;
-	$this->orderBy = "sortOn";
+	  $this->name = "";
+	  $this->sortOn = 0;
+	  $this->page = 1;
+	  $this->start = 0;
+	  $this->perPage = 0;
+	  $this->orderBy = "sortOn";
   }
   function __construct()
   {
-	$a = func_get_args();
+	  $a = func_get_args();
     $i = func_num_args();
     if (method_exists($this,$f='__construct'.$i))
     {
@@ -120,115 +120,114 @@ var $className="Priority";
 
   function Search($param)
   {
-	 DebugText($this->className."[Search]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $this->start = ($this->page-1)*$this->perPage;
-     DebugText("start:".$this->start);
-     DebugText("page:".$this->page);
-     DebugText("perPage:".$this->perPage);
+    DebugText($this->className."[Search]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $this->start = ($this->page-1)*$this->perPage;
+    DebugText("start:".$this->start);
+    DebugText("page:".$this->page);
+    DebugText("perPage:".$this->perPage);
 
-	 $query = "Select * from priority";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-  	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
-	 if ($this->perPage > 0)
-	 {
-	 	$query = $query ." limit ".$this->start.",".$this->perPage;
-	 }
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	  $query = "Select * from priority";
+	  if ($param)
+	  {
+	    $query = $query . " where ". $param;
+	  }
+  	if (strlen($this->orderBy))
+	  {
+	    $query = $query . " order by ".$this->orderBy;
+	  }
+	  if ($this->limit > 0)
+	  {
+	  	$query = $query . " limit ".$this->limit;
+	  }
+	  if ($this->perPage > 0)
+	  {
+	  	$query = $query ." limit ".$this->start.",".$this->perPage;
+	  }
+	  $this->results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  return($this->Next());
   }
   function Get($param = "")
   {
-	 DebugText($this->className."[Get]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $this->start = ($this->page-1)*$this->perPage;
+    DebugText($this->className."[Get]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $this->start = ($this->page-1)*$this->perPage;
 
-	 $query = "Select * from priority";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-  	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
+	  $query = "Select * from priority";
+	  if ($param)
+	  {
+	    $query = $query . " where ". $param;
+	  }
+  	if (strlen($this->orderBy))
+	  {
+	    $query = $query . " order by ".$this->orderBy;
+	  }
+	  if ($this->limit > 0)
+	  {
+	 	  $query = $query . " limit ".$this->limit;
+	  }
 
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	  $this->results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  return($this->Next());
   }
 
   function Next()
   {
-	 DebugText($this->className."[Next]");
-	 if ($this->row = mysqli_fetch_array($this->results))
-	 {
+    DebugText($this->className."[Next]");
+	  if ($this->row = mysqli_fetch_array($this->results))
+	  {
 	    $this->priorityId = $this->row['priorityId'];
 	    $this->name = trim(stripslashes($this->row['name']));
 	    $this->sortOn = $this->row['sortOn'];
-	 }
-	 else
-	 {
-	   $this->init();
-	 }
-     return($this->priorityId);
+	  }
+	  else
+	  {
+	    $this->init();
+	  }
+    return($this->priorityId);
   }
   function GetById($id)
   {
-	 DebugText($this->className."[GetById]");
-	 if (!is_numeric($id))
-	 {
-	   return;
-	 }
-	 $param = "priorityId = $id";
-	 return($this->Get($param));
-
+    DebugText($this->className."[GetById]");
+	  if (!is_numeric($id))
+	  {
+	    return;
+	  }
+	  $param = "priorityId = $id";
+	  return($this->Get($param));
   }
   function Update()
   {
-	 DebugText($this->className."[Update]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $name = trim(mysqli_real_escape_string($link_cms,$this->name));
-	 $query = "Update priority set name='$name' where priorityId = $this->priorityId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Update]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $name = trim(mysqli_real_escape_string($link_cms,$this->name));
+	  $query = "Update priority set name='$name' where priorityId = $this->priorityId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {
-	 DebugText($this->className."[Insert]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $name = trim(mysqli_real_escape_string($link_cms,$this->name));
-	 $query = "Insert into priority (name) value ('$name')";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 $this->priorityId = mysqli_insert_id($link_cms);
+    DebugText($this->className."[Insert]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $name = trim(mysqli_real_escape_string($link_cms,$this->name));
+	  $query = "Insert into priority (name) value ('$name')";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  $this->priorityId = mysqli_insert_id($link_cms);
   }
   function Persist()
   {

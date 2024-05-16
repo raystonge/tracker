@@ -109,7 +109,7 @@ var $className="TicketPO";
   }
   function Search($param)
   {
-	 DebugText($this->className."[Search]");
+     DebugText($this->className."[Search]");
      global $link_cms;
      global $database_cms;
      mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
@@ -122,27 +122,27 @@ var $className="TicketPO";
      DebugText("page:".$this->page);
      DebugText("perPage:".$this->perPage);
 
-	 $query = "Select * from ticketPO";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
+	   $query = "Select * from ticketPO";
+	   if ($param)
+	   {
+	     $query = $query . " where ". $param;
+	   }
   	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
-	 if ($this->perPage > 0)
-	 {
-	 	$query = $query ." limit ".$this->start.",".$this->perPage;
-	 }
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	   {
+	      $query = $query . " order by ".$this->orderBy;
+	   }
+	   if ($this->limit > 0)
+	   {
+	     $query = $query . " limit ".$this->limit;
+	   }
+	   if ($this->perPage > 0)
+	   {
+	   	  $query = $query ." limit ".$this->start.",".$this->perPage;
+	   }
+	   $this->results = mysqli_query($link_cms,$query);
+	   DebugText($query);
+	   DebugText("Error:".mysqli_error($link_cms));
+	   return($this->Next());
   }
   function Count($param)
   {
@@ -168,60 +168,60 @@ var $className="TicketPO";
   }
   function Get($param = "")
   {
-	 DebugText($this->className."[Get]");
+     DebugText($this->className."[Get]");
      global $link_cms;
      global $database_cms;
      mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
 
-	 $query = "Select * from ticketPO";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-	 $query = $query . " order by ".$this->orderBy;
-   $this->results = mysqli_query($link_cms,$query);
-   $this->numRows = mysqli_num_rows($this->results);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	   $query = "Select * from ticketPO";
+	   if ($param)
+	   {
+	     $query = $query . " where ". $param;
+	   }
+	   $query = $query . " order by ".$this->orderBy;
+     $this->results = mysqli_query($link_cms,$query);
+     $this->numRows = mysqli_num_rows($this->results);
+	   DebugText($query);
+	   DebugText("Error:".mysqli_error($link_cms));
+	   return($this->Next());
   }
   function Next()
   {
-	 DebugText($this->className."[Next]");
-	 if ($this->row = mysqli_fetch_array($this->results))
-	 {
+    DebugText($this->className."[Next]");
+	  if ($this->row = mysqli_fetch_array($this->results))
+	  {
 	    $this->ticketPOId = $this->row['ticketPOId'];
 	    $this->ticketId = $this->row['ticketId'];
 	    $this->poNumberId = $this->row['poNumberId'];
-	 }
-	 else
-	 {
-	   $this->init();
-	 }
-     return($this->ticketPOId);
+	  }
+	  else
+	  {
+      $this->init();
+	  }
+    return($this->ticketPOId);
   }
   function Update()
   {
-	 DebugText($this->className."[Update]");
+     DebugText($this->className."[Update]");
      global $link_cms;
      global $database_cms;
      mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $query = "Update ticketPO set ticketId=$this->ticketId,poNumberId=$this->poNumberId where ticketPOId = $this->ticketPOId";
+	   $query = "Update ticketPO set ticketId=$this->ticketId,poNumberId=$this->poNumberId where ticketPOId = $this->ticketPOId";
      $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+	   DebugText($query);
+	   DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {
-	 DebugText($this->className."[Insert]");
+     DebugText($this->className."[Insert]");
      global $link_cms;
      global $database_cms;
      mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $query = "Insert into ticketPO (ticketId,poNumberId) value ($this->ticketId,$this->poNumberId)";
+	   $query = "Insert into ticketPO (ticketId,poNumberId) value ($this->ticketId,$this->poNumberId)";
      $results = mysqli_query($link_cms,$query);
      $this->ticketPOId = mysqli_insert_id($link_cms);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+	   DebugText($query);
+	   DebugText("Error:".mysqli_error($link_cms));
   }
   function Persist()
   {

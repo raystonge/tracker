@@ -703,28 +703,6 @@ $(document).ready(function ()
 
 	if ($ok && $permission->hasPermission("Contract: View Comments"))
 	{
-		?><hr>
-		<?php
-	}
-	?>
-	<table>
-	<?php
-	while ($ok)
-	{
-		$user = new User($comment->userId);
-		?>
-		<tr>
-		  <td><?php echo $user->fullName." on ".$comment->posted;?>
-		  </td>
-		</tr>
-		<tr>
-		  <td>
-				<hr/>
-		  <?php echo $comment->comment;?>
-		  </td>
-		</tr>
-		<?php
-		$ok = $comment->Next();
-	}
-	?>
+      DisplayComments();
+  }	?>
 	</table>

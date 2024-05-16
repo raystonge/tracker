@@ -87,48 +87,46 @@ var $className="ValidStatus";
   }
   function GetById($id)
   {
-	 DebugText($this->className."[GetById]");
-	 if (!is_numeric($id))
-	 {
-	   return;
-	 }
-	 $param = "validStatusId = $id";
-	 return($this->Get($param));
-
+    DebugText($this->className."[GetById]");
+	  if (!is_numeric($id))
+	  {
+	    return;
+	  }
+	  $param = "validStatusId = $id";
+	  return($this->Get($param));
   }
   function GetForCurrentStatus($statusId)
   {
-	 DebugText($this->className."[GetForCurrentStatus]");
-	 if (!is_numeric($statusId))
-	 {
-	   return;
-	 }
-	 $param = "currentStatusId = $statusId";
-	 return($this->Get($param));
-
+    DebugText($this->className."[GetForCurrentStatus]");
+	  if (!is_numeric($statusId))
+	  {
+	    return;
+	  }
+	  $param = "currentStatusId = $statusId";
+	  return($this->Get($param));
   }
   function Update()
   {
-	 DebugText($this->className."[Update]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	 $query = "Update validStatus set currentStatusId=$this->currentStatusId,statusId=$this->statusId where validStatusId = $this->validStatusId";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Update]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $query = "Update validStatus set currentStatusId=$this->currentStatusId,statusId=$this->statusId where validStatusId = $this->validStatusId";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {
-	 DebugText($this->className."[Insert]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	   $query = "Insert into validStatus (currentStatusId,statusId) value ($this->currentStatusId,$this->statusId)";
-     $results = mysqli_query($link_cms,$query);
-     $this->validStatusId = mysqli_insert_id($link_cms);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+    DebugText($this->className."[Insert]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+	  $query = "Insert into validStatus (currentStatusId,statusId) value ($this->currentStatusId,$this->statusId)";
+    $results = mysqli_query($link_cms,$query);
+    $this->validStatusId = mysqli_insert_id($link_cms);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
   }
   function Reset()
   {

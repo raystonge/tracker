@@ -72,7 +72,7 @@ $numItems = GetTextField("cnt",0);
 	   	  	$asset->modelNumber = GetTextField("modelNumber".$i);
 	   	  	$asset->buildingLocation = GetTextField("buildingLocation".$i);
 	   	  	$asset->employeeName = GetTextField("employeeName".$i);
-	   	  	$commentText = GetTextField("comment".$i);
+	   	  	$commentText = GetTextAreaField("comment".$i);
 	   	  	if (!$asset->buildingId)
 	   	  	{
 	   	  		$doImport = 0;

@@ -61,39 +61,39 @@ var $numRows;
 var $className="Ticket";
   function init()
   {
-  	global $now;
+    global $now;
     $this->ticketId = 0;
-	$this->subject = "";
-	$this->creatorId = GetTextFromSession("userId",0,0);
-	$this->requestorId = GetTextFromSession("userId",0,0);
-	$this->ownerId = GetTextFromSession("userId",0,0);
-	$this->queueId = 0;
-	$this->statusId = 1;
-	$this->insuranceRepair = "";
-	$this->insuranceRepairComplete = "";
-	$this->insurancePayment = "";
-	$this->createDate = $now;
-	$this->lastUpdate = $now;
-	$this->dueDate ="";
-	$this->priorityId = 3;
-	$this->timeEstimate =0;
-	$this->timeWorked =0;
-	$this->repairCost =0;
-	$this->poNumberId =0;
-	$this->organizationId = 0;
-	$this->assetPOId = 0;
-	$this->dateCompleted = "";
-	$this->description = "";
-  $this->billable = 1;
-  $this->duplicateId = 0;
-	$this->page = 1;
-	$this->start = 0;
-	$this->perPage = 0;
-	$this->orderBy = "createDate asc";
+	  $this->subject = "";
+	  $this->creatorId = GetTextFromSession("userId",0,0);
+  	$this->requestorId = GetTextFromSession("userId",0,0);
+	  $this->ownerId = GetTextFromSession("userId",0,0);
+	  $this->queueId = 0;
+	  $this->statusId = 1;
+	  $this->insuranceRepair = "";
+	  $this->insuranceRepairComplete = "";
+	  $this->insurancePayment = "";
+	  $this->createDate = $now;
+	  $this->lastUpdate = $now;
+	  $this->dueDate ="";
+	  $this->priorityId = 3;
+	  $this->timeEstimate =0;
+  	$this->timeWorked =0;
+	  $this->repairCost =0;
+	  $this->poNumberId =0;
+	  $this->organizationId = 0;
+	  $this->assetPOId = 0;
+	  $this->dateCompleted = "";
+	  $this->description = "";
+    $this->billable = 1;
+    $this->duplicateId = 0;
+	  $this->page = 1;
+	  $this->start = 0;
+	  $this->perPage = 0;
+	  $this->orderBy = "createDate asc";
   }
   function __construct()
   {
-	$a = func_get_args();
+    $a = func_get_args();
     $i = func_num_args();
     if (method_exists($this,$f='__construct'.$i))
     {
@@ -158,7 +158,6 @@ var $className="Ticket";
   		$numRows = $row['numRows'];
   	}
   	return($numRows);
-
   }
   function Count($param)
   {
@@ -184,7 +183,7 @@ var $className="Ticket";
 
   function Search($param)
   {
-	 DebugText($this->className."[Search]");
+     DebugText($this->className."[Search]");
      global $link_cms;
      global $database_cms;
      mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
@@ -197,61 +196,61 @@ var $className="Ticket";
      DebugText("page:".$this->page);
      DebugText("perPage:".$this->perPage);
 
-	 $query = "Select * from ticket";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
+	   $query = "Select * from ticket";
+	   if ($param)
+	   {
+	     $query = $query . " where ". $param;
+	   }
   	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
-	 if ($this->perPage > 0)
-	 {
-	 	$query = $query ." limit ".$this->start.",".$this->perPage;
-	 }
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	   {
+	     $query = $query . " order by ".$this->orderBy;
+	   }
+	   if ($this->limit > 0)
+	   {
+       $query = $query . " limit ".$this->limit;
+	   }
+	   if ($this->perPage > 0)
+	   {
+       $query = $query ." limit ".$this->start.",".$this->perPage;
+	   }
+	   $this->results = mysqli_query($link_cms,$query);
+	   DebugText($query);
+	   DebugText("Error:".mysqli_error($link_cms));
+	   return($this->Next());
   }
   function Get($param = "")
   {
-	 DebugText($this->className."[Get]");
+     DebugText($this->className."[Get]");
      global $link_cms;
      global $database_cms;
      mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
      $this->start = ($this->page-1)*$this->perPage;
 
-	 $query = "Select * from ticket";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
+	   $query = "Select * from ticket";
+	   if ($param)
+	   {
+	     $query = $query . " where ". $param;
+	   }
   	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
+	   {
+	     $query = $query . " order by ".$this->orderBy;
+	   }
+	   if ($this->limit > 0)
+	   {
+	 	   $query = $query . " limit ".$this->limit;
+	   }
 
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	   $this->results = mysqli_query($link_cms,$query);
+	   DebugText($query);
+	   DebugText("Error:".mysqli_error($link_cms));
+	   return($this->Next());
   }
 
   function Next()
   {
-	 DebugText($this->className."[Next]");
-	 if ($this->row = mysqli_fetch_array($this->results))
-	 {
+    DebugText($this->className."[Next]");
+	  if ($this->row = mysqli_fetch_array($this->results))
+	  {
 	    $this->ticketId = $this->row['ticketId'];
 	    $this->subject = trim(stripslashes($this->row['subject']));
 	    $this->description = trim(stripslashes($this->row['description']));
@@ -300,28 +299,27 @@ var $className="Ticket";
 	    }
 	    $this->organizationId = $this->row['organizationId'];
 	    $this->assetPOId = $this->row['assetPOId'];
-	 }
-	 else
-	 {
-	   $this->init();
-	 }
-	 DebugText("return($this->ticketId)");
-     return($this->ticketId);
+	  }
+	  else
+	  {
+	    $this->init();
+	  }
+	  DebugText("return($this->ticketId)");
+    return($this->ticketId);
   }
   function GetById($id)
   {
-	 DebugText($this->className."[GetById]");
-	 if (!is_numeric($id))
-	 {
-	   return;
-	 }
-	 $param = "ticketId = $id";
-	 return($this->Get($param));
-
+    DebugText($this->className."[GetById]");
+	  if (!is_numeric($id))
+	  {
+	    return;
+	  }
+	  $param = "ticketId = $id";
+	  return($this->Get($param));
   }
   function Update()
   {
-	 DebugText($this->className."[Update]");
+     DebugText($this->className."[Update]");
      global $link_cms;
      global $database_cms;
      global $now;
@@ -338,44 +336,44 @@ var $className="Ticket";
      $assetPOId = prepForDB("ticket", "assetPOId", $this->assetPOId);
      $dateCompleted = prepForDB("ticket","dateCompleted",$this->dateCompleted);
 
-	 $this->createDate = $now;
-	 $lastUpdated = $now;
-	 $query = "Update ticket set subject='$subject',dueDate='$dueDate',ownerId=$this->ownerId,requestorId=$this->requestorId,statusId=$this->statusId,queueId=$this->queueId,insurancePayment='$insurancePayment',insuranceRepair='$this->insuranceRepair',insuranceRepairComplete='$insuranceRepairComplete',priorityId=$this->priorityId,timeEstimate='$timeEstimate',timeWorked='$timeWorked',repairCost='$repairCost',poNumberId='$poNumberId',lastUpdated='$lastUpdated', organizationId=$this->organizationId, assetPOId=$assetPOId, dateCompleted='$dateCompleted', billable=$this->billable, duplicateId=$this->duplicateId where ticketId = $this->ticketId";
+	   $this->createDate = $now;
+	   $lastUpdated = $now;
+	   $query = "Update ticket set subject='$subject',dueDate='$dueDate',ownerId=$this->ownerId,requestorId=$this->requestorId,statusId=$this->statusId,queueId=$this->queueId,insurancePayment='$insurancePayment',insuranceRepair='$this->insuranceRepair',insuranceRepairComplete='$insuranceRepairComplete',priorityId=$this->priorityId,timeEstimate='$timeEstimate',timeWorked='$timeWorked',repairCost='$repairCost',poNumberId='$poNumberId',lastUpdated='$lastUpdated', organizationId=$this->organizationId, assetPOId=$assetPOId, dateCompleted='$dateCompleted', billable=$this->billable, duplicateId=$this->duplicateId where ticketId = $this->ticketId";
      $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
+	   DebugText($query);
+	   DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {
-	 DebugText($this->className."[Insert]");
-     global $link_cms;
-     global $database_cms;
-     global $now;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $subject = prepForDB("ticket","subject",$this->subject);
-     $dueDate = prepForDB("ticket","dueDate",$this->dueDate);
-     $description = prepForDB("ticket","description",$this->description);
-     $timeEstimate = prepForDB("ticket", "timeEstimate", $this->timeEstimate);
-     $timeWorked = prepForDB("ticket",'timeWorked', $this->timeWorked);
-     $repairCost = prepForDB("ticket", "repairCost", $this->repairCost);
-     $insurancePayment = prepForDB("ticket", "insurancePayment", $this->insurancePayment);
-     $insuranceRepairComplete = prepForDB("ticket","insuranceRepairComplete", $this->insuranceRepairComplete);
-     $insuranceRepair = prepForDB("ticket","insuranceRepair",$this->insuranceRepair);
-     $assetPOId = prepForDB("ticket", "assetPOId", $this->assetPOId);
-     $dateCompleted = prepForDB("ticket","dateCompleted",$this->dateCompleted);
+    DebugText($this->className."[Insert]");
+    global $link_cms;
+    global $database_cms;
+    global $now;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $subject = prepForDB("ticket","subject",$this->subject);
+    $dueDate = prepForDB("ticket","dueDate",$this->dueDate);
+    $description = prepForDB("ticket","description",$this->description);
+    $timeEstimate = prepForDB("ticket", "timeEstimate", $this->timeEstimate);
+    $timeWorked = prepForDB("ticket",'timeWorked', $this->timeWorked);
+    $repairCost = prepForDB("ticket", "repairCost", $this->repairCost);
+    $insurancePayment = prepForDB("ticket", "insurancePayment", $this->insurancePayment);
+    $insuranceRepairComplete = prepForDB("ticket","insuranceRepairComplete", $this->insuranceRepairComplete);
+    $insuranceRepair = prepForDB("ticket","insuranceRepair",$this->insuranceRepair);
+    $assetPOId = prepForDB("ticket", "assetPOId", $this->assetPOId);
+    $dateCompleted = prepForDB("ticket","dateCompleted",$this->dateCompleted);
 
-     $poNumberId = $this->poNumberId;
-	 $this->createDate = $now;
-	 $createDate = $now;
-	 $lastUpdated = $now;
-   DebugText("timeWorked:".$timeWorked);
-   DebugText("timeEstimate:".$timeEstimate);
-	 $query = "Insert into ticket (subject,creatorId,ownerId,requestorId,statusId,queueId,createDate,priorityId,poNumberId,insurancePayment,insuranceRepair,insuranceRepairComplete,lastUpdated,organizationId,dueDate,description,timeEstimate,timeWorked,repairCost,assetPOId, dateCompleted,billable, duplicateId) value ('$subject',$this->creatorId,$this->ownerId,$this->requestorId,$this->statusId,$this->queueId,'$createDate',$this->priorityId,$this->poNumberId,'$insurancePayment','$insuranceRepair','$insuranceRepairComplete','$lastUpdated',$this->organizationId,'$dueDate','$description','$timeEstimate',$timeWorked,'$repairCost','$assetPOId', '$dateCompleted',$this->billable,$this->duplicateId)";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 $this->ticketId = mysqli_insert_id($link_cms);
-	 DebugText("insert ticketId:".$this->ticketId);
+    $poNumberId = $this->poNumberId;
+	  $this->createDate = $now;
+	  $createDate = $now;
+	  $lastUpdated = $now;
+    DebugText("timeWorked:".$timeWorked);
+    DebugText("timeEstimate:".$timeEstimate);
+	  $query = "Insert into ticket (subject,creatorId,ownerId,requestorId,statusId,queueId,createDate,priorityId,poNumberId,insurancePayment,insuranceRepair,insuranceRepairComplete,lastUpdated,organizationId,dueDate,description,timeEstimate,timeWorked,repairCost,assetPOId, dateCompleted,billable, duplicateId) value ('$subject',$this->creatorId,$this->ownerId,$this->requestorId,$this->statusId,$this->queueId,'$createDate',$this->priorityId,$this->poNumberId,'$insurancePayment','$insuranceRepair','$insuranceRepairComplete','$lastUpdated',$this->organizationId,'$dueDate','$description','$timeEstimate',$timeWorked,'$repairCost','$assetPOId', '$dateCompleted',$this->billable,$this->duplicateId)";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  $this->ticketId = mysqli_insert_id($link_cms);
+	  DebugText("insert ticketId:".$this->ticketId);
   }
   function Persist()
   {
@@ -390,37 +388,37 @@ var $className="Ticket";
   }
   function Import()
   {
-	 DebugText($this->className."[Import]");
-     global $link_cms;
-     global $database_cms;
-     global $now;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $subject = prepForDB("ticket","subject",$this->subject);
-     $poNumberId = $this->poNumberId;
-     $repairCost = prepForDB("ticket","repairCost",$this->repairCost);
-     $timeEstimate = prepForDB("ticket","timeEstimate",$this->timeEstimate);
-     $timeWorked = prepForDB("ticket","timeWorked",$this->timeWorked);
-     $dueDate = prepForDB("ticket","dueDate",$this->dueDate);
-	 $lastUpdated = $now;
-	 $createDate = $this->createDate;
-	 $query = "Insert into ticket (ticketId,subject,creatorId,ownerId,requestorId,statusId,queueId,createDate,priorityId,poNumberId,insurancePayment,insuranceRepair,insuranceRepairComplete,lastUpdated) value ($this->ticketId,'$subject',$this->creatorId,$this->ownerId,$this->requestorId,$this->statusId,$this->queueId,'$createDate',$this->priorityId,'$poNumberId','$this->insurancePayment','$this->insuranceRepair','$this->insuranceRepairComplete','$lastUpdated') on duplicate key update   subject='$subject',dueDate='$dueDate',ownerId=$this->ownerId,requestorId=$this->requestorId,statusId=$this->statusId,queueId=$this->queueId,insurancePayment='$this->insurancePayment',insuranceRepair='$this->insuranceRepair',insuranceRepairComplete='$this->insuranceRepairComplete',dueDate='$dueDate',priorityId=$this->priorityId,timeEstimate='$timeEstimate',timeWorked='$timeWorked',repairCost='$repairCost',poNumberId='$poNumberId',lastUpdated='$lastUpdated' ";
-     $results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 $this->ticketId = mysqli_insert_id($link_cms);
-	 DebugText("insert ticketId:".$this->ticketId);
+    DebugText($this->className."[Import]");
+    global $link_cms;
+    global $database_cms;
+    global $now;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $subject = prepForDB("ticket","subject",$this->subject);
+    $poNumberId = $this->poNumberId;
+    $repairCost = prepForDB("ticket","repairCost",$this->repairCost);
+    $timeEstimate = prepForDB("ticket","timeEstimate",$this->timeEstimate);
+    $timeWorked = prepForDB("ticket","timeWorked",$this->timeWorked);
+    $dueDate = prepForDB("ticket","dueDate",$this->dueDate);
+	  $lastUpdated = $now;
+	  $createDate = $this->createDate;
+	  $query = "Insert into ticket (ticketId,subject,creatorId,ownerId,requestorId,statusId,queueId,createDate,priorityId,poNumberId,insurancePayment,insuranceRepair,insuranceRepairComplete,lastUpdated) value ($this->ticketId,'$subject',$this->creatorId,$this->ownerId,$this->requestorId,$this->statusId,$this->queueId,'$createDate',$this->priorityId,'$poNumberId','$this->insurancePayment','$this->insuranceRepair','$this->insuranceRepairComplete','$lastUpdated') on duplicate key update   subject='$subject',dueDate='$dueDate',ownerId=$this->ownerId,requestorId=$this->requestorId,statusId=$this->statusId,queueId=$this->queueId,insurancePayment='$this->insurancePayment',insuranceRepair='$this->insuranceRepair',insuranceRepairComplete='$this->insuranceRepairComplete',dueDate='$dueDate',priorityId=$this->priorityId,timeEstimate='$timeEstimate',timeWorked='$timeWorked',repairCost='$repairCost',poNumberId='$poNumberId',lastUpdated='$lastUpdated' ";
+    $results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  $this->ticketId = mysqli_insert_id($link_cms);
+	  DebugText("insert ticketId:".$this->ticketId);
   }
 
 
   function PrepJumboEditor()
   {
-	$this->subject =  "--do_not_change--";
-	$this->requestorId =  "--do_not_change--";
-	$this->ownerId =  "--do_not_change--";
-	$this->queueId =  "--do_not_change--";
-	$this->statusId =  "--do_not_change--";
-	$this->priorityId = "--do_not_change--";
-	$this->poNumberId = "--do_not_change--";
+    $this->subject =  "--do_not_change--";
+	  $this->requestorId =  "--do_not_change--";
+	  $this->ownerId =  "--do_not_change--";
+	  $this->queueId =  "--do_not_change--";
+	  $this->statusId =  "--do_not_change--";
+	  $this->priorityId = "--do_not_change--";
+	  $this->poNumberId = "--do_not_change--";
   }
 }
 ?>

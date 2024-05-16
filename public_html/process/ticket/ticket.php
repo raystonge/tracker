@@ -79,7 +79,7 @@ if (isset($_POST['submitTest']))
 	$insuranceRepairId = 0;
 	$repairCost = "";
 	$poNumber = GetTextField("poNumber");
-	$commentText = GetTextField("description");
+	$commentText = GetTextAreaField("description");
 	$errorMsg  = "";
 	$numErrors = 0;
 	$cnt = 0;

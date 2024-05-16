@@ -298,6 +298,7 @@ DebugText("po date:".$poNumber->poDate);
 	           <option value="Contract" <?php if ($poNumber->poType == "Contract"){echo "selected='selected'";}?>>Contract</option>
 	           <option value="Ticket" <?php if ($poNumber->poType == "Ticket"){echo "selected='selected'";}?>>Ticket</option>
              <option value="AssetTicket" <?php if ($poNumber->poType == "AssetTicket"){echo "selected='selected'";}?>>Asset/Ticket</option>
+             <option value="AssetContract" <?php if ($poNumber->poType == "AssetContract"){echo "selected='selected'";}?>>Asset/Contract</option>
 	         </select>
 	       </td>
 	     </tr>
@@ -572,29 +573,7 @@ DebugText("po date:".$poNumber->poDate);
     $comment = new Comment();
     $ok = $comment->GetByPoNumberId($poNumber->poNumberId);
     if ($ok && ($permission->hasPermission("poNumber: Edit: View Comments") || $permission->hasPermission("poNumber: View: View Comments")))
-    {
-      ?><hr>
-    <table class="width100">
-    <?php
-    while ($ok)
-    {
-      $user = new User($comment->userId);
-      ?>
-      <tr>
-        <td><?php echo $user->fullName." on ".$comment->posted;?>
-        <hr>
-        </td>
-      </tr>
-      <tr>
-        <td>
-        <?php echo $comment->comment;?>
-        </td>
-      </tr>
-      <?php
-      $ok = $comment->Next();
-    }
-    ?>
-    </table>
-      <?php
-    }
+	{
+		DisplayComments();
+	}
     ?>

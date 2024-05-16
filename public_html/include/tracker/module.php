@@ -345,7 +345,7 @@ var $className="Module";
   function GetParam()
   {
   	global $today;
-  	DebugText($this->className."GetParam:".$this->query);
+  	DebugText($this->className." GetParam:".$this->query);
   	$overDueDate = date('Y-m-d', strtotime($today. ' + 3 day'));
   	$userId = $_SESSION['userId'];
   	$param = $this->query;

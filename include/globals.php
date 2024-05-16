@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.11.0
+//
+//  -v1.11.0
+//     -adding a level to reduce the amout of debug text
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -56,7 +59,7 @@ while ($ok)
 		$$varName = $control->valueInt;
 	}
 
-	DebugText($varName.":".$$varName);
+	DebugText($varName.":".$$varName,1);
 	$ok = $control->Next();
 }
 $param = "sectionValue='Paths'";
@@ -75,7 +78,7 @@ while ($ok)
 		$$varName = $control->valueInt;
 	}
 
-	DebugText($varName.":".$$varName);
+	DebugText($varName.":".$$varName,1);
 	$ok = $control->Next();
 }
 $param = "sectionValue='File Uploads'";
@@ -94,7 +97,7 @@ while ($ok)
 		$$varName = $control->valueInt;
 	}
 
-	DebugText($varName.":".$$varName);
+	DebugText($varName.":".$$varName,1);
 	$ok = $control->Next();
 }
 
@@ -114,7 +117,7 @@ while ($ok)
 		$$varName = $control->valueInt;
 	}
 
-	DebugText($varName.":".$$varName);
+	DebugText($varName.":".$$varName,1);
 	$ok = $control->Next();
 }
 $param = "sectionValue='SysConfigs'";
@@ -133,7 +136,7 @@ while ($ok)
 		$$varName = $control->valueInt;
 	}
 
-	DebugText($varName.":".$$varName);
+	DebugText($varName.":".$$varName,1);
 	$ok = $control->Next();
 }
 
@@ -160,7 +163,7 @@ while ($ok)
 		$$varName = $control->valueInt;
 	}
 
-	DebugText($varName.":".$$varName);
+	DebugText($varName.":".$$varName,1);
 	$ok = $control->Next();
 }
 

@@ -47,7 +47,7 @@ $supportPhone = GetTextField("supportPhone");
 $supportEmail = GetTextField("supportEmail");
 $expireDate = DatePickerUnFormatter(GetDateField("expireDate"));
 DebugText("expireDate:".$expireDate);
-$commentText = GetTextField("description");
+$commentText = GetTextAreaField("description");
 $contractNumber = GetTextField("contractNumber");
 $poNumberId = GetTextField("poNumberId",0);
 $organizationId = GetTextField("organizationId",0);

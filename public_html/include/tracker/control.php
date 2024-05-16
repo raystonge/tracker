@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.11.0
+//
+//  -v1.11.0
+//     -adding a level to reduce the amout of debug text
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -101,13 +104,13 @@ var $className="Control";
   }
   function SetPerPage($perPage)
   {
-  	DebugText($this->className."[SetPerPage($perPage)]");
+  	DebugText($this->className."[SetPerPage($perPage)]",3);
   	$this->perPage = $perPage;
-  	DebugText("Setting perPage:".$this->perPage);
+  	DebugText("Setting perPage:".$this->perPage,3);
   }
   function Count($param)
   {
-  	DebugText($this->className."[Count]");
+  	DebugText($this->className."[Count]",3);
   	global $link_cms;
   	global $database_cms;
   	mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
@@ -117,8 +120,8 @@ var $className="Control";
   		$query = $query." where ".$param;
   	}
   	$results = mysqli_query($link_cms,$query);
-  	DebugText($query);
-  	DebugText("Error:".mysqli_error($link_cms));
+  	DebugText($query,3);
+  	DebugText("Error:".mysqli_error($link_cms),3);
   	$numRows = 0;
   	if ($row = mysqli_fetch_array($results))
   	{
@@ -152,8 +155,8 @@ var $className="Control";
 			$query = $query ." limit ".$this->start.",".$this->perPage;
 		}
 		$this->result = mysqli_query($link_cms,$query);
-		DebugText($query);
-		DebugText("Error:" . mysqli_error($link_cms));
+		DebugText($query,3);
+		DebugText("Error:" . mysqli_error($link_cms),3);
 		return ($this->Next());
 	}
 	function GetId($id)
@@ -210,7 +213,7 @@ var $className="Control";
 			*/
 			$this->init();
 		}
-		DebugText("datatype:".$this->datatype);
+		DebugText("datatype:".$this->datatype,3);
 		return ($this->controlId);
 	}
 	function Update()
@@ -225,8 +228,8 @@ var $className="Control";
 		$datatype = trim(mysqli_real_escape_string($link_cms,$this->datatype));
 		$query = "Update control set sectionValue='$section',keyValue='$key',valueInt = $this->valueInt, valueChar='$valueChar',datatype='$datatype',developer=$this->developer where controlId=$this->controlId";
 		$result = mysqli_query($link_cms,$query);
-		DebugText($query);
-		DebugText("Error:" . mysqli_error($link_cms));
+		DebugText($query,3);
+		DebugText("Error:" . mysqli_error($link_cms),3);
 
 	}
 	function UpdateControl()
@@ -243,14 +246,14 @@ var $className="Control";
 		$valueInt = trim(mysqli_real_escape_string($link_cms,$this->valueInt));
 		$query = "Update control set sectionValue='$section', keyValue='$key',valueChar='$valueChar', valueInt='$valueInt', description='$description',datatype='$datatype', developer=$this->developer where controlId=$this->controlId";
 		$result = mysqli_query($link_cms,$query);
-		DebugText($query);
-		DebugText("Error:" . mysqli_error($link_cms));
+		DebugText($query,3);
+		DebugText("Error:" . mysqli_error($link_cms),3);
 	}
 	function Insert()
 	{
 		global $link_cms;
 		global $database_cms;
-		DebugText("Insert");
+		DebugText("Insert",3);
 		mysqli_select_db($link_cms,$database_cms); // Reselect to make sure db is selected
 		$section = trim(mysqli_real_escape_string($link_cms,$this->section));
 		$key = trim(mysqli_real_escape_string($link_cms,$this->key));
@@ -267,22 +270,22 @@ var $className="Control";
 	{
 		global $link_cms;
 		global $database_cms;
-		DebugText("Delete");
+		DebugText("Delete",3);
 		mysqli_select_db($link_cms,$database_cms); // Reselect to make sure db is selected
 		$query = "delete from control where controlId=" . $this->controlId;
 		$result = mysqli_query($link_cms,$query);
-		DebugText($query);
-		DebugText("Error:" . mysqli_error($link_cms));
+		DebugText($query,3);
+		DebugText("Error:" . mysqli_error($link_cms),3);
 	}
 	function doQuery($query)
 	{
 		global $link_cms;
 		global $database_cms;
-		DebugText("doQuery");
+		DebugText("doQuery",3);
 		mysqli_select_db($link_cms,$database_cms); // Reselect to make sure db is selected
 		$result = mysqli_query($link_cms,$query);
-		DebugText($query);
-		DebugText("Error:" . mysqli_error($link_cms));
+		DebugText($query,3);
+		DebugText("Error:" . mysqli_error($link_cms),3);
 	}
 	function Persist()
 	{

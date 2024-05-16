@@ -117,36 +117,36 @@ var $className="Service";
 
   function Search($param)
   {
-	 DebugText($this->className."[Search]");
-     global $link_cms;
-     global $database_cms;
-     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-     $this->start = ($this->page-1)*$this->perPage;
-     DebugText("start:".$this->start);
-     DebugText("page:".$this->page);
-     DebugText("perPage:".$this->perPage);
+    DebugText($this->className."[Search]");
+    global $link_cms;
+    global $database_cms;
+    mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
+    $this->start = ($this->page-1)*$this->perPage;
+    DebugText("start:".$this->start);
+    DebugText("page:".$this->page);
+    DebugText("perPage:".$this->perPage);
 
-	 $query = "Select * from service";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-  	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
-	 if ($this->perPage > 0)
-	 {
-	 	$query = $query ." limit ".$this->start.",".$this->perPage;
-	 }
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	  $query = "Select * from service";
+	  if ($param)
+	  {
+	    $query = $query . " where ". $param;
+	  }
+  	if (strlen($this->orderBy))
+	  {
+	    $query = $query . " order by ".$this->orderBy;
+	  }
+	  if ($this->limit > 0)
+	  {
+	  	$query = $query . " limit ".$this->limit;
+	  }
+	  if ($this->perPage > 0)
+	  {
+	  	$query = $query ." limit ".$this->start.",".$this->perPage;
+	  }
+	  $this->results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  return($this->Next());
   }
   function Get($param = "")
   {
@@ -156,50 +156,49 @@ var $className="Service";
     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
     $this->start = ($this->page-1)*$this->perPage;
 
-	 $query = "Select * from service";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-  	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
+	  $query = "Select * from service";
+	  if ($param)
+	  {
+	    $query = $query . " where ". $param;
+	  }
+  	if (strlen($this->orderBy))
+	  {
+	    $query = $query . " order by ".$this->orderBy;
+	  }
+	  if ($this->limit > 0)
+	  {
+	 	  $query = $query . " limit ".$this->limit;
+	  }
 
-	 $this->results = mysqli_query($link_cms,$query);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	  $this->results = mysqli_query($link_cms,$query);
+	  DebugText($query);
+	  DebugText("Error:".mysqli_error($link_cms));
+	  return($this->Next());
   }
 
   function Next()
   {
-	 DebugText($this->className."[Next]");
-	 if ($this->row = mysqli_fetch_array($this->results))
-	 {
+    DebugText($this->className."[Next]");
+	  if ($this->row = mysqli_fetch_array($this->results))
+	  {
 	    $this->serviceId = $this->row['serviceId'];
 	    $this->name = trim(stripslashes($this->row['name']));
-	 }
-	 else
-	 {
-	   $this->init();
-	 }
-     return($this->serviceId);
+	  }
+	  else
+	  {
+	    $this->init();
+	  }
+    return($this->serviceId);
   }
   function GetById($id)
   {
-	 DebugText($this->className."[GetById]");
-	 if (!is_numeric($id))
-	 {
-	   return;
-	 }
-	 $param = "serviceId = $id";
-	 return($this->Get($param));
-
+    DebugText($this->className."[GetById]");
+	  if (!is_numeric($id))
+	  {
+	    return;
+	  }
+	  $param = "serviceId = $id";
+	  return($this->Get($param));
   }
   function Update()
   {
@@ -252,7 +251,6 @@ var $className="Service";
     $results = mysqli_query($link_cms,$query);
     DebugText($query);
     DebugText("Error:".mysqli_error($link_cms));
-
   }
 }
 ?>

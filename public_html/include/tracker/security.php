@@ -66,8 +66,8 @@ function ProperAccessTest($keyName="formKey")
 		DebugText("length is zero");
 		DebugText("sessionKey:".$sessionKey.":".strlen($sessionKey));
 		DebugText("formKey:".$formKey.":".strlen($formKey));
-	include $sitePath."/design/improperAccess.php";
-	exit;
+	  include $sitePath."/design/improperAccess.php";
+  	exit;
 		return (0);
 	}
 	if ($sessionKey == $formKey)

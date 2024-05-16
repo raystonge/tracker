@@ -547,7 +547,7 @@ function disableWarrantyDate()
 			  	  <?php
 			  	  $poNumber = new PoNumber();
 			  	  //$param = "organizationId=".$asset->organizationId." and (poType='Asset' or poType='AssetTicket')";
-            $param = "(poType='Asset' or poType='AssetTicket')";
+            $param = "(poType='Asset' or poType='AssetTicket' or poType='AssetContract')";
             $poNumber->SetOrderBy("poNumberId desc");
 			  	  $ok = $poNumber->Get($param);
 			  	  while ($ok)
@@ -729,29 +729,7 @@ function disableWarrantyDate()
   DebugText("Asset: Edit: View Comments:".$permission->hasPermission("Asset: Edit: View Comments"));
 	if ($ok && ($permission->hasPermission("Asset: Edit: View Comments") || $permission->hasPermission("Asset: View: View Comments")))
 	{
-		?><hr>
-	<table class="width100">
-	<?php
-	while ($ok)
-	{
-		$user = new User($comment->userId);
-		?>
-		<tr>
-		  <td><?php echo $user->fullName." on ".$comment->posted;?>
-		  <hr>
-		  </td>
-		</tr>
-		<tr>
-		  <td>
-		  <?php echo $comment->comment;?>
-		  </td>
-		</tr>
-		<?php
-		$ok = $comment->Next();
-	}
-	?>
-	</table>
-		<?php
+		DisplayComments();
 	}
 	?>
 
