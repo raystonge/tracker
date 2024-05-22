@@ -1,7 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.8.2
+//  Tracker - Version 1.12.0
 //
+//  v1.12.0
+//   - added showUsable field
 //  v1.8.2
 //   - added Delete function
 //
@@ -37,6 +39,7 @@ var $row;
 var $assetConditionId;
 var $name;
 var $showAll;
+var $showUseable;
 
 var $orderBy;
 var $limit;
@@ -49,8 +52,9 @@ var $className="AssetCondition";
   function init()
   {
     $this->assetConditionId = 0;
-	  $this->name = "";
+	$this->name = "";
     $this->showAll = 1;
+	$this->showUseable = 1;
   	$this->page = 1;
   	$this->start = 0;
   	$this->perPage = 0;
@@ -190,6 +194,8 @@ var $className="AssetCondition";
 	  {
 	    $this->assetConditionId = $this->row['assetConditionId'];
 	    $this->name = trim(stripslashes($this->row['name']));
+		$this->showAll = $this->row['showAll'];
+		$this->showUseable = $this->row['showUseable'];
 	  }
 	  else
 	  {
@@ -213,9 +219,11 @@ var $className="AssetCondition";
     global $link_cms;
     global $database_cms;
     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	  $name = trim(mysqli_real_escape_string($link_cms,$this->name));
+	$name = trim(mysqli_real_escape_string($link_cms,$this->name));
     $showAll = $this->showAll;
-	  $query = "Update assetCondition set name='$name', showAll=$showAll where assetConditionId = $this->assetConditionId";
+	$showUsable = $this->showUsable;
+
+	$query = "Update assetCondition set name='$name', showAll=$showAll,showUsable=$showUsable where assetConditionId = $this->assetConditionId";
     $results = mysqli_query($link_cms,$query);
 	  DebugText($query);
 	  DebugText("Error:".mysqli_error($link_cms));
@@ -226,13 +234,14 @@ var $className="AssetCondition";
     global $link_cms;
     global $database_cms;
     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	  $name = trim(mysqli_real_escape_string($link_cms,$this->name));
+	$name = trim(mysqli_real_escape_string($link_cms,$this->name));
     $showAll = $this->showAll;
-	  $query = "Insert into assetCondition (name,showAll) value ('$name',$showAll)";
+	$showUsable = $this->showUsable;
+	$query = "Insert into assetCondition (name,showAll,showUable) value ('$name',$showAll,$showUseable)";
     $results = mysqli_query($link_cms,$query);
-	  DebugText($query);
-	  DebugText("Error:".mysqli_error($link_cms));
-	  $this->assetConditionId = mysqli_insert_id($link_cms);
+	DebugText($query);
+	DebugText("Error:".mysqli_error($link_cms));
+	$this->assetConditionId = mysqli_insert_id($link_cms);
   }
   function Persist()
   {

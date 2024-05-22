@@ -1,6 +1,8 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.12.0
+//    v1.12.0
+//     - added showUable 
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -27,7 +29,7 @@ $validAccess = testFormKey();
 DebugText("validAccess:".$validAccess);
 if ($validAccess == 0)
 {
-	DebugText("problem with keys");
+   DebugText("problem with keys");
    DebugPause("/improperAccess/");
 }
 if (isset($_POST['submitTest']))
@@ -50,6 +52,7 @@ if (isset($_POST['submitTest']))
 	}
 	$name = GetTextField("name");
 	$showAll = GetTextField("showAll",0);
+	$showUsable = GetTextField("showUsable",0)
 
 
 
@@ -76,6 +79,7 @@ if (isset($_POST['submitTest']))
 	{
 		$assetCondition->name = $name;
 		$assetCondition->showAll = $showAll;
+		$assetCondition->showUsable = $showUsable;
 
     $assetCondition->Persist();
 
@@ -86,6 +90,7 @@ if (isset($_POST['submitTest']))
 		$html = "<ul>".$errorMsg."</ul>";
 		$_SESSION['name']=$name;
 		$_SESSION['showAll'] = $showAll;
+		$_SESSION['showUsable'] = $showUsable;
 
 		$_SESSION['formErrors'] = $html;
 		if ($assetCondition->assetConditionId)

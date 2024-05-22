@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.12.0
+//
+//  v1.12.0
+//   - added the show as Useable
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -36,6 +39,7 @@ $cnt = 0;
     	DisplayFormErrors();
    		$assetCondition->name = GetTextFromSession("name");
    		$assetCondition->showAll = GetTextFromSession("showAll",0);
+      $assetCondition->showUsable = GetTextFromSession("showUsable",0);
     }
     ?>
 <form method="post" autocomplete="<?php echo $autoComplete;?>" action="/process/assetCondition.php">
@@ -79,7 +83,16 @@ $cnt = 0;
 				?>
 			</td>
 		</tr>
-
+		<tr>
+			<td>
+				Show Usable
+			</td>
+			<td>
+				<?php
+				 CreateCheckBox("showUseable",1,"",$assetCondition->showUseable,"Are assets shown when selecting Useable","checkbox");
+				?>
+			</td>
+		</tr>
     <tr>
       <td>&nbsp;
       <?php
