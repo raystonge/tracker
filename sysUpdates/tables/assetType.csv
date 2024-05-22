@@ -27,6 +27,7 @@
 136,"Computer",0,0
 6,"Copier",1,1
 114,"Copier",1,1
+149,"Copier",0,0
 97,"Ethernet Switch",1,0
 144,"Ethernet Switch",0,0
 100,"extended warranty",1,0
@@ -37,6 +38,7 @@
 68,"External Site",1,0
 12,"Firewall",1,1
 42,"Firewall",1,1
+148,"Firewall",0,1
 117,"GoPro",1,0
 61,"Hard Drive",1,0
 116,"Hard Drive",1,0
@@ -112,6 +114,7 @@
 26,"UPS",0,0
 34,"UPS",1,0
 99,"UPS",1,0
+150,"UPS",0,0
 86,"USB Hub",1,0
 110,"USB Hub",1,0
 126,"Video Camera",0,0

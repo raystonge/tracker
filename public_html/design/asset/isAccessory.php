@@ -75,7 +75,7 @@ while ($ok)
 		$ok = $asset->Get($param);
 	}
   $showButton = $ok;
-
+  DebugText("Get available assets");
   while ($ok)
   {
     $assetType = new assetType($asset->assetTypeId);

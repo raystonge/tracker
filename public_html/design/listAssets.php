@@ -166,6 +166,7 @@ if (!is_numeric($page))
 				<td>
 				  <select name="searchConditionId" id="searchConditionId">
 				   <option value="0">All</option>
+				   <option value="-1">Useable</option>
 				    <?php
 				    $assetCondition = new AssetCondition();
 				    $ok = $assetCondition->Get("");

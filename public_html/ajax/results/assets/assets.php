@@ -78,7 +78,24 @@ if ($searchBuildingId)
 if ($searchConditionId)
 {
 	$_SESSION['searchConditionId'] = $searchConditionId;
-	$param = AddEscapedParam($param,'assetConditionId',$searchConditionId);
+  if ($searchConditionId == -1)
+  {
+    $param1 = "showUseable = 1";
+    $conditions = new Set(",");
+    $assetCondition = new AssetCondition();
+    $ok = $assetCondition->Get($param1);
+    while ($ok)
+    {
+      $conditions->Add($assetCondition->assetConditionId);
+      $ok = $assetCondition->Next();
+    }
+    $param = AddParam($param,"assetConditionId in (".$conditions->data.")");
+
+  }
+  else
+  {
+    $param = AddEscapedParam($param,'assetConditionId',$searchConditionId);
+  }
 }
 else
 {

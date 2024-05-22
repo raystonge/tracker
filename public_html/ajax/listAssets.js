@@ -12,17 +12,17 @@ $(document).ready(function () {
    $(document).on('click','#reset',function()
     {
      $("#organizationId").val(0);
-     $("#searchConditionId").val(0);
+     $("#searchConditionId").val(-1);
      $("#searchSerialNumber").val("");
      $("#searchAssetTag").val("");
      $("#searchMacAddress").val("");
      $("#searchName").val("");
      $("#searchEmployeeName").val("");
      $("#searchMake").val("");
-		 $("#searchBuildingId").val(0);
-		 $("#reset").val(1);
+	 $("#searchBuildingId").val(0);
+	 $("#reset").val(1);
      $("#organizationId").change();
-		  $("#reset").val(0);		 
+	 $("#reset").val(0);		 
 
     });
 

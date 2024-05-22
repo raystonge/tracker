@@ -219,7 +219,7 @@ if (!$asset->isEwasted())
     $assetType = new assetType($asset->assetTypeId);
     DebugText("isAccessory:".$assetType->isAccessory);
 
-    if ($assetType->isAccessory && !$assetToAsset->AssetAssigned($asset->assetId))
+    if ($assetType->isAccessory && !$assetToAsset->AssetAssigned($asset->assetId) && !$asset->isEwasted())
     {
   	?>
   <tr class="mritem">
