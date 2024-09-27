@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.13.0
+//
+// v1.13.0
+//  - added support for limit sharing across orgs
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -22,6 +25,7 @@ include_once "globals.php";
 include_once "tracker/organization.php";
 include_once "tracker/permission.php";
 include_once "tracker/userToOrganization.php";
+include_once "tracker/shareWithOrganization.php";
 $_SESSION['formErrors'] ="";
 
 if (isset($_POST['submitTest']))
@@ -98,6 +102,22 @@ if (isset($_POST['submitTest']))
 			$userToOrganization->userId = $currentUser->userId;
 			$userToOrganization->organizationId = $organization->organizationId;
 			$userToOrganization->Insert();
+		}
+		$shareWith = "";
+		if (isset($_POST['shareWith']))
+		{
+			@$shareWith=$_POST['shareWith'];
+		}
+		$shareWithOrganization = new ShareWithOrganization();
+		$shareWithOrganization->organizationId = $organization->organizationId;
+		$shareWithOrganization->Reset();
+		if ($shareWith)
+		{
+          foreach ($shareWith as $org)
+			{
+				$shareWithOrganization->shareWithId = $org;
+				$shareWithOrganization->Insert();
+			}
 		}
 		DebugPause("/listOrganizations/");
 	}

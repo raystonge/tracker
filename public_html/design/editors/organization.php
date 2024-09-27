@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.13.0
+//
+// v1.13.0
+//  - added support for limit sharing across orgs
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -21,6 +24,7 @@
 include_once "globals.php";
 include_once "tracker/organization.php";
 include_once "tracker/user.php";
+include_once "tracker/shareWithOrganization.php";
 
 $editingUserGroup = 0;
 $errorMsg = "";
@@ -110,6 +114,43 @@ $cnt = 0;
 				<?php CreateCheckBox("active",1,"",$organization->active); ?>
 			</td>
 		</tr>
+    <tr>
+      <td>
+        Share with:
+      </td>
+      <td>
+        <select name="shareWith[]" id="shareWith" multiple="multiple" size="8">
+          <?php
+           $org = new Organization();
+           $param = "active = 1;";
+           if ($organization->organizationId)
+           {
+             $param = AddEscapedParamNotEqual("","organizationId",$organization->organizationId);
+
+           }
+           $ok = $org->Get($param);
+           while ($ok)
+           {
+             $selected = "";
+             $param1 = AddEscapedParam("","organizationId",$organization->organizationId);
+             $param1 = AddEscapedParam($parma1,"shareWithId",$org->organizationId);
+             $shareWithOrganization = new ShareWithOrganization();
+             $shareWithOrganization->Get($param1);
+             if ($shareWithOrganization->shareWithOrganizationId)
+             {
+              $selected = "selected='selected'";
+             }
+             ?>
+             <option value="<?php echo $org->organizationId;?>" <?php echo $selected;?>><?php echo $org->name;?></option>
+
+             <?php
+             $ok = $org->Next();
+           }
+
+          ?>
+        </select>
+      </td>
+    </tr>
     <tr>
       <td>&nbsp;
       <?php
