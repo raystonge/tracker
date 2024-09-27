@@ -39,4 +39,4 @@ CREATE TABLE `asset` (
   `depreciationValue` varchar(45) DEFAULT NULL,
   `depreciationDate` date DEFAULT NULL,
   PRIMARY KEY (`assetId`)
-) ENGINE=MyISAM AUTO_INCREMENT=546 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=591 DEFAULT CHARSET=latin1

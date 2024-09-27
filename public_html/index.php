@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.9.0
+//  Tracker - Version 1.13.0
+//
+//  v.1.13.0
+//   - added editOrganization to the menu
 //
 //  v.1.9.0
 //   - fixed nav for services
@@ -162,16 +165,16 @@ else
 		case "newTicket" :
 		case "ticketEdit":
 		case "ticketAssets":
-	  case "ticketSchedule":
+	    case "ticketSchedule":
 		case "ticketAttachment":
 		case "ticketJumbo":
 		case "ticketInsurance":
 		case "ticketDeleteAttachment":
-    case "viewTicket" :
-    case "ticketPO" :
-    case "deleteTickePO" :
+        case "viewTicket" :
+        case "ticketPO" :
+        case "deleteTickePO" :
 		case "ticketHistory": $ticketClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-2 dropdown active";
-		                 break;
+		                      break;
 		case "listAssets":
 		case "newAsset":
 		case "assetNew" :
@@ -189,23 +192,21 @@ else
 		case "assetDeleteAttachment":
 		case "assetAssignSerialNumber":
 		case "assetMonitor":
-    case "assetHistory":
-    case "assetTickets":
+        case "assetHistory":
+        case "assetTickets":
 		case "accessory":
 		case "newMonitor":
 		case "assetMonitorList":
-    case "viewAsset" :
-    case "assetContract":
-    case "assetValue" :
-    case "assetCredentials":
-    case "editUserCredentials":
-    case "newUserCredentials":
-    case "moveAsset":
+        case "viewAsset" :
+        case "assetContract":
+        case "assetValue" :
+        case "assetCredentials":
+        case "editUserCredentials":
+        case "newUserCredentials":
+        case "moveAsset":
 		case "historyAsset": $assetClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
 		                     break;
-		case "monitor":
-
-		                $monitorClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-4 dropdown active";
+		case "monitor": $monitorClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-4 dropdown active";
 		                break;
 		case "listAssetCondition":
 		case "newAssetCondition":
@@ -232,8 +233,9 @@ else
 		case "newStatus":
 		case "editStatus":
 		case "listUsers":
-    case "doUserImport":
-    case "importUsers";
+        case "doUserImport":
+        case "importUsers";
+		case "editOrganization";
 		case "newUser":
 		case "editUser":
 		case "editUserPermission":
@@ -241,65 +243,61 @@ else
 		case "newUserGroup":
 		case "editUserGroup":
 		case "editUserGroupPermission":
-    case "listServices" :
-    case "newService" :
-    case "editService" :
-    case "assignService" :
+        case "listServices" :
+        case "newService" :
+        case "editService" :
+        case "assignService" :
 		case "exportStructure":
 		case "upgrade":
 		case "doUpgrade":
-    case "deleteBuilding":
-    case "deleteAssetCondition":
-    case "deleteService":
-    case "deleteAssetCredentials":
-    case "deleteQueue":
-    case "deleteStaus":
-    case "deleteUserGroup":
-    case "deleteUser":
-    case "deleteSpec":
-    case "deleteService":
-    case "deleteModule":
-    case "deleteOrganization":
-    case "deleteControl":
-    case "deleteAssetType":
-    case "serviceUser":
-		                            $configClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
-		                            break;
+        case "deleteBuilding":
+        case "deleteAssetCondition":
+        case "deleteService":
+        case "deleteAssetCredentials":
+        case "deleteQueue":
+        case "deleteStaus":
+        case "deleteUserGroup":
+        case "deleteUser":
+        case "deleteSpec":
+        case "deleteService":
+        case "deleteModule":
+        case "deleteOrganization":
+        case "deleteControl":
+        case "deleteAssetType":
+        case "serviceUser": $configClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
+		                    break;
 		case "poNumberEdit" :
 		case "poNumberNew" :
 		case "listpoNumber" :
-    case "poNumberView" :
+        case "poNumberView" :
 		case "poNumberAssets" :
 		case "poNumberAttachment" :
-    case "poNumberTickets" :
-		case "poNumberHistory" :
-		                            $poClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
-		                            break;
-    case "listContracts" :
-    case "contractNew" :
-    case "contractEdit" :
-    case "contractView" :
-    case "viewContract" :
-    case "contractAssets" :
-    case "contractAttachment" :
-    case "listContracts":
+        case "poNumberTickets" :
+		case "poNumberHistory" : $poClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
+		                         break;
+        case "listContracts" :
+        case "contractNew" :
+        case "contractEdit" :
+        case "contractView" :
+        case "viewContract" :
+        case "contractAssets" :
+        case "contractAttachment" :
+        case "listContracts":
 		case "contractDeleteAttachment":
-    case "contractHistory" :
-                               $contractClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
-                               break;
+        case "contractHistory" : $contractClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
+                                 break;
 
 		case "billing" :
 		case "billingReport" :
 		case "listBadAssets" :
 		case "viewReports":
 		case "listReports":
-    case "leases":
-    case "leaseReport":
-    case "moveReport" :
-    case "personalProperty" :
-    case "personalPropertyReport" :
-		                            $reportClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
-		                            break;
+        case "leases":
+        case "leaseReport":
+        case "moveReport" :
+        case "personalProperty" :
+        case "personalPropertyReport" : $reportClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-3 dropdown active";
+		                                break;
 
 		default: $homeClass = "menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-1 dropdown active ";
 		         break;

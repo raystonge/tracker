@@ -1,0 +1,7 @@
+CREATE TABLE `apiKey` (
+  `apiKeyId` int(11) NOT NULL AUTO_INCREMENT,
+  `apiKey` varchar(255) DEFAULT NULL,
+  `ip` varchar(45) DEFAULT NULL,
+  `dateTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`apiKeyId`)
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=latin1

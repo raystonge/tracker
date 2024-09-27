@@ -65,7 +65,7 @@ var $className="MonitorToUser";
 	   $query = $query . " where ". $param;
 	 }
 	 $query = $query . " order by ".$this->orderBy;
-     $this->results = mysqli_query($link_cms,$query);
+   $this->results = mysqli_query($link_cms,$query);
 	 DebugText($query);
 	 DebugText("Error:".mysqli_error($link_cms));
 	 return($this->Next());

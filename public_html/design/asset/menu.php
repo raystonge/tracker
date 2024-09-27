@@ -155,7 +155,7 @@ DebugText("Doing asset SubMenu");
 	                  if ($assetType->monitor && $showMonitor)
 	                  {
 	                  	?>
-	                  <li id="menu-item-20" class="<?php echo $monitorClass;?>"><a href='/assetMonitorList/<?php echo $assetId;?>/' title='Monitors'><span>Monitors</span></a></li>
+	                  <li id="menu-item-20" class="<?php echo $monitorClass;?>"><a href='/assetMonitor/<?php echo $assetId;?>/' title='Monitors'><span>Monitors</span></a></li>
 	                  <?php
 	                  }
 										$param = AddEscapedParam("isLease=1","poNumberId",$asset->poNumberId);

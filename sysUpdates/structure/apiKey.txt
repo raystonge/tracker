@@ -1,0 +1,4 @@
+"apiKeyId","int(11)"
+"apiKey","varchar(255)"
+"ip","varchar(45)"
+"dateTime","datetime"

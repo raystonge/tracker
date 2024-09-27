@@ -60,9 +60,9 @@ if (isset($_POST['submitTest']))
 	$hasUserCredentials = GetTextField("hasUserCredentials",0);
 	$hasSpecs = GetTextField("hasSpecs",0);
 	$enforceCost = GetTextField("enforceCost",0);
-  $personalProperty = GetTextField("personalProperty",0);
-  $depreciationSchedule = GetTextField("depreciationSchedule",0);
-  $noSerialNumber = GetTextField("noSerialNumber",0);
+    $personalProperty = GetTextField("personalProperty",0);
+    $depreciationSchedule = GetTextField("depreciationSchedule",0);
+    $noSerialNumber = GetTextField("noSerialNumber",0);
 	$hasConstantMonitorDown = 0;
 
 	if (!$organizationId)
@@ -104,7 +104,7 @@ if (isset($_POST['submitTest']))
 			$assetType->monitorType = $monitor;
 		}
 		*/
-		$assetType->monitor = $monitor;
+		$assetType->monitor = strlen($monitor);
 		$assetType->hasMacAddress = $hasMacAddress;
 		$assetType->requireMacAddress = $requireMacAddress;
 		$assetType->hasContract = $hasContract;
@@ -116,10 +116,11 @@ if (isset($_POST['submitTest']))
 		$assetType->hasUserCredentials = $hasUserCredentials;
 		$assetType->hasSpecs = $hasSpecs;
 		$assetType->enforceCost = $enforceCost;
-    $assetType->personalProperty = $personalProperty;
-    $assetType->depreciationSchedule = $depreciationSchedule;
-    $assetType->noSerialNumber = $noSerialNumber;
-    $assetType->Persist();
+        $assetType->personalProperty = $personalProperty;
+        $assetType->depreciationSchedule = $depreciationSchedule;
+        $assetType->noSerialNumber = $noSerialNumber;
+		$assetType->monitorType = $monitor;
+        $assetType->Persist();
 		$_SESSION['assetTypeOrganizationId'] = $organizationId;
 		DebugPause("/listAssetType/");
 	}

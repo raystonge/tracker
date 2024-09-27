@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.8.2
+//  Tracker - Version 1.13.0
+//
+//  v1.13.0
+//   - added AddEscapedParamNotEqual function
 //
 //  v1.8.2
 //   - added js to move the datepicker in front of other items on the pages
@@ -241,6 +244,20 @@ function AddEscapedParam($param,$newParam,$value)
     $param = $newParam."='".mysqli_real_escape_string($link_cms,$value)."'";
   }
   return($param);
+}
+function AddEscapedParamNotEqual($param,$newParam,$value)
+{
+	global $link_cms;
+	if (strlen($param))
+	{
+	  $param = $param." and ".$newParam."!='".mysqli_real_escape_string($link_cms,$value)."'";
+	}
+	else
+	{
+	  $param = $newParam."!='".mysqli_real_escape_string($link_cms,$value)."'";
+	}
+	return($param);
+  
 }
 function AddEscapedParamWithTest($param,$newParam,$test,$value)
 {

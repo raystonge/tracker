@@ -13,3 +13,4 @@
 "name","varchar(45)"
 "whine","int(11)"
 "monitorType","varchar(45)"
+"statusChange","int(11)"

@@ -330,6 +330,59 @@ var $className = "User";
      return($this->Next());
 
   }
+
+  function GetMonitorAssignee($param = "")
+  {
+     global $link_cms;
+     global $database_cms;
+     global $now;
+     DebugText($this->className."[GetMonitorAssignee]",3);
+     mysqli_select_db($link_cms,$database_cms);   // Reselect to make sure db is selected
+     $groups = new Set(",");
+     $userGroup = new UserGroup();
+     $ok = $userGroup->Get("name ='email Monitor'");
+     while ($ok)
+     {
+       $groups->Add($userGroup->userGroupId);
+       DebugText("assignee Group:".$userGroup->userGroupId);
+       $ok = $userGroup->Next();
+     }
+     if (strlen($groups->data) == 0)
+     {
+       $groups->Add("0");
+     }
+     $query = "select * from users u inner join userToGroup utg on u.userId=utg.userId inner join userToOrganization uto on u.userId=uto.userId";
+     if ($param)
+     {
+       $query = $query . " where  u.active=1 and utg.userGroupId in ($groups->data) and ".$param;
+     }
+     else
+     {
+       $query = $query .  " where u.active=1 and utg.userGroupId in ($groups->data)";
+
+     }
+     $userList = new Set(",");
+     $this->results = mysqli_query($link_cms,$query);
+     DebugText($query,3);
+     DebugText("Error:".mysqli_error($link_cms),3);
+     $userList->Add(0);
+
+     while ($this->Next())
+     {
+       $userList->Add($this->userId);
+     }
+     $query = "Select * from users where userId in (".$userList->data.")";
+     if (strlen($this->orderBy))
+     {
+       $query = $query . " order by ".$this->orderBy;
+     }
+
+     $this->results = mysqli_query($link_cms,$query);
+     DebugText($query,3);
+     DebugText("Error:".mysqli_error($link_cms),3);
+     return($this->Next());
+
+  }
   function Next()
   {
     DebugText($this->className."[Next]");
@@ -455,5 +508,32 @@ var $className = "User";
   	$history->action = $action;
 	  $history->Insert();
   }
+
+
+function clearEmailMessage()
+{
+  global $link_cms;
+  global $database_cms;
+  DebugText($this->className."[clearEmailMessage]");
+  mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected 
+  $query = "update users set emailMessage= null";
+  $results = mysqli_query($link_cms,$query);
+  DebugText($query);
+  DebugText("Error:".mysqli_error($link_cms)); 
+}
+function updateEmailMessage()
+{
+  global $link_cms;
+  global $database_cms;
+  DebugText($this->className."[updateEmailMessage]");
+  mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected 
+  $emailMessage = prepForDB("users","emailMessage",$this->emailMessage);
+  $query = "update users set emailMessage='$emailMessage' where userId = $this->userId";
+  $results = mysqli_query($link_cms,$query);
+  DebugText($query);
+  DebugText("Error:".mysqli_error($link_cms)); 
+ 
+}
+
 }
 ?>

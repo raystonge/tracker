@@ -1,14 +1,18 @@
 <strong>System Notes</strong>
+== 2024-10-07
+ = Version 1.13.0
+   * Added controls on how assets are shared among organizations
+   
 == 2024-05-22
  = Version 1.12.0
    * Using tinyMCE Version 7
    * when attaching accessories, items eWasted are not show
    * default asset condition when searching is now Usable to elimitate eWasted assets
-   
+
 == 2023-12-04
  = Version 1.11.1
    * fixed typo in code that caused timeWorked not to be returned
-   
+
 == 2023-09-13
  = Version 1.11.0
    * added orderBy on modules

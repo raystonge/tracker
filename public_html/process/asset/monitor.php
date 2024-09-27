@@ -219,11 +219,15 @@ if ($numErrors == 0)
 	$monitorToUser = new MonitorToUser();
 	//$monitorToUser->Reset($monitor->monitorId);
 	$notified = new Set(",");
+	$cnt = 0;
 	if (isset($_POST['notify']) && $permission->hasPermission("Asset: Edit: Notify"))
 	{
 		@$notifies = $_POST['notify'];
-		while (list ($key, $notify) = each ($notifies))
+		//while (list ($key, $notify) = each ($notifies) && $cnt< 10)
+		for ($i=0; $i < sizeof($notifies);$i++)
 		{
+			$cnt++;
+			$notify = $notifies[$i];
 			$notified->Add($notify);
 			$param = "userId=".$notify." and monitorId=".$monitor->monitorId;
 			if (!$monitorToUser->Get($param))
@@ -299,5 +303,5 @@ else
 	DebugPause("/assetMonitor/$asset->assetId/");
 }
 
-DebugPause("/assetMonitorList/$assetId/");
+DebugPause("/assetMonitor/$assetId/");
 ?>

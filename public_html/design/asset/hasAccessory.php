@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.13.0
+//
+// v1.13.0
+//  - added support for limit sharing across orgs
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -23,6 +26,8 @@ include_once "tracker/assetType.php";
 include_once "tracker/assetToAsset.php";
 include_once "tracker/building.php";
 include_once "tracker/assetCondition.php";
+include_once "tracker/shareWithOrganization.php";
+
 global $shareAssetAcrossOrgs;
 
 $query = "select * from asset a inner join assetType at on a.assetTypeId=at.assetTypeId ";
@@ -211,6 +216,21 @@ if (!$asset->isEwasted())
   {
   	$param = AddEscapedParam("","organizationId",$asset->organizationId);
   }
+  else
+  {
+    $shareWith = new ShareWithOrganization();
+    $param1 = AddEscapedParam("","shareWithId",$asset->organizationId);
+    $ok = $shareWith->Get($param1);
+    $orgs = new Set(",");
+    $orgs->Add($asset->organizationId);
+    while ($ok)
+    {
+      $orgs->Add($shareWith->organizationId);
+      $ok = $shareWith->Next();
+    }
+    $param = "organizationId in (".$orgs->data.")";
+  }
+
   $asset->SetOrderBy("assetTag");
   $ok = $asset->Get($param);
   $showButton = $ok;

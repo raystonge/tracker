@@ -20,7 +20,7 @@
 <?php
 PageAccess("Asset: Monitor");
 include_once "tracker/assetType.php";
-
+include_once "tracker/monitor.php";
 $assetId = 0;
 if (isset($request_uri[2]))
 {
@@ -36,6 +36,9 @@ include_once "tracker/asset.php";
 include_once "tracker/assetType.php";
 $asset = new Asset($assetId);
 $assetType = new AssetType($asset->assetTypeId);
+$monitor = new Monitor();
+$param = AddEscapedParam("","assetId",$assetId);
+$monitorId = $monitor->Get($param);
 include $sitePath."/design/asset/assetInfoHeader.php";
 ?>
 <script language="javascript" src="/ajax/assetMonitor.js"></script>

@@ -35,7 +35,7 @@ function TicketNotice($to,$cc,$subject,$message,$link,$historyArray,$requestor="
 	DebugText("cc:".$cc);
 
 	$headers[] = 'From: '.$sendersEmail;
-  $addresses = new Set(",");
+    $addresses = new Set(",");
 	$addresses->data = $cc;
 	$addresses->Add($to);
 	if (strlen($requestor))
@@ -59,5 +59,27 @@ function TicketNotice($to,$cc,$subject,$message,$link,$historyArray,$requestor="
 	  }
 	}
 
+}
+function SendMail($to,$subject,$message)
+{
+	global $sendEmails;
+	global $sendersEmail;	
+	DebugText("SendMail($to,,$subject,$message)");
+	if (!$sendEmails)
+	{
+		return;
+	}
+	$headers[] = 'From: '.$sendersEmail;
+	echo $to."\n";
+	echo $message."\n";
+	return;
+	if (mail($to,$subject,$message,implode("\r\n", $headers)))
+	{
+		DebugText("mail send successfully to ".$to);
+	}
+	else
+	{
+	   DebugText("mail send failed to ".$to);
+	}
 }
 ?>

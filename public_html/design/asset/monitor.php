@@ -39,7 +39,7 @@ DebugText("monitorType:".$monitor->monitorType);
 $building = new Building($asset->buildingId);
     if (FormErrors())
     {
-        $monitor->name = GetTextFromSession("assetMonitorName");
+      $monitor->name = GetTextFromSession("assetMonitorName");
     	$monitor->fqdn = GetTextFromSession("assetMonitorFQDN");
     	$monitor->ipAddress = GetTextFromSession("assetMonitorIPAddress");
     	$monitor->monitorURL = GetTextFromSession("assetMonitorMonitorURL");
@@ -70,6 +70,7 @@ if (!strlen($monitor->fqdn))
 {
   $monitor->fqdn = $asset->name.".".$building->domain;
 }
+$monitor->monitorType = $assetType->monitorType;
 ?>
 </table>
 <form method="post" action="/process/asset/monitor.php">
@@ -203,7 +204,8 @@ if (!strlen($monitor->fqdn))
         <?php
         $user = new User();
         $monitorToUser = new MonitorToUser();
-        $ok = $user->Get("active=1");
+        //$ok = $user->Get("active=1");
+        $ok = $user->GetMonitorAssignee();
         while ($ok)
         {
         	$selected = "";
