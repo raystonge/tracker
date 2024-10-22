@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.13.0
+//
+//  v1.13.0
+//   - added support for specifying which monitor server is doing the monitor
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -32,6 +35,8 @@ $_SESSION['assetMonitorMonitorURL'] = "";
 $_SESSION['assetMonitorPingAddress'] = "";
 $_SESSION['assetSMSNotice'] = "";
 $_SESSION['assetMonitorWhine'] = 0;
+$_SESSION['assetMonitorServerId'] = 0;
+
 $html="";
 $numErrors = 0;
 $errorMsg = "";
@@ -45,6 +50,7 @@ $smsNotify = GetTextField("smsNotice",0);
 $whine = GetTextField("whine",0);
 $asset = new Asset($assetId);
 $monitorType = GetTextField("monitorType");
+$monitorServerId = GetTextField("monitorServerId");
 $assetType = new AssetType($asset->assetTypeId);
 if (!$asset->assetId)
 {
@@ -59,6 +65,12 @@ if (strlen($name) == 0 && $permission->hasPermission("Asset: Edit: Name"))
 {
     $numErrors++;
     $errorMsg=$errorMsg."<li>Please Specify a Name</li>";
+}
+
+if (!$monitorId == 0 && $permission->hasPermission("Asset: Edit: Monitor Server"))
+{
+    $numErrors++;
+    $errorMsg=$errorMsg."<li>Please Specify a Monitor Server</li>";
 }
 if (strlen($fqdn) == 0 && $permission->hasPermission("Asset: Edit: FQDN"))
 {
@@ -277,8 +289,8 @@ if ($numErrors == 0)
     $historyVal = array_pop($historyArray);
 	while (strlen($historyVal))
 	{
-		DebugText("historyVal:".$historyVal);
-	    $history = new History();
+    DebugText("historyVal:".$historyVal);
+	  $history = new History();
 		$history->assetId = $asset->assetId;
 		$history->userId = $_SESSION['userId'];
 		$history->actionDate = $now;
@@ -300,6 +312,7 @@ else
 	$_SESSION['assetMonitorMonitorURL'] = $monitorURL;
 	$_SESSION['assetMonitorPingAddress'] = $pingAddress;
 	$_SESSION['assetSMSNotice'] = $smsNotify;
+  $_SESSION['assetMonitorServerId'] = $monitorServerId;
 	DebugPause("/assetMonitor/$asset->assetId/");
 }
 

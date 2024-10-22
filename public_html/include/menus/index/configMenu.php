@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.0
+//  Tracker - Version 1.13.0
+//
+//  v1.13.0
+//   - added support for specifying which monitor server
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -88,7 +91,16 @@
 	                        <li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="/listQueues/">Queues</a></li>
 	                      <?php
                           }
-                          if ($permission->hasPermission("Config: Status"))
+
+                          if ($permission->hasPermission("Config: Monitor Servers"))
+                          {
+                          	?>
+	                        <li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="/listMonitorServers/">Monitor Servers</a></li>
+	                      <?php
+                          }
+
+
+						  if ($permission->hasPermission("Config: Status"))
                           {
                           	?>
 	                        <li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="/listStatus/">Status</a></li>

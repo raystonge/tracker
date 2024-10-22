@@ -2,7 +2,8 @@
 == 2024-10-07
  = Version 1.13.0
    * Added controls on how assets are shared among organizations
-   
+   * Added the ability to have multiple machines monitor
+
 == 2024-05-22
  = Version 1.12.0
    * Using tinyMCE Version 7

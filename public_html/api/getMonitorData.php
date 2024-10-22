@@ -22,10 +22,23 @@
 include_once "globals.php";
 include_once "tracker/apiKey.php";
 include_once "tracker/monitor.php";
+include_once "tracker/monitorServer.php";
 $key = GetURLVar("key");
 if (!strlen($key))
 {
     return;
+}
+$name = GetURLVar("monitor");
+if (!strlen($name))
+{
+  return;
+}
+
+$param = AddEscapedParam("","name",$name);
+$monitorServer = new MonitorServer();
+if (!$monitorServer->Get($param))
+{
+  return;
 }
 $apiKey = new apiKey();
 $param = AddEscapedParam("","apiKey",$key);
@@ -36,10 +49,19 @@ if (!$apiKey->Get($param))
 $monitor = new Monitor();
 $monitor->orderBy = "monitorId desc";
 $param = "active = 1";
+$param = AddEscapedParam($param,"monitorServerId",$monitorServer->monitorServerId);
 $ok = $monitor->Get($param);
 while ($ok)
 {
-    echo $monitor->monitorId.",".$monitor->pingAddress."\n";
+    $monitorType = $monitor->monitorType;
+    $address = $monitor->pingAddress;
+    if (!strlen($address))
+    {
+      $address = $monitor->ipAddress;
+      $monitorType = "ping";
+    }
+
+
+    echo $monitor->monitorId.",".$monitorType.",".$address."\n";
     $ok = $monitor->Next();
 }
-

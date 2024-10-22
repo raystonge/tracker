@@ -21,6 +21,7 @@ include_once "tracker/monitor.php";
 include_once "tracker/building.php";
 include_once "tracker/monitorToUser.php";
 include_once "tracker/assetType.php";
+include_once "tracker/monitorServer.php";
 $button = "Create";
 $param = "assetId = ".$asset->assetId;
 $assetType = new AssetType($asset->assetTypeId);
@@ -41,6 +42,7 @@ $building = new Building($asset->buildingId);
     {
       $monitor->name = GetTextFromSession("assetMonitorName");
     	$monitor->fqdn = GetTextFromSession("assetMonitorFQDN");
+      $monitor->monitorServerId =(GetTextFromSession("assetMonitorServerId"));
     	$monitor->ipAddress = GetTextFromSession("assetMonitorIPAddress");
     	$monitor->monitorURL = GetTextFromSession("assetMonitorMonitorURL");
     	$monitor->pingAddress = GetTextFromSession("asssetMonitorPingAddress");
@@ -64,17 +66,55 @@ $building = new Building($asset->buildingId);
     <td><div id="assetState"></div>
     </td>
   </tr>
-<?php
 
+<?php
+/*
 if (!strlen($monitor->fqdn))
 {
   $monitor->fqdn = $asset->name.".".$building->domain;
 }
-$monitor->monitorType = $assetType->monitorType;
+  */
+//$monitor->monitorType = $assetType->monitorType;
 ?>
 </table>
 <form method="post" action="/process/asset/monitor.php">
 <table>
+<tr>
+     <td colspan="2">
+      Monitor Server:
+  
+      <?php if ($permission->hasPermission("Asset: Edit: Monitor Server"))
+      {
+        ?>
+      <select id="monitorServerId" name="monitorServerId">
+        <option value="0">Select a Server</option>
+        <?php
+        $monitorServer = new MonitorServer();
+        $ok = $monitorServer->Get("");
+        while ($ok)
+        {
+          $selected = "";
+          if ($monitor->monitorServerId == $monitorServer->monitorServerId)
+          {
+            $selected = "selected='selected'";
+          }
+          ?>
+          <option value="<?php echo $monitorServer->monitorServerId;?>" <?php echo $selected;?>><?php echo $monitorServer->name;?></option>
+          <?php
+          $ok = $monitorServer->Next();
+        }
+        ?>
+      </select>
+      <?php
+      }
+      else
+      {
+        $monitorServer = new MonitorServer($monitor->monitorServerId);
+        echo $monitorServer->name;
+      }
+      ?>
+     </td>
+  </tr>
   <tr>
     <td colspan="2">
         <?php
@@ -276,6 +316,7 @@ $monitor->monitorType = $assetType->monitorType;
      }
      ?>
      <?php
+     /*
      if ($permission->hasPermission("Asset: Edit: Monitor SMS Notify"))
      {
      	$checked = "";
@@ -299,6 +340,7 @@ $monitor->monitorType = $assetType->monitorType;
      		}
      	}
      }
+      */
      ?>
 
     </td>
