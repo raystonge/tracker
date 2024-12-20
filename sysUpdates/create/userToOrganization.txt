@@ -5,4 +5,4 @@ CREATE TABLE `userToOrganization` (
   PRIMARY KEY (`userToOrganizationId`),
   KEY `userId` (`userId`),
   KEY `organizationId` (`organizationId`)
-) ENGINE=MyISAM AUTO_INCREMENT=919 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=906 DEFAULT CHARSET=latin1

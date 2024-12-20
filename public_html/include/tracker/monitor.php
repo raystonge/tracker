@@ -60,28 +60,28 @@ var $className="Monitor";
   function init()
   {
     $this->monitorId = 0;
-	  $this->assetId = 0;
-	  $this->ipAddress = "";
-	  $this->state = 0;
-	  $this->stateChangeDateTime = "";
+	$this->assetId = 0;
+	$this->ipAddress = "";
+	$this->state = 0;
+	$this->stateChangeDateTime = "";
   	$this->fqdn = "";
-	  $this->active = 1;
-	  $this->monitorURL = "";
-	  $this->pingAddress = "";
-	  $this->smsNotice = 0;
+	$this->active = 1;
+	$this->monitorURL = "";
+	$this->pingAddress = "";
+	$this->smsNotice = 0;
   	$this->page = 1;
-	  $this->start = 0;
-	  $this->perPage = 0;
-	  $this->orderBy = "monitorId";
-	  $this->numRows = 0;
-	  $this->name = "";
-	  $this->whine = 0;
-	  $this->monitorType="";
-	  $this->statusChange = 0;
+	$this->start = 0;
+	$this->perPage = 0;
+	$this->orderBy = "monitorId";
+	$this->numRows = 0;
+	$this->name = "";
+	$this->whine = 0;
+	$this->monitorType="";
+	$this->statusChange = 0;
   }
   function __construct()
   {
-	  $a = func_get_args();
+	$a = func_get_args();
     $i = func_num_args();
     if (method_exists($this,$f='__construct'.$i))
     {
@@ -156,28 +156,28 @@ var $className="Monitor";
     DebugText("page:".$this->page);
     DebugText("perPage:".$this->perPage);
 
-	 $query = "Select * from monitor";
-	 if ($param)
-	 {
-	   $query = $query . " where ". $param;
-	 }
-  	 if (strlen($this->orderBy))
-	 {
-	   $query = $query . " order by ".$this->orderBy;
-	 }
-	 if ($this->limit > 0)
-	 {
-	 	$query = $query . " limit ".$this->limit;
-	 }
-	 if ($this->perPage > 0)
-	 {
-	 	$query = $query ." limit ".$this->start.",".$this->perPage;
-	 }
-	 $this->results = mysqli_query($link_cms,$query);
-	 $this->numRows = mysqli_num_rows ($this->results);
-	 DebugText($query);
-	 DebugText("Error:".mysqli_error($link_cms));
-	 return($this->Next());
+	$query = "Select * from monitor";
+	if ($param)
+	{
+	  $query = $query . " where ". $param;
+	}
+  	if (strlen($this->orderBy))
+	{
+	  $query = $query . " order by ".$this->orderBy;
+	}
+	if ($this->limit > 0)
+	{
+	  $query = $query . " limit ".$this->limit;
+	}
+	if ($this->perPage > 0)
+	{
+	  $query = $query ." limit ".$this->start.",".$this->perPage;
+	}
+	$this->results = mysqli_query($link_cms,$query);
+	$this->numRows = mysqli_num_rows ($this->results);
+	DebugText($query);
+	DebugText("Error:".mysqli_error($link_cms));
+	return($this->Next());
   }
   function Get($param = "")
   {
@@ -250,7 +250,6 @@ var $className="Monitor";
 	 }
 	 $param = "monitorId = $id";
 	 return($this->Get($param));
-
   }
   function UpdateStatus()
   {
@@ -273,7 +272,6 @@ var $className="Monitor";
 	$results = mysqli_query($link_cms,$query);
 	DebugText($query);
 	DebugText("Error:".mysqli_error($link_cms));
-
   }
 
   function ResetStateForWhine()
@@ -294,18 +292,18 @@ var $className="Monitor";
     global $link_cms;
     global $database_cms;
     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	  $ipAddress = prepForDB("monitor", "ipAddress", $this->ipAddress);
-	  $fqdn = prepForDB("monitor", "fqdn", $this->fqdn);
+	$ipAddress = prepForDB("monitor", "ipAddress", $this->ipAddress);
+	$fqdn = prepForDB("monitor", "fqdn", $this->fqdn);
     $monitorURL = prepForDB("monitor", "monitorURL", $this->monitorURL);
     $pingAddress = prepForDB("monitor", "pingAddress", $this->pingAddress);
     $smsNotice = prepForDB("monitor", "smsNotice", $this->smsNotice);
     $name = prepForDB("monitor", "name", $this->name);
     $whine = prepForDB("monitor", "whine", $this->whine);
     $monitorType = prepForDB("monitor", "monitorType", $this->monitorType);
-	  $query = "Update monitor set ipAddress='$ipAddress',active=$this->active, fqdn='$fqdn',assetId=$this->assetId, monitorURL='$monitorURL', pingAddress='$pingAddress', smsNotice=$smsNotice, name='$name', whine=$whine, monitorType='$monitorType', statusChange=$this->statusChange,monitorServerId=$this->monitorServerId where monitorId = $this->monitorId";
+	$query = "Update monitor set ipAddress='$ipAddress',active=$this->active, fqdn='$fqdn',assetId=$this->assetId, monitorURL='$monitorURL', pingAddress='$pingAddress', smsNotice=$smsNotice, name='$name', whine=$whine, monitorType='$monitorType', statusChange=$this->statusChange,monitorServerId=$this->monitorServerId where monitorId = $this->monitorId";
     $results = mysqli_query($link_cms,$query);
-	  DebugText($query);
-	  DebugText("Error:".mysqli_error($link_cms));
+	DebugText($query);
+	DebugText("Error:".mysqli_error($link_cms));
   }
   function Insert()
   {
@@ -313,18 +311,18 @@ var $className="Monitor";
     global $link_cms;
     global $database_cms;
     mysqli_select_db($link_cms,$database_cms);	 // Reselect to make sure db is selected
-	  $ipAddress = prepForDB("monitor", "ipAddress", $this->ipAddress);
-	  $fqdn = prepForDB("monitor", "fqdn", $this->fqdn);
-	  $monitorURL = prepForDB("monitor", "monitorURL", $this->monitorURL);
+	$ipAddress = prepForDB("monitor", "ipAddress", $this->ipAddress);
+	$fqdn = prepForDB("monitor", "fqdn", $this->fqdn);
+	$monitorURL = prepForDB("monitor", "monitorURL", $this->monitorURL);
     $pingAddress = prepForDB("monitor", "pingAddress", $this->pingAddress);
     $name = prepForDB("monitor", "name", $this->name);
     $whine = prepForDB("monitor", "whine", $this->whine);
     $monitorType = prepForDB("monitor", "monitorType", $this->monitorType);
-	  $query = "Insert into monitor (ipAddress,fqdn,assetId,active,monitorURL,pingAddress,smsNotice,name,whine,monitorType,statusChange,monitorServerId) value ('$ipAddress','$fqdn',$this->assetId,$this->active,'$monitorURL','$pingAddress',$this->smsNotice,'$name',$whine,'$monitorType','$this->statusChange','$this->monitorServerId')";
-    $results = mysqli_query($link_cms,$query);
-	  DebugText($query);
-	  DebugText("Error:".mysqli_error($link_cms));
-	  $this->monitorId = mysqli_insert_id($link_cms);
+	$query = "Insert into monitor (ipAddress,fqdn,assetId,active,monitorURL,pingAddress,smsNotice,name,whine,monitorType,statusChange,monitorServerId) value ('$ipAddress','$fqdn',$this->assetId,$this->active,'$monitorURL','$pingAddress',$this->smsNotice,'$name',$whine,'$monitorType','$this->statusChange','$this->monitorServerId')";
+	$results = mysqli_query($link_cms,$query);
+	DebugText($query);
+	DebugText("Error:".mysqli_error($link_cms));
+	$this->monitorId = mysqli_insert_id($link_cms);
   }
   function Persist()
   {

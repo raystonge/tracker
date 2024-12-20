@@ -5,4 +5,4 @@ CREATE TABLE `assetToTicket` (
   PRIMARY KEY (`assetToTicketId`),
   KEY `assetId` (`assetId`),
   KEY `ticketId` (`ticketId`)
-) ENGINE=MyISAM AUTO_INCREMENT=298 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=301 DEFAULT CHARSET=latin1

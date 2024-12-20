@@ -5,7 +5,7 @@ use Net::Ping;
 use LWP::Simple;
 use Net::Ping;
 use WWW::Curl::Easy;
-use Switch;
+#use Switch;
 #use MIME::Lite;
 
 my $contents;
@@ -42,24 +42,23 @@ foreach my $line (@lines)
     my $ip;
     my $monitorType;
     ($id,$monitorType,$ip) = split(/,/,$line);
-    switch ($monitorType)
+    if ($monitorType eq "ping" || $monitorType eq "pingAddress")
+    {
+      my $pinger = Net::Ping->new("icmp");
+      if ($pinger->ping($ip))
+      {
+        #print  $id.",",$ip.",1\n";
+        $data = $data.$id."|".$ip."|1\n";
+      }
+      else
+      {
+        #print  $id.",",$ip."0\n";
+        $data = $data.$id."|".$ip."|0\n";
+      }
+    }
+    if ($monitorType eq "URL")
     {
 
-        case "ping" { my $pinger = Net::Ping->new("icmp");
-                      if ($pinger->ping($ip))
-                      {
-                        #print  $id.",",$ip.",1\n";
-                        $data = $data.$id."|".$ip."|1\n";
-                      }
-                      else
-                      {
-                        #print  $id.",",$ip."0\n";
-                        $data = $data.$id."|".$ip."|0\n";
-                      }
-                    }
-        case "URL"  {
-
-                    }
     }
 
 }

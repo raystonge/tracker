@@ -24,6 +24,7 @@
 include_once "globals.php";
 include_once "tracker/asset.php";
 include_once "tracker/monitor.php";
+include_once "tracker/monitorServer.php";
 include_once "tracker/monitorToUser.php";
 include_once "tracker/assetType.php";
 $_SESSION['formErrors'] ="";
@@ -36,6 +37,7 @@ $_SESSION['assetMonitorPingAddress'] = "";
 $_SESSION['assetSMSNotice'] = "";
 $_SESSION['assetMonitorWhine'] = 0;
 $_SESSION['assetMonitorServerId'] = 0;
+$_SESSION['assetMonitorType'] = "";
 
 $html="";
 $numErrors = 0;
@@ -58,6 +60,10 @@ if (!$asset->assetId)
 }
 $fqdn = GetTextField('fqdn');
 $ipAddress = GetTextField("ipAddress");
+if (!strlen($ipAddress))
+{
+	$ipAddress = GetTextField("pingAddress");
+}
 $notify = "";
 $monitorURL = GetTextField("monitorURL");
 $active = GetTextField("active",0);
@@ -67,7 +73,7 @@ if (strlen($name) == 0 && $permission->hasPermission("Asset: Edit: Name"))
     $errorMsg=$errorMsg."<li>Please Specify a Name</li>";
 }
 
-if (!$monitorId == 0 && $permission->hasPermission("Asset: Edit: Monitor Server"))
+if (!$monitorServerId && $permission->hasPermission("Asset: Edit: Monitor Server"))
 {
     $numErrors++;
     $errorMsg=$errorMsg."<li>Please Specify a Monitor Server</li>";
@@ -77,28 +83,35 @@ if (strlen($fqdn) == 0 && $permission->hasPermission("Asset: Edit: FQDN"))
 	$numErrors++;
 	$errorMsg=$errorMsg."<li>Please Specify an FQDN</li>";
 }
-if (strlen($ipAddress) == 0 && $permission->hasPermission("Asset: Edit: IP Address") && $assetType->monitorType=="ping")
+if (strlen($ipAddress) == 0 && $permission->hasPermission("Asset: Edit: IP Address") && $monitorType=="ping")
 {
 	$numErrors++;
 	$errorMsg=$errorMsg."<li>Please Specify an IP Address</li>";
 }
 else
 {
-	if (!validIPAddress($ipAddress) && $permission->hasPermission("Asset: Edit: IP Address") && $assetType->monitorType=="ping")
+	if (!validIPAddress($ipAddress) && $permission->hasPermission("Asset: Edit: IP Address") && $monitorType=="ping")
 	{
 		$numErrors++;
 		$errorMsg=$errorMsg."<li>Please enter a valid IP Address</li>";
 	}
 }
-if (strlen($monitorURL) == 0 && $permission->hasPermission("Asset: Edit: Monitor URL") && $assetType->monitorType == "monitorURL")
+if (strlen($monitorURL) == 0 && $permission->hasPermission("Asset: Edit: Monitor URL") && $monitorType == "monitorURL")
 {
 	$numErrors++;
 	$errorMsg=$errorMsg."<li>Please Specify an IP Address</li>";
 }
-if (strlen($pingAddress) == 0 && $permission->hasPermission("Asset: Edit: Ping Address") && $assetType->monitorType == "pingAddress")
+if (strlen($pingAddress) == 0 && $permission->hasPermission("Asset: Edit: Ping Address") && $monitorType == "pingAddress")
 {
 	$numErrors++;
 	$errorMsg=$errorMsg."<li>Please Specify an IP Address</li>";
+}
+{
+	if (!validIPAddress($ipAddress) && $permission->hasPermission("Asset: Edit: Ping Address") && $monitorType=="pingAddress")
+	{
+		$numErrors++;
+		$errorMsg=$errorMsg."<li>Please enter a valid IP Address</li>";
+	}
 }
 if ($numErrors == 0)
 {
@@ -120,6 +133,19 @@ if ($numErrors == 0)
 	    {
 	        array_push($historyArray,$historyVal);
 	    }
+	}
+	if ($monitor->monitorServerId != $monitorServerId)
+	{
+		$monitorServer = new MonitorServer($monitorServerId);
+		$old = $monitor->monitorServerId;
+		$oldMonitorServer = new MonitorServer($old);
+		$monitor->monitorServerId = $monitorServerId;
+		$historyVal = CreateHistory($action,"FQDN", $oldMonitorServer->name,$monitorServer->name);
+		DebugText("history:".$historyVal);
+		if (strlen($historyVal))
+		{
+		   	array_push($historyArray,$historyVal);
+		}
 	}
 	if ($monitor->fqdn != $fqdn)
 	{
@@ -313,6 +339,7 @@ else
 	$_SESSION['assetMonitorPingAddress'] = $pingAddress;
 	$_SESSION['assetSMSNotice'] = $smsNotify;
   $_SESSION['assetMonitorServerId'] = $monitorServerId;
+  $_SESSION['assetMonitorType'] = $monitorType;
 	DebugPause("/assetMonitor/$asset->assetId/");
 }
 

@@ -46,9 +46,9 @@ $building = new Building($asset->buildingId);
     	$monitor->ipAddress = GetTextFromSession("assetMonitorIPAddress");
     	$monitor->monitorURL = GetTextFromSession("assetMonitorMonitorURL");
     	$monitor->pingAddress = GetTextFromSession("asssetMonitorPingAddress");
-    	$monitor->smsNotice = GetTextField("assetSMSNotice",0);
-    	$monitor->whine = GetTextField("assetWhine",0);
-    	$monitor->monitorType = GetTextField("assetMonitorType");
+    	$monitor->smsNotice = GetTextFromSession("assetSMSNotice",0);
+    	$monitor->whine = GetTextFromSession("assetWhine",0);
+    	$monitor->monitorType = GetTextFromSession("assetMonitorType");
     	DisplayFormErrors();
     }
     if (FormSuccess())
@@ -82,7 +82,7 @@ if (!strlen($monitor->fqdn))
 <tr>
      <td colspan="2">
       Monitor Server:
-  
+
       <?php if ($permission->hasPermission("Asset: Edit: Monitor Server"))
       {
         ?>
@@ -148,7 +148,7 @@ if (!strlen($monitor->fqdn))
   <tr>
     <td colspan="2">
     <?php
-    if ($permission->hasPermission("Asset: Edit: FQDN"))
+    if ($permission->hasPermission("Asset: Edit: FQDN") && ($monitor->monitorType == "ping"))
     {
     	?>
       FQDN: <?php CreateTextField("fqdn",$monitor->fqdn);?>
@@ -168,7 +168,7 @@ if (!strlen($monitor->fqdn))
     <td  colspan="2">
       <?php
       DebugText("monitorType:".$assetType->monitorType);
-      if ($permission->hasPermission("Asset: Edit: IP Address") && $monitor->monitorType == "ping")
+      if ($permission->hasPermission("Asset: Edit: IP Address") && ($monitor->monitorType == "ping"))
       {
       	?>
       IP Address: <?php CreateTextField("ipAddress",$monitor->ipAddress);?>
@@ -375,6 +375,7 @@ if (!strlen($monitor->fqdn))
      <input type="hidden" name="assetId" value="<?php echo $asset->assetId;?>"/>
      <input type="hidden" name="monitorId" value="<?php echo $monitor->monitorId;?>"/>
      <input type="hidden" name="formKey" value="<?php echo getFormKey();?>"/>
+     <input type="hidden" name="monitorType" value="<?php echo $monitor->monitorType;?>";>
      <input type="hidden" name="ajaxFormKey" value="<?php echo getAJAXFormKey();?>"/>
      <?php
      if ($permission->hasPermission("Asset: Edit: FQDN") ||

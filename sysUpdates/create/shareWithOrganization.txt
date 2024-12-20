@@ -1,0 +1,6 @@
+CREATE TABLE `shareWithOrganization` (
+  `shareWithOrganizationId` int(11) NOT NULL AUTO_INCREMENT,
+  `organizationId` int(11) DEFAULT NULL,
+  `shareWithId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`shareWithOrganizationId`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1

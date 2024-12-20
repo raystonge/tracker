@@ -65,10 +65,13 @@ function SendMail($to,$subject,$message)
 	global $sendEmails;
 	global $sendersEmail;	
 	DebugText("SendMail($to,,$subject,$message)");
+	echo "SendMail:".$sendEmails."\n";
+/*
 	if (!$sendEmails)
 	{
 		return;
-	}
+	}*/
+	echo "Sending email\n";
 	$headers[] = 'From: '.$sendersEmail;
 	echo $to."\n";
 	echo $message."\n";

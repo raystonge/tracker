@@ -37,7 +37,7 @@
 "Paths","siteRootPath","0","/var/www/dev/tracker","text","","1"
 "Paths","tmpPath","0","/var/www/dev/tracker/tmp","text","","1"
 "SysConfigs","storeFilesInDB","0","","integer","","1"
-"SysConfigs","SysVersion","129","","integer","","0"
+"SysConfigs","SysVersion","130","","integer","","0"
 "userId1","maxAssetsPerPage","50","","integer","","1"
 "userId1","maxTicketsPerPage","25","","integer","","1"
 "userId1","myMod1","12","","integer","","0"

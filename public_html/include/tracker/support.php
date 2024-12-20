@@ -446,6 +446,7 @@ function DisplayText($text,$maxLen = 30)
 }
 function validIPAddress($ipAddress)
 {
+  DebugText("validIPAdress($ipAddress)");
   $valid = false;
   $regexp = '/^((1?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(1?\d{1,2}|2[0-4]\d|25[0-5])$/';
 

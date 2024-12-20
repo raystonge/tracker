@@ -29,6 +29,7 @@ include_once "tracker/mailSupport.php";
 
 $key = GetURLVar("key");
 $data = GetURLVar("data");
+echo "postMonitorData\n<br>";
 echo "key:".$key."\n<br>";
 echo "data:".$data."\n<br>";
 $fp = fopen("data.txt","w");

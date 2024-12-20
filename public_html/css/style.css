@@ -235,6 +235,13 @@ header #search #searchform {
   font-size: 1.1em;
 	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
 }
+.main-navigation .nav > li > a.dropdown-serversDown{
+  display: block;
+  color: #fff;
+  background-color: red;
+  font-size: 1.1em;
+	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
+}
 .main-navigation .nav > li.dropdown > a.dropdown-toggle .caret {
 	border-top-color: #fff;
 	border-bottom-color: #fff;
@@ -1287,4 +1294,8 @@ font-weight: bold;
 	float:right;
 	}
 
+}
+.devicesDown{
+  color: red;
+  font-weight: bold;
 }

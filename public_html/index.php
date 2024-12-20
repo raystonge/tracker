@@ -32,6 +32,7 @@
 ?>
 <?php
 include "pageStart.php";
+include_once "tracker/monitor.php";
 ?>
 <!DOCTYPE html>
 
@@ -387,7 +388,7 @@ $(document).ready(function () {
 	                  include "menus/index/ticketMenu.php";
 	                  include "menus/index/assetMenu.php";
 	                  include "menus/index/poMenu.php";
-                    include "menus/index/contract.php";
+                      include "menus/index/contract.php";
 	                  include "menus/index/monitorMenu.php";
 	                  include "menus/index/reportMenu.php";
 	                  include "menus/index/configMenu.php";

@@ -18,10 +18,33 @@
 //
 ?>
 	                  <?php
+					  include_once "tracker/monitor.php";
+					  $query = "select m.* from monitor m inner join asset a on m.assetId=a.assetId";
+					  $param = "active=1";
+					  $state = 0;
+					  if ($state >=0)
+					  {
+						  $param = AddEscapedParam($param,"m.state",$state);
+					  }
+					  
+					  if (strlen($param))
+					  {
+						  $query = $query." where ".$param;
+					  }
+					  $monitor = new Monitor();
+					  $ok = $monitor->doSelectQuery($query);
+					  $serversDown = $ok;
+
+					  
 	                  if ($permission->hasPermission("Monitor"))
 	                  {
+						$dropdownClass = "dropdown-toggle";
+						if ($serversDown)
+						{
+							$dropdownClass = "dropdown-serversDown";
+						}
 	                  	?>
-                      <li id="menu-item-11" class="<?php echo $monitorClass;?>" ><a href="/monitor/" class="dropdown-toggle">Monitor  </a>
+                      <li id="menu-item-11" class="<?php echo $monitorClass;?>" ><a href="/monitor/" class="<?php echo $dropdownClass;?>">Monitor  </a>
 
                       </li>
                       <?php

@@ -42,6 +42,9 @@ $today = date("Y-m-d");
 $todayInt = date("Ymd");
 $now = date("Y-m-d H:i:s");
 $nowInt = date("YmdHis");
+
+$sendEmails = 1;
+
 $control = new Control();
 $param = "sectionValue='Globals'";
 $control->SetOrderBy("sectionValue");

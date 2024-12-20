@@ -14,3 +14,4 @@
 "whine","int(11)"
 "monitorType","varchar(45)"
 "statusChange","int(11)"
+"monitorServerId","int(11)"

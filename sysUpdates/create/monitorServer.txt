@@ -1,0 +1,5 @@
+CREATE TABLE `monitorServer` (
+  `monitorServerId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`monitorServerId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1

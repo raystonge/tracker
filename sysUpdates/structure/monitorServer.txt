@@ -1,0 +1,2 @@
+"monitorServerId","int(11)"
+"name","varchar(45)"

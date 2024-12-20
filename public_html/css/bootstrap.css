@@ -3377,6 +3377,10 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
     border-right-color: #222;
     border-left-color: #111;
 }
+.navbar-inverse .nav li.dropdown.open>.dropdown-serversDown, .navbar-inverse .nav li.dropdown.active>.dropdown-serversDown, .navbar-inverse .nav li.dropdown.open.active>.dropdown-serversDown {
+    color: #fff;
+    background-color: red;
+}
 .navbar-inverse .nav li.dropdown.open>.dropdown-toggle, .navbar-inverse .nav li.dropdown.active>.dropdown-toggle, .navbar-inverse .nav li.dropdown.open.active>.dropdown-toggle {
     color: #fff;
     background-color: #717171;

@@ -15,5 +15,6 @@ CREATE TABLE `monitor` (
   `whine` int(11) DEFAULT NULL,
   `monitorType` varchar(45) DEFAULT NULL,
   `statusChange` int(11) DEFAULT NULL,
+  `monitorServerId` int(11) DEFAULT NULL,
   PRIMARY KEY (`monitorId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1
