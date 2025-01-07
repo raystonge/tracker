@@ -25,14 +25,21 @@ include_once "tracker/monitor.php";
 include_once "tracker/user.php";
 include_once "tracker/monitorToUser.php";
 include_once "tracker/asset.php";
+include_once "tracker/monitorMessages.php";
+include_once "tracker/monitorServer.php";
 include_once "tracker/mailSupport.php";
-
+$debug = 1;
 $key = GetURLVar("key");
 $data = GetURLVar("data");
 echo "postMonitorData\n<br>";
 echo "key:".$key."\n<br>";
 echo "data:".$data."\n<br>";
 $fp = fopen("data.txt","w");
+if (!$fp)
+{
+    echo "can't create file\n";
+    exit;
+}
 fwrite($fp,$data);
 fclose($fp);
 $apiKey = new apiKey();
@@ -41,6 +48,18 @@ if (!$apiKey->Get($param))
 {
     echo "no key";
     return;
+}
+$name = GetURLVar("monitor");
+if (!strlen($name))
+{
+  echo "no monitor server\n<br>";
+  return;
+}
+$param = AddEscapedParam("","name",$name);
+$monitorServer = new MonitorServer();
+if (!$monitorServer->Get($param))
+{
+  return;
 }
 $remoteAddress = $_SERVER['REMOTE_ADDR'];
 if ($remoteAddress != $apiKey->ip)
@@ -53,8 +72,8 @@ $line = strtok($data,$separator);
 $cnt = 1;
 $data = array();
 $monitor = new Monitor();
-$monitor->ResetStatus();
-$monitor->ResetStateForWhine();
+$monitor->ResetStatus($monitorServer->monitorServerId);
+$monitor->ResetStateForWhine($monitorServer->monitorServerId);
 echo "parse lines\n";
 while ($line !== false)
 {
@@ -77,7 +96,8 @@ $param = "active = 1 and statusChange  = 1";
 
 $user = new User();
 $user->clearEmailMessage();
-
+$monitorMessage = new MonitorMessages();
+$monitorMessage->clearEmailMessage($monitorServer->monitorServerId);
 $ok = $monitor->Get($param);
 
 while ($ok)
@@ -86,11 +106,11 @@ while ($ok)
     $msg = $asset->name;
     if ($monitor->state)
     {
-        $msg = $msg." is now UP<br>";
+        $msg = $msg." is now UP\r\n";
     }
     else
     {
-        $msg = $msg." is now DOWN<br>";
+        $msg = $msg." is now DOWN\r\n";
     }
     $history = new History();
     $history->assetId = $monitor->assetId;
@@ -103,14 +123,27 @@ while ($ok)
 
     while ($ok1)
     {
-        $user = new User($monitorToUser->userId);
-        $user->emailMessage = $user->emailMessage.$msg;
-        $user->updateEmailMessage();
+        $monitorMessage = new MonitorMessages();
+        $monitorMessage->GetByUserId($monitorToUser->userId,$monitorServer->monitorServerId);
+        $monitorMessage->msg = $monitorMessage->msg.$msg;
+        $monitorMessage->userId = $monitorToUser->userId;
+        $monitorMessage->monitorServerId = $monitorServer->monitorServerId;
+        $monitorMessage->Persist();
         $ok1 = $monitorToUser->Next();
     }
     $ok = $monitor->Next();
 }
-
+$monitorMessage = new MonitorMessages();
+$param = AddEscapedParam("","monitorServerId",$monitorServer->monitorServerId);
+$ok = $monitorMessage->Get($param);
+while ($ok)
+{
+    $user = new User($monitorMessage->userId);
+    echo "Getting ready to send email to:".$user->email."\n";
+    SendMail($user->email,"Device Status has changed",$monitorMessage->msg);
+    $ok = $monitorMessage->Next();
+}
+/*
 $param = "active = 1 and emailMessage is not null";
 $user = new User();
 $ok = $user->Get($param);
@@ -119,4 +152,5 @@ while ($ok)
     SendMail($user->email,"Device Status has changed",$user->emailMessage);
     $ok = $user->Next();
 }
-//DebugOutput();
+    */
+DebugOutput();

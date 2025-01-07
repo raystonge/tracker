@@ -262,25 +262,27 @@ var $className="Monitor";
 	  DebugText($query);
 	  DebugText("Error:".mysqli_error($link_cms));
   }
-  function ResetStatus()
+  function ResetStatus($monitorServerId)
   {
 	DebugText($this->className."[ResetStatus]");
 	global $link_cms;
 	global $database_cms;
 	global $now;
-	$query = "Update monitor set statusChange=0";
+	$param = AddEscapedParam("","monitorServerId",$monitorServerId);
+	$query = "Update monitor set statusChange=0 where ".$param;
 	$results = mysqli_query($link_cms,$query);
 	DebugText($query);
 	DebugText("Error:".mysqli_error($link_cms));
   }
 
-  function ResetStateForWhine()
+  function ResetStateForWhine($monitorServerId)
   {
 	DebugText($this->className."[ResetStateForWhine]");
 	global $link_cms;
 	global $database_cms;
 	global $now;
-	$query = "Update monitor set statusChange=0";
+	$param = AddEscapedParam("","monitorServerId",$monitorServerId);
+	$query = "Update monitor set statusChange=0 where ".$param;
 	$results = mysqli_query($link_cms,$query);
 	DebugText($query);
 	DebugText("Error:".mysqli_error($link_cms));

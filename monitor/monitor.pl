@@ -70,11 +70,11 @@ my $postData;
 my $postItems;
 
 my $value;
-$postItems = "key=".$key."&data=".$data;
+$postItems = "key=".$key."&data=".$data."&monitor=".$name;
 print $postItems;
 
 $url = $url.'?'.$postItems;
-#print $url;
+print $url;
 print "postMonitorData";
 $contents = get($url);
 print  "results";

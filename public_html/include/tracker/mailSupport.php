@@ -75,7 +75,7 @@ function SendMail($to,$subject,$message)
 	$headers[] = 'From: '.$sendersEmail;
 	echo $to."\n";
 	echo $message."\n";
-	return;
+	//return;
 	if (mail($to,$subject,$message,implode("\r\n", $headers)))
 	{
 		DebugText("mail send successfully to ".$to);

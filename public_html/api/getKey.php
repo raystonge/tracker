@@ -41,7 +41,7 @@ echo $key;
 function validSource($remoteAddress)
 {
     $valid = 0;
-    if ($remoteAddress == '192.168.16.226' || $remoteAddress == '142.0.109.205' || $remoteAddress == '127.0.0.1' || $remoteAddress == '192.168.16.107')
+    if ($remoteAddress == '192.168.16.226' || $remoteAddress == '142.0.109.205' || $remoteAddress == '127.0.0.1' || $remoteAddress == '192.168.16.107' || $remoteAddress == '192.168.1.132')
     {
         $valid = 1;
     }
