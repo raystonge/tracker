@@ -1,0 +1,7 @@
+CREATE TABLE `monitorMessages` (
+  `monitorMessagesId` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) DEFAULT NULL,
+  `monitorServerId` int(11) DEFAULT NULL,
+  `msg` text,
+  PRIMARY KEY (`monitorMessagesId`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1

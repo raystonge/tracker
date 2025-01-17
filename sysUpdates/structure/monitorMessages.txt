@@ -1,0 +1,4 @@
+"monitorMessagesId","int(11)"
+"userId","int(11)"
+"monitorServerId","int(11)"
+"msg","text"
