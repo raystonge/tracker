@@ -106,11 +106,11 @@ while ($ok)
     $msg = $asset->name;
     if ($monitor->state)
     {
-        $msg = $msg." is now UP\r\n";
+        $msg = $msg." is now UP<br>";
     }
     else
     {
-        $msg = $msg." is now DOWN\r\n";
+        $msg = $msg." is now DOWN<br>";
     }
     $history = new History();
     $history->assetId = $monitor->assetId;
@@ -153,4 +153,4 @@ while ($ok)
     $ok = $user->Next();
 }
     */
-DebugOutput();
+//DebugOutput();

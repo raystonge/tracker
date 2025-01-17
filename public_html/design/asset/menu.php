@@ -154,7 +154,7 @@ DebugText("Doing asset SubMenu");
 	                  }
 	                  if ($assetType->monitor && $showMonitor)
 	                  {
-						$assetMonitorURL = "assetMonitor";
+						$assetMonitorURL = "assetMonitorList";
 						$param = AddEscapedParam("","assetId",$asset->assetId);
 						if (!$monitor->Get($param))
 						{

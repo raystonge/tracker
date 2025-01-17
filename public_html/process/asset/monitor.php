@@ -78,11 +78,13 @@ if (!$monitorServerId && $permission->hasPermission("Asset: Edit: Monitor Server
     $numErrors++;
     $errorMsg=$errorMsg."<li>Please Specify a Monitor Server</li>";
 }
+/*
 if (strlen($fqdn) == 0 && $permission->hasPermission("Asset: Edit: FQDN"))
 {
 	$numErrors++;
 	$errorMsg=$errorMsg."<li>Please Specify an FQDN</li>";
 }
+	*/
 if (strlen($ipAddress) == 0 && $permission->hasPermission("Asset: Edit: IP Address") && $monitorType=="ping")
 {
 	$numErrors++;
@@ -343,5 +345,6 @@ else
 	DebugPause("/assetMonitor/$asset->assetId/");
 }
 
-DebugPause("/assetMonitor/$assetId/");
+//DebugPause("/assetMonitor/$assetId/");
+DebugPause("/assetMonitorList/$asset->assetId/");
 ?>

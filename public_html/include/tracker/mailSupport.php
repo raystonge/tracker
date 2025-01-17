@@ -72,11 +72,17 @@ function SendMail($to,$subject,$message)
 		return;
 	}*/
 	echo "Sending email\n";
-	$headers[] = 'From: '.$sendersEmail;
+	//$headers[] = 'From: '.$sendersEmail;
+	$headers  = "From: " . strip_tags($sendersEmail) . "\r\n";
+	$headers .= "Reply-To: " . strip_tags($sendersEmail) . "\r\n";
+	$headers .= "MIME-Version: 1.0\r\n";
+	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+	
 	echo $to."\n";
 	echo $message."\n";
 	//return;
-	if (mail($to,$subject,$message,implode("\r\n", $headers)))
+//	if (mail($to,$subject,$message,implode("\r\n", $headers)))
+    if (mail($to,$subject,$message,$headers))
 	{
 		DebugText("mail send successfully to ".$to);
 	}
