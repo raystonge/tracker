@@ -1,9 +1,9 @@
 <strong>System Notes</strong>
-== 2024-12-23
+== 2025-01-20
  = Version 1.13.0
    * Added controls on how assets are shared among organizations
    * Added the ability to have multiple machines monitor
-   * Monitor label in menu will be red if server is down
+   * Monitor label in menu will be red if a server is down
 
 == 2024-05-22
  = Version 1.12.0
