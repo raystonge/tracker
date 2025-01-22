@@ -143,14 +143,5 @@ while ($ok)
     SendMail($user->email,"Device Status has changed",$monitorMessage->msg);
     $ok = $monitorMessage->Next();
 }
-/*
-$param = "active = 1 and emailMessage is not null";
-$user = new User();
-$ok = $user->Get($param);
-while ($ok)
-{
-    SendMail($user->email,"Device Status has changed",$user->emailMessage);
-    $ok = $user->Next();
-}
-    */
+
 //DebugOutput();
