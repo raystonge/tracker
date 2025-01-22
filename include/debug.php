@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.11.0
+//  Tracker - Version 1.13.0
+//
+//  -v1.13.0
+//    - Changed the way DoDebug determines if debugging is occuring. Now uses a session variable
 //
 //  -v1.11.0
 //    - added a debug level for adding text to debug string
@@ -34,6 +37,18 @@ function DoDebug()
 	global $debug;
 	$remoteAddr = "";
 	$debuguser = 0;
+	if (isset($_SESSION["debugging"]))
+	{
+		return ($_SESSION["debugging"]);
+	}
+	return 0;
+
+	/*
+	if (GetTextFromSession("debugging"))
+	{
+		return 1;
+	}
+		*/
 	if (isset($_SERVER['REMOTE_ADDR']))
 	{
 		$remoteAddr = $_SERVER['REMOTE_ADDR'];
@@ -78,9 +93,9 @@ function DebugPause($redirect)
 }
 function DebugText($text,$level=10)
 {
-	global $debugtext;
-	global $debug;
-	global $debugtext;
+  global $debugtext;
+  global $debug;
+  global $debugtext;
   global $debugLevel;
 
   if ($level < $debugLevel)

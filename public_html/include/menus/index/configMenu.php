@@ -4,6 +4,7 @@
 //
 //  v1.13.0
 //   - added support for specifying which monitor server
+//   - added Debug menu option
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -128,6 +129,12 @@
                           {
                           	?>
 	                        <li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="/upgrade/">Upgrade</a></li>
+	                      <?php
+                          }
+						  if ($permission->hasPermission("Config: Debug"))
+                          {
+                          	?>
+	                        <li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="/debug/">Debug</a></li>
 	                      <?php
                           }
                           ?>
