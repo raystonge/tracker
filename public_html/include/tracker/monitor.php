@@ -257,10 +257,10 @@ var $className="Monitor";
     global $link_cms;
     global $database_cms;
     global $now;
-	  $query = "Update monitor set state=$this->state, stateChangeDateTime='$now', statusChange=1 where monitorId = $this->monitorId";
+	$query = "Update monitor set state=$this->state, stateChangeDateTime='$now', statusChange=1 where monitorId = $this->monitorId";
     $results = mysqli_query($link_cms,$query);
-	  DebugText($query);
-	  DebugText("Error:".mysqli_error($link_cms));
+	DebugText($query);
+	DebugText("Error:".mysqli_error($link_cms));
   }
   function ResetStatus($monitorServerId)
   {
@@ -302,7 +302,9 @@ var $className="Monitor";
     $name = prepForDB("monitor", "name", $this->name);
     $whine = prepForDB("monitor", "whine", $this->whine);
     $monitorType = prepForDB("monitor", "monitorType", $this->monitorType);
-	$query = "Update monitor set ipAddress='$ipAddress',active=$this->active, fqdn='$fqdn',assetId=$this->assetId, monitorURL='$monitorURL', pingAddress='$pingAddress', smsNotice=$smsNotice, name='$name', whine=$whine, monitorType='$monitorType', statusChange=$this->statusChange,monitorServerId=$this->monitorServerId where monitorId = $this->monitorId";
+	$statusChange = prepForDB("monitor", "statusChange", $this->statusChange);
+	
+	$query = "Update monitor set ipAddress='$ipAddress',active=$this->active, fqdn='$fqdn',assetId=$this->assetId, monitorURL='$monitorURL', pingAddress='$pingAddress', smsNotice=$smsNotice, name='$name', whine=$whine, monitorType='$monitorType', statusChange=$statusChange,monitorServerId=$this->monitorServerId where monitorId = $this->monitorId";
     $results = mysqli_query($link_cms,$query);
 	DebugText($query);
 	DebugText("Error:".mysqli_error($link_cms));

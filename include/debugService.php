@@ -30,48 +30,9 @@ if (!isset($debugaddress))
 	$debugaddress = "192.168.1.132|192.168.16.248|192.168.16.226|192.168.56.12|192.168.0.2|172.16.128.9|127.0.0.1|69.49.141.8|192.168.16.62|192.168.56.16|192.168.56.6|192.168.16.237| 192.168.56.23| 192.168.56.30 | 192.168.16.252";
 	//$debugaddress ="";
 $debugLevel = 5;
+$isScript = 0;
 
-function DoDebug()
-{
-	global $debugaddress;
-	global $debug;
-	$remoteAddr = "";
-	$debuguser = 0;
-	if (isset($_SESSION["debugging"]))
-	{
-		return ($_SESSION["debugging"]);
-	}
-	return 0;
 
-	/*
-	if (GetTextFromSession("debugging"))
-	{
-		return 1;
-	}
-		*/
-	if (isset($_SERVER['REMOTE_ADDR']))
-	{
-		$remoteAddr = $_SERVER['REMOTE_ADDR'];
-	}
-	$pos = false;
-	if (strlen($remoteAddr))
-	{
-		$pos = strpos($debugaddress,$remoteAddr);
-		if ($pos === false)
-		{
-			$debuguser = 0;
-		}
-		else
-		{
-		   $debuguser = 1;
-		}
-	}
-	if (!$debuguser)
-	{
-		$debuguser = preg_match("/192\.168\.1\.([1-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-4]))/",$remoteAddr);
-	}
-	return $debuguser;
-}
 function DebugPause($redirect)
 {
 	global $debug;
@@ -184,5 +145,54 @@ function DebugOutput()
 	    	}
 	    }
 	}
+}
+function DoDebug()
+{
+	global $debugaddress;
+	global $debug;
+	global $isScript;
+	$remoteAddr = "";
+	$debuguser = 0;
+	if (isset($_SESSION["debugging"]))
+	{
+		return ($_SESSION["debugging"]);
+	}
+	if ($isScript)
+	{
+		$control = new Control();
+		$param = "sectionValue='Debug' and keyValue='Scripts'";
+        $ok = $control->Get($param);
+		return ($control->valueInt);
+	}
+	return 0;
+
+	/*
+	if (GetTextFromSession("debugging"))
+	{
+		return 1;
+	}
+		*/
+	if (isset($_SERVER['REMOTE_ADDR']))
+	{
+		$remoteAddr = $_SERVER['REMOTE_ADDR'];
+	}
+	$pos = false;
+	if (strlen($remoteAddr))
+	{
+		$pos = strpos($debugaddress,$remoteAddr);
+		if ($pos === false)
+		{
+			$debuguser = 0;
+		}
+		else
+		{
+		   $debuguser = 1;
+		}
+	}
+	if (!$debuguser)
+	{
+		$debuguser = preg_match("/192\.168\.1\.([1-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-4]))/",$remoteAddr);
+	}
+	return $debuguser;
 }
 ?>

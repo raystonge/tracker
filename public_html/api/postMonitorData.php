@@ -61,6 +61,15 @@ if (!$monitorServer->Get($param))
 {
   return;
 }
+$fileName = $monitorServer->name.".txt";
+$fp = fopen($fileName,"w");
+if (!$fp)
+{
+    echo "can't create file\n";
+    exit;
+}
+fwrite($fp,$data);
+fclose($fp);
 $remoteAddress = $_SERVER['REMOTE_ADDR'];
 if ($remoteAddress != $apiKey->ip)
 {
@@ -134,7 +143,7 @@ while ($ok)
     $ok = $monitor->Next();
 }
 $monitorMessage = new MonitorMessages();
-$param = AddEscapedParam("","monitorServerId",$monitorServer->monitorServerId);
+$param = AddEscapedParam("msg is not null","monitorServerId",$monitorServer->monitorServerId);
 $ok = $monitorMessage->Get($param);
 while ($ok)
 {

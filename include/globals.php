@@ -21,6 +21,8 @@
 //
 //include_once "session.php";
 session_start();
+include_once "debugService.php";
+include_once "cmsdb.php";
 date_default_timezone_set('America/New_York');
 include_once "tracker/support.php";
 include_once "tracker/user.php";
@@ -29,8 +31,7 @@ include_once "tracker/control.php";
 include_once "tracker/security.php";
 include_once "tracker/permission.php";
 include_once "db/fieldValidators.php";
-include_once "debug.php";
-include_once "cmsdb.php";
+
 if (file_exists("/var/www/dev/php8/functions.php"))
 {
 	include_once("/var/www/dev/php8/functions.php");

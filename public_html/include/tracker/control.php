@@ -227,6 +227,7 @@ var $className="Control";
 		$valueChar = trim(mysqli_real_escape_string($link_cms,$this->valueChar));
 		$datatype = trim(mysqli_real_escape_string($link_cms,$this->datatype));
 		$query = "Update control set sectionValue='$section',keyValue='$key',valueInt = $this->valueInt, valueChar='$valueChar',datatype='$datatype',developer=$this->developer where controlId=$this->controlId";
+		echo $query."<br>";
 		$result = mysqli_query($link_cms,$query);
 		DebugText($query,3);
 		DebugText("Error:" . mysqli_error($link_cms),3);
@@ -245,6 +246,7 @@ var $className="Control";
 		$valueChar = trim(mysqli_real_escape_string($link_cms,$this->valueChar));
 		$valueInt = trim(mysqli_real_escape_string($link_cms,$this->valueInt));
 		$query = "Update control set sectionValue='$section', keyValue='$key',valueChar='$valueChar', valueInt='$valueInt', description='$description',datatype='$datatype', developer=$this->developer where controlId=$this->controlId";
+
 		$result = mysqli_query($link_cms,$query);
 		DebugText($query,3);
 		DebugText("Error:" . mysqli_error($link_cms),3);

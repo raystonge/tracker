@@ -1,6 +1,6 @@
 <?php
 //
-//  Tracker - Version 1.13
+//  Tracker - Version 1.13.1
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -21,13 +21,22 @@
 PageAccess("Config: Debug");
 ?>
 <div class="adminArea">
- <form method="post" action="/debug">
+ <form method="post" action="/process/debug.php">
 <?php
+$control = new Control();
+$param = "sectionValue='Debug' and keyValue='Scripts'";
+$ok = $control->Get($param);
+$debugScript = $control->valueInt;
 $debugging = GetTextFromSession("debug",GetTextField("debug",0));
 CreateCheckBox("debug",1,"Debugging",$debugging);
 PrintBR();
+CreateCheckBox("debugScript",1,"DebugScript",$debugScript);
+PrintBR();
+PrintFormKey();
+
 CreateSubmit();
-$_SESSION['debugging'] = $debugging;
+
+
 ?>
  </form>
 </div>

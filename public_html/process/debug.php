@@ -1,6 +1,6 @@
 <?php
 //
-//  Tracker - Version 1.13.0
+//  Tracker - Version 1.13.1
 //
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
@@ -20,30 +20,28 @@
 ?>
 <?php
 include_once "globals.php";
-include_once "tracker/apiKey.php";
-
-$remoteAddress = $_SERVER['REMOTE_ADDR'];
-
-if (!validSource($remoteAddress))
+$validAccess = testFormKey();
+DebugText("validAccess:".$validAccess);
+if ($validAccess == 0)
 {
-   // echo $remoteAddress;
-    return;
+   DebugText("problem with keys");
+   DebugPause("/improperAccess/");
 }
+$control = new Control();
+$param = "sectionValue='Debug' and keyValue='Scripts'";
+$ok = $control->Get($param);
+$debugScript = GetTextField("debugScript");
+$debugging = GetTextField("debug");
+$_SESSION['debugging'] = $debugging;
 
-$key = md5($remoteAddress.$now);
-$apiKey = new apiKey();
-$apiKey->ip = $remoteAddress;
-$apiKey->apiKey = $key;
-$apiKey->dateTime = $now;
-$apiKey->Persist();
-echo $key;
-
-function validSource($remoteAddress)
+$control->valueInt = $debugScript;
+if (!$ok)
 {
-    $valid = 0;
-    if ($remoteAddress = '207.5.139.62' || $remoteAddress == '192.168.16.226' || $remoteAddress == '107.161.158.170' || $remoteAddress == '127.0.0.1' || $remoteAddress == '192.168.16.107' || $remoteAddress == '192.168.1.132')
-    {
-        $valid = 1;
-    }
-    return $valid;
+    $control->section = "Debug";
+    $control->key = "Scripts";
+    $control->datatype = "integer";
+    
 }
+$control->Persist();
+DebugPause("/debug");
+?>
