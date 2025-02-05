@@ -220,6 +220,7 @@ if (!$asset->isEwasted())
   {
     $shareWith = new ShareWithOrganization();
     $param1 = AddEscapedParam("","shareWithId",$asset->organizationId);
+    //$param1 = AddEscapedParam("","organizationId",$asset->organizationId);
     $ok = $shareWith->Get($param1);
     $orgs = new Set(",");
     $orgs->Add($asset->organizationId);

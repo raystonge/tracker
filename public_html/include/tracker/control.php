@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.11.0
+//  Tracker - Version 1.13.2
+//
+//  -v1.13.2
+//     -fixed issue when updating to use prepForDB
 //
 //  -v1.11.0
 //     -adding a level to reduce the amout of debug text
@@ -40,13 +43,13 @@ class Control
 	var $description;
 	var $developer;
 
-var $orderBy;
-var $limit;
-var $page;
-var $perPage;
-var $start;
-var $numRows;
-var $className="Control";
+  var $orderBy;
+  var $limit;
+  var $page;
+  var $perPage;
+  var $start;
+  var $numRows;
+  var $className="Control";
 
 	function __construct()
 	{
@@ -226,8 +229,8 @@ var $className="Control";
 		$key = trim(mysqli_real_escape_string($link_cms,$this->key));
 		$valueChar = trim(mysqli_real_escape_string($link_cms,$this->valueChar));
 		$datatype = trim(mysqli_real_escape_string($link_cms,$this->datatype));
-		$query = "Update control set sectionValue='$section',keyValue='$key',valueInt = $this->valueInt, valueChar='$valueChar',datatype='$datatype',developer=$this->developer where controlId=$this->controlId";
-		echo $query."<br>";
+    $valueInt = prepForDB("control","valueInt",$this->valueInt);
+		$query = "Update control set sectionValue='$section',keyValue='$key',valueInt = $valueInt, valueChar='$valueChar',datatype='$datatype',developer=$this->developer where controlId=$this->controlId";
 		$result = mysqli_query($link_cms,$query);
 		DebugText($query,3);
 		DebugText("Error:" . mysqli_error($link_cms),3);

@@ -1,6 +1,9 @@
 <?php
 //
-//  Tracker - Version 1.13.0
+//  Tracker - Version 1.13.2
+//
+// v1.13.2
+//  - fixed issue when displaying orgs to shareWith
 //
 // v1.13.0
 //  - added support for limit sharing across orgs
@@ -133,7 +136,10 @@ $cnt = 0;
            {
              $selected = "";
              $param1 = AddEscapedParam("","organizationId",$organization->organizationId);
-             $param1 = AddEscapedParam($parma1,"shareWithId",$org->organizationId);
+             DebugText("param1:".$param1);
+
+             $param1 = AddEscapedParam($param1,"shareWithId",$org->organizationId);
+             DebugText("param1:".$param1);
              $shareWithOrganization = new ShareWithOrganization();
              $shareWithOrganization->Get($param1);
              if ($shareWithOrganization->shareWithOrganizationId)

@@ -1,7 +1,9 @@
 <strong>System Notes</strong>
-== 2025-01-24
- = Version 1.13.1
+== 2025-02-03
+ = Version 1.13.2
    * Fixed bug when update monitor 
+   * Fixed bug when attaching asset, didn't select org the parent asset is in
+   * Fixed bug when selecting which orgs to share with
 
 == 2025-01-24
  = Version 1.13.0
