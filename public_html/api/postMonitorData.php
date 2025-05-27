@@ -1,7 +1,12 @@
 <?php
 //
-//  Tracker - Version 1.13.0
+//  Tracker - Version 1.13.3
 //
+//  v1.13.3
+//   - display name of monitor in email
+//   - subject of email now includes name of the monitorServer
+//   - when selecting messages to send, added the monitorServerId
+//     to the query so only message from that server are sent
 //
 //    Copyright 2012 RaywareSoftware - Raymond St. Onge
 //
@@ -102,6 +107,7 @@ while ($line !== false)
 
 $monitor = new Monitor();
 $param = "active = 1 and statusChange  = 1";
+$param = AddEscapedParam($param,"monitorServerId",$monitorServer->monitorServerId);
 
 $user = new User();
 $user->clearEmailMessage();
@@ -112,7 +118,7 @@ $ok = $monitor->Get($param);
 while ($ok)
 {
     $asset = new Asset($monitor->assetId);
-    $msg = $asset->name;
+    $msg = $monitor->name;
     if ($monitor->state)
     {
         $msg = $msg." is now UP<br>";
@@ -149,8 +155,8 @@ while ($ok)
 {
     $user = new User($monitorMessage->userId);
     echo "Getting ready to send email to:".$user->email."\n";
-    SendMail($user->email,"Device Status has changed",$monitorMessage->msg);
+    SendMail($user->email,"Device Status has changed:".$monitorServer->name,$monitorMessage->msg);
     $ok = $monitorMessage->Next();
 }
 
-//DebugOutput();
+DebugOutput();

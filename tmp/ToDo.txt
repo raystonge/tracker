@@ -1,5 +1,12 @@
 <strong>System Notes</strong>
-== 2025-02-03
+== 2025-02-19
+ = Version 1.13.23
+   * Display name of monitor instead of asset
+   * Subject of email now includes name of the monitorServer
+   * When selecting messages to send, added the monitorServerId
+     to the query so only message from that server are sent
+
+== 2025-02-06
  = Version 1.13.2
    * Fixed bug when update monitor 
    * Fixed bug when attaching asset, didn't select org the parent asset is in
